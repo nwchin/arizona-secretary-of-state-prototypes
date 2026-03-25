@@ -1,0 +1,192 @@
+
+.widget-accordion {
+    .widget-accordion-group {
+        background-color: var(--accordion-bg);
+
+        &:last-child {
+            border-radius: 0;
+            border-bottom: 1px solid var(--accordion-default-border-color);
+        }
+
+        &:first-child .widget-accordion-group-header .widget-accordion-group-header-button {
+            border-radius: 0;
+            &:hover,
+            &:focus {
+                background-color: transparent;
+            }
+        }
+
+        .widget-accordion-group-content-wrapper .widget-accordion-group-content {
+            border-radius: 0 0 var(--border-radius-default) var(--border-radius-default);
+            padding: 1rem;
+            border: 1px solid var(--accordion-default-border-color);
+            background-color: var(--brand-gray-100);
+        }
+
+        .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable {
+            padding: var(--accordion-padding-content-default) var(--accordion-padding-content-default);
+            background-color: var(--accordion-header-default-bg);
+            border-radius: var(--border-radius-default) var(--border-radius-default) 0 0;
+            border: 1px solid var(--accordion-default-border-color);
+            
+            &:hover {
+                background-color: var(--brand-primary-100);
+
+                :is(h1, h2, h3, h4, h5, .widget-timeline-title, .widget-eventTime, h6, p, span) {
+                    color: var(--accordion-header-default-color-hover);
+                }
+                .widget-accordion-group-header-button-icon {
+                    fill: var(--accordion-header-default-color-hover);
+                }
+            }
+
+            &:focus {
+                outline: none;
+                color: var(--accordion-header-default-color);
+            }
+
+            &:focus-visible {
+                box-shadow: none;
+                border-radius: var(--border-radius-default);
+                outline: 2px solid var(--focus-color-default);
+                outline-offset: 2px;
+            }
+        }
+
+        &.widget-accordion-group-collapsed:last-child .widget-accordion-group-header>.widget-accordion-group-header-button {
+            border-bottom-left-radius: 0;
+
+            :is(h1, h2, h3, h4, h5, .widget-timeline-title, .widget-eventTime, h6, p, span) {
+                color: var(--accordion-header-default-color);
+            }
+
+            .widget-accordion-group-header-button-icon {
+                fill: var(--accordion-header-default-color);
+            }
+
+            &:hover {
+                background-color: transparent;
+                :is(h1, h2, h3, h4, h5, .widget-timeline-title, .widget-eventTime, h6, p, span) {
+                    color: var(--accordion-header-default-color-hover);
+                }
+                .widget-accordion-group-header-button-icon {
+                    fill: var(--accordion-header-default-color-hover);
+                }
+            }
+
+            &:focus {
+                outline: none;
+                color: var(--accordion-header-default-color);
+            }
+
+            &:focus-visible {
+                box-shadow: none;
+                border-radius: var(--border-radius-default);
+                outline: 2px solid var(--focus-color-default);
+                outline-offset: 2px;
+            }
+
+        }
+    }
+
+    &.widget-accordion-preview {
+        .widget-accordion-group {
+            // @include get-accordion-preview-group-styles(var(--accordion-header-default-color));
+        }
+    }
+}
+
+
+// Bordered Style Accordion
+.widget-accordion.widget-accordion-bordered-all {
+    .widget-accordion-group {
+        border-color: var(--accordion-default-border-color);
+    }
+    .widget-accordion-group-collapsed .widget-accordion-group-header>.widget-accordion-group-header-button.widget-accordion-group-header-button-clickable {
+        border-bottom: none;
+        background-color: var(--accordion-bordered-header-default-bg);
+        &:focus-visible {
+            outline-offset: 0;
+        }
+        &:hover {
+            background-color: var(--accordion-bordered-header-default-bg-hover);
+            color: var(--accordion-bordered-header-default-color-hover);
+        }
+    }
+
+    .widget-accordion-group:first-child {
+        border-top-left-radius: var(--border-radius-default);
+        border-top-right-radius: var(--border-radius-default); 
+        .widget-accordion-group-header-button  {
+            border-top-left-radius: var(--border-radius-default);
+            border-top-right-radius: var(--border-radius-default);
+        }
+    }
+
+    .widget-accordion-group:last-child {
+        border-bottom-left-radius: var(--border-radius-default);
+        border-bottom-right-radius: var(--border-radius-default); 
+    }
+    .widget-accordion-group-header>.widget-accordion-group-header-button.widget-accordion-group-header-button-clickable {
+        border-bottom: 1px solid var(--border-color-default);
+        padding: var(--accordion-padding-content-default);
+        background-color: var(--accordion-bordered-header-default-bg);
+        &:hover {
+            background-color: var(--accordion-bordered-header-default-bg-hover);
+        }
+        &:focus-visible {
+            outline-offset: 0;
+        }
+    }
+
+    .widget-accordion-group-content-wrapper .widget-accordion-group-content {
+        padding: var(--accordion-padding-content-default);
+    }
+}
+
+// Header Additional Buttons
+.accordion-with-header-actions.widget-accordion {
+    position: relative;
+
+    .accordion-header-actions {
+        position: absolute;
+        top: calc(var(--accordion-padding-content-default) / 4);
+        right: 0;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    &.widget-accordion .widget-accordion-group>.widget-accordion-group-content-wrapper>.widget-accordion-group-content {
+        padding: 0;
+    }
+
+    .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable {
+        width: fit-content;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .widget-accordion-group-collapsed {
+        &:last-child .widget-accordion-group-header {
+    
+            .widget-accordion-group-header-button:hover {
+                background-color: transparent;
+            }
+        }
+
+        .widget-accordion-group-content-wrapper {
+            display: block;
+
+            .accordion-contents {
+                display: none;
+            }
+        }
+    }
+}

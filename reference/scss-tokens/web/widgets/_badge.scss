@@ -1,0 +1,18 @@
+.widget-badge {
+    font-weight: var(--font-weight-normal);
+    border-radius: var(--border-radius-lg);
+    position: relative;
+    padding-left: 1.25rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: currentColor; /* matches text color */
+        border-radius: 50%;
+    }
+}

@@ -1,0 +1,50 @@
+.light-dark-switch {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+
+    .invert-switch.form-group {
+        margin-bottom: 0 !important;
+
+        .widget-switch {
+            .widget-switch-btn-wrapper {
+                margin: 0;
+                &.checked {
+                    background-color: var(--brand-gray-600);
+                    border-color: var(--brand-gray-600);
+                }
+                .widget-switch-btn.right {
+                    background-color: var(--brand-gray-600);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    &::before {
+                        content: "";
+                        background-image: url("images/moon.svg");
+                        background-position: center center;
+                        background-size: contain;
+                        filter: invert(1) brightness(10000);
+                        height: 16px;
+                        width: 16px;
+                    }
+                }
+                .widget-switch-btn.left {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    &::before {
+                        content: "";
+                        background-image: url("images/sun.svg");
+                        background-position: center center;
+                        background-size: contain;
+                        height: 14px;
+                        width: 14px;
+                    }
+                }
+                &:has(.right) {
+                    box-shadow: inset 0 0 0 16px var(--brand-gray-600);
+                }
+            }
+        }
+    }
+}

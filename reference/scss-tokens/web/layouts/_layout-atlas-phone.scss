@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Atlas layout
+
+   Extra styling for phone layouts
+========================================================================== */
+@mixin layout-atlas-phone() {
+    .layout-atlas-phone {
+        .region-topbar {
+            min-height: var(--m-header-height);
+            border-style: none;
+            background-color: var(--m-header-bg);
+
+            &::before {
+                display: none;
+            }
+        }
+
+        .region-sidebar {
+            .mx-navigationtree .navbar-inner > ul > li > a .glyphicon {
+                margin-right: var(--spacing-md);
+            }
+        }
+    }
+}

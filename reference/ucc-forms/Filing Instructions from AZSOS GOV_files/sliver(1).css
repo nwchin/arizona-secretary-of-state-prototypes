@@ -1,0 +1,75 @@
+@import url(https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap);
+/*
+ * This file is for overrides only. Otherwise, keep this file empty.
+ */
+
+/* Corrects the Sliver if a site has External Link enabled (Drupal) */
+nav.sliver-components ul.sliver-nav li.sliver-item > svg.ext {
+  display: none !important;
+}
+
+/* Accessibility Corrections */
+section.sliver {
+  height: 48px;
+  font-family: 'Archivo', 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+nav.sliver-components ul.sliver-nav li a {
+  font-size: 16px ;
+  font-family: 'Archivo', 'Roboto', sans-serif;
+  font-weight: 700;
+}
+nav.sliver-components ul.sliver-nav li.state-services a span.main-text {
+  max-width: none !important;
+}
+nav.sliver-components section.search-bar #searchinput {
+  font-family: 'Archivo', 'Roboto', sans-serif;
+}
+@media (max-width: 768px) {
+  nav.sliver-components ul.sliver-nav li.state-services.cornocopia .mobilehide {
+    display: none;
+  }
+}
+@media (max-width: 586px) {
+  nav.sliver-components ul.sliver-nav li.state-services {
+    padding: 0 0.5em;
+  }
+  nav.sliver-components ul.sliver-nav li.state-services:last-child {
+    padding-right: 0;
+  }
+  nav.sliver-components ul.sliver-nav li.state-logo {
+    padding-right: 0.95em;
+  }
+  nav.sliver-components ul.sliver-nav li.state-services a span.main-text {
+    font-size: 16px;
+  }
+  nav.sliver-components section.search-bar #searchsubmit {
+    display: none !important;
+  }
+}
+@media (max-width: 390px) {
+  /* for older phones */
+  nav.sliver-components ul.sliver-nav li.state-services {
+    padding: 0 0.75em;
+  }
+  nav.sliver-components ul.sliver-nav li.state-logo {
+    padding-right: 0.9375em;
+  }
+}
+@media (max-width: 360px) {
+  /* for older phones */
+  nav.sliver-components ul.sliver-nav li.state-services {
+    padding: 0 0.395em;
+  }
+  nav.sliver-components ul.sliver-nav li.state-logo {
+    padding-right: 0.9375em;
+  }
+}
+nav.sliver-components ul.sliver-nav li.cornocopia a:before {
+  background-image: url(https://static.az.gov/sliver/images/cornocopia.svg);
+}
+
+nav.sliver-components ul.sliver-nav li.health a:before {
+  background-image: url(https://static.az.gov/sliver/images/health.svg);
+}

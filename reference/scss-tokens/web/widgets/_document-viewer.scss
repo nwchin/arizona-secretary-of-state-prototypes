@@ -1,0 +1,19 @@
+.document-viewer-bond {
+    .widget-document-viewer-controls {
+        padding: var(--spacing-medium);
+        margin: 0;
+    }
+}
+
+.widget-document-viewer.form-control {
+    padding: 0;
+
+    .widget-document-viewer-controls {
+        padding: var(--spacing-small);
+    }
+
+    .widget-document-viewer-content {
+        border: 0;
+        margin: 0;
+    }
+}

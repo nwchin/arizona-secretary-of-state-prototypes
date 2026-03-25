@@ -1,0 +1,66 @@
+
+    .mx-groupbox {
+        margin: 0;
+
+        > .mx-groupbox-header {
+            margin: 0;
+            color: var(--font-color-default);
+            border-width: 1px 1px 0 1px;
+            border-style: solid;
+            border-color: var(--border-color-default);
+            background: transparent;
+            font-size: var(--font-size-default);
+            border-radius: var(--border-radius-default) var(--border-radius-default) 0 0;
+            padding: var(--spacing-md);
+
+            .mx-groupbox-collapse-icon {
+                margin-top: 0.1em;
+            }
+        }
+
+        // Header options
+        > h1.mx-groupbox-header {
+            font-size: var(--font-size-h1);
+        }
+
+        > h2.mx-groupbox-header {
+            font-size: var(--font-size-h2);
+        }
+
+        > h3.mx-groupbox-header {
+            font-size: var(--font-size-h3);
+        }
+
+        > h4.mx-groupbox-header {
+            font-size: var(--font-size-h4);
+        }
+
+        > h5.mx-groupbox-header {
+            font-size: var(--font-size-h5);
+        }
+
+        > h6.mx-groupbox-header {
+            font-size: var(--font-size-h6);
+        }
+
+        > .mx-groupbox-body {
+            padding: var(--spacing-md);
+            border-width: 1px;
+            border-style: solid;
+            border-color: var(--border-color-default);
+            background-color: #ffffff;
+            border-radius: var(--border-radius-default);
+        }
+
+        .mx-groupbox-header + .mx-groupbox-body {
+            border-top: none;
+        }
+
+        &.collapsed > .mx-groupbox-header {
+        }
+    }
+
+    //With header
+    .mx-groupbox-header ~ .mx-groupbox-body {
+        border-radius: 0 0 var(--border-radius-default) var(--border-radius-default);
+    }

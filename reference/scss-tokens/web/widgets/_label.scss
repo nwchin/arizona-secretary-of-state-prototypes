@@ -1,0 +1,65 @@
+.label {
+    display: inline-block;
+    margin: 0;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+    color: #ffffff;
+    border-radius: 0.25em;
+    font-size: 100%;
+    line-height: 1;
+
+    .form-control-static {
+        font-weight: var(--font-weight-default);
+        all: unset;
+    }
+}
+
+.label-primary {
+    color: var(--label-primary-color);
+    background-color: var(--label-primary-bg);
+    &.widget-badge {
+        border: 1px solid var(--label-primary-border-color);
+    }
+}
+
+.label-secondary {
+    color: var(--label-secondary-color);
+    background-color: var(--label-secondary-bg);
+    &.widget-badge {
+        border: 1px solid var(--label-secondary-border-color);
+    }
+}
+
+.label-tertiary {
+    color: var(--label-tertiary-color);
+    background-color: var(--label-tertiary-bg);
+    &.widget-badge {
+        border: 1px solid var(--label-tertiary-border-color);
+    }
+}
+
+.label-success {
+    color: var(--label-success-color);
+    background-color: var(--label-success-bg);
+    &.widget-badge {
+        border: 1px solid var(--label-success-border-color);
+    }
+}
+
+.label-warning {
+    color: var(--label-warning-color);
+    background-color: var(--label-warning-bg);
+    &.widget-badge {
+        border: 1px solid var(--label-warning-border-color);
+    }
+}
+
+.label-danger {
+    color: var(--label-danger-color);
+    background-color: var(--label-danger-bg);
+    &.widget-badge {
+        border: 1px solid var(--label-danger-border-color);
+    }
+}

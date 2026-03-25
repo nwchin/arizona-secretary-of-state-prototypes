@@ -1,0 +1,50 @@
+.file-uploader-bond {
+    margin-bottom: 0;
+
+    .dropzone {
+        margin-bottom: 0;
+        padding: 0;
+        cursor: pointer;
+        background-color: var(--color-white);
+        justify-content: center;
+
+        &:hover {
+            background-color: var(--bg-color);
+            border: 1.5px dashed var(--brand-primary);
+        }
+
+        .upload-text,.file-icon {
+            display: none;
+        }
+
+        &.disabled {
+            display: none;
+        }
+
+        //@extend .mx-icon-lined, .mx-icon-upload-bottom;
+
+        &::before {
+            font-family: "Atlas_Core$Atlas";
+            content: "\ea5a";
+            display: inline-block;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            font-size: var(--spacing-xl);
+            color: var(--font-color-detail);
+        }
+
+        &::after {
+            content: "Click to upload or drag and drop a PDF";
+            color: var(--font-color-detail);
+        }
+    }
+
+    .files-list {
+        margin-top: var(--spacing-lg);
+
+        > .file-entry:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

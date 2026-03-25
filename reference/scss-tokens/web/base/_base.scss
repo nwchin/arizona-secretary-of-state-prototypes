@@ -1,0 +1,61 @@
+
+    html {
+        height: 100%;
+        font-size: var(--font-size-default);
+    }
+
+    body {
+        min-height: 100%;
+        color: var(--font-color-default);
+        background-color: var(--bg-color);
+        font-family: var(--font-family-base);
+        font-size: var(--font-size-default);
+        font-weight: var(--font-weight-normal);
+        line-height: var(--line-height-base); 
+    }
+
+    
+    a {
+        transition: 0.25s;
+        color: var(--link-color);
+        -webkit-backface-visibility: hidden;
+    }
+
+    a:hover {
+        @extend .text-link-hover;
+    }
+
+    // Address `outline` inconsistency between Chrome and other browsers.
+    a:focus {
+        outline: thin dotted;
+    }
+
+    // Improve readability when focused and also mouse hovered in all browsers
+    a:active,
+    a:hover {
+        outline: 0;
+    }
+
+    // Removes large blue border in chrome on focus and active states
+    input:focus,
+    button:focus,
+    .mx-link:focus {
+        outline: 0;
+    }
+
+    // Removes large blue border for tabindexes from widgets
+    div[tabindex] {
+        outline: 0;
+    }
+
+    // Disabled State
+    .disabled,
+    [disabled] {
+        cursor: not-allowed;
+        opacity: 0.65;
+        box-shadow: none;
+    }
+
+    .mx-navbar-submenu {
+        background: var(--brand-primary);
+    }

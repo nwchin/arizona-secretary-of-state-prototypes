@@ -1,0 +1,26 @@
+.mx-navigationlist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li.mx-navigationlist-item {
+        @include transition();
+        padding: var(--spacing-md);
+        border-width: 1px;
+        border-style: none none solid none;
+        border-color: var(--grid-border-color);
+        border-radius: 0;
+        background-color: var(--grid-bg);
+
+        &:hover,
+        &:focus {
+            color: inherit;
+            background-color: var(--grid-bg-hover);
+        }
+
+        &.active {
+            color: inherit;
+            background-color: var(--grid-bg-selected);
+        }
+    }
+}

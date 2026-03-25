@@ -1,0 +1,3637 @@
+{
+    "Widget": [
+        {
+            "name": "Spacing",
+            "type": "Spacing",
+            "description": "The spacing around a widget",
+            "margin": [
+                {
+                    "name": "None",
+                    "top": {
+                        "class": "mt-0",
+                        "oldNames": [
+                            "Spacing top::None",
+                            "Spacing top::Outer none"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-0",
+                        "oldNames": [
+                            "Spacing right::None",
+                            "Spacing right::Outer none"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-0",
+                        "oldNames": [
+                            "Spacing bottom::None",
+                            "Spacing bottom::Outer none"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-0",
+                        "oldNames": [
+                            "Spacing left::None",
+                            "Spacing left::Outer none"
+                        ]
+                    }
+                },
+                {
+                    "name": "XS",
+                    "top": {
+                        "class": "mt-xs"
+                    },
+                    "right": {
+                        "class": "mr-xs"
+                    },
+                    "bottom": {
+                        "class": "mb-xs"
+                    },
+                    "left": {
+                        "class": "ml-xs"
+                    }
+                },
+                {
+                    "name": "S",
+                    "top": {
+                        "class": "mt-sm",
+                        "oldNames": [
+                            "Spacing top::Small",
+                            "Spacing top::Outer small"
+                        ]
+                },
+                    "right": {
+                        "class": "mr-sm",
+                        "oldNames": [
+                            "Spacing right::Small",
+                            "Spacing right::Outer small"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-sm",
+                        "oldNames": [
+                            "Spacing bottom::Small",
+                            "Spacing bottom::Outer small"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-sm",
+                        "oldNames": [
+                            "Spacing left::Small",
+                            "Spacing left::Outer small"
+                        ]
+                    }
+                },
+                {
+                    "name": "M",
+                    "top": {
+                        "class": "mt-md",
+                        "oldNames": [
+                            "Spacing top::Medium",
+                            "Spacing top::Outer medium"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-md",
+                        "oldNames": [
+                            "Spacing right::Medium",
+                            "Spacing right::Outer medium"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-md",
+                        "oldNames": [
+                            "Spacing bottom::Medium",
+                            "Spacing bottom::Outer medium"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-md",
+                        "oldNames": [
+                            "Spacing left::Medium",
+                            "Spacing left::Outer medium"
+                        ]
+                    }
+                },
+                {
+                    "name": "L",
+                    "top": {
+                        "class": "mt-lg",
+                        "oldNames": [
+                            "Spacing top::Large",
+                            "Spacing top::Outer large"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-lg",
+                        "oldNames": [
+                            "Spacing right::Large",
+                            "Spacing right::Outer large"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-lg",
+                        "oldNames": [
+                            "Spacing bottom::Large",
+                            "Spacing bottom::Outer large"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-lg",
+                        "oldNames": [
+                            "Spacing left::Large",
+                            "Spacing left::Outer large"
+                        ]
+                    }
+                },
+                {
+                    "name": "XL",
+                    "top": {
+                        "class": "mt-xl"
+                    },
+                    "right": {
+                        "class": "mr-xl"
+
+                    },
+                    "bottom": {
+                        "class": "mb-xl"
+                    },
+                    "left": {
+                        "class": "ml-xl"
+                    }
+                },
+                {
+                    "name": "XXL",
+                    "top": {
+                        "class": "mt-xxl"
+                    },
+                    "right": {
+                        "class": "mr-xxl"
+
+                    },
+                    "bottom": {
+                        "class": "mb-xxl"
+                    },
+                    "left": {
+                        "class": "ml-xxl"
+                    }
+                }
+            ],
+            "padding": [
+                {
+                    "name": "None",
+                    "top": {
+                        "class": "pt-0",
+                        "oldNames": [
+                            "Spacing top::Inner none"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-0",
+                        "oldNames": [
+                            "Spacing right::Inner none"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-0",
+                        "oldNames": [
+                            "Spacing bottom::Inner none"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-0",
+                        "oldNames": [
+                            "Spacing left::Inner none"
+                        ]
+                    }
+                },
+                {
+                    "name": "XS",
+                    "top": {
+                        "class": "pt-xs"
+                    },
+                    "right": {
+                        "class": "pr-xs"
+                    },
+                    "bottom": {
+                        "class": "pb-xs"
+                    },
+                    "left": {
+                        "class": "pl-xs"
+                    }
+                },
+                {
+                    "name": "S",
+                    "top": {
+                        "class": "pt-sm",
+                        "oldNames": [
+                            "Spacing top::Inner small"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-sm",
+                        "oldNames": [
+                            "Spacing right::Inner small"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-sm",
+                        "oldNames": [
+                            "Spacing bottom::Inner small"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-sm",
+                        "oldNames": [
+                            "Spacing left::Inner small"
+                        ]
+                    }
+                },
+                {
+                    "name": "M",
+                    "top": {
+                        "class": "pt-md",
+                        "oldNames": [
+                            "Spacing top::Inner medium"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-md",
+                        "oldNames": [
+                            "Spacing right::Inner medium"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-md",
+                        "oldNames": [
+                            "Spacing bottom::Inner medium"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-md",
+                        "oldNames": [
+                            "Spacing left::Inner medium"
+                        ]
+                    }
+                },
+                {
+                    "name": "L",
+                    "top": {
+                        "class": "pt-lg",
+                        "oldNames": [
+                            "Spacing top::Inner large"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-lg",
+                        "oldNames": [
+                            "Spacing right::Inner large"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-lg",
+                        "oldNames": [
+                            "Spacing bottom::Inner large"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-lg",
+                        "oldNames": [
+                            "Spacing left::Inner large"
+                        ]
+                    }
+                },
+                {
+                    "name": "XL",
+                    "top": {
+                        "class": "pt-xl"
+                    },
+                    "right": {
+                        "class": "pr-xl"
+                    },
+                    "bottom": {
+                        "class": "pb-xl"
+                    },
+                    "left": {
+                        "class": "pl-xl"
+                    }
+                },
+                {
+                    "name": "XXL",
+                    "top": {
+                        "class": "pt-xxl"
+                    },
+                    "right": {
+                        "class": "pr-xxl"
+
+                    },
+                    "bottom": {
+                        "class": "pb-xxl"
+                    },
+                    "left": {
+                        "class": "pl-xxl"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Hide on",
+            "description": "Hide on device type",
+            "multiSelect": true,
+            "type": "ToggleButtonGroup",
+            "options": [
+                {
+                    "name": "Phone",
+                    "icon": "Atlas_Core.Atlas.mobile-phone",
+                    "class": "hide-phone",
+                    "oldNames": [
+                        "Hide on phone",
+                        "Hide On Phone"
+                    ]
+                },
+                {
+                    "name": "Tablet",
+                    "icon": "Atlas_Core.Atlas.tablet",
+                    "class": "hide-tablet",
+                    "oldNames": [
+                        "Hide on tablet",
+                        "Hide On Tablet"
+                    ]
+                },
+                {
+                    "name": "Desktop",
+                    "icon": "Atlas_Core.Atlas.desktop",
+                    "class": "hide-desktop",
+                    "oldNames": [
+                        "Hide on desktop",
+                        "Hide On Desktop"
+                    ]
+                }
+            ]
+        }
+    ],
+    "DivContainer": [
+        {
+            "name": "Overflow",
+            "type": "Dropdown",
+            "description": "Overflow property of a container",
+            "options": [
+                 {
+                    "name": "Hidden",
+                    "class": "overflow-hidden"
+                }
+            ]
+        },
+        {
+            "name": "Brand Bg Color",
+            "type": "ColorPicker",
+            "description": "Change the background color of the container.",
+            "options": [
+                {
+                    "name": "Brand Primary",
+                    "preview": "--brand-primary-500",
+                    "class": "bg-primary-500"
+                },
+                {
+                    "name": "Primary 100",
+                    "preview": "--brand-primary-100",
+                    "class": "bg-primary-100"
+                },
+                {
+                    "name": "Primary 200",
+                    "preview": "--brand-primary-200",
+                    "class": "bg-primary-200"
+                },
+                {
+                    "name": "Primary 300",
+                    "preview": "--brand-primary-300",
+                    "class": "bg-primary-300"
+                },
+                {
+                    "name": "Primary 400",
+                    "preview": "--brand-primary-400",
+                    "class": "bg-primary-400"
+                },
+                {
+                    "name": "Primary 500",
+                    "preview": "--brand-primary-500",
+                    "class": "bg-primary-500"
+                },
+                {
+                    "name": "Primary 600",
+                    "preview": "--brand-primary-600",
+                    "class": "bg-primary-600"
+                },
+                {
+                    "name": "Primary 700",
+                    "preview": "--brand-primary-700",
+                    "class": "bg-primary-700"
+                },
+                {
+                    "name": "Primary 800",
+                    "preview": "--brand-primary-800",
+                    "class": "bg-primary-800"
+                },
+                {
+                    "name": "Primary 900",
+                    "preview": "--brand-primary-900",
+                    "class": "bg-primary-900"
+                },
+                {
+                    "name": "Secondary 100",
+                    "preview": "--brand-secondary-100",
+                    "class": "bg-secondary-100"
+                },
+                {
+                    "name": "Secondary 200",
+                    "preview": "--brand-secondary-200",
+                    "class": "bg-secondary-200"
+                },
+                {
+                    "name": "Secondary 300",
+                    "preview": "--brand-secondary-300",
+                    "class": "bg-secondary-300"
+                },
+                {
+                    "name": "Secondary 400",
+                    "preview": "--brand-secondary-400",
+                    "class": "bg-secondary-400"
+                },
+                {
+                    "name": "Secondary 500",
+                    "preview": "--brand-secondary-500",
+                    "class": "bg-secondary-500"
+                },
+                {
+                    "name": "Secondary 600",
+                    "preview": "--brand-secondary-600",
+                    "class": "bg-secondary-600"
+                },
+                {
+                    "name": "Secondary 700",
+                    "preview": "--brand-secondary-700",
+                    "class": "bg-secondary-700"
+                },
+                {
+                    "name": "Secondary 800",
+                    "preview": "--brand-secondary-800",
+                    "class": "bg-secondary-800"
+                },
+                {
+                    "name": "Secondary 900",
+                    "preview": "--brand-secondary-900",
+                    "class": "bg-secondary-900"
+                },
+                {
+                    "name": "Tertiary 100",
+                    "preview": "--brand-tertiary-100",
+                    "class": "bg-tertiary-100"
+                },
+                {
+                    "name": "Tertiary 200",
+                    "preview": "--brand-tertiary-200",
+                    "class": "bg-tertiary-200"
+                },
+                {
+                    "name": "Tertiary 300",
+                    "preview": "--brand-tertiary-300",
+                    "class": "bg-tertiary-300"
+                },
+                {
+                    "name": "Tertiary 400",
+                    "preview": "--brand-tertiary-400",
+                    "class": "bg-tertiary-400"
+                },
+                {
+                    "name": "Tertiary 500",
+                    "preview": "--brand-tertiary-500",
+                    "class": "bg-tertiary-500"
+                },
+                {
+                    "name": "Tertiary 600",
+                    "preview": "--brand-tertiary-600",
+                    "class": "bg-tertiary-600"
+                },
+                {
+                    "name": "Tertiary 700",
+                    "preview": "--brand-tertiary-700",
+                    "class": "bg-tertiary-700"
+                },
+                {
+                    "name": "Tertiary 800",
+                    "preview": "--brand-tertiary-800",
+                    "class": "bg-tertiary-800"
+                },
+                {
+                    "name": "Tertiary 900",
+                    "preview": "--brand-tertiary-900",
+                    "class": "bg-tertiary-900"
+                }
+            ]
+        },
+        {
+            "name": "Status Bg Color",
+            "type": "ColorPicker",
+            "description": "Change the background color of the container. Choose from success, warning or danger colors.",
+            "options": [
+                {
+                    "name": "Success 100",
+                    "preview": "--brand-success-100",
+                    "class": "bg-success-100"
+                },
+                {
+                    "name": "Success 200",
+                    "preview": "--brand-success-200",
+                    "class": "bg-success-200"
+                },
+                {
+                    "name": "Success 300",
+                    "preview": "--brand-success-300",
+                    "class": "bg-success-300"
+                },
+                {
+                    "name": "Success 400",
+                    "preview": "--brand-success-400",
+                    "class": "bg-success-400"
+                },
+                {
+                    "name": "Success 500",
+                    "preview": "--brand-success-500",
+                    "class": "bg-success-500"
+                },
+                {
+                    "name": "Success 600",
+                    "preview": "--brand-success-600",
+                    "class": "bg-success-600"
+                },
+                {
+                    "name": "Success 700",
+                    "preview": "--brand-success-700",
+                    "class": "bg-success-700"
+                },
+                {
+                    "name": "Success 800",
+                    "preview": "--brand-success-800",
+                    "class": "bg-success-800"
+                },
+                {
+                    "name": "Success 900",
+                    "preview": "--brand-success-900",
+                    "class": "bg-success-900"
+                },
+                {
+                    "name": "Warning 100",
+                    "preview": "--brand-warning-100",
+                    "class": "bg-warning-100"
+                },
+                {
+                    "name": "Warning 200",
+                    "preview": "--brand-warning-200",
+                    "class": "bg-warning-200"
+                },
+                {
+                    "name": "Warning 300",
+                    "preview": "--brand-warning-300",
+                    "class": "bg-warning-300"
+                },
+                {
+                    "name": "Warning 400",
+                    "preview": "--brand-warning-400",
+                    "class": "bg-warning-400"
+                },
+                {
+                    "name": "Warning 500",
+                    "preview": "--brand-warning-500",
+                    "class": "bg-warning-500"
+                },
+                {
+                    "name": "Warning 600",
+                    "preview": "--brand-warning-600",
+                    "class": "bg-warning-600"
+                },
+                {
+                    "name": "Warning 700",
+                    "preview": "--brand-warning-700",
+                    "class": "bg-warning-700"
+                },
+                {
+                    "name": "Warning 800",
+                    "preview": "--brand-warning-800",
+                    "class": "bg-warning-800"
+                },
+                {
+                    "name": "Warning 900",
+                    "preview": "--brand-warning-900",
+                    "class": "bg-warning-900"
+                },
+                {
+                    "name": "Danger 100",
+                    "preview": "--brand-danger-100",
+                    "class": "bg-danger-100"
+                },
+                {
+                    "name": "Danger 200",
+                    "preview": "--brand-danger-200",
+                    "class": "bg-danger-200"
+                },
+                {
+                    "name": "Danger 300",
+                    "preview": "--brand-danger-300",
+                    "class": "bg-danger-300"
+                },
+                {
+                    "name": "Danger 400",
+                    "preview": "--brand-danger-400",
+                    "class": "bg-danger-400"
+                },
+                {
+                    "name": "Danger 500",
+                    "preview": "--brand-danger-500",
+                    "class": "bg-danger-500"
+                },
+                {
+                    "name": "Danger 600",
+                    "preview": "--brand-danger-600",
+                    "class": "bg-danger-600"
+                },
+                {
+                    "name": "Danger 700",
+                    "preview": "--brand-danger-700",
+                    "class": "bg-danger-700"
+                },
+                {
+                    "name": "Danger 800",
+                    "preview": "--brand-danger-800",
+                    "class": "bg-danger-800"
+                },
+                {
+                    "name": "Danger 900",
+                    "preview": "--brand-danger-900",
+                    "class": "bg-danger-900"
+                }
+            ]
+        },
+        {
+            "name": "Section Overlap",
+            "type": "Toggle",
+            "description": "Combine with margin spacing to create a negative margin and overlap sections.",
+            "class": "overlapping-section"
+        },
+        {
+            "name": "Flex",
+            "type": "Toggle",
+            "class": "flex"
+        },
+        {
+            "name": "Flex Column",
+            "type": "Toggle",
+            "description": "Change orientation of the contents from horizontal to vertical.",
+            "class": "flex flex-column"
+        },
+        {
+            "name": "Flex Wrap",
+            "type": "Toggle",
+            "description": "Wraps the flex items in their container.",
+            "class": "flex-wrap"
+        },
+        {
+            "name": "Flex Reverse",
+            "type": "ToggleButtonGroup",
+            "multiselect": true,
+            "description": "Change direction of the contents.",
+            "options": [
+                {
+                    "name": "None",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.no-reverse",
+                    "class": "flex-unset"
+                },
+                {
+                    "name": "Row Reverse",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.row-reverse",
+                    "class": "flex-row-reverse"
+                },
+                {
+                    "name": "Column Reverse",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.column-reverse",
+                    "class": "flex-column-reverse"
+                }
+            ]
+        },
+        {
+            "name": "Justify Content", 
+            "type": "ToggleButtonGroup",
+            "description": "Distributes space between and around content items along the main axis.",
+            "options": [
+                {
+                    "name": "Justify Center",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.justify-center",
+                    "class": "flex justify-center"
+                },
+                {
+                    "name": "Justify Start",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.justify-start",
+                    "class": "flex justify-start"
+                },
+                {
+                    "name": "Justify End",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.justify-end",
+                    "class": "flex justify-end"
+                },
+                {
+                    "name": "Justify Between",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.justify-between",
+                    "class": "flex justify-between"
+                },
+                {
+                    "name": "Justify Around",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.justify-around",
+                    "class": "flex justify-around"
+                },
+                {
+                    "name": "Justify Evenly",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.justify-evenly",
+                    "class": "flex justify-evenly"
+                }
+            ]
+        },
+        {
+            "name": "Align Items",
+            "type": "ToggleButtonGroup",
+            "description": "Align elements on the cross axis.",
+            "options": [
+                {
+                    "name": "Align Center",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.align-center",
+                    "class": "flex align-center"
+                },
+                {
+                    "name": "Align Start",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.align-start",
+                    "class": "flex align-start"
+                },
+                {
+                    "name": "Align End",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.align-end",
+                    "class": "flex align-end"
+                },
+                
+                {
+                    "name": "Align Baseline",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.align-baseline",
+                    "class": "flex align-baseline"
+                },
+                {
+                    "name": "Align Stretch",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.align-stretch",
+                    "class": "flex align-stretch"
+                }
+            ]
+        },
+        {
+            "name": "Flex Gap",
+            "type": "ToggleButtonGroup",
+            "description": "Adjust the space between items inside the flex container",
+            "options": [
+                {
+                    "name": "XS",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-xs",
+                    "class": "gap-xs"
+                },
+                {
+                    "name": "S",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-sm",
+                    "class": "gap-sm"
+                },
+                {
+                    "name": "M",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-md",
+                    "class": "gap-md"
+                },
+                {
+                    "name": "L",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-lg",
+                    "class": "gap-lg"
+                },
+                {
+                    "name": "XL",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-xl",
+                    "class": "gap-xl"
+                },
+                {
+                    "name": "XXL",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-xxl",
+                    "class": "gap-xxl"
+                }
+            ]
+        },
+        {
+            "name": "Height",
+            "type": "Dropdown",
+            "description": "Adjust the height of the container",
+            "options": [
+                {
+                    "name": "100%",
+                    "class": "height-100"
+                },
+                {
+                    "name": "75%",
+                    "class": "height-75"
+                },
+                {
+                    "name": "50%",
+                    "class": "height-50"
+                },
+                {
+                    "name": "33%",
+                    "class": "height-33"
+                },
+                {
+                    "name": "25%",
+                    "class": "height-25"
+                },
+                {
+                    "name": "View Height",
+                    "class": "height-view-height"
+                },
+                {
+                    "name": "Min",
+                    "class": "height-min-content"
+                }
+                ,
+                {
+                    "name": "Max",
+                    "class": "height-max-content"
+                }
+                ,
+                {
+                    "name": "Fit",
+                    "class": "height-Fit-content"
+                }
+            ]
+        },
+        {
+            "name": "Width",
+            "type": "Dropdown",
+            "description": "Adjust the width of the container",
+            "options": [
+                {
+                    "name": "100%",
+                    "class": "width-100"
+                },
+                {
+                    "name": "75%",
+                    "class": "width-75"
+                },
+                {
+                    "name": "50%",
+                    "class": "width-50"
+                },
+                {
+                    "name": "33%",
+                    "class": "width-33"
+                },
+                {
+                    "name": "25%",
+                    "class": "width-25"
+                },
+                {
+                    "name": "12.5%",
+                    "class": "width-12p5"
+                },
+                {
+                    "name": "Page",
+                    "class": "max-width-page"
+                },
+                {
+                    "name": "Min",
+                    "class": "width-min-content"
+                },
+                {
+                    "name": "Max",
+                    "class": "width-max-content"
+                },
+                {
+                    "name": "Fit",
+                    "class": "width-fit-content"
+                }
+            ]
+        },
+        {
+            "name": "Background color",
+            "oldNames": ["Background ", "Background Color "],
+            "type": "ColorPicker",
+            "description": "Change the background color of the container. Choose from background defaults, transparent, gradient, or neutrals.",
+            "options": [
+                {
+                    "name": "Background Primary",
+                    "oldNames": ["Background Default"],
+                    "preview": "--bg-color",
+                    "class": "bg-color"
+                },
+                {
+                    "name": "Background Secondary",
+                    "oldNames": ["Background Dashboard"],
+                    "preview": "--bg-color-secondary",
+                    "class": "bg-color-secondary"
+                },
+                 {
+                    "name": "Background Card",
+                    "preview": "--bg-card",
+                    "class": "bg-card"
+                },
+                {
+                    "name": "White",
+                    "preview": "--color-white",
+                    "class": "bg-white"
+                },
+                {
+                    "name": "Black",
+                    "preview": "--color-black",
+                    "class": "bg-black"
+                },
+                {
+                    "name": "Transparent",
+                    "class": "bg-transparent"
+                },
+                {
+                    "name": "Brand Gradient",
+                    "preview": "--brand-gradient",
+                    "class": "background-brand-gradient"
+                },
+                {
+                    "name": "Gray 100",
+                    "preview": "--brand-gray-100",
+                    "class": "bg-gray-100"
+                },
+                {
+                    "name": "Gray 200",
+                    "preview": "--brand-gray-200",
+                    "class": "bg-gray-200"
+                }, 
+                {
+                    "name": "Gray 300",
+                    "preview": "--brand-gray-300",
+                    "class": "bg-gray-300"
+                }, 
+                {
+                    "name": "Gray 400",
+                    "preview": "--brand-gray-400",
+                    "class": "bg-gray-400"
+                }, 
+                {
+                    "name": "Gray 500",
+                    "preview": "--brand-gray-500",
+                    "class": "bg-gray-500"
+                }, 
+                {
+                    "name": "Gray 600",
+                    "preview": "--brand-gray-600",
+                    "class": "bg-gray-600"
+                },
+                {
+                    "name": "Gray 700",
+                    "preview": "--brand-gray-700",
+                    "class": "bg-gray-700"
+                },
+                {
+                    "name": "Gray 800",
+                    "preview": "--brand-gray-800",
+                    "class": "bg-gray-800"
+                }, 
+                {
+                    "name": "Gray 900",
+                    "preview": "--brand-gray-900",
+                    "class": "bg-gray-900"
+                }
+            ]
+        },
+        {
+            "name": "Shadow",
+            "oldNames": [
+                "Add shadow"
+            ],
+            "type": "ToggleButtonGroup",
+            "description": "Add a shadow to this element",
+            "options": [
+                {
+                    "name": "None",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.shadow-none",
+                    "class": "box-shadow-none"
+                },
+                {
+                    "name": "Small",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.shadow-small",
+                    "class": "box-shadow-small"
+                },
+                {
+                    "name": "Medium",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.shadow-medium",
+                    "class": "box-shadow-medium"
+                },
+                {
+                    "name": "Large",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.shadow-large",
+                    "class": "box-shadow-large"
+                }
+            ]
+        },
+        {
+            "name": "Border",
+            "type": "ToggleButtonGroup",
+            "multiselect": true,
+            "description": "Add a border to this element",
+            "options": [
+                {
+                    "name": "Full",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.border-full",
+                    "class": "border-full"
+                },
+                {
+                    "name": "Bottom",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.border-bottom",
+                    "class": "border-bottom-only"
+                },
+                {
+                    "name": "Right",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.border-right",
+                    "class": "border-right-only"
+                },
+                {
+                    "name": "Left",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.border-left",
+                    "class": "border-left-only"
+                },
+                {
+                    "name": "Top",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.border-top",
+                    "class": "border-top-only"
+                }
+            ]
+        },
+        {
+            "name": "Border Color",
+            "type": "ColorPicker",
+            "description": "Adjust the border color of the element.",
+            "options": [
+                {
+                    "name": "Default",
+                    "preview": "--border-color-default",
+                    "class": "border-default"
+                },
+                {
+                    "name": "Primary",
+                    "preview": "--brand-primary",
+                    "class": "border-primary"
+                    
+                },
+                {
+                    "name": "Secondary",
+                    "preview": "--brand-secondary",
+                    "class": "border-secondary"
+                },
+                {
+                    "name": "Tertiary",
+                    "preview": "--brand-tertiary",
+                    "class": "border-tertiary"
+                },
+                {
+                    "name": "White",
+                    "preview": "--color-white",
+                    "class": "border-white"
+                },
+                {
+                    "name": "Black",
+                    "preview": "--color-black",
+                    "class": "border-black"
+                },
+                {
+                    "name": "Gray",
+                    "preview": "--gray-primary",
+                    "class": "border-gray"
+                },
+                {
+                    "name": "Success",
+                    "preview": "--brand-success",
+                    "class": "border-success"
+                },
+                {
+                    "name": "Warning",
+                    "preview": "--brand-warning",
+                    "class": "border-warning"
+                },
+                {
+                    "name": "Danger",
+                    "preview": "--brand-danger",
+                    "class": "border-danger"
+                }
+            ]
+        },
+        {
+            "name": "Border Width",
+            "type": "ToggleButtonGroup",
+            "description": "Change the width of the border",
+            "options": [
+                {
+                    "name": "1px",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.width-1",
+                    "class": "border-width-1px"
+                },
+                {
+                    "name": "2px",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.width-2",
+                    "class": "border-width-2px"
+                },
+                {
+                    "name": "3px",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.width-3",
+                    "class": "border-width-3px"
+                },
+                {
+                    "name": "4px",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.width-4",
+                    "class": "border-width-4px"
+                },
+                {
+                    "name": "5px",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.width-5",
+                    "class": "border-width-5px"
+                }
+            ]
+        },
+        {
+            "name": "Border Radius",
+            "type": "ToggleButtonGroup",
+            "description": "Change the roundedness of the border",
+            "options": [
+                {
+                    "name": "Default",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-default",
+                    "class": "rounded-default"
+                },
+                {
+                    "name": "None",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-none",
+                    "class": "rounded-none"
+                },
+                {
+                    "name": "Small",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-small",
+                    "class": "rounded-sm"
+                },
+                {
+                    "name": "Medium",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-medium",
+                    "class": "rounded-md"
+                },
+                {
+                    "name": "Large",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-large",
+                    "class": "rounded-lg"
+                },
+                {
+                    "name": "Circle",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-full",
+                    "class": "rounded-full"
+                }
+            ]
+        },
+        {
+            "name": "Radius Top Right",
+            "type": "ToggleButtonGroup",
+            "description": "Change the roundedness of the top right border",
+            "options": [
+                {
+                    "name": "Default",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-tr-default",
+                    "class": "rounded-default-tr"
+                },
+                {
+                    "name": "None",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-tr-none",
+                    "class": "rounded-none-tr"
+                },
+                {
+                    "name": "Small",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-tr-small",
+                    "class": "rounded-sm-tr"
+                },
+                {
+                    "name": "Large",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-tr-large",
+                    "class": "rounded-lg-tr"
+                }
+            ]
+        },
+        {
+            "name": "Radius Top Left",
+            "type": "ToggleButtonGroup",
+            "description": "Change the roundedness of the top left border",
+            "options": [
+                {
+                    "name": "Default",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-default",
+                    "class": "rounded-default-tl"
+                },
+                {
+                    "name": "None",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-none",
+                    "class": "rounded-none-tl"
+                },
+                {
+                    "name": "Small",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-small",
+                    "class": "rounded-sm-tl"
+                },
+                {
+                    "name": "Large",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-large",
+                    "class": "rounded-lg-tl"
+                }
+            ]
+        },
+        {
+            "name": "Radius Bottom Left",
+            "type": "ToggleButtonGroup",
+            "description": "Change the roundedness of the bottom left border",
+            "options": [
+                {
+                    "name": "Default",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-bl-default",
+                    "class": "rounded-default-bl"
+                },
+                {
+                    "name": "None",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-bl-none",
+                    "class": "rounded-none-bl"
+                },
+                {
+                    "name": "Small",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-bl-small",
+                    "class": "rounded-sm-bl"
+                },
+                {
+                    "name": "Large",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-bl-large",
+                    "class": "rounded-lg-bl"
+                }
+            ]
+        },
+        {
+            "name": "Radius Bottom Right",
+            "type": "ToggleButtonGroup",
+            "description": "Change the roundedness of the bottom right border",
+            "options": [
+                {
+                    "name": "Default",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-br-default",
+                    "class": "rounded-default-br"
+                },
+                {
+                    "name": "None",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-br-none",
+                    "class": "rounded-none-br"
+                },
+                {
+                    "name": "Small",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-br-small",
+                    "class": "rounded-sm-br"
+                },
+                {
+                    "name": "Large",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.radius-br-large",
+                    "class": "rounded-lg-br"
+                }
+            ]
+        }
+    ],
+    "Button": [
+        {            
+            "name": "Style",
+            "type": "ColorPicker",
+            "description": "Change the style of the button.",
+            "options": [
+                {
+                    "name": "Default",
+                    "class": "btn-default",
+                    "preview": "--btn-default-bg"
+                },
+                {
+                    "name": "Inverse",
+                    "class": "btn-inverse",
+                    "preview": "--btn-inverse-bg"
+                },
+                {
+                    "name": "Primary",
+                    "class": "btn-primary",
+                    "preview": "--btn-primary-bg"
+                },
+                {
+                    "name": "Secondary",
+                    "class": "btn-secondary",
+                    "preview": "--btn-secondary-bg"
+                },
+                {
+                    "name": "Success",
+                    "class": "btn-success",
+                    "preview": "--btn-success-bg"
+                },
+                {
+                    "name": "Warning",
+                    "class": "btn-warning",
+                    "preview": "--btn-warning-bg"
+                },
+                {
+                    "name": "Danger",
+                    "class": "btn-danger",
+                    "preview": "--btn-danger-bg"
+                }
+            ]
+        },
+        {
+            "name": "Size",
+            "type": "ToggleButtonGroup",
+            "description": "Size of the buttons",
+            "options": [
+                {
+                    "name": "Small",
+                    "icon": "Atlas_Core.Atlas.resize-small",
+                    "class": "btn-sm"
+                },
+                {
+                    "name": "Large",
+                    "icon": "Atlas_Core.Atlas.resize-full",
+                    "class": "btn-lg"
+                }
+            ]
+        },
+        {
+            "name": "Text Only",
+            "type": "Toggle",
+            "description": "This is a text- only button",
+            "class": "btn-text-only"
+        },
+        {
+            "name": "Icon Only",
+            "type": "Toggle",
+            "description": "This is an icon only button",
+            "class": "btn-icon-only"
+        }, 
+        {
+            "name": "Adjacent Input",
+            "type": "Toggle",
+            "description": "Adjusts the alignment for a button next to an input",
+            "class": "adjacent-input"
+        },
+        {
+            "name": "Align icon",
+            "type": "ToggleButtonGroup",
+            "description": "Place the icon to the right or on top of the button.",
+            "options": [
+                {
+                    "name": "Right",
+                    "icon": "Atlas_Core.Atlas.align-right",
+                    "class": "btn-icon-right"
+                },
+                {
+                    "name": "Top",
+                    "icon": "Atlas_Core.Atlas.align-top",
+                    "class": "btn-icon-top"
+                }
+            ]
+        },
+        {
+            "name": "Full width",
+            "type": "Toggle",
+            "description": "Extend the button to the full width of the container it is placed in.",
+            "class": "btn-block"
+        },
+        {
+            "name": "Border",
+            "oldNames": [
+                "Bordered"
+            ],
+            "type": "Toggle",
+            "description": "Style the button with a transparent background, a colored border, and colored text.",
+            "class": "btn-bordered"
+        },
+        {
+            "name": "Color",
+            "type": "ColorPicker",
+            "description": "Change the color of text.",
+            "options": [
+                {
+                    "name": "Header color",
+                    "class": "text-header",
+                    "preview": "--font-color-header"
+                },
+                {
+                    "name": "Detail color",
+                    "class": "text-detail",
+                    "preview": "--font-color-detail"
+                },
+                {
+                    "name": "Brand Primary",
+                    "oldNames": [
+                        "Primary"
+                    ],
+                    "class": "text-primary",
+                    "preview": "--brand-primary"
+                },
+                {
+                    "name": "Brand Secondary",
+                    "oldNames": [
+                        "Default",
+                        "Brand Default"
+                    ],
+                    "class": "text-secondary",
+                    "preview": "--font-color-default"
+                },
+                {
+                    "name": "Brand Success",
+                    "oldNames": [
+                        "Success"
+                    ],
+                    "class": "text-success",
+                    "preview": "--brand-success"
+                },
+                {
+                    "name": "Brand Warning",
+                    "oldNames": [
+                        "Warning"
+                    ],
+                    "class": "text-warning",
+                    "preview": "--brand-warning"
+                },
+                {
+                    "name": "Brand Danger",
+                    "oldNames": [
+                        "Danger"
+                    ],
+                    "class": "text-danger",
+                    "preview": "--brand-danger"
+                },
+                {
+                    "name": "White",
+                    "class": "color-white",
+                    "preview": "white"
+                }
+            ]
+        }
+    ],
+    "ListView": [
+        {
+            "name": "Style",
+            "type": "ToggleButtonGroup",
+            "description": "Change the appearance of rows in the list view.",
+            "options": [
+                {
+                    "name": "Lined",
+                    "class": "listview-lined"
+                },
+                {
+                    "name": "Striped",
+                    "class": "listview-striped"
+                },
+                {
+                    "name": "Bordered",
+                    "class": "listview-bordered"
+                    
+                },
+                {
+                    "name": "Stacked Avatars",
+                    "class": "avatar-list"
+                },
+                {
+                    "name": "No styling",
+                    "oldNames": [
+                        "No Styling"
+                    ],
+                    "class": "listview-stylingless"
+                }
+            ]
+        },
+        {
+            "name": "Hover style",
+            "type": "Toggle",
+            "description": "Highlight a row when hovering over it. Only useful when the row is clickable.",
+            "class": "listview-hover"
+        },
+        {
+            "name": "Hide Empty Listview",
+            "type": "Toggle",
+            "description": "Hides the empty listview message",
+            "class": "listview-hide-empty"
+        },
+        {
+            "name": "Horizontal",
+            "type": "Toggle",
+            "description": "Makes the listview horizontal",
+            "class": "listview-horizontal"
+        },
+        {
+            "name": "List items full width",
+            "type": "Toggle",
+            "description": "Distributes list item's width evenly in available space",
+            "class": "listview-horizontal-li-full"
+        },
+        {
+            "name": "List Gap",
+            "type": "ToggleButtonGroup",
+            "description": "Adjust the space between items inside the horizontal list",
+            "options": [
+                {
+                    "name": "XS",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-xs",
+                    "class": "list-gap-xs"
+                },
+                {
+                    "name": "S",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-sm",
+                    "class": "list-gap-sm"
+                },
+                {
+                    "name": "M",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-md",
+                    "class": "list-gap-md"
+                },
+                {
+                    "name": "L",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-lg",
+                    "class": "list-gap-lg"
+                },
+                {
+                    "name": "XL",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-xl",
+                    "class": "list-gap-xl"
+                },
+                {
+                    "name": "XXL",
+                    "icon": "custom_ThemeStarter.theme_icons_design_properties.gap-xxl",
+                    "class": "list-gap-xxl"
+                }
+            ]
+        },
+        {
+            "name": "Row size",
+            "oldNames": [
+                "Row Size"
+            ],
+            "type": "ToggleButtonGroup",
+            "description": "Change the row spacing of the list view.",
+            "options": [
+                {
+                    "name": "Small",
+                    "icon": "Atlas_Core.Atlas.resize-small",
+                    "class": "listview-sm"
+                },
+                {
+                    "name": "Large",
+                    "icon": "Atlas_Core.Atlas.resize-full",
+                    "class": "listview-lg"
+                }
+            ]
+        }
+    ],
+    "DataGrid": [
+        {
+            "name": "Style",
+            "type": "ToggleButtonGroup",
+            "description": "Choose one of the following styles to change the appearance of the data grid.",
+            "options": [
+                {
+                    "name": "Striped",
+                    "class": "datagrid-striped"
+                },
+                {
+                    "name": "Bordered",
+                    "class": "datagrid-bordered"
+                },
+                {
+                    "name": "Lined",
+                    "class": "datagrid-lined"
+                }
+            ]
+        },
+        {
+            "name": "Hover style",
+            "type": "Toggle",
+            "description": "Enable data grid hover to make the rows hoverable.",
+            "class": "datagrid-hover"
+        },
+        {
+            "name": "Row size",
+            "type": "ToggleButtonGroup",
+            "description": "Increase or decrease the row spacing of the data grid row.",
+            "options": [
+                {
+                    "name": "Small",
+                    "icon": "Atlas_Core.Atlas.resize-small",
+                    "class": "datagrid-sm"
+                },
+                {
+                    "name": "Large",
+                    "icon": "Atlas_Core.Atlas.resize-full",
+                    "class": "datagrid-lg"
+                }
+            ]
+        }
+    ],
+    "TemplateGrid": [
+        {
+            "name": "Style",
+            "type": "ToggleButtonGroup",
+            "description": "Choose one of the following styles to change the appearance of the template grid.",
+            "options": [
+                {
+                    "name": "Striped",
+                    "class": "templategrid-striped"
+                },
+                {
+                    "name": "Bordered",
+                    "class": "templategrid-bordered"
+                },
+                {
+                    "name": "Lined",
+                    "class": "templategrid-lined"
+                },
+                {
+                    "name": "No styling",
+                    "class": "templategrid-stylingless"
+                }
+            ]
+        },
+        {
+            "name": "Hover style",
+            "type": "Toggle",
+            "description": "Enable template grid hover to make the rows hoverable.",
+            "class": "templategrid-hover"
+        }
+    ],
+    "GroupBox": [
+        {
+            "name": "Style",
+            "type": "ColorPicker",
+            "description": "Choose one of the following styles to change the appearance of the groupbox.",
+            "options": [
+                {
+                    "name": "Brand Primary",
+                    "oldNames": [
+                        "Primary"
+                    ],
+                    "class": "groupbox-primary",
+                    "preview": "--groupbox-primary-bg"
+                },
+                {
+                    "name": "Brand Secondary",
+                    "oldNames": [
+                        "Default",
+                        "Brand Default"
+                    ],
+                    "class": "groupbox-secondary",
+                    "preview": "--groupbox-default-bg"
+                },
+                {
+                    "name": "Brand Success",
+                    "oldNames": [
+                        "Success"
+                    ],
+                    "class": "groupbox-success",
+                    "preview": "--groupbox-success-bg"
+                },
+                {
+                    "name": "Brand Warning",
+                    "oldNames": [
+                        "Warning"
+                    ],
+                    "class": "groupbox-warning",
+                    "preview": "--groupbox-warning-bg"
+                },
+                {
+                    "name": "Brand Danger",
+                    "oldNames": [
+                        "Danger"
+                    ],
+                    "class": "groupbox-danger",
+                    "preview": "--groupbox-danger-bg"
+                },
+                {
+                    "name": "Transparent",
+                    "class": "groupbox-transparent",
+                    "preview": "transparent"
+                }
+            ]
+        },
+        {
+            "name": "Callout style",
+            "type": "Toggle",
+            "description": "Enable the groupbox callout functionality to highlight the importance of the groupbox.",
+            "class": "groupbox-callout"
+        }
+    ],
+    "StaticImageViewer": [
+        {
+            "name": "Style",
+            "type": "ToggleButtonGroup",
+            "description": "Choose the style of your image.",
+            "options": [
+                {
+                    "name": "Rounded",
+                    "class": "img-rounded"
+                },
+                {
+                    "name": "Thumbnail",
+                    "class": "img-thumbnail"
+                },
+                {
+                    "name": "Circle",
+                    "class": "img-circle"
+                }
+            ]
+        },
+        {
+            "name": "Center",
+            "type": "Toggle",
+            "description": "Align the image in the center of an element.",
+            "class": "img-center"
+        },
+        {
+            "name": "Fit",
+            "type": "Dropdown",
+            "description": "Choose the image fit.",
+            "options": [
+                {
+                    "name": "Fill",
+                    "class": "img-fill"
+                },
+                {
+                    "name": "Contain",
+                    "class": "img-contain"
+                },
+                {
+                    "name": "Cover",
+                    "class": "img-cover"
+                },
+                {
+                    "name": "Scale-down",
+                    "class": "img-scale-down"
+                }
+            ]
+        }
+    ],
+    "DynamicImageViewer": [
+        {
+            "name": "Style",
+            "type": "ToggleButtonGroup",
+            "description": "Choose the style of your image.",
+            "options": [
+                {
+                    "name": "Rounded",
+                    "class": "img-rounded"
+                },
+                {
+                    "name": "Thumbnail",
+                    "class": "img-thumbnail"
+                },
+                {
+                    "name": "Circle",
+                    "class": "img-circle"
+                }
+            ]
+        },
+        {
+            "name": "Center",
+            "type": "Toggle",
+            "description": "Align the image in the center of an element.",
+            "class": "img-center"
+        },
+        {
+            "name": "Fit",
+            "type": "Dropdown",
+            "description": "Choose the image fit.",
+            "options": [
+                {
+                    "name": "Fill",
+                    "class": "img-fill"
+                },
+                {
+                    "name": "Contain",
+                    "class": "img-contain"
+                },
+                {
+                    "name": "Cover",
+                    "class": "img-cover"
+                },
+                {
+                    "name": "Scale-down",
+                    "class": "img-scale-down"
+                }
+            ]
+        }
+    ],
+    "Label": [
+        {
+            "name": "Style",
+            "type": "ColorPicker",
+            "description": "Change the appearance of a label.",
+            "options": [
+                {
+                    "name": "Brand Primary",
+                    "oldNames": [
+                        "Primary"
+                    ],
+                    "class": "label-primary",
+                    "preview": "--label-primary-bg"
+                },
+                {
+                    "name": "Brand Secondary",
+                    "oldNames": [
+                        "Default",
+                        "Brand Default"
+                    ],
+                    "class": "label-secondary",
+                    "preview": "--label-default-bg"
+                },
+                {
+                    "name": "Brand Tertiary",
+                    "oldNames": [
+                        "Default",
+                        "Brand Default"
+                    ],
+                    "class": "label-tertiary",
+                    "preview": "--label-tertiary-bg"
+                },
+                {
+                    "name": "Brand Success",
+                    "oldNames": [
+                        "Success"
+                    ],
+                    "class": "label-success",
+                    "preview": "--label-success-bg"
+                },
+                {
+                    "name": "Brand Warning",
+                    "oldNames": [
+                        "Warning"
+                    ],
+                    "class": "label-warning",
+                    "preview": "--label-warning-bg"
+                },
+                {
+                    "name": "Brand Danger",
+                    "oldNames": [
+                        "Danger"
+                    ],
+                    "class": "label-danger",
+                    "preview": "--label-danger-bg"
+                }
+            ]
+        }
+    ],
+   
+    "TabContainer": [
+        {
+            "name": "Style",
+            "type": "ToggleButtonGroup",
+            "description": "Change the appearance of the tab container",
+            "options": [
+                {
+                    "name": "Pills",
+                    "class": "tab-pills"
+                },
+                {
+                    "name": "Lined",
+                    "class": "tab-lined"
+                },
+                {
+                    "name": "Bordered",
+                    "class": "tab-bordered"
+                },
+                {
+                    "name": "Vertical",
+                    "oldNames": ["Wizard"],
+                    "class": "tab-vertical"
+                }
+            ]
+        },
+        
+        {
+            "name": "Tab position",
+            "oldNames": [
+                "Tab Position"
+            ],
+            "type": "ToggleButtonGroup",
+            "description": "Change the position of the tabs",
+            "options": [
+                {
+                    "name": "Left",
+                    "icon": "Atlas_Core.Atlas.align-left",
+                    "class": "tab-left"
+                },
+                {
+                    "name": "Center",
+                    "icon": "Atlas_Core.Atlas.align-center",
+                    "class": "tab-center"
+                },
+                {
+                    "name": "Right",
+                    "icon": "Atlas_Core.Atlas.align-right",
+                    "class": "tab-right"
+                }
+            ]
+        },
+        {
+            "name": "Justify",
+            "type": "Toggle",
+            "description": "Justify the tabs to 100%",
+            "class": "tab-justified"
+        }
+    ],
+    "DynamicText": [
+        {
+            "name": "Size",
+            "type": "ToggleButtonGroup",
+            "description": "Make the text smaller or larger.",
+            "options": [
+                {
+                    "name": "Small",
+                    "class": "text-sm"
+                },
+                {
+                    "name": "Large",
+                    "class": "text-lg"
+                },
+                {
+                    "name": "XL",
+                    "class": "text-xl"
+                },
+                {
+                    "name": "XXL",
+                    "class": "text-xxl"
+                }
+            ]
+        },
+        {
+            "name": "Weight",
+            "oldNames": [
+                "Font Weight"
+            ],
+            "type": "ToggleButtonGroup",
+            "description": "Emphasize the text with a heavier or lighter font weight",
+            "options": [
+                {
+                    "name": "Light",
+                    "class": "text-light"
+                },
+                {
+                    "name": "Normal",
+                    "class": "text-normal"
+                },
+                {
+                    "name": "Semibold",
+                    "class": "text-semibold"
+                },
+                {
+                    "name": "Bold",
+                    "class": "text-bold"
+                }
+            ]
+        },
+        {
+            "name": "Color",
+            "type": "ColorPicker",
+            "description": "Change the color of text.",
+            "options": [
+                {
+                    "name": "Header color",
+                    "class": "color-text-header",
+                    "preview": "--font-color-header"
+                },
+                {
+                    "name": "Detail color",
+                    "class": "color-text-detail",
+                    "preview": "--font-color-detail"
+                },
+                {
+                    "name": "Brand Primary",
+                    "oldNames": [
+                        "Primary"
+                    ],
+                    "class": "color-brand-primary",
+                    "preview": "--brand-primary"
+                },
+                {
+                    "name": "Brand Secondary",
+                    "oldNames": [
+                        "Default",
+                        "Brand Default"
+                    ],
+                    "class": "color-brand-secondary",
+                    "preview": "--brand-secondary"
+                },
+                {
+                    "name": "Brand Tertiary",
+                    "class": "color-brand-tertiary",
+                    "preview": "--brand-tertiary"
+                },
+                {
+                    "name": "White",
+                    "class": "color-white",
+                    "preview": "--white"
+                },
+                {
+                    "name": "Black",
+                    "class": "color-black",
+                    "preview": "--black"
+                },
+                {
+                    "name": "Gray",
+                    "class": "color-gray",
+                    "preview": "--gray-primary"
+                },
+                {
+                    "name": "Brand Success",
+                    "oldNames": [
+                        "Success"
+                    ],
+                    "class": "color-brand-success",
+                    "preview": "--brand-success"
+                },
+                {
+                    "name": "Brand Warning",
+                    "oldNames": [
+                        "Warning"
+                    ],
+                    "class": "color-brand-warning",
+                    "preview": "--brand-warning"
+                },
+                {
+                    "name": "Brand Danger",
+                    "oldNames": [
+                        "Danger"
+                    ],
+                    "class": "color-brand-danger",
+                    "preview": "--brand-danger"
+                }
+            ]
+        },
+        {
+            "name": "Shade",
+            "type": "ToggleButtonGroup",
+            "description": "Apply a shade to your font color",
+            "options": [
+                {
+                    "name": "Lighter",
+                    "class": "color-lighter"
+                },
+                {
+                    "name": "Light",
+                    "class": "color-light"
+                },
+                {
+                    "name": "Dark",
+                    "class": "color-dark"
+                },
+                {
+                    "name": "Darker",
+                    "class": "color-darker"
+                }
+            ]
+        },
+        {
+            "name": "Alignment",
+            "type": "ToggleButtonGroup",
+            "description": "Align the text.",
+            "options": [
+                {
+                    "name": "Left",
+                    "icon": "Atlas_Core.Atlas.text-align-left",
+                    "class": "text-left d-block"
+                },
+                {
+                    "name": "Center",
+                    "icon": "Atlas_Core.Atlas.text-align-center",
+                    "class": "text-center d-block"
+                },
+                {
+                    "name": "Right",
+                    "icon": "Atlas_Core.Atlas.text-align-right",
+                    "class": "text-right d-block"
+                }
+            ]
+        },
+        {
+            "name": "Letter case",
+            "oldNames": [
+                "Transform"
+            ],
+            "type": "ToggleButtonGroup",
+            "description": "Change the letter case of the text.",
+            "options": [
+                {
+                    "name": "lower",
+                    "oldNames": [
+                        "Lowercase"
+                    ],
+                    "class": "text-lowercase"
+                },
+                {
+                    "name": "UPPER",
+                    "oldNames": [
+                        "Uppercase"
+                    ],
+                    "class": "text-uppercase"
+                },
+                {
+                    "name": "Capitalize",
+                    "class": "text-capitalize"
+                }
+            ]
+        },
+        {
+            "name": "Wrap options",
+            "type": "ToggleButtonGroup",
+            "description": "Break long words and sentences into multiple lines.",
+            "options": [
+                {
+                    "name": "Wrap",
+                    "class": "text-break"
+                },
+                {
+                    "name": "No wrap",
+                    "class": "text-nowrap",
+                    "oldNames": [
+                        "No Wrap"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Block Text",
+            "type": "Toggle",
+            "description": "Sets the display to block so the text takes up its own line.",
+            "class": "block"
+        }
+    ],
+    "Table": [
+        {
+            "name": "Style",
+            "type": "ToggleButtonGroup",
+            "description": "Change the appearance of cells in the table.",
+            "options": [
+                {
+                    "name": "Bordered",
+                    "class": "table-bordered"
+                },
+                {
+                    "name": "Lined",
+                    "class": "table-lined"
+                }
+            ]
+        },
+        {
+            "name": "Compact",
+            "type": "Toggle",
+            "description": "Change the spacing between cells to be compact.",
+            "class": "table-compact"
+        }
+    ],
+    "com.mendix.widget.custom.badge.Badge": [
+        {
+            "name": "Style",
+            "type": "ColorPicker",
+            "description": "The brand style affecting this element's appearance.",
+            "options": [
+                {
+                    "name": "Badge/Label Primary",
+                    "class": "label-primary",
+                    "preview": "--label-primary-color"
+                },
+                {
+                    "name": "Badge/Label Secondary",
+                    "class": "label-secondary",
+                    "preview": "--label-secondary-color"
+                },
+                {
+                    "name": "Badge/Label Tertiary",
+                    "class": "label-tertiary",
+                    "preview": "--label-tertiary-color"
+                },
+                {
+                    "name": "Badge/Label Success",
+                    "class": "label-success",
+                    "preview": "--label-success-color"
+                },
+                {
+                    "name": "Badge/Label Warning",
+                    "class": "label-warning",
+                    "preview": "--label-warning-color"
+                },
+                {
+                    "name": "Badge/Label Danger",
+                    "class": "label-danger",
+                    "preview": "--label-danger-color"
+                }
+            ]
+        }
+    ],
+    "com.mendix.widget.custom.progressbar.ProgressBar": [
+        {
+            "name": "Striped bar",
+            "type": "Toggle",
+            "description": "Striped progress bar",
+            "class": "progress-striped"
+        },
+        {
+            "name": "Bar color",
+            "type": "ColorPicker",
+            "description": "Color of the progress bar",
+            "options": [
+                {
+                    "name": "Primary",
+                    "class": "progress-bar-primary",
+                    "preview": "--brand-primary"
+                },
+                {
+                    "name": "Success",
+                    "class": "progress-bar-success",
+                    "preview": "--brand-success"
+                },
+                {
+                    "name": "Warning",
+                    "class": "progress-bar-warning",
+                    "preview": "--brand-warning"
+                },
+                {
+                    "name": "Danger",
+                    "class": "progress-bar-danger",
+                    "preview": "--brand-danger"
+                }
+            ]
+        },
+        {
+            "name": "Size",
+            "type": "ToggleButtonGroup",
+            "description": "Size of the progress bar",
+            "options": [
+                {
+                    "name": "Small",
+                    "class": "progress-bar-small"
+                },
+                {
+                    "name": "Medium",
+                    "class": "progress-bar-medium"
+                },
+                {
+                    "name": "Large",
+                    "class": "progress-bar-large"
+                }
+            ]
+        }
+    ],
+    "com.mendix.widget.custom.badgebutton.BadgeButton": [
+        {
+            "name": "Style",
+            "type": "ColorPicker",
+            "description": "The brand style affecting this element's appearance.",
+            "options": [
+                {
+                    "name": "Brand Primary",
+                    "class": "btn-primary",
+                    "preview": "--btn-primary-bg"
+                },
+                {
+                    "name": "Brand Secondary",
+                    "class": "btn-secondary",
+                    "preview": "--btn-default-bg"
+                },
+                {
+                    "name": "Brand Success",
+                    "class": "btn-success",
+                    "preview": "--btn-success-bg"
+                },
+                {
+                    "name": "Brand Warning",
+                    "class": "btn-warning",
+                    "preview": "--btn-warning-bg"
+                },
+                {
+                    "name": "Brand Danger",
+                    "class": "btn-danger",
+                    "preview": "--btn-danger-bg"
+                }
+            ]
+        },
+        {
+            "name": "Size",
+            "type": "ToggleButtonGroup",
+            "description": "Size of the buttons",
+            "options": [
+                {
+                    "name": "Small",
+                    "icon": "Atlas_Core.Atlas.resize-small",
+                    "class": "btn-sm"
+                },
+                {
+                    "name": "Large",
+                    "icon": "Atlas_Core.Atlas.resize-full",
+                    "class": "btn-lg"
+                }
+            ]
+        },
+        {
+            "name": "Full width",
+            "type": "Toggle",
+            "description": "Extend the button to the full width of the container it is placed in.",
+            "class": "btn-block"
+        },
+        {
+            "name": "Border",
+            "oldNames": [
+                "Bordered"
+            ],
+            "type": "Toggle",
+            "description": "Style the button with a transparent background, a colored border, and colored text.",
+            "class": "btn-bordered"
+        }
+    ],
+    "com.mendix.widget.custom.progresscircle.ProgressCircle": [
+        {
+            "name": "Bar color",
+            "type": "ColorPicker",
+            "description": "Color of the progress bar",
+            "options": [
+                {
+                    "name": "Primary",
+                    "class": "widget-progress-circle-primary",
+                    "preview": "--brand-primary"
+                },
+                {
+                    "name": "Success",
+                    "class": "widget-progress-circle-success",
+                    "preview": "--brand-success"
+                },
+                {
+                    "name": "Warning",
+                    "class": "widget-progress-circle-warning",
+                    "preview": "--brand-warning"
+                },
+                {
+                    "name": "Danger",
+                    "class": "widget-progress-circle-danger",
+                    "preview": "--brand-danger"
+                }
+            ]
+        },
+        {
+            "name": "Size",
+            "type": "ToggleButtonGroup",
+            "description": "Thickness of the progress circle",
+            "options": [
+                {
+                    "name": "Small",
+                    "class": "widget-progress-circle-thickness-small"
+                },
+                {
+                    "name": "Medium",
+                    "class": "widget-progress-circle-thickness-medium"
+                },
+                {
+                    "name": "Large",
+                    "class": "widget-progress-circle-thickness-large"
+                }
+            ]
+        }
+    ],
+    "com.mendix.widget.custom.switch.Switch": [
+        {
+            "name": "Style",
+            "type": "ColorPicker",
+            "description": "The brand style affecting this element's appearance.",
+            "options": [
+                {
+                    "name": "Brand Primary",
+                    "class": "widget-switch-brand-primary",
+                    "preview": "--brand-primary"
+                },
+                {
+                    "name": "Brand Secondary",
+                    "class": "widget-switch-brand-secondary",
+                    "preview": "--brand-default"
+                },
+                {
+                    "name": "Brand Success",
+                    "class": "widget-switch-brand-success",
+                    "preview": "--brand-success"
+                },
+                {
+                    "name": "Brand Warning",
+                    "class": "widget-switch-brand-warning",
+                    "preview": "--brand-warning"
+                },
+                {
+                    "name": "Brand Danger",
+                    "class": "widget-switch-brand-danger",
+                    "preview": "--brand-danger"
+                }
+            ]
+        },
+        {
+            "name": "Device style",
+            "type": "ToggleButtonGroup",
+            "description": "The general appearance of the switch. When no option selected iOS styles are applied",
+            "options": [
+                {
+                    "name": "iOS",
+                    "class": "iOS"
+                },
+                {
+                    "name": "Android",
+                    "class": "android"
+                }
+            ]
+        }
+    ],
+    "MenuBar": [
+        {
+            "name": "Hide icons",
+            "type": "Toggle",
+            "description": "Hide the navigation items icon",
+            "class": "hide-icons"
+        }
+    ],
+    "NavigationTree": [
+        {
+            "name": "Hide icons",
+            "type": "Toggle",
+            "description": "Hide the navigation items icon",
+            "class": "hide-icons"
+        }
+    ],
+    "SimpleMenuBar": [
+        {
+            "name": "Hide icons",
+            "type": "Toggle",
+            "description": "Hide the navigation items icon",
+            "class": "hide-icons"
+        }
+    ],
+    "com.mendix.widget.custom.starrating.StarRating": [
+        {
+            "name": "Size",
+            "type": "ToggleButtonGroup",
+            "description": "Change size of the rating icon/image. Default is medium.",
+            "options": [
+                {
+                    "name": "Small",
+                    "icon": "Atlas_Core.Atlas.resize-small",
+                    "class": "widget-rating-small"
+                },
+                {
+                    "name": "Large",
+                    "icon": "Atlas_Core.Atlas.resize-full",
+                    "class": "widget-rating-large"
+                }
+            ]
+        }
+    ],
+    "com.mendix.widget.web.accordion.Accordion": [
+        {
+            "name": "Borders",
+            "type": "ToggleButtonGroup",
+            "description": "Change the border appearance. By default, only horizontal borders between groups are applied.",
+            "options": [
+                {
+                    "name": "All",
+                    "class": "widget-accordion-bordered-all"
+                },
+                {
+                    "name": "Horizontal",
+                    "class": "widget-accordion-bordered-horizontal"
+                },
+                {
+                    "name": "None",
+                    "class": "widget-accordion-bordered-none"
+                }
+            ]
+        },
+        {
+            "name": "Striped",
+            "type": "Toggle",
+            "description": "Add alternating background colors to groups in the accordion.",
+            "class": "widget-accordion-striped"
+        },
+        {
+            "name": "Compact",
+            "type": "Toggle",
+            "description": "Make groups in the accordion more compact.",
+            "class": "widget-accordion-compact"
+        }
+    ],
+    "com.mendix.widget.web.image.Image": [
+        {
+            "name": "Align content",
+            "type": "Dropdown",
+            "description": "Align content of this element left, right or center it. Align elements inside the container as a row or as a column.",
+            "options": [
+                {
+                    "name": "Left align as a row",
+                    "class": "row-left"
+                },
+                {
+                    "name": "Center align as a row",
+                    "class": "row-center"
+                },
+                {
+                    "name": "Right align as a row",
+                    "class": "row-right"
+                },
+                {
+                    "name": "Left align as a column",
+                    "class": "col-left"
+                },
+                {
+                    "name": "Center align as a column",
+                    "class": "col-center"
+                },
+                {
+                    "name": "Right align as a column",
+                    "class": "col-right"
+                }
+            ]
+        },
+        {
+            "name": "Image style",
+            "type": "ToggleButtonGroup",
+            "description": "Change the image style.",
+            "options": [
+                {
+                    "name": "Rounded",
+                    "class": "img-rounded"
+                },
+                {
+                    "name": "Circle",
+                    "class": "img-circle"
+                },
+                {
+                    "name": "Square",
+                    "class": "img-square"
+                }
+            ]
+        },
+        {
+            "name": "Center image",
+            "type": "Toggle",
+            "description": "Center the image.",
+            "class": "img-center"
+        },
+        {
+            "name": "Image fit",
+            "type": "Dropdown",
+            "description": "Change the fit of the image.",
+            "options": [
+                {
+                    "name": "Fill",
+                    "class": "img-fill"
+                },
+                {
+                    "name": "Contain",
+                    "class": "img-contain"
+                },
+                {
+                    "name": "Cover",
+                    "class": "img-cover"
+                },
+                {
+                    "name": "Scale-down",
+                    "class": "img-scale-down"
+                },
+                {
+                    "name": "Auto",
+                    "class": "img-auto"
+                }
+            ]
+        },
+        {
+            "name": "Height",
+            "type": "Dropdown",
+            "description": "Adjust the height of the container",
+            "options": [
+                {
+                    "name": "100%",
+                    "class": "height-100"
+                },
+                {
+                    "name": "75%",
+                    "class": "height-75"
+                },
+                {
+                    "name": "50%",
+                    "class": "height-50"
+                },
+                {
+                    "name": "33%",
+                    "class": "height-33"
+                },
+                {
+                    "name": "25%",
+                    "class": "height-25"
+                },
+                {
+                    "name": "View Height",
+                    "class": "height-view-height"
+                },
+                {
+                    "name": "Min",
+                    "class": "height-min-content"
+                }
+                ,
+                {
+                    "name": "Max",
+                    "class": "height-max-content"
+                }
+                ,
+                {
+                    "name": "Fit",
+                    "class": "height-Fit-content"
+                }
+            ]
+        },
+        {
+            "name": "Icon Color",
+            "type": "ColorPicker",
+            "description": "For icons it will inherit this color.",
+            "options": [
+                {
+                    "name": "Header color",
+                    "class": "color-text-header",
+                    "preview": "--font-color-header"
+                },
+                {
+                    "name": "Detail color",
+                    "class": "color-text-detail",
+                    "preview": "--font-color-detail"
+                },
+                {
+                    "name": "Brand Primary",
+                    "oldNames": [
+                        "Primary"
+                    ],
+                    "class": "color-brand-primary",
+                    "preview": "--brand-primary"
+                },
+                {
+                    "name": "Brand Secondary",
+                    "oldNames": [
+                        "Default",
+                        "Brand Default"
+                    ],
+                    "class": "color-brand-secondary",
+                    "preview": "--brand-secondary"
+                },
+                {
+                    "name": "Brand Tertiary",
+                    "class": "color-brand-tertiary",
+                    "preview": "--brand-tertiary"
+                },
+                {
+                    "name": "White",
+                    "class": "color-white",
+                    "preview": "--white"
+                },
+                {
+                    "name": "Black",
+                    "class": "color-black",
+                    "preview": "--black"
+                },
+                {
+                    "name": "Gray",
+                    "class": "color-gray",
+                    "preview": "--gray-primary"
+                },
+                {
+                    "name": "Brand Success",
+                    "oldNames": [
+                        "Success"
+                    ],
+                    "class": "color-brand-success",
+                    "preview": "--brand-success"
+                },
+                {
+                    "name": "Brand Warning",
+                    "oldNames": [
+                        "Warning"
+                    ],
+                    "class": "color-brand-warning",
+                    "preview": "--brand-warning"
+                },
+                {
+                    "name": "Brand Danger",
+                    "oldNames": [
+                        "Danger"
+                    ],
+                    "class": "color-brand-danger",
+                    "preview": "--brand-danger"
+                }
+            ]
+        },
+        {
+            "name": "Icon Weight",
+            "type": "ToggleButtonGroup",
+            "description": "Emphasize the icon with a heavier or lighter font weight",
+            "options": [
+                {
+                    "name": "Light",
+                    "class": "text-light"
+                },
+                {
+                    "name": "Normal",
+                    "class": "text-normal"
+                },
+                {
+                    "name": "Semibold",
+                    "class": "text-semibold"
+                },
+                {
+                    "name": "Bold",
+                    "class": "text-bold"
+                }
+            ]
+        },
+        {
+            "name": "Opacity",
+            "type": "ToggleButtonGroup",
+            "description": "Change the opacity of the image.",
+            "options": [
+                {
+                    "name": "Low",
+                    "class": "img-opacity-low"
+                },
+                {
+                    "name": "Medium",
+                    "class": "img-opacity-medium"
+                },
+                {
+                    "name": "High",
+                    "class": "img-opacity-high"
+                }
+            ]
+        }
+    ],
+    "com.mendix.widget.custom.slider.Slider": [
+        {
+            "name": "Style",
+            "type": "ColorPicker",
+            "description": "The brand style affecting this element's appearance.",
+            "options": [
+                {
+                    "name": "Brand Primary",
+                    "class": "widget-slider-primary",
+                    "preview": "--brand-primary"
+                },
+                {
+                    "name": "Brand Success",
+                    "class": "widget-slider-success",
+                    "preview": "--brand-success"
+                },
+                {
+                    "name": "Brand Warning",
+                    "class": "widget-slider-warning",
+                    "preview": "--brand-warning"
+                },
+                {
+                    "name": "Brand Danger",
+                    "class": "widget-slider-danger",
+                    "preview": "--brand-danger"
+                }
+            ]
+        }
+    ],
+    "com.mendix.widget.web.tooltip.Tooltip": [
+        {
+            "name": "Show inline",
+            "type": "Toggle",
+            "description": "Show the widget as an inline element.",
+            "class": "widget-tooltip-inline"
+        }
+    ],
+    "com.mendix.widget.custom.RangeSlider.RangeSlider": [
+        {
+            "name": "Style",
+            "type": "ColorPicker",
+            "description": "The brand style affecting this element's appearance.",
+            "options": [
+                {
+                    "name": "Brand Primary",
+                    "class": "widget-range-slider-primary",
+                    "preview": "--brand-primary"
+                },
+                {
+                    "name": "Brand Success",
+                    "class": "widget-range-slider-success",
+                    "preview": "--brand-success"
+                },
+                {
+                    "name": "Brand Warning",
+                    "class": "widget-range-slider-warning",
+                    "preview": "--brand-warning"
+                },
+                {
+                    "name": "Brand Danger",
+                    "class": "widget-range-slider-danger",
+                    "preview": "--brand-danger"
+                }
+            ]
+        }
+    ],
+    "LayoutGrid": [
+        {
+            "name": "Height",
+            "type": "Dropdown",
+            "description": "Adjust the height of the container",
+            "options": [
+                {
+                    "name": "100%",
+                    "class": "height-100"
+                },
+                {
+                    "name": "75%",
+                    "class": "height-75"
+                },
+                {
+                    "name": "50%",
+                    "class": "height-50"
+                },
+                {
+                    "name": "33%",
+                    "class": "height-33"
+                },
+                {
+                    "name": "25%",
+                    "class": "height-25"
+                },
+                {
+                    "name": "View Height",
+                    "class": "height-view-height"
+                },
+                {
+                    "name": "Min",
+                    "class": "height-min-content"
+                }
+                ,
+                {
+                    "name": "Max",
+                    "class": "height-max-content"
+                }
+                ,
+                {
+                    "name": "Fit",
+                    "class": "height-Fit-content"
+                }
+            ]
+        }
+    ],
+    "LayoutGridRow": [
+        {
+            "name": "Spacing",
+            "type": "Spacing",
+            "description": "The spacing around a widget",
+            "margin": [
+                {
+                    "name": "None",
+                    "top": {
+                        "class": "mt-0",
+                        "oldNames": [
+                            "Spacing top::None",
+                            "Spacing top::Outer none"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-0",
+                        "oldNames": [
+                            "Spacing right::None",
+                            "Spacing right::Outer none"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-0",
+                        "oldNames": [
+                            "Spacing bottom::None",
+                            "Spacing bottom::Outer none"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-0",
+                        "oldNames": [
+                            "Spacing left::None",
+                            "Spacing left::Outer none"
+                        ]
+                    }
+                },
+                {
+                    "name": "XS",
+                    "top": {
+                        "class": "mt-xs"
+                    },
+                    "right": {
+                        "class": "mr-xs"
+                    },
+                    "bottom": {
+                        "class": "mb-xs"
+                    },
+                    "left": {
+                        "class": "ml-xs"
+                    }
+                },
+                {
+                    "name": "S",
+                    "top": {
+                        "class": "mt-sm",
+                        "oldNames": [
+                            "Spacing top::Small",
+                            "Spacing top::Outer small"
+                        ]
+                },
+                    "right": {
+                        "class": "mr-sm",
+                        "oldNames": [
+                            "Spacing right::Small",
+                            "Spacing right::Outer small"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-sm",
+                        "oldNames": [
+                            "Spacing bottom::Small",
+                            "Spacing bottom::Outer small"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-sm",
+                        "oldNames": [
+                            "Spacing left::Small",
+                            "Spacing left::Outer small"
+                        ]
+                    }
+                },
+                {
+                    "name": "M",
+                    "top": {
+                        "class": "mt-md",
+                        "oldNames": [
+                            "Spacing top::Medium",
+                            "Spacing top::Outer medium"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-md",
+                        "oldNames": [
+                            "Spacing right::Medium",
+                            "Spacing right::Outer medium"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-md",
+                        "oldNames": [
+                            "Spacing bottom::Medium",
+                            "Spacing bottom::Outer medium"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-md",
+                        "oldNames": [
+                            "Spacing left::Medium",
+                            "Spacing left::Outer medium"
+                        ]
+                    }
+                },
+                {
+                    "name": "L",
+                    "top": {
+                        "class": "mt-lg",
+                        "oldNames": [
+                            "Spacing top::Large",
+                            "Spacing top::Outer large"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-lg",
+                        "oldNames": [
+                            "Spacing right::Large",
+                            "Spacing right::Outer large"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-lg",
+                        "oldNames": [
+                            "Spacing bottom::Large",
+                            "Spacing bottom::Outer large"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-lg",
+                        "oldNames": [
+                            "Spacing left::Large",
+                            "Spacing left::Outer large"
+                        ]
+                    }
+                },
+                {
+                    "name": "XL",
+                    "top": {
+                        "class": "mt-xl"
+                    },
+                    "right": {
+                        "class": "mr-xl"
+
+                    },
+                    "bottom": {
+                        "class": "mb-xl"
+                    },
+                    "left": {
+                        "class": "ml-xl"
+                    }
+                },
+                {
+                    "name": "XXL",
+                    "top": {
+                        "class": "mt-xxl"
+                    },
+                    "right": {
+                        "class": "mr-xxl"
+
+                    },
+                    "bottom": {
+                        "class": "mb-xxl"
+                    },
+                    "left": {
+                        "class": "ml-xxl"
+                    }
+                }
+            ],
+            "padding": [
+                {
+                    "name": "None",
+                    "top": {
+                        "class": "pt-0",
+                        "oldNames": [
+                            "Spacing top::Inner none"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-0",
+                        "oldNames": [
+                            "Spacing right::Inner none"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-0",
+                        "oldNames": [
+                            "Spacing bottom::Inner none"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-0",
+                        "oldNames": [
+                            "Spacing left::Inner none"
+                        ]
+                    }
+                },
+                {
+                    "name": "XS",
+                    "top": {
+                        "class": "pt-xs"
+                    },
+                    "right": {
+                        "class": "pr-xs"
+                    },
+                    "bottom": {
+                        "class": "pb-xs"
+                    },
+                    "left": {
+                        "class": "pl-xs"
+                    }
+                },
+                {
+                    "name": "S",
+                    "top": {
+                        "class": "pt-sm",
+                        "oldNames": [
+                            "Spacing top::Inner small"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-sm",
+                        "oldNames": [
+                            "Spacing right::Inner small"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-sm",
+                        "oldNames": [
+                            "Spacing bottom::Inner small"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-sm",
+                        "oldNames": [
+                            "Spacing left::Inner small"
+                        ]
+                    }
+                },
+                {
+                    "name": "M",
+                    "top": {
+                        "class": "pt-md",
+                        "oldNames": [
+                            "Spacing top::Inner medium"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-md",
+                        "oldNames": [
+                            "Spacing right::Inner medium"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-md",
+                        "oldNames": [
+                            "Spacing bottom::Inner medium"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-md",
+                        "oldNames": [
+                            "Spacing left::Inner medium"
+                        ]
+                    }
+                },
+                {
+                    "name": "L",
+                    "top": {
+                        "class": "pt-lg",
+                        "oldNames": [
+                            "Spacing top::Inner large"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-lg",
+                        "oldNames": [
+                            "Spacing right::Inner large"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-lg",
+                        "oldNames": [
+                            "Spacing bottom::Inner large"
+                        ]
+                    },
+                   "left": {
+                        "class": "pl-lg",
+                        "oldNames": [
+                            "Spacing left::Inner large"
+                        ]
+                    }
+                },
+                {
+                    "name": "XL",
+                    "top": {
+                        "class": "pt-xl"
+                    },
+                    "right": {
+                        "class": "pr-xl"
+                    },
+                    "bottom": {
+                        "class": "pb-xl"
+                    },
+                    "left": {
+                        "class": "pl-xl"
+                    }
+                },
+                {
+                    "name": "XXL",
+                    "top": {
+                        "class": "pt-xxl"
+                    },
+                    "right": {
+                        "class": "pr-xxl"
+
+                    },
+                    "bottom": {
+                        "class": "pb-xxl"
+                    },
+                    "left": {
+                        "class": "pl-xxl"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Height",
+            "type": "Dropdown",
+            "description": "Adjust the height of the container",
+            "options": [
+                {
+                    "name": "100%",
+                    "class": "height-100"
+                },
+                {
+                    "name": "75%",
+                    "class": "height-75"
+                },
+                {
+                    "name": "50%",
+                    "class": "height-50"
+                },
+                {
+                    "name": "33%",
+                    "class": "height-33"
+                },
+                {
+                    "name": "25%",
+                    "class": "height-25"
+                },
+                {
+                    "name": "View Height",
+                    "class": "height-view-height"
+                },
+                {
+                    "name": "Min",
+                    "class": "height-min-content"
+                }
+                ,
+                {
+                    "name": "Max",
+                    "class": "height-max-content"
+                }
+                ,
+                {
+                    "name": "Fit",
+                    "class": "height-Fit-content"
+                }
+            ]
+        }
+    ],
+    "LayoutGridColumn": [
+        {
+            "name": "Spacing",
+            "type": "Spacing",
+            "description": "The spacing around a widget",
+            "margin": [
+                {
+                    "name": "None",
+                    "top": {
+                        "class": "mt-0",
+                        "oldNames": [
+                            "Spacing top::None",
+                            "Spacing top::Outer none"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-0",
+                        "oldNames": [
+                            "Spacing right::None",
+                            "Spacing right::Outer none"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-0",
+                        "oldNames": [
+                            "Spacing bottom::None",
+                            "Spacing bottom::Outer none"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-0",
+                        "oldNames": [
+                            "Spacing left::None",
+                            "Spacing left::Outer none"
+                        ]
+                    }
+                },
+                {
+                    "name": "XS",
+                    "top": {
+                        "class": "mt-xs"
+                    },
+                    "right": {
+                        "class": "mr-xs"
+                    },
+                    "bottom": {
+                        "class": "mb-xs"
+                    },
+                    "left": {
+                        "class": "ml-xs"
+                    }
+                },
+                {
+                    "name": "S",
+                    "top": {
+                        "class": "mt-sm",
+                        "oldNames": [
+                            "Spacing top::Small",
+                            "Spacing top::Outer small"
+                        ]
+                },
+                    "right": {
+                        "class": "mr-sm",
+                        "oldNames": [
+                            "Spacing right::Small",
+                            "Spacing right::Outer small"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-sm",
+                        "oldNames": [
+                            "Spacing bottom::Small",
+                            "Spacing bottom::Outer small"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-sm",
+                        "oldNames": [
+                            "Spacing left::Small",
+                            "Spacing left::Outer small"
+                        ]
+                    }
+                },
+                {
+                    "name": "M",
+                    "top": {
+                        "class": "mt-md",
+                        "oldNames": [
+                            "Spacing top::Medium",
+                            "Spacing top::Outer medium"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-md",
+                        "oldNames": [
+                            "Spacing right::Medium",
+                            "Spacing right::Outer medium"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-md",
+                        "oldNames": [
+                            "Spacing bottom::Medium",
+                            "Spacing bottom::Outer medium"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-md",
+                        "oldNames": [
+                            "Spacing left::Medium",
+                            "Spacing left::Outer medium"
+                        ]
+                    }
+                },
+                {
+                    "name": "L",
+                    "top": {
+                        "class": "mt-lg",
+                        "oldNames": [
+                            "Spacing top::Large",
+                            "Spacing top::Outer large"
+                        ]
+                    },
+                    "right": {
+                        "class": "mr-lg",
+                        "oldNames": [
+                            "Spacing right::Large",
+                            "Spacing right::Outer large"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "mb-lg",
+                        "oldNames": [
+                            "Spacing bottom::Large",
+                            "Spacing bottom::Outer large"
+                        ]
+                    },
+                    "left": {
+                        "class": "ml-lg",
+                        "oldNames": [
+                            "Spacing left::Large",
+                            "Spacing left::Outer large"
+                        ]
+                    }
+                },
+                {
+                    "name": "XL",
+                    "top": {
+                        "class": "mt-xl"
+                    },
+                    "right": {
+                        "class": "mr-xl"
+
+                    },
+                    "bottom": {
+                        "class": "mb-xl"
+                    },
+                    "left": {
+                        "class": "ml-xl"
+                    }
+                },
+                {
+                    "name": "XXL",
+                    "top": {
+                        "class": "mt-xxl"
+                    },
+                    "right": {
+                        "class": "mr-xxl"
+
+                    },
+                    "bottom": {
+                        "class": "mb-xxl"
+                    },
+                    "left": {
+                        "class": "ml-xxl"
+                    }
+                }
+            ],
+            "padding": [
+                {
+                    "name": "None",
+                    "top": {
+                        "class": "pt-0",
+                        "oldNames": [
+                            "Spacing top::Inner none"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-0",
+                        "oldNames": [
+                            "Spacing right::Inner none"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-0",
+                        "oldNames": [
+                            "Spacing bottom::Inner none"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-0",
+                        "oldNames": [
+                            "Spacing left::Inner none"
+                        ]
+                    }
+                },
+                {
+                    "name": "XS",
+                    "top": {
+                        "class": "pt-xs"
+                    },
+                    "right": {
+                        "class": "pr-xs"
+                    },
+                    "bottom": {
+                        "class": "pb-xs"
+                    },
+                    "left": {
+                        "class": "pl-xs"
+                    }
+                },
+                {
+                    "name": "S",
+                    "top": {
+                        "class": "pt-sm",
+                        "oldNames": [
+                            "Spacing top::Inner small"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-sm",
+                        "oldNames": [
+                            "Spacing right::Inner small"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-sm",
+                        "oldNames": [
+                            "Spacing bottom::Inner small"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-sm",
+                        "oldNames": [
+                            "Spacing left::Inner small"
+                        ]
+                    }
+                },
+                {
+                    "name": "M",
+                    "top": {
+                        "class": "pt-md",
+                        "oldNames": [
+                            "Spacing top::Inner medium"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-md",
+                        "oldNames": [
+                            "Spacing right::Inner medium"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-md",
+                        "oldNames": [
+                            "Spacing bottom::Inner medium"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-md",
+                        "oldNames": [
+                            "Spacing left::Inner medium"
+                        ]
+                    }
+                },
+                {
+                    "name": "L",
+                    "top": {
+                        "class": "pt-lg",
+                        "oldNames": [
+                            "Spacing top::Inner large"
+                        ]
+                    },
+                    "right": {
+                        "class": "pr-lg",
+                        "oldNames": [
+                            "Spacing right::Inner large"
+                        ]
+                    },
+                    "bottom": {
+                        "class": "pb-lg",
+                        "oldNames": [
+                            "Spacing bottom::Inner large"
+                        ]
+                    },
+                    "left": {
+                        "class": "pl-lg",
+                        "oldNames": [
+                            "Spacing left::Inner large"
+                        ]
+                    }
+                }
+                ,
+                {
+                    "name": "XL",
+                    "top": {
+                        "class": "pt-xl"
+                    },
+                    "right": {
+                        "class": "pr-xl"
+                    },
+                    "bottom": {
+                        "class": "pb-xl"
+                    },
+                    "left": {
+                        "class": "pl-xl"
+                    }
+                },
+                {
+                    "name": "XXL",
+                    "top": {
+                        "class": "pt-xxl"
+                    },
+                    "right": {
+                        "class": "pr-xxl"
+
+                    },
+                    "bottom": {
+                        "class": "pb-xxl"
+                    },
+                    "left": {
+                        "class": "pl-xxl"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Hide on",
+            "description": "Hide on device type",
+            "multiSelect": true,
+            "type": "ToggleButtonGroup",
+            "options": [
+                {
+                    "name": "Phone",
+                    "icon": "Atlas_Core.Atlas.mobile-phone",
+                    "class": "hide-phone",
+                    "oldNames": ["Hide on phone", "Hide On Phone"]
+                },
+                {
+                    "name": "Tablet",
+                    "icon": "Atlas_Core.Atlas.tablet",
+                    "class": "hide-tablet",
+                    "oldNames": ["Hide on tablet", "Hide On Tablet"]
+                },
+                {
+                    "name": "Desktop",
+                    "icon": "Atlas_Core.Atlas.desktop",
+                    "class": "hide-desktop",
+                    "oldNames": ["Hide on desktop", "Hide On Desktop"]
+                }
+            ]
+        }
+    ]
+}

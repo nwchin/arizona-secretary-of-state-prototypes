@@ -1,0 +1,339 @@
+// COLORS -----------------------------------------
+
+/* Background Colors */
+
+$colors: (
+    'primary',
+    'secondary',
+    'tertiary',
+    'success',
+    'warning',
+    'danger',
+    'gray',
+);
+
+// Generate classes for each of the color palettes 
+@each $color in $colors {
+    @for $i from 1 through 19 {
+        $shade-step:($i * 50);
+        .bg-#{$color}-#{$shade-step} {
+            background-color: var(--brand-#{$color}-#{$shade-step});
+        }
+        .color-#{$color}-#{$shade-step} {
+            color: var(--brand-#{$color}-#{$shade-step});
+        }
+        .border-color-#{$color}-#{$shade-step} {
+            border-color: var(--brand-#{$color}-#{$shade-step});
+        }
+    }
+}
+
+// Legacy colors mapped to shades
+.bg-brand-primary {
+    background-color: var(--brand-primary);
+}
+.bg-primary-darker, .bg-brand-primary.bg-darker {
+    background-color: var(--brand-primary-800);
+}
+.bg-primary-dark, .bg-brand-primary.bg-dark {
+    background-color: var(--brand-primary-600);
+}
+.bg-primary-light, .bg-brand-primary.bg-light {
+    background-color: var(--brand-primary-300);
+}
+.bg-primary-lighter, .bg-brand-primary.bg-lighter {
+    background-color: var(--brand-primary-100);
+}
+
+.bg-brand-secondary {
+    background-color: var(--brand-secondary);
+}
+.bg-secondary-darker, .bg-brand-secondary.bg-darker {
+    background-color: var(--brand-secondary-800);
+}
+.bg-secondary-dark, .bg-brand-secondary.bg-dark {
+    background-color: var(--brand-secondary-600);
+}
+.bg-secondary-light, .bg-brand-secondary.bg-light {
+    background-color: var(--brand-secondary-300);
+}
+.bg-secondary-lighter, .bg-brand-secondary.bg-lighter {
+    background-color: var(--brand-secondary-100);
+}
+
+.bg-brand-tertiary {
+    background-color: var(--brand-tertiary);
+}
+.bg-tertiary-darker, .bg-brand-tertiary.bg-darker {
+    background-color: var(--brand-tertiary-800);
+}
+.bg-tertiary-dark, .bg-brand-tertiary.bg-dark {
+    background-color: var(--brand-tertiary-600);
+}
+.bg-tertiary-light, .bg-brand-tertiary.bg-light {
+    background-color: var(--brand-tertiary-300);
+}
+.bg-tertiary-lighter, .bg-brand-tertiary.bg-lighter {
+    background-color: var(--brand-tertiary-100);
+}
+
+// Status Colors
+.bg-brand-success {
+    background-color: var(--brand-success);
+}
+
+.bg-success-darker, .bg-brand-success.bg-darker  {
+    background-color: var(--brand-success-800);
+}
+
+.bg-success-dark, .bg-brand-success.bg-dark {
+    background-color: var(--brand-success-600);
+}
+
+.bg-success-light, .bg-brand-success.bg-light {
+    background-color: var(--brand-success-300);
+}
+
+.bg-success-lighter, .bg-brand-success.bg-lighter {
+    background-color: var(--brand-success-100);
+}
+
+.bg-brand-warning {
+    background-color: var(--brand-warning);
+}
+
+.bg-warning-darker, .bg-brand-warning.bg-darker  {
+    background-color: var(--brand-warning-800);
+}
+
+.bg-warning-dark, .bg-brand-warning.bg-dark {
+    background-color: var(--brand-warning-600);
+}
+
+.bg-warning-light, .bg-brand-warning.bg-light {
+    background-color: var(--brand-warning-300);
+}
+
+.bg-warning-lighter, .bg-brand-warning.bg-lighter {
+    background-color: var(--brand-warning-100);
+}
+
+.bg-brand-danger {
+    background-color: var(--brand-danger);
+}
+
+.bg-danger-darker, .bg-brand-danger.bg-darker  {
+    background-color: var(--brand-danger-800);
+}
+
+.bg-danger-dark, .bg-brand-danger.bg-dark {
+    background-color: var(--brand-danger-600);
+}
+
+.bg-danger-light, .bg-brand-danger.bg-light {
+    background-color: var(--brand-danger-300);
+}
+
+.bg-danger-lighter, .bg-brand-danger.bg-lighter {
+    background-color: var(--brand-danger-100);
+}
+
+// Element Colors
+.bg-color {
+    background-color: var(--bg-color);
+}
+
+.bg-color-secondary {
+    background-color: var(--bg-color-secondary);
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+.bg-card {
+    background-color: var(--bg-card);
+}
+
+.bg-border {
+    background-color: var(--border-color-default);
+}
+
+.bg-focus {
+    background-color: var(--focus-color-default);
+}
+
+.bg-text-default {
+    background-color: var(--font-color-default);
+}
+
+.bg-text-header {
+    background-color: var(--font-color-header);
+}
+
+.bg-text-detail {
+    background-color: var(--font-color-detail);
+}
+
+// Neutrals
+.bg-white {
+    background-color: var(--color-white);
+}
+.bg-black {
+    background-color: var(--color-black);
+}
+
+.bg-gray, .bg-gray-primary  {
+    background-color: var(--gray-primary);
+}
+
+.bg-gray-darker, .bg-gray-primary.bg-darker {
+    background-color: var(--brand-gray-800);
+}
+
+.bg-gray-dark, .bg-gray-primary.bg-dark {
+    background-color: var(--brand-gray-600);
+}
+
+.bg-gray-light, .bg-gray-primary.bg-light {
+    background-color: var(--brand-gray-300);
+}
+
+.bg-gray-lighter, .bg-gray-primary.bg-lighter {
+    background-color: var(--brand-gray-100);
+}
+
+
+/* Text Colors */
+.color-text-default {
+    color: var(--font-color-default);
+}
+.color-text-header {
+    color: var(--font-color-header);
+}
+
+.color-text-detail {
+    color: var(--font-color-detail);
+}
+
+.color-brand-primary {
+    color: var(--brand-primary);
+}
+.color-primary-darker, .color-brand-primary.color-darker {
+    color: var(--brand-primary-800);
+}
+.color-primary-dark, .color-brand-primary.color-dark {
+    color: var(--brand-primary-600);
+}
+.color-primary-light, .color-brand-primary.color-light {
+    color: var(--brand-primary-300);
+}
+.color-primary-lighter, .color-brand-primary.color-lighter {
+    color: var(--brand-primary-100);
+}
+
+.color-brand-secondary {
+    color: var(--brand-secondary);
+}
+.color-secondary-darker, .color-brand-secondary.color-darker {
+    color: var(--brand-secondary-800);
+}
+.color-secondary-dark, .color-brand-secondary.color-dark {
+    color: var(--brand-secondary-600);
+}
+.color-secondary-light, .color-brand-secondary.color-light {
+    color: var(--brand-secondary-300);
+}
+.color-secondary-lighter, .color-brand-secondary.color-lighter {
+    color: var(--brand-secondary-100);
+}
+.color-brand-tertiary {
+    color: var(--brand-tertiary);
+}
+.color-tertiary-darker, .color-brand-tertiary.color-darker {
+    color: var(--brand-tertiary-800);
+}
+.color-tertiary-dark, .color-brand-tertiary.color-dark {
+    color: var(--brand-tertiary-600);
+}
+.color-tertiary-light, .color-brand-tertiary.color-light {
+    color: var(--brand-tertiary-300);
+}
+.color-tertiary-lighter, .color-brand-tertiary.color-lighter {
+    color: var(--brand-tertiary-100);
+}
+
+// Neutrals
+.color-white {
+    color: var(--color-white);
+}
+.color-black {
+    color: var(--color-black);
+}
+.color-gray {
+    color: var(--gray-primary);
+}
+.color-gray-darker, .color-gray.color-darker {
+    color:  var(--gray-800);
+}
+.color-gray-dark, .color-gray.color-dark {
+    color:  var(--gray-600);
+}
+.color-gray-light, .color-gray.color-light {
+    color:  var(--gray-300);
+}
+.color-gray-lighter, .color-gray.color-lighter {
+    color:  var(--gray-100);
+}
+
+
+// Status Colors
+.color-brand-success {
+   color: var(--brand-success);
+}
+.color-success-darker, .color-brand-success.color-darker {
+    color:  var(--brand-success-800);
+}
+.color-success-dark, .color-brand-success.color-dark {
+    color:  var(--brand-success-600);
+}
+.color-success-light, .color-brand-success.color-light {
+    color:  var(--brand-success-300);
+}
+.color-success-lighter, .color-brand-success.color-lighter {
+    color:  var(--brand-success-100);
+}
+.color-brand-warning {
+    color: var(--brand-warning);
+ }
+ .color-warning-darker, .color-brand-warning.color-darker {
+    color:  var(--brand-warning-800);
+}
+.color-warning-dark, .color-brand-warning.color-dark {
+    color:  var(--brand-warning-600);
+}
+.color-warning-light, .color-brand-warning.color-light {
+    color:  var(--brand-warning-300);
+}
+.color-warning-lighter, .color-brand-warning.color-lighter {
+    color:  var(--brand-warning-100);
+}
+
+ .color-brand-danger {
+    color: var(--brand-danger);
+ }
+ .color-danger-darker, .color-brand-danger.color-darker {
+    color:  var(--brand-danger-800);
+}
+.color-danger-dark, .color-brand-danger.color-dark {
+    color:  var(--brand-danger-600);
+}
+.color-danger-light, .color-brand-danger.color-light {
+    color:  var(--brand-danger-300);
+}
+.color-danger-lighter, .color-brand-danger.color-lighter {
+    color:  var(--brand-danger-100);
+}
+
+
+// -----------------------------------------------------

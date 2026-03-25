@@ -1,0 +1,109 @@
+// Atlas Font Icons
+.atlas-lined-icon {
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-family: "Atlas_Core$Atlas";
+}
+
+.mx-dataview.form-vertical .adjacent-input {
+    margin-top: calc((var(--form-input-line-height) * var(--form-input-font-size)) + 2px);
+}
+.mx-dataview.form-horizontal .adjacent-input {
+    margin-top: 0;
+}
+
+div:has(.trailing-icon),
+div:has(.leading-icon) {
+    position: relative;
+}
+
+.form-group.trailing-icon input {
+    padding-right: 40px;
+}
+.form-group.leading-icon input {
+    padding-left: 40px;
+}
+
+// Trailing Icons
+.mx-dataview.form-vertical .trailing-icon ~ div {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+.mx-dataview.form-vertical .trailing-icon:has(label) ~ div {
+    top: calc((var(--form-input-line-height) * var(--form-input-font-size)) + (3px + (var(--form-input-font-size)/2)));
+}
+
+.mx-dataview.form-horizontal .trailing-icon ~ div {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+.mx-dataview.form-vertical .leading-icon ~ div {
+    position: absolute;
+    left: 10px;
+    top: calc((var(--form-input-line-height) * var(--form-input-font-size)) + (3px + (var(--form-input-font-size)/2)));
+}
+
+.mx-dataview.form-horizontal .leading-icon ~ div {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+}
+
+.avatar-list {
+    ul {
+        display: flex;
+        padding: 2px 2px 2px 0;
+        margin: 0;
+        li {
+            border: none;
+            padding: 0;
+        }
+        li:last-of-type {
+            border-bottom: none;
+        }
+        li:not(:first-of-type) {
+            margin-left: -2px;
+            img {
+                outline: 2px solid white;
+            }
+        }
+    }
+}
+.avatar-initials {
+    border-radius: 1000px;
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-large);
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+}
+
+.avatar-initials.avatar-sm {
+    font-size: var(--font-size-default);
+    height: 24px;
+    width: 24px;
+}
+.avatar-initials.avatar-lg {
+    font-size: var(--font-size-xl);
+    height: 40px;
+    width: 40px;
+}
+.avatar-initials.avatar-xl {
+    font-size: var(--font-size-xxl);
+    height: 48px;
+    width: 48px;
+}
+
+//hide classes
+
+@media (min-width: var(--screen-xxl)) {
+    .hide-xxl {
+        display: none !important;
+    }
+}

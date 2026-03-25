@@ -1,0 +1,152 @@
+
+    /* ==========================================================================
+       Navigation
+
+       Default Mendix navigation bar
+    ========================================================================== */
+    .mx-navbar {
+        margin: 0;
+        border-style: none;
+        border-radius: 0;
+        background: var(--navigation-topbar-bg);
+        display: flex;
+        align-items: center;
+
+        ul.nav {
+            margin: 0; // weird -margin if screen gets small (bootstrap)
+            /* Navigation item */
+            & > li.mx-navbar-item > a {
+                display: flex;
+                align-items: center;
+                padding: var(--navigation-item-padding);
+                margin: 0;
+                vertical-align: middle;
+                color: var(--navigation-topbar-color);
+                border-radius: 0;
+                font-size: var(--navigation-font-size);
+                font-weight: var(--navigation-font-weight);
+                border-radius: var(--border-radius-default);
+
+                /* Dropdown arrow */
+                .caret {
+                    border-top-color: var(--navigation-topbar-color);
+                    border-bottom-color: var(--navigation-topbar-color);
+                }
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                    color: var(--navigation-topbar-color-hover);
+                    background-color: var(--navigation-topbar-bg-hover);
+
+                    .caret {
+                        border-top-color: var(--navigation-topbar-color-hover);
+                        border-bottom-color: var(--navigation-topbar-color-hover);
+                    }
+                }
+
+                &.active {
+                    color: var(--navigation-topbar-color-active);
+                    background-color: var(--navigation-topbar-bg-active);
+                    opacity: 1;
+                    .caret {
+                        border-top-color: var(--navigation-topbar-color-active);
+                        border-bottom-color: var(--navigation-topbar-color-active);
+                    }
+                }
+
+                /* Dropdown */
+                .mx-navbar-submenu::before {
+                    position: absolute;
+                    top: -9px;
+                    left: 15px;
+                    width: 0;
+                    height: 0;
+                    content: "";
+                    transform: rotate(360deg);
+                    border-width: 0 9px 9px 9px;
+                    border-style: solid;
+                    border-color: transparent transparent var(--navigation-border-color) transparent;
+                }
+
+                // Image
+                img {
+                    width: 20px; // Default size (so it looks good)
+                    height: auto;
+                    margin-right: 0.5em;
+                }
+
+                .glyphicon {
+                    top: 0;
+                    margin-right: 0.5em;
+                    vertical-align: middle;
+                    font-size: var(--navigation-glyph-size);
+                }
+            }
+
+            & > .mx-navbar-item.active a {
+                color: var(--navigation-topbar-color-active);
+            }
+
+            /* When hovering or the dropdown is open */
+            & > .mx-navbar-item > a:hover,
+            & > .mx-navbar-item > a:focus,
+            & > .mx-navbar-item.open > a,
+            & > .mx-navbar-item.open > a:hover,
+            & > .mx-navbar-item.open > a:focus {
+                text-decoration: none;
+                color: var(--navigation-topbar-color-hover);
+                background-color: var(--navigation-topbar-bg-hover);
+
+                .caret {
+                    border-top-color: var(--navigation-topbar-color-hover);
+                    border-bottom-color: var(--navigation-topbar-color-hover);
+                }
+            }
+
+            & > .mx-navbar-item.open .dropdown-menu > li.mx-navbar-subitem.active a {
+                color: var(--navigation-sub-color-active);
+                background-color: var(--navigation-sub-bg-active);
+
+                .caret {
+                    border-top-color: var(--navigation-sub-color-active);
+                    border-bottom-color: var(--navigation-sub-color-active);
+                }
+            }
+        }
+        @media (max-width: var(--screen-md)) {
+            ul.nav > li.mx-navbar-item > a {
+                padding: 10px 24px;
+            }
+            .mx-navbar-item.open .dropdown-menu {
+                padding: 0;
+                border-radius: 0;
+                background-color: var(--navigation-sub-bg);
+
+                & > li.mx-navbar-subitem > a {
+                    padding: 10px 24px;
+                    color: var(--navigation-sub-color);
+                    border-radius: 0;
+                    font-size: var(--navigation-sub-font-size);
+                    font-weight: var(--navigation-sub-font-weight);
+
+                    &:hover,
+                    &:focus {
+                        color: var(--navigation-sub-color-hover);
+                        background-color: var(--navigation-sub-bg-hover);
+                    }
+
+                    &.active {
+                        color: var(--navigation-sub-color-hover);
+                        background-color: var(--navigation-sub-color-hover);
+                    }
+                }
+            }
+        }
+
+        /* remove focus */
+        &:focus {
+            outline: 0;
+        }
+    }
+

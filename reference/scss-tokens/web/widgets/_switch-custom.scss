@@ -1,0 +1,25 @@
+.widget-switch .disabled.widget-switch-btn-wrapper:focus {
+    outline: none;
+}
+
+.widget-switch .widget-switch-btn-wrapper.checked:focus, 
+.widget-switch .widget-switch-btn-wrapper.un-checked:focus {
+    box-shadow: none;
+}
+
+.widget-switch .widget-switch-btn-wrapper {
+    background-color: var(--brand-gray-200);
+    border: 1px solid var(--brand-gray-200);
+
+    &.checked {
+        background-color: var(--brand-success);
+        border-color: var(--brand-success);
+        box-shadow: inset 0 0 0 16px var(--brand-success);
+    }
+}
+
+.widget-switch .widget-switch-btn {
+    &.left,&.right {
+        border: 1px solid var(--form-input-border-color);
+    }
+}

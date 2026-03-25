@@ -1,0 +1,122 @@
+
+    /* ==========================================================================
+       Navigation
+
+       Default Mendix navigation tree
+    ========================================================================== */
+    .region-sidebar .mx-navigationtree {
+        background-color: var(--navigation-sidebar-bg);
+
+        /* Every navigation item */
+        .navbar-inner > ul {
+            margin: 0;
+            padding-left: 0;
+
+            & > li {
+                padding: 0;
+                border-style: none;
+
+                & > a {
+                    display: flex;
+                    align-items: center;
+                    height: var(--navigation-item-height);
+                    padding: var(--navigation-item-padding);
+                    color: var(--navigation-sidebar-color);
+                    background-color: transparent;
+                    text-shadow: none;
+                    font-size: var(--navigation-font-size);
+                    font-weight: var(--navigation-font-weight);
+
+                    .caret {
+                        border-top-color: var(--navigation-sidebar-color);
+                        border-bottom-color: var(--navigation-sidebar-color);
+                    }
+
+                    img {
+                        width: 20px; // Default size
+                        height: auto;
+                        margin-right: 0.5em;
+                    }
+
+                    .glyphicon {
+                        top: 0;
+                        margin-right: 0.5em;
+                        vertical-align: middle;
+                        font-size: var(--navigation-glyph-size);
+                    }
+                }
+
+                a:hover,
+                a:focus{
+                    text-decoration: none;
+                    color: var(--navigation-sidebar-color-hover);
+                    background-color: var(--navigation-sidebar-bg-hover);
+
+                    .caret {
+                        border-top-color: var(--navigation-sidebar-color-hover);
+                        border-bottom-color: var(--navigation-sidebar-color-hover);
+                    }
+                }
+
+                a.active {
+                    color: var(--navigation-sidebar-color-active);
+                    background-color: var(--navigation-sidebar-bg-active);
+                    &:hover {
+                        color: var(--navigation-sidebar-color-active-hover);
+                        background-color: var(--navigation-sidebar-bg-active-hover);
+
+                    }
+                }
+            }
+        }
+     
+        /* Sub navigation item specific */
+        li.mx-navigationtree-has-items {
+            & > ul {
+                margin: 0;
+                padding-left: 0;
+                background-color: var(--navigation-sub-bg);
+
+                li {
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+
+                    a {
+                        padding: var(--spacing-md);
+                        text-decoration: none;
+                        color: var(--navigation-sub-color);
+                        border: 0;
+                        background-color: var(--navigation-sub-bg);
+                        text-shadow: none;
+                        font-size: var(--navigation-sub-font-size);
+                        font-weight: var(--navigation-font-weight);
+                        .glyphicon {
+                            margin-right:var(--spacing-sm);
+                        }
+
+                        &:hover,
+                        &:focus,
+                        &.active {
+                            color: var(--navigation-sub-color-hover);
+                            outline: 0;
+                            background-color: var(--navigation-sub-bg-hover);
+                        }
+
+                        &.active {
+                            color: var(--navigation-sub-color-active);
+                            border: 0;
+                            background-color: var(--navigation-sub-bg-active);
+                        }
+                    }
+                }
+            }
+        }
+
+        /* remove focus */
+        &:focus {
+            outline: 0;
+        }
+        
+    }
+

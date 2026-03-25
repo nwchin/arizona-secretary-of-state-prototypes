@@ -1,0 +1,329 @@
+.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        display: flex;
+        column-gap: 1rem;
+        &::before {
+            display: none;
+        }
+        & > li > a { 
+            font-weight: 600;
+            border: none;
+            color: var(--tabs-color);
+            border-bottom: var(--tabs-active-border-width) solid transparent;
+        }
+        & > li.active > a,
+        & > li.active:hover > a {
+            border: none; // unsets default atlas
+            border-bottom: var(--tabs-active-border-width) solid var(--tabs-active-border-color);
+            color: var(--tabs-active-color);
+        }
+        & > li.active > a:focus,
+        & > li.active > a:focus-visible {
+            border: none; // unsets default atlas
+            border-bottom: var(--tabs-active-border-width) solid var(--tabs-active-border-color);
+          
+        }
+        & > li > a:hover,
+        & > li > a:focus,
+        & > li:focus-visible > a {
+            background-color: transparent;
+            border: none; // unsets default atlas
+            border-bottom: var(--tabs-active-border-width) solid var(--brand-gray-300);
+            outline: none;
+        }
+        & > li.active > a:focus-visible,
+        & > li > a:focus-visible {
+            background-color: transparent;
+            border-radius: var(--border-radius-default);
+            outline: 2px solid var(--focus-color-default);
+            outline-offset: 0px;
+        }
+    }
+}
+
+// Style as pills
+
+.tab-pills.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        border: 0;
+
+        & > li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        & > li > a {
+            margin-right: var(--spacing-sm);
+            color: var(--tabs-color);
+            border-radius: var(--border-radius-default);
+            background-color: var(--tabs-pills-bg);
+            border: none;
+
+            &:hover,
+            &:focus {
+                background-color: var(--tabs-pills-bg-hover);
+                border: none;
+                color: var(--tabs-pills-color-hover);
+            }
+        }
+
+        & > li.active > a,
+        & > li.active > a:hover,
+        & > li.active > a:focus {
+            color: var(--tabs-pills-color-active);
+            background-color: var(--tabs-pills-bg-active);
+            border: none;
+            outline: none;
+        }
+        & > li.active > a:focus-visible {
+            outline: 2px solid var(--focus-color-default);
+            outline-offset: 2px;
+        }
+    }
+}
+// Tabs Vertical {
+.tab-vertical.mx-tabcontainer {
+    display: flex;
+    gap: 2rem;
+    .nav-tabs {
+        border-bottom: none;
+    }
+    & > .mx-tabcontainer-tabs {
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+        min-width: fit-content;
+        height: fit-content;
+        a {
+            padding: var(--spacing-sm) var(--spacing-lg);
+        }
+    }
+}
+// Style with lines
+.tab-lined.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        display: flex;
+        column-gap: 1rem;
+        border: none;
+        &::before {
+            display: none;
+        }
+        li {
+            margin-right: 0;
+            & > a {
+                padding: var(--spacing-md) var(--spacing-md) (var(--spacing-md) - var(--tabs-border-width)) var(--spacing-md); // border is 3px
+                color: var(--tabs-color);
+                border: 0;
+                border-radius: 0;
+                border-bottom: var(--tabs-active-border-width) solid transparent;
+
+                &:focus {
+                    color: var(--tabs-color);
+                    border: 0;
+                    border-color: transparent;
+                    background: transparent;
+                }
+                &:hover {
+                    background-color: var(--brand-gray-300);
+                    border: 0;
+                }
+                &:focus-visible {
+                    outline: 2px solid var(--focus-color-default);
+                    outline-offset: 2px;
+                }
+            }
+
+            &.active > a {
+                color: var(--brand-primary);
+                border: 0;
+                border-bottom: var(--tabs-active-border-width) solid var(--tabs-active-border-color);
+                background-color: transparent;
+                outline: none;
+            }
+
+            &.active > a:hover {
+                background-color: var(--brand-gray-300);
+                color: var(--brand-primary);
+            }
+            &.active > a:focus-visible {
+                &:focus-visible {
+                    outline: 2px solid var(--focus-color-default);
+                    outline-offset: 2px;
+                }
+            }
+        }
+    }
+}
+
+// Justified style
+// Lets your tabs take 100% of the width
+.tab-justified.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        width: 100%;
+        border-bottom: 1px solid var(--tabs-border-color);
+
+        & > li {
+            flex: 1;
+            float: none; // reset bootstrap
+            margin: 0;
+            @media (max-width: var(--screen-sm-max)) {
+                display: block;
+                width: 100%;
+            }
+
+            & > a {
+                text-align: center;
+            }
+        }
+        & > li > a:focus {
+            outline: none;
+        }
+        & > li.active > a:focus-visible,
+        & > li > a:focus-visible {
+            background-color: transparent;
+            border-radius: var(--border-radius-default);
+            outline: 2px solid var(--focus-color-default);
+            outline-offset: 0px;
+        }
+    }
+}
+
+// Bordered
+.tab-bordered.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        margin-bottom: var(--spacing-md);
+        border-bottom: none;
+        gap: 0;
+        box-shadow: var(--box-shadow-default);
+        width: fit-content;
+        & > li {
+            border: 1px solid var(--tabs-border-color);
+            border-right: 0;
+            &:first-of-type {
+                border-top-left-radius: var(--border-radius-default);
+                border-bottom-left-radius: var(--border-radius-default);
+            }
+            &:last-of-type {
+                border-top-right-radius: var(--border-radius-default);
+                border-bottom-right-radius: var(--border-radius-default);
+                border-right: 1px solid var(--tabs-border-color);
+            }
+            a {
+                padding: var(--spacing-sm) var(--spacing-xxl);
+            }
+            a:focus {
+                outline: none;
+            }
+            a:hover {
+                border-color: transparent;
+                background-color: var(--tabs-bordered-bg-color);
+                border-radius: 0;
+            }
+            &.active a:hover {
+                border-bottom: var(--tabs-active-border-width) solid var(--tabs-active-border-color);
+            }
+            a:focus-visible {
+                outline: 2px solid var(--focus-color-default);
+                z-index: 1;
+            }
+        }
+    }
+    &.tab-center {
+        & > .mx-tabcontainer-tabs {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    &.tab-right {
+        & > .mx-tabcontainer-tabs {
+            margin-left: auto;
+        }
+    }
+
+    & > .mx-tabcontainer-content {
+        border: none;
+        padding: 0;
+    }
+}
+
+// Wizard
+.tab-wizard.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        border-style: none;
+
+        &::before {
+            position: absolute;
+            top: var(--spacing-md);
+            display: block;
+            width: 100%;
+            height: 1px;
+            content: "";
+            background-color: var(--tabs-border-color);
+        }
+
+        & > li {
+            position: relative;
+            float: none; // reset bootstrap
+            width: 100%;
+            text-align: center;
+
+            & > a {
+                width: calc((var(--spacing-md) * 2) + 1);
+                height: calc((var(--spacing-md) * 2) + 1);
+                margin: auto;
+                padding: 0;
+                text-align: center;
+                color: var(--brand-primary);
+                border: 1px solid var(--tabs-border-color);
+                border-radius: 100%;
+                background-color: var(--bg-color);
+                font-size: var(--font-size-large);
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &.active {
+                & > a,
+                & > a:hover,
+                & > a:focus {
+                    color: #ffffff;
+                    border-color: var(--tabs-active-bg);
+                    background-color: var(--tabs-active-bg);
+                }
+            }
+        }
+    }
+}
+
+//add tabcontainer flex classes
+
+.tab-center.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        display: flex;
+        align-items: center;
+        flex-flow: wrap;
+        justify-content: center;
+    }
+}
+
+.tab-left.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        display: flex;
+        align-items: center;
+        flex-flow: wrap;
+        justify-content: flex-start;
+    }
+}
+
+.tab-right.mx-tabcontainer {
+    & > .mx-tabcontainer-tabs {
+        display: flex;
+        align-items: center;
+        flex-flow: wrap;
+        justify-content: flex-end;
+    }
+}

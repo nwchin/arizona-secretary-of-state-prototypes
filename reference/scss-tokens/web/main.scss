@@ -1,0 +1,84 @@
+@import '../../../theme/web/custom-variables';
+@import '../../atlas_core/web/variables';
+@import 'variables';
+
+@import "base/base";
+
+@import "mixins/animations";
+@import "mixins/spacing"; 
+@import "mixins/layout-spacing";
+@import "mixins/groupbox";
+@import "mixins/buttons";
+
+@import "layouts/layout-atlas-responsive"; 
+@import "layouts/layout-atlas-tablet";
+@import "layouts/layout-atlas";
+@import "layouts/custom-layouts";
+
+@import "widgets/accordion";
+@import "widgets/accordion-custom";
+@import "widgets/badge";
+@import "widgets/button";
+@import "widgets/button-custom";
+@import "widgets/check-box";
+@import "widgets/check-box-custom";
+@import "widgets/combobox";
+@import "widgets/data-grid"; 
+@import "widgets/data-grid-2";
+@import "widgets/data-grid-2-custom";
+@import "widgets/data-view";
+@import "widgets/dark-mode-switch";
+@import "widgets/document-viewer";
+@import "widgets/file-uploader";
+@import "widgets/glyphicon";
+@import "widgets/grid";
+@import "widgets/group-box";
+@import "widgets/header";
+@import "widgets/iMask";
+@import "widgets/label";
+@import "widgets/layout-grid";
+@import "widgets/input";
+@import "widgets/input-custom";
+@import "widgets/image";
+@import "widgets/list-view";
+@import "widgets/modal";
+@import "widgets/modal-custom";
+@import "widgets/navigation-bar";
+@import "widgets/navigation-list";
+@import "widgets/navigation-tree";
+@import "widgets/pop-up-menu";
+@import "widgets/radio-button";
+@import "widgets/radio-button-custom";
+@import "widgets/switch";
+@import "widgets/switch-custom";
+@import "widgets/tab-container";
+@import "widgets/template-grid";
+@import "widgets/typography";
+@import "widgets/typography-custom";
+
+@import "helpers/a11y-utility-classes";
+@import "helpers/borders-utility-classes";
+@import "helpers/colors-utility-classes";
+@import "helpers/flex-utility-classes";
+@import "helpers/layout-utility-classes";
+@import "helpers/spacing-utility-classes";
+@import "helpers/text-utility-classes";
+@import "helpers/new";
+@import "custom";
+
+@import "buildingblocks/documentgeneration";
+@import "buildingblocks/wizard";
+
+// Font Family Import
+@if $font-family-import != false {
+    @import url($font-family-import);
+}
+
+@if $font-family-heading-import != false {
+    @import url($font-family-heading-import);
+}
+
+//@import "ds/custom"; 
+
+
+

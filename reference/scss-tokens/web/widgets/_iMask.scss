@@ -1,0 +1,12 @@
+div[class^="mx-name-iMaskWeb"] {
+    input[disabled] {
+        @extend .form-control-static;
+        background-color: transparent;
+        border: none;
+        cursor: text;
+    }
+
+    &.nopadding input[disabled] {
+        padding: 0 0;
+    }
+}

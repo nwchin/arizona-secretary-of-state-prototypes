@@ -1,0 +1,224 @@
+//*-- COLORS -----------------------------------------------------------------------------------------------------*\\
+
+// Brand Colors
+$brand-primary: #264ae5;
+$brand-secondary: #7d3389;
+$brand-tertiary: #e7e7e9;
+
+$dark-mode-brand-primary: #936CC5;
+$dark-mode-brand-secondary: #7D3389;
+$dark-mode-brand-tertiary: #D6D6D6;
+
+// Status Colors
+$brand-success: #007167;
+$brand-warning: #FFA400;
+$brand-danger: #E33F4E;
+
+$dark-mode-brand-success: #BBF451;
+$dark-mode-brand-warning: #E88301;
+$dark-mode-brand-danger: #FC5D5A;
+
+// Neutrals
+$color-white: #fff;
+$color-black: #000;
+$gray-primary: #787d87;
+$gray: $gray-primary;
+
+$dark-mode-gray-primary: #787d87;
+
+
+// Type Colors
+$font-color-default: #000000;
+$font-color-detail: #414141;
+$font-color-header: #434343;
+$link-color: #264ae5;
+$link-hover-color: #264ae5;
+
+$dark-mode-font-color-default: #FFFFFF;
+$dark-mode-font-color-detail: #FFFFFF;
+$dark-mode-font-color-header: #BFC1C4;
+$dark-mode-link-color: #FFFFFF;
+$dark-mode-link-hover-color: #FFFFFF;
+
+// Element Colors
+$border-color-default: #E3E3E6;
+$focus-color-default: #7DA2FF;
+$bg-color: #1F1F21;
+$bg-color-secondary: #303134;
+
+$dark-mode-border-color-default: #4B4D51;
+$dark-mode-focus-color-default: #7DA2FF;
+$dark-mode-bg-color: #fff;
+$dark-mode-bg-color-secondary: #Ffff;
+
+// Tints and Shades (Generated)
+$brand-primary-darker: mix($brand-primary, black, 50%);
+$brand-primary-dark: mix($brand-primary, black, 70%);
+$brand-primary-light: mix($brand-primary, white, 40%);
+$brand-primary-lighter: mix($brand-primary, white, 20%);
+
+$brand-secondary-darker: mix($brand-secondary, black, 50%);
+$brand-secondary-dark: mix($brand-secondary, black, 70%);
+$brand-secondary-light: mix($brand-secondary, white, 40%);
+$brand-secondary-lighter: mix($brand-secondary, white, 20%);
+
+$brand-tertiary-darker: mix($brand-tertiary, black, 50%);
+$brand-tertiary-dark: mix($brand-tertiary, black, 70%);
+$brand-tertiary-light: mix($brand-tertiary, white, 40%);
+$brand-tertiary-lighter: mix($brand-tertiary, white, 20%);
+
+$brand-success-darker: mix($brand-success, black, 50%);
+$brand-success-dark: mix($brand-success, black, 70%);
+$brand-success-light: mix($brand-success, white, 40%);
+$brand-success-lighter: mix($brand-success, white, 20%);
+
+$brand-danger-darker: mix($brand-danger, black, 50%);
+$brand-danger-dark: mix($brand-danger, black, 70%);
+$brand-danger-light: mix($brand-danger, white, 40%);
+$brand-danger-lighter: mix($brand-danger, white, 20%);
+
+$brand-warning-darker: mix($brand-warning, black, 50%);
+$brand-warning-dark: mix($brand-warning, black, 70%);
+$brand-warning-light: mix($brand-warning, white, 40%);
+$brand-warning-lighter: mix($brand-warning, white, 20%);
+
+$gray-darker: mix($gray-primary, black, 50%);
+$gray-dark: mix($gray-primary, black, 70%);
+$gray-light: mix($gray-primary, white, 40%);
+$gray-lighter: mix($gray-primary, white, 20%);
+
+$box-shadow-default: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+//*-- FONTS -----------------------------------------------------------------------------------------------------*\\
+
+// Font Family Import
+$font-family-import: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap;";
+
+$font-family-heading-import: $font-family-import;
+
+// Font Family / False = fallback from Bootstrap (Helvetica Neue)
+$font-family-base: "Roboto", sans-serif;
+
+
+$font-family-heading: $font-family-base;
+
+
+// Font Sizes
+$font-size-default: 14px;
+$font-size-small: 0.875rem;
+$font-size-large: 1.125rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+
+// Font Size Headers
+$font-size-h1: 2rem;
+$font-size-h2: 1.5rem;
+$font-size-h3: 1.25rem;
+$font-size-h4: 1.125rem;
+$font-size-h5: $font-size-default;
+$font-size-h6: 0.75rem;
+
+// Font Weight Headers
+$font-weight-h1: 700;
+$font-weight-h2: 700;
+$font-weight-h3: 500;
+$font-weight-h4: 700;
+$font-weight-h5: 700;
+$font-weight-h6: 700;
+
+// Line Height
+$line-height-base: 1.4;
+$line-height-large: 1.45;
+$line-height-small: 1.6;
+$line-height-xl: 1.35;
+$line-height-xxl: 1.2;
+
+// Icon Size 
+$icon-size: 14px;
+
+
+//*-- SPACING -----------------------------------------------------------------------------------------------------*\\
+$spacing-unit: 14px;
+$spacing-xs: calc(0.25 * $spacing-unit);
+$spacing-sm: calc(0.5 * $spacing-unit);
+$spacing-md: calc(1 * $spacing-unit);
+$spacing-lg: calc(1.5 * $spacing-unit);
+$spacing-xl: calc(2 * $spacing-unit);
+$spacing-xxl: calc(3 * $spacing-unit);
+
+
+//*-- BORDERS -----------------------------------------------------------------------------------------------------*\\
+
+$border-radius-default: 4px;
+$border-radius-sm: 0.125rem; // 2px
+$border-radius-md: 0.375rem; // 6px
+$border-radius-lg: 20px;
+$border-radius-full: 9999px;
+
+$border-width-default: 1px;
+$border-width-md: 2px;
+$border-width-lg: 4px;
+
+
+// Sidebar
+$navsidebar-width-closed: 52px;
+$sidebar-icon-width: 52px;
+$sidebar-icon-height: 52px;
+
+$navigation-sidebar-bg: #264ae5;
+$navigation-sidebar-color: #ffffff;
+$navigation-sidebar-bg-hover: #122a93;
+$navigation-sidebar-color-hover: #ffffff;
+$navigation-sidebar-bg-active: #a9b7f4;
+$navigation-sidebar-color-active: #000000;
+$navigation-sidebar-bg-active-hover: #122a93;
+$navigation-sidebar-color-active-hover: #ffffff;
+
+$dark-mode-navigation-sidebar-bg: #264ae5;
+$dark-mode-navigation-sidebar-color: #ffffff;
+$dark-mode-navigation-sidebar-bg-hover: #122a93;
+$dark-mode-navigation-sidebar-color-hover: #ffffff;
+$dark-mode-navigation-sidebar-bg-active: #a9b7f4;
+$dark-mode-navigation-sidebar-color-active: #000000;
+$dark-mode-navigation-sidebar-bg-active-hover: #122a93;
+$dark-mode-navigation-sidebar-color-active-hover: #ffffff;
+
+// Topbar
+$topbar-border-active: 3px;
+$topbar-border-active-color: $brand-primary;
+$navigation-topbar-bg: #ffffff;
+$navigation-topbar-color: #000000;
+$navigation-topbar-bg-hover: #122a93;
+$navigation-topbar-color-hover: #FFFFFF;
+$navigation-topbar-bg-active: #264ae5;
+$navigation-topbar-color-active: #FFFFFF;
+$navigation-topbar-bg-active-hover: #122a93;
+$navigation-topbar-color-active-hover: #ffffff;
+
+$dark-mode-navigation-topbar-bg: #264ae5;
+$dark-mode-navigation-topbar-color: #ffffff;
+$dark-mode-navigation-topbar-bg-hover: #122a93;
+$dark-mode-navigation-topbar-color-hover: #ffffff;
+$dark-mode-navigation-topbar-bg-active: #a9b7f4;
+$dark-mode-navigation-topbar-color-active: #000000;
+$dark-mode-navigation-topbar-bg-active-hover: #122a93;
+$dark-mode-navigation-topbar-color-active-hover: #ffffff;
+
+// Topbar Subnav
+$navigation-subnav-bg: #264ae5;
+$navigation-subnav-color: #FFFFFF;
+$navigation-subnav-bg-hover: #122a93;
+$navigation-subnav-color-hover: #FFFFFF;
+$navigation-subnav-bg-active: #a9b7f4;
+$navigation-subnav-color-active: #232223;
+$navigation-subnav-bg-active-hover: #234242;
+$navigation-subnav-color-active-hover: #ffffff;
+
+$dark-mode-navigation-subnav-bg: #264ae5;
+$dark-mode-navigation-subnav-color: #ffffff;
+$dark-mode-navigation-subnav-bg-hover: #122a93;
+$dark-mode-navigation-subnav-color-hover: #ffffff;
+$dark-mode-navigation-subnav-bg-active: #a9b7f4;
+$dark-mode-navigation-subnav-color-active: #000000;
+$dark-mode-navigation-subnav-bg-active-hover: #122a93;
+$dark-mode-navigation-subnav-color-active-hover: #ffffff;

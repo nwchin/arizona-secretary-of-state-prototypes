@@ -1,0 +1,123 @@
+/* ==========================================================================
+       List view
+
+       Default Mendix list view widget. The list view shows a list of objects arranged vertically. Each object is shown using a template
+    ========================================================================== */
+.mx-listview {
+  // Remove widget padding
+  padding: 0;
+  /* Clear search button (overrides load more button stying) */
+  & > ul {
+    margin: 0 0 var(--spacing-md);
+
+    .mx-listview-empty {
+      border-style: none;
+      background-color: transparent;
+    }
+
+    & > li {
+      @include transition();
+      background-color: #fff;
+      padding: var(--spacing-md);
+      border-top: 1px solid var(--grid-border-color);
+
+      &:last-child {
+        border-bottom: 1px solid var(--grid-border-color);
+      }
+
+      &:focus,
+      &:active {
+        outline: 0;
+      }
+    }
+  }
+
+  .selected {
+    background: var(--brand-primary-300);
+  }
+
+  .mx-layoutgrid {
+    padding: 0 !important;
+  }
+}
+
+// Search bar
+.mx-listview-searchbar {
+  margin-bottom: var(--spacing-md);
+
+  .btn {
+    width: auto;
+  }
+}
+
+.mx-listview.hide-search-refresh {
+  .mx-listview-searchbar {
+    .btn {
+      display: none;
+    }
+  }
+}
+/* Load more button */
+.btn.mx-listview-loadMore {
+  width: 100%;
+  margin: 0 0 var(--spacing-md);
+}
+
+// No styling {
+.listview-stylingless {
+  ul li:last-of-type {
+    border-bottom: none;
+  }
+}
+
+// Hide Empty
+.listview-hide-empty ul li.mx-listview-empty {
+  display: none;
+}
+
+// Horizontal List 
+.listview-horizontal {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+}
+
+.listview-horizontal-li-full {
+  ul {
+    width: 100%;
+    li {
+      flex-grow: 1;
+    }
+  }
+}
+
+//== Phone specific
+//-------------------------------------------------------------------------------------------------------------------//
+.profile-phone .mx-listview {
+  .mx-listview-searchbar {
+    margin-bottom: 3px;
+    background: #ffffff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+
+    input {
+      padding: 14px 15px;
+      color: #555555;
+      border-style: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .btn {
+      padding: 14px 15px;
+      color: inherit;
+      border-style: none;
+    }
+  }
+
+  & > ul > li {
+    &:first-child {
+      border-top: none;
+    }
+  }
+}

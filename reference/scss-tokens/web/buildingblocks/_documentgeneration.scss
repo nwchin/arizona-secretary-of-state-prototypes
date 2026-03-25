@@ -1,0 +1,48 @@
+@media screen, print {
+    .mx-page.document-content {
+        background-color: var(--document-background-color);
+        padding: 1in;
+
+        .document-section {
+            padding: var(--document-section-padding);
+
+            &.remove-padding { 
+                padding: 0;
+            }
+
+            &.remove-padding-top {
+                padding-top: 0;
+            }
+
+            &.remove-padding-bottom {
+                padding-bottom: 0;
+            }
+
+            &.remove-padding-left {
+                padding-left: 0;
+            }
+
+            &.remove-padding-right {
+                padding-right: 0;
+            }
+        }
+
+        // Required for support of repeated table header/footers when using screen media type
+        table > thead, 
+        table > tfoot {
+            break-inside: avoid;
+        }
+    }
+
+    .page-break-before { 
+        break-before: page;
+    }
+
+    .page-break-after {
+        break-after: page;
+    }
+
+    .avoid-page-break-inside {
+        break-inside: avoid;
+    }
+}

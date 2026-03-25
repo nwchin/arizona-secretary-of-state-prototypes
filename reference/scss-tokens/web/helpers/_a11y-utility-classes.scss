@@ -1,0 +1,36 @@
+// ACCESSIBILITY ---------------------------------------
+
+/* Screen Reader */
+.sr-only,
+.label-sr-only label {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+/* Focus and Hover States */
+.input-focus-visible-state {
+    outline: unset;
+    box-shadow: 0 0 0 4px var(--focus-color-default);
+}
+
+.btn-focus-visible-state {
+    outline: 2px solid var(--focus-color-default);
+    outline-offset: 2px;
+}
+
+.checkbox-focus-visible-state {
+    outline: unset;
+    box-shadow: 0 0 0 4px var(--focus-color-default);
+}
+
+.text-link-hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+// -----------------------------------------------------

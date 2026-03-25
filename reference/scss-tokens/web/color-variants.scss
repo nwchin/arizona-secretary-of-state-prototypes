@@ -1,0 +1,53 @@
+// Color variations
+// Define your primary colors
+$colors: (
+    'primary': var(--brand-primary),
+    'secondary': var(--brand-secondary),
+    'tertiary': var(--brand-tertiary),
+    'success': var(--brand-success),
+    'warning': var(--brand-warning),
+    'danger': var(--brand-danger),
+    'gray': var(--gray-primary)
+);
+
+// Function to generate shades
+@function generateShades($color) {
+    $shades: ();
+
+    @for $i from 1 through 19 {
+        $shade-step: $i * 50;
+        $shade: $color;
+        @if $shade-step < 500 {
+            $shade: color-mix(in srgb, white, $color ($shade-step * .1%));
+        } @else if $shade-step > 500 {
+            $shade: color-mix(in srgb, $color, black (($shade-step - 500) * .1%));
+        } @else {
+            $shade: $color;
+        }
+
+        $shades: map-merge($shades, ($shade-step: $shade));
+    }
+
+    @return $shades;
+}
+
+// Create CSS variables for each color and its shades
+:root {
+    @each $name, $color in $colors {
+        $shades: generateShades($color);
+        --brand-#{$name}-100: #{$color};
+        @each $i, $shade in $shades {
+            --brand-#{$name}-#{$i}: #{$shade};
+        }
+    }
+}
+
+:root--theme-dark-mode {
+    @each $name, $color in $colors {
+        $shades: generateShades($color);
+        --brand-#{$name}-50: #{$color};
+        @each $i, $shade in $shades {
+            --brand-#{$name}-#{$i}: #{$shade};
+        }
+    }
+}

@@ -1,0 +1,78 @@
+// TEXT --------------------------------------------
+
+/* Font Sizes */
+.text-sm {
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-small);
+}
+
+.text-md { 
+    font-size: var(--font-size-default);
+    line-height: var(--line-height-base);
+}
+
+.text-lg { 
+    font-size: var(--font-size-large); 
+    line-height: var(--line-height-large);
+}
+
+.text-xl {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-xl);
+}
+
+.text-xxl {
+    font-size: var(--font-size-xxl);
+    line-height: var(--line-height-xxl);
+}
+
+.helpertext {    
+    display: block;
+    font-size: var(--font-size-small);
+    margin-top: 0.5rem;
+}
+
+/* Font Styles */
+.text-italic {
+    font-style: italic;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+/* Font Weights */
+.text-light {
+    font-weight: var(--font-weight-light);
+}
+
+.text-normal {
+    font-weight: var(--font-weight-normal);
+}
+
+.text-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.text-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+/* Text Transform */
+.text-uppercase {
+    text-transform: uppercase;
+}
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+/* White Space */
+.white-space-pre {
+    white-space: pre;
+}
+
+// -----------------------------------------------------

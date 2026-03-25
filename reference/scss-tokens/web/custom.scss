@@ -1,0 +1,106 @@
+.glyphicon-calendar {
+    content: url(./images/calendar.svg);
+}
+
+.badge {
+    height: fit-content;
+}
+
+.searchbar.form-group {
+    position: relative;
+    &::after {
+        content: url("/images/search.svg");
+        position: absolute;
+        height: 0.9375rem;
+        width: 0.9375rem;
+        top: 0.5rem;
+        right: 1.5rem;  
+        padding-left: 0.3rem;
+        background-color: #ffff;
+    }
+}
+.mx-listview-searchbar .form-group {
+    position: relative;
+    &::after {
+        content: url("/images/search.svg");
+        position: absolute;
+        height: 0.9375rem;
+        width: 0.9375rem;
+        top: 0.5rem;
+        right: 1.5rem;  
+        padding-left: 0.3rem;
+        background-color: #ffff;
+    }
+}
+
+
+.account-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+}
+
+.background-image {
+    background-color: #000;
+    position: fixed;
+    height: 100vw;
+    width: 100vw;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        opacity: 60%;
+    }
+   
+}
+
+.btn-azlink {
+    height: var(--topbar-azlink);
+}
+
+.text-required {
+    &.control-label::after, .control-label::after {
+        content: "*";
+        color: red;
+        padding-left: 0.25rem;
+    }
+}
+
+.checkbox-bond-attestation {
+    label {
+        flex: 1;
+    }
+}
+
+.square-aspect {
+    height: 0;
+    padding-bottom: 100%;
+}
+
+.bg-color-gradient {
+    background-image: linear-gradient(to right, var(--color-white) 25%, var(--brand-secondary-200) 60%, var(--brand-primary-200) 100%);
+}
+
+.dashboard-active-card {
+    border-bottom: var(--border-width-lg) solid var(--brand-primary);
+    transition: border 0.25s ease-in-out;
+}
+
+.border-bottom-large {
+    border-bottom: 4px solid transparent;
+}
+
+.navigation-appreview {
+    .navigation-item-appreview.visited {
+        border-radius: var(--border-radius-default);
+        background-color: var(--brand-primary);
+        color: var(--color-white);
+    }
+}
+
+.font-family-cursive {
+    font-family: "Brush Script MT", "Lucida Handwriting", cursive;
+}

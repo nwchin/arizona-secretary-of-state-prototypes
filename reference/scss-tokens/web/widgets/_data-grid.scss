@@ -1,0 +1,109 @@
+
+    /* ==========================================================================
+       Data grid default
+
+       Default Mendix data grid widget. The data grid shows a list of objects in a grid
+    ========================================================================== */
+
+    .mx-datagrid {
+        table {
+            border-width: 0;
+            background-color: transparent;
+            /* Table header */
+            th {
+                border-style: solid;
+                border-color: var(--grid-border-color);
+                border-top-width: 0;
+                border-right: 0;
+                border-bottom-width: 1px;
+                border-left: 0;
+                background-color: var(--grid-bg-header);
+                padding: var(--grid-padding-top) var(--grid-padding-right) var(--grid-padding-bottom) var(--grid-padding-left);
+                vertical-align: middle;
+
+                .mx-datagrid-head-caption {
+                    white-space: normal;
+                }
+            }
+
+            /* Table Body */
+            tbody tr {
+                td {
+                    @include transition();
+                    padding: var(--grid-padding-top) var(--grid-padding-right) var(--grid-padding-bottom) var(--grid-padding-left);
+                    vertical-align: middle;
+                    border-width: 0;
+                    border-color: var(--grid-border-color);
+                    border-bottom-width: 1px;
+                    border-bottom-style: solid;
+                    background-color: var(--grid-bg);
+
+                    &:focus {
+                        outline: none;
+                    }
+
+                    /* Text without spaces */
+                    .mx-datagrid-data-wrapper {
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                &.selected td,
+                &.selected:hover td {
+                    color: var(--grid-selected-color);
+                    background-color: var(--grid-bg-selected) !important;
+                }
+            }
+
+            /* Table Footer */
+            tfoot {
+                > tr > th {
+                    padding: var(--grid-padding-top) var(--grid-padding-right) var(--grid-padding-bottom) var(--grid-padding-left);
+                    border-width: 0;
+                    background-color: var(--grid-footer-bg);
+                }
+
+                > tr > td {
+                    padding: var(--grid-padding-top) var(--grid-padding-right) var(--grid-padding-bottom) var(--grid-padding-left);
+                    border-width: 0;
+                    background-color: var(--grid-bg);
+                    font-weight: var(--font-weight-bold);
+                }
+            }
+
+            & *:focus {
+                outline: 0;
+            }
+        }
+    }
+
+
+    .dg-sticky-header table {
+        position: relative;
+    }
+
+    .dg-sticky-header thead {
+        background-color: var(--brand-gray-300);
+        color: var(--brand-gray-800);
+        position: sticky;
+        top: 0;
+    }
+
+    .dg-scroll-within .mx-grid-content {
+        height: 18rem !important; // Set a custom height
+        overflow-y: scroll;
+    }
+
+    .dg-pagination-bottom {
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+        & .mx-grid-controlbar {
+            order: 2;
+
+            & .mx-grid-toolbar {
+                position: absolute;
+                top: 3rem;
+            }
+        }
+    }
