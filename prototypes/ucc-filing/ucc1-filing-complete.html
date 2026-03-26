@@ -1845,32 +1845,13 @@
                         </div>
                     </div>
 
-                    <!-- Credit Card Form -->
+                    <!-- Credit Card — redirects to external payment portal -->
                     <div class="payment-form active" id="payment-credit">
-                        <div class="form-section">
-                            <div class="form-section-title" data-config="step6.cardDetailsTitle">Card Details</div>
-
-                            <div class="form-group">
-                                <label class="required">Name on Card</label>
-                                <input type="text" class="form-control" placeholder="Cardholder's full name">
-                            </div>
-                            <div class="form-group">
-                                <label class="required">Card Number</label>
-                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
-                            </div>
-                            <div class="form-row form-row-3">
-                                <div class="form-group">
-                                    <label class="required">Expiration Date</label>
-                                    <input type="text" class="form-control" placeholder="MM / YY">
-                                </div>
-                                <div class="form-group">
-                                    <label class="required">CVV</label>
-                                    <input type="text" class="form-control" placeholder="000">
-                                </div>
-                                <div class="form-group">
-                                    <label class="required">Billing ZIP Code</label>
-                                    <input type="text" class="form-control" placeholder="ZIP">
-                                </div>
+                        <div class="alert-info" style="margin-bottom:0;">
+                            <i class="fa-solid fa-circle-info alert-icon"></i>
+                            <div>
+                                <strong>You will be redirected to our secure payment portal.</strong>
+                                After clicking "Continue to Payment," you'll be taken to the AZSOS secure payment processor to complete your credit or debit card transaction. Your filing will be submitted once payment is confirmed.
                             </div>
                         </div>
                     </div>
@@ -1885,25 +1866,30 @@
                                 <label class="required">Account Number</label>
                                 <input type="text" class="form-control" placeholder="Enter your AZSOS account number">
                             </div>
-                            <div class="form-group">
-                                <label class="required">Account PIN</label>
-                                <input type="text" class="form-control" placeholder="Enter Account PIN">
-                                <span class="form-text">Please enter your payment account PIN</span>
+                            <div class="form-row form-row-4">
+                                <div class="form-group">
+                                    <label class="required">Account PIN</label>
+                                    <input type="text" class="form-control" placeholder="Enter Account PIN">
+                                    <span class="form-text">Please enter your payment account PIN</span>
+                                </div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="alert-info" style="margin-top:16px;">
-                        <i class="fa-solid fa-circle-info alert-icon"></i>
-                        <div>
-                            Applicants agree to pay a $25.00 fee if their account returns insufficient funds.
+                        <div class="alert-info" style="margin-top:var(--spacing-md);">
+                            <i class="fa-solid fa-circle-info alert-icon"></i>
+                            <div>
+                                Applicants agree to pay a $25.00 fee if their account returns insufficient funds.
+                            </div>
                         </div>
                     </div>
 
                     <div class="btn-bar">
                         <button class="btn btn-default" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i> Back</button>
                         <div class="btn-bar-right">
-                            <button class="btn btn-primary" onclick="submitFiling()"><i class="fa-solid fa-lock"></i> <span data-config="step6.submitBtn">Submit Filing</span></button>
+                            <button class="btn btn-primary" id="btn-submit-payment" onclick="submitFiling()"><i id="btn-submit-icon" class="fa-solid fa-arrow-right"></i> <span id="btn-submit-label">Continue to Payment</span></button>
                         </div>
                     </div>
                 </div>
@@ -2226,6 +2212,16 @@
 
             document.querySelectorAll('.payment-form').forEach(f => f.classList.remove('active'));
             document.getElementById('payment-' + method).classList.add('active');
+
+            const icon  = document.getElementById('btn-submit-icon');
+            const label = document.getElementById('btn-submit-label');
+            if (method === 'credit') {
+                icon.className  = 'fa-solid fa-arrow-right';
+                label.textContent = 'Continue to Payment';
+            } else {
+                icon.className  = 'fa-solid fa-lock';
+                label.textContent = 'Submit Filing';
+            }
         }
 
         // Submit
