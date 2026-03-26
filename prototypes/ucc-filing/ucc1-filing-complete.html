@@ -1586,7 +1586,7 @@
                         <div class="form-group">
                             <label>Filing Type</label>
                             <select class="form-control">
-                                <option value="">None</option>
+                                <option value=""></option>
                                 <option>Standard UCC Filing (default)</option><option>Public-Finance Transaction</option><option>Manufactured-Home Transaction</option><option>A Debtor is a Transmitting Utility</option>
                             </select>
                         </div> 
@@ -1594,7 +1594,7 @@
                         <div class="form-group">
                             <label>Non-Standard Filing Type</label>
                             <select class="form-control">
-                                <option value="">None</option>
+                                <option value=""></option>
                                 <option>Agricultural Lien</option><option>Non-UCC Filing (e.g., tax lien, judgment lien)</option>
                             </select>
                         </div> 
@@ -1980,7 +1980,7 @@
         function debtorTemplate(n) {
             return `<div class="form-section" id="debtor-${n}" style="border-top:1px solid var(--border-color-default); padding-top:var(--spacing-xl); margin-top:var(--spacing-md);">
                 <div class="form-section-title" style="display:flex; justify-content:space-between; align-items:center;">
-                    Debtor ${n} <span style="font-weight:400; font-size:var(--font-size-small); color:var(--font-color-detail); margin-left:var(--spacing-xs);">(Optional)</span>
+                    Debtor ${n} <span style="font-weight:400; font-size:var(--font-size-small); color:var(--font-color-detail); margin-left:var(--spacing-xs);"></span>
                     <button class="btn btn-link btn-sm" style="color:var(--brand-danger);" onclick="removeDebtor(${n})"><i class="fa-solid fa-trash-can"></i> Remove</button>
                 </div>
                 <div class="form-group">
@@ -2040,7 +2040,7 @@
         function securedPartyTemplate(n) {
             return `<div class="form-section" id="secured-${n}" style="border-top:1px solid var(--border-color-default); padding-top:var(--spacing-xl); margin-top:var(--spacing-md);">
                 <div class="form-section-title" style="display:flex; justify-content:space-between; align-items:center;">
-                    Secured Party ${n} <span style="font-weight:400; font-size:var(--font-size-small); color:var(--font-color-detail); margin-left:var(--spacing-xs);">(Optional)</span>
+                    Secured Party ${n} <span style="font-weight:400; font-size:var(--font-size-small); color:var(--font-color-detail); margin-left:var(--spacing-xs);"></span>
                     <button class="btn btn-link btn-sm" style="color:var(--brand-danger);" onclick="removeSecuredParty(${n})"><i class="fa-solid fa-trash-can"></i> Remove</button>
                 </div>
                 <div class="form-group">
