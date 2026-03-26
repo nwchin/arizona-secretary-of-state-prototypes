@@ -1088,6 +1088,46 @@
         }
         .file-item .file-remove:hover { color: var(--brand-danger); }
 
+        /* Signature field */
+        .sig-field {
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: var(--font-size-large);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: var(--border-width-md) solid var(--font-color-default);
+            border-radius: 0;
+            background: transparent;
+            padding: var(--spacing-sm) var(--spacing-xs);
+        }
+        .sig-field:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom-color: var(--brand-primary);
+        }
+        .sig-field::placeholder { font-style: italic; color: var(--font-color-detail); }
+
+        /* Balance result */
+        .balance-display {
+            text-align: center;
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+        }
+        .balance-display .balance-icon {
+            font-size: 40px;
+            color: var(--brand-success-700);
+            margin-bottom: var(--spacing-md);
+        }
+        .balance-display .balance-label {
+            color: var(--font-color-detail);
+            margin-bottom: var(--spacing-xs);
+        }
+        .balance-display .balance-amount {
+            font-size: var(--font-size-xxl);
+            font-weight: 700;
+            margin: 0;
+        }
+
         /* ============================================================
            USPS ADDRESS VERIFICATION
            ============================================================ */
@@ -1324,6 +1364,35 @@
                         <div class="card-meta">
                             <span class="fee-badge" style="background: var(--bg-color-secondary);">Free</span>
                             <span style="color:var(--brand-primary); font-weight:600;">Search Now <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== ACCOUNT MANAGEMENT SWIM LANE ======== -->
+            <div class="search-section mt-xl">
+                <h2>Prepay Account Management</h2>
+                <p class="text-muted mb-lg">Manage your AZSOS pre-authorized payment account. A prepay account lets you submit multiple filings without entering card details each time.</p>
+
+                <div class="action-cards" style="grid-template-columns: repeat(2, 1fr);">
+                    <!-- Register for Prepay Account -->
+                    <div class="action-card" onclick="showView('view-prepay-register')">
+                        <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
+                        <h3>Register for a Prepay Account</h3>
+                        <p>Set up a pre-authorized payment account to streamline future UCC filings. Requires an authorized representative signature.</p>
+                        <div class="card-meta">
+                            <span class="fee-badge" style="background:var(--bg-color-secondary);">No Fee</span>
+                            <span style="color:var(--brand-primary); font-weight:600;">Register <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- Check Account Balance -->
+                    <div class="action-card" onclick="showModal('modal-balance-check')">
+                        <div class="card-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <h3>Check Account Balance</h3>
+                        <p>View the current available balance of your AZSOS prepay account. Enter your account number and PIN to retrieve your balance.</p>
+                        <div class="card-meta">
+                            <span class="fee-badge" style="background:var(--bg-color-secondary);">Free</span>
+                            <span style="color:var(--brand-primary); font-weight:600;">Check Balance <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
                     </div>
                 </div>
@@ -2120,6 +2189,206 @@
         </div>
     </div>
 
+    <!-- ======================= PREPAY REGISTRATION VIEW ======================= -->
+    <div id="view-prepay-register" class="view hidden">
+        <div class="page-content">
+            <h1 class="page-title"><i class="fa-solid fa-user-plus" style="margin-right:var(--spacing-sm); color:var(--brand-primary);"></i> Register for a Prepay Account</h1>
+            <p class="page-subtitle">Set up a pre-authorized payment account with the Arizona Secretary of State to streamline future UCC filings.</p>
+
+            <!-- Form card -->
+            <div class="card" id="prepay-form-card">
+                <div class="form-section">
+                    <div class="form-section-title">Applicant Information</div>
+                    <div class="form-group">
+                        <label class="required">Applicant Name</label>
+                        <input type="text" class="form-control" placeholder="Full legal name of applicant or organization">
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Street Address</label>
+                        <input type="text" class="form-control" placeholder="Street address">
+                    </div>
+                    <div class="form-row form-row-address">
+                        <div class="form-group">
+                            <label class="required">City</label>
+                            <input type="text" class="form-control" placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label class="required">State</label>
+                            <select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="required">ZIP</label>
+                            <input type="text" class="form-control" placeholder="ZIP">
+                        </div>
+                        <div class="form-group">
+                            <label>Ext. Code</label>
+                            <input type="text" class="form-control" placeholder="Extended">
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <select class="form-control"><option>USA</option></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">Admin Contact</div>
+                    <div class="form-row form-row-2">
+                        <div class="form-group">
+                            <label class="required">Contact Person (Admin User)</label>
+                            <input type="text" class="form-control" placeholder="Name of primary account administrator">
+                        </div>
+                        <div class="form-group">
+                            <label class="required">Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="+1 (___) ___-____">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Email Address</label>
+                        <input type="email" class="form-control" placeholder="admin@example.com">
+                        <span class="form-text">This email address will be the primary login for the account.</span>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">Account Usage</div>
+                    <div class="form-group">
+                        <label class="required">This account will be:</label>
+                        <div style="display:flex; flex-direction:column; gap:var(--spacing-sm); margin-top:var(--spacing-xs);">
+                            <div class="checkbox-single">
+                                <input type="radio" name="acct-usage" id="usage-single" checked>
+                                <label for="usage-single">Used by applicant at the above email address only</label>
+                            </div>
+                            <div class="checkbox-single">
+                                <input type="radio" name="acct-usage" id="usage-multi">
+                                <label for="usage-multi">Used by applicant at various email addresses <span style="color:var(--font-color-detail); font-weight:400;">(additional users listed on next page)</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">Authorized Representative</div>
+                    <p class="form-section-subtitle">By signing below, the authorized representative certifies that all information is accurate and that they are authorized to establish this account on behalf of the applicant.</p>
+                    <div class="form-group">
+                        <label class="required">Signature of Authorized Representative</label>
+                        <input type="text" class="form-control sig-field" placeholder="Type full name to sign electronically">
+                        <span class="form-text">Typing your full name constitutes your electronic signature.</span>
+                    </div>
+                    <div class="form-row form-row-2">
+                        <div class="form-group">
+                            <label class="required">Printed Name</label>
+                            <input type="text" class="form-control" placeholder="Full printed name">
+                        </div>
+                        <div class="form-group">
+                            <label class="required">Title of Authorized Representative</label>
+                            <input type="text" class="form-control" placeholder="e.g., President, Manager, Attorney">
+                        </div>
+                    </div>
+                    <div class="form-group" style="max-width:220px;">
+                        <label class="required">Date Signed</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+
+                <div class="btn-bar">
+                    <button class="btn btn-default" onclick="showOverview()"><i class="fa-solid fa-arrow-left"></i> Cancel</button>
+                    <div class="btn-bar-right">
+                        <button class="btn btn-primary" onclick="submitPrepayRegistration()">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Registration
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success card (hidden until submitted) -->
+            <div class="card card-shadow confirmation-card hidden" id="prepay-success-card">
+                <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h1>Registration Submitted</h1>
+                <p style="color:var(--font-color-detail); max-width:500px; margin:0 auto var(--spacing-xl);">Your prepay account registration has been submitted to the Arizona Secretary of State. You will receive a confirmation and your account credentials by email within 3–5 business days.</p>
+                <div class="confirmation-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Submission Date</span>
+                        <span class="detail-value">March 26, 2026</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value" style="color:var(--brand-warning);">Pending Review</span>
+                    </div>
+                </div>
+                <div style="margin-top:var(--spacing-xxl); padding-top:var(--spacing-xl); border-top:1px solid var(--border-color-default);">
+                    <button class="btn btn-link" onclick="showOverview()"><i class="fa-solid fa-arrow-left"></i> Return to UCC Filing Overview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHECK ACCOUNT BALANCE MODAL
+         ============================================================ -->
+    <div class="modal-overlay" id="modal-balance-check">
+        <div class="modal" style="max-width:460px;">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('modal-balance-check')">&times;</button>
+                <h2><i class="fa-solid fa-wallet" style="margin-right:var(--spacing-sm); color:var(--brand-primary);"></i> Check Account Balance</h2>
+            </div>
+            <!-- Input form -->
+            <div id="balance-form" class="modal-body">
+                <p style="color:var(--font-color-detail); margin-bottom:var(--spacing-xl);">Enter your AZSOS prepay account credentials to retrieve your current balance.</p>
+                <div class="form-group">
+                    <label class="required">Account Number</label>
+                    <input type="text" class="form-control" id="balance-acct-input" placeholder="Enter your AZSOS account number">
+                </div>
+                <div class="form-row form-row-2">
+                    <div class="form-group">
+                        <label class="required">Account PIN</label>
+                        <input type="text" class="form-control" placeholder="Enter Account PIN">
+                        <span class="form-text">Please enter your payment account PIN</span>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+            <!-- Result -->
+            <div id="balance-result" class="modal-body hidden">
+                <div class="balance-display">
+                    <div class="balance-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <p class="balance-label">Available Balance</p>
+                    <p class="balance-amount" id="balance-amount">$245.00</p>
+                </div>
+                <div class="confirmation-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Account Number</span>
+                        <span class="detail-value" id="balance-acct-display" style="font-family:monospace;">—</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Holder</span>
+                        <span class="detail-value">Acme Industries LLC</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Balance as of</span>
+                        <span class="detail-value" id="balance-as-of">—</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value" style="color:var(--brand-success-700);">Active</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" id="balance-footer-check">
+                <button class="btn btn-default" onclick="closeModal('modal-balance-check')">Cancel</button>
+                <button class="btn btn-primary" onclick="checkBalance()">
+                    <i class="fa-solid fa-magnifying-glass"></i> Check Balance
+                </button>
+            </div>
+            <div class="modal-footer hidden" id="balance-footer-result">
+                <button class="btn btn-default" onclick="resetBalanceCheck()"><i class="fa-solid fa-rotate-left"></i> Check Another Account</button>
+                <button class="btn btn-primary" onclick="closeModal('modal-balance-check')">Done</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ============================================================
          USPS VERIFICATION MODAL (shared)
          ============================================================ -->
@@ -2468,6 +2737,43 @@
             uploadedFiles[idx] = null;
             const item = document.getElementById('file-item-' + idx);
             if (item) item.remove();
+        }
+
+        // ── Generic modal helpers ────────────────────────────────────
+        function showModal(id) {
+            document.getElementById(id).classList.add('show');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('show');
+        }
+
+        // ── Prepay Account Registration ──────────────────────────────
+        function submitPrepayRegistration() {
+            document.getElementById('prepay-form-card').classList.add('hidden');
+            document.getElementById('prepay-success-card').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        // ── Account Balance Check ─────────────────────────────────────
+        function checkBalance() {
+            const acct = document.getElementById('balance-acct-input').value.trim() || '——';
+            const now  = new Date();
+            const opts = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' };
+            document.getElementById('balance-acct-display').textContent = acct;
+            document.getElementById('balance-as-of').textContent = now.toLocaleString('en-US', opts);
+            document.getElementById('balance-form').classList.add('hidden');
+            document.getElementById('balance-result').classList.remove('hidden');
+            document.getElementById('balance-footer-check').classList.add('hidden');
+            document.getElementById('balance-footer-result').classList.remove('hidden');
+        }
+
+        function resetBalanceCheck() {
+            document.getElementById('balance-acct-input').value = '';
+            document.getElementById('balance-pin-input').value = '';
+            document.getElementById('balance-form').classList.remove('hidden');
+            document.getElementById('balance-result').classList.add('hidden');
+            document.getElementById('balance-footer-check').classList.remove('hidden');
+            document.getElementById('balance-footer-result').classList.add('hidden');
         }
 
         // ── USPS Address Verification ────────────────────────────────
