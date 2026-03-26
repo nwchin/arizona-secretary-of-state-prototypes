@@ -1088,6 +1088,101 @@
         }
         .file-item .file-remove:hover { color: var(--brand-danger); }
 
+        /* ============================================================
+           USPS ADDRESS VERIFICATION
+           ============================================================ */
+        .usps-verify-panel {
+            border: var(--border-width-md) solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            background: var(--bg-color);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .usps-verify-panel.verified {
+            border-color: var(--brand-success-700);
+            background: #e8f7ee;
+        }
+        .usps-verify-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .usps-verify-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--brand-primary);
+            border-radius: var(--border-radius-default);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .usps-verify-panel.verified .usps-verify-icon {
+            background: var(--brand-success-700);
+        }
+        .usps-verify-header-text h4 { margin-bottom: var(--spacing-xxs); }
+        .usps-verify-header-text p {
+            margin: 0;
+            color: var(--font-color-detail);
+            font-size: var(--font-size-small);
+        }
+        .usps-verified-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--brand-success-700);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        .usps-address-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+        }
+        .usps-address-block {
+            background: var(--bg-color);
+            border: var(--border-width-default) solid var(--border-color-default);
+            border-radius: var(--border-radius-default);
+            padding: var(--spacing-md);
+        }
+        .usps-address-block.usps-suggestion {
+            border-color: var(--brand-success-700);
+            background: #e8f7ee;
+        }
+        .usps-address-type {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--font-color-detail);
+            margin-bottom: var(--spacing-sm);
+        }
+        .usps-address-block.usps-suggestion .usps-address-type { color: var(--brand-success-700); }
+        .usps-address-block address {
+            font-style: normal;
+            line-height: 1.7;
+        }
+        .usps-suggestion-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            background: var(--brand-success-200);
+            color: var(--brand-success-700);
+            font-size: 11px;
+            font-weight: 700;
+            padding: var(--spacing-xxs) var(--spacing-sm);
+            border-radius: var(--border-radius-full);
+            margin-bottom: var(--spacing-sm);
+        }
+        @media (max-width: 768px) {
+            .usps-address-compare { grid-template-columns: 1fr; }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .form-row-2, .form-row-3, .form-row-4, .form-row-name, .form-row-address {
@@ -1402,10 +1497,30 @@
                         </div>
                     </div>
 
+                    <!-- USPS Address Verification — Step 1 -->
+                    <div class="usps-verify-panel" id="usps-panel-1">
+                        <div class="usps-verify-header">
+                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div class="usps-verify-header-text">
+                                <h4>Verify Address with USPS</h4>
+                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. This helps ensure accurate delivery of your filing acknowledgment.</p>
+                            </div>
+                        </div>
+                        <div id="usps-idle-1">
+                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(1)">
+                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
+                            </button>
+                        </div>
+                        <div id="usps-verified-1" class="hidden">
+                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
+                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(1)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
+                        </div>
+                    </div>
+
                     <div class="btn-bar">
                         <button class="btn btn-default" onclick="showOverview()"><i class="fa-solid fa-arrow-left"></i> Cancel</button>
                         <div class="btn-bar-right">
-                            <button class="btn btn-primary" onclick="nextStep()">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                            <button class="btn btn-primary" id="continue-btn-step1" onclick="nextStep()" disabled>Continue <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -1522,10 +1637,30 @@
                         <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 debtors. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
                     </div>
 
+                    <!-- USPS Address Verification — Step 2 -->
+                    <div class="usps-verify-panel mt-xl" id="usps-panel-2">
+                        <div class="usps-verify-header">
+                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div class="usps-verify-header-text">
+                                <h4>Verify Address with USPS</h4>
+                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. If you add or remove a debtor, you will need to re-verify.</p>
+                            </div>
+                        </div>
+                        <div id="usps-idle-2">
+                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(2)">
+                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
+                            </button>
+                        </div>
+                        <div id="usps-verified-2" class="hidden">
+                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
+                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(2)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
+                        </div>
+                    </div>
+
                     <div class="btn-bar">
                         <button class="btn btn-default" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i> Back</button>
                         <div class="btn-bar-right">
-                            <button class="btn btn-primary" onclick="nextStep()">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                            <button class="btn btn-primary" id="continue-btn-step2" onclick="nextStep()" disabled>Continue <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -1626,10 +1761,30 @@
                         <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 secured parties. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
                     </div>
 
+                    <!-- USPS Address Verification — Step 3 -->
+                    <div class="usps-verify-panel mt-xl" id="usps-panel-3">
+                        <div class="usps-verify-header">
+                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div class="usps-verify-header-text">
+                                <h4>Verify Address with USPS</h4>
+                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. If you add or remove a secured party, you will need to re-verify.</p>
+                            </div>
+                        </div>
+                        <div id="usps-idle-3">
+                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(3)">
+                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
+                            </button>
+                        </div>
+                        <div id="usps-verified-3" class="hidden">
+                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
+                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(3)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
+                        </div>
+                    </div>
+
                     <div class="btn-bar">
                         <button class="btn btn-default" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i> Back</button>
                         <div class="btn-bar-right">
-                            <button class="btn btn-primary" onclick="nextStep()">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                            <button class="btn btn-primary" id="continue-btn-step3" onclick="nextStep()" disabled>Continue <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -1966,6 +2121,29 @@
     </div>
 
     <!-- ============================================================
+         USPS VERIFICATION MODAL (shared)
+         ============================================================ -->
+    <div class="modal-overlay" id="usps-modal">
+        <div class="modal" style="max-width:640px;">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeUSPSModal()">&times;</button>
+                <h2><i class="fa-solid fa-map-location-dot" style="margin-right:var(--spacing-sm); color:var(--brand-primary);"></i> USPS Address Verification</h2>
+            </div>
+            <div class="modal-body">
+                <p style="color:var(--font-color-detail); margin-bottom:0;">The U.S. Postal Service has standardized your address. Select which version to use for this filing.</p>
+                <div class="usps-address-compare" id="usps-address-compare">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="keepOriginalAddress()">Keep My Address</button>
+                <button class="btn btn-primary" onclick="acceptUSPSAddress()">
+                    <i class="fa-solid fa-circle-check"></i> Use USPS Suggestion
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- ============================================================
          JAVASCRIPT
          ============================================================ -->
@@ -2120,12 +2298,14 @@
             document.getElementById('additional-debtors-container')
                 .insertAdjacentHTML('beforeend', debtorTemplate(nextDebtorId++));
             updateAPNotice();
+            resetVerify(2);
         }
 
         function removeDebtor(n) {
             document.getElementById('debtor-' + n).remove();
             debtorCount--;
             updateAPNotice();
+            resetVerify(2);
         }
 
         function toggleDebtorAdditional(btn, type, n) {
@@ -2180,12 +2360,14 @@
             document.getElementById('additional-secured-container')
                 .insertAdjacentHTML('beforeend', securedPartyTemplate(nextSecuredId++));
             updateAPNotice();
+            resetVerify(3);
         }
 
         function removeSecuredParty(n) {
             document.getElementById('secured-' + n).remove();
             securedPartyCount--;
             updateAPNotice();
+            resetVerify(3);
         }
 
         function toggleSecuredAdditional(btn, type, n) {
@@ -2286,6 +2468,77 @@
             uploadedFiles[idx] = null;
             const item = document.getElementById('file-item-' + idx);
             if (item) item.remove();
+        }
+
+        // ── USPS Address Verification ────────────────────────────────
+        const addressVerified = {};
+        let activeVerifyStep = null;
+
+        // Mock USPS standardized addresses (per step)
+        const mockUSPSData = {
+            1: {
+                entered: { line1: '123 Main Street', line2: 'Phoenix, AZ 85004', line3: 'USA' },
+                usps:    { line1: '123 MAIN ST', line2: 'PHOENIX, AZ 85004-1234', line3: 'USA' }
+            },
+            2: {
+                entered: { line1: '456 W Commerce Drive', line2: 'Tucson, AZ 85701', line3: 'USA' },
+                usps:    { line1: '456 W COMMERCE DR', line2: 'TUCSON, AZ 85701-2208', line3: 'USA' }
+            },
+            3: {
+                entered: { line1: '789 North Central Avenue', line2: 'Phoenix, AZ 85004', line3: 'USA' },
+                usps:    { line1: '789 N CENTRAL AVE STE 200', line2: 'PHOENIX, AZ 85004-1090', line3: 'USA' }
+            }
+        };
+
+        function verifyAddress(step) {
+            activeVerifyStep = step;
+            const d = mockUSPSData[step] || mockUSPSData[1];
+            document.getElementById('usps-address-compare').innerHTML = `
+                <div class="usps-address-block">
+                    <div class="usps-address-type">As Entered</div>
+                    <address>${d.entered.line1}<br>${d.entered.line2}<br>${d.entered.line3}</address>
+                </div>
+                <div class="usps-address-block usps-suggestion">
+                    <span class="usps-suggestion-badge"><i class="fa-solid fa-circle-check"></i> USPS Standardized</span>
+                    <div class="usps-address-type">USPS Suggestion</div>
+                    <address>${d.usps.line1}<br>${d.usps.line2}<br>${d.usps.line3}</address>
+                </div>`;
+            document.getElementById('usps-modal').classList.add('show');
+        }
+
+        function acceptUSPSAddress() {
+            markAddressVerified(activeVerifyStep);
+            closeUSPSModal();
+        }
+
+        function keepOriginalAddress() {
+            markAddressVerified(activeVerifyStep);
+            closeUSPSModal();
+        }
+
+        function markAddressVerified(step) {
+            addressVerified[step] = true;
+            const panel = document.getElementById('usps-panel-' + step);
+            if (panel) panel.classList.add('verified');
+            document.getElementById('usps-idle-' + step).classList.add('hidden');
+            document.getElementById('usps-verified-' + step).classList.remove('hidden');
+            const btn = document.getElementById('continue-btn-step' + step);
+            if (btn) btn.disabled = false;
+        }
+
+        function resetVerify(step) {
+            addressVerified[step] = false;
+            const panel = document.getElementById('usps-panel-' + step);
+            if (panel) panel.classList.remove('verified');
+            document.getElementById('usps-idle-' + step).classList.remove('hidden');
+            document.getElementById('usps-verified-' + step).classList.add('hidden');
+            const btn = document.getElementById('continue-btn-step' + step);
+            if (btn) btn.disabled = true;
+        }
+
+        function closeUSPSModal() {
+            document.getElementById('usps-modal').classList.remove('show');
+            activeVerifyStep = null;
         }
 
         // Accordion
