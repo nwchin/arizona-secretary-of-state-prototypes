@@ -1269,10 +1269,6 @@
                             <span class="form-text">Filing confirmation and status updates will be sent to this address.</span>
                         </div>
 
-                        <div class="form-group">
-                            <label class="required" data-config="step1.labelVerifyEmail">Verify Email Address</label>
-                            <input type="email" class="form-control" placeholder="Re-enter email address">
-                        </div>
                     </div>
 
                     <div class="form-section">
@@ -1289,12 +1285,7 @@
                             <input type="text" class="form-control" placeholder="Street address">
                         </div>
 
-                        <div class="form-group">
-                            <label>Street Address 2</label>
-                            <input type="text" class="form-control" placeholder="Street address 2">
-                        </div>
-
-
+                
                         <div class="form-row form-row-4">
                             <div class="form-group">
                                 <label>City</label>
@@ -1422,87 +1413,22 @@
                         </div>
                     </div>
 
-                    <!-- Additional Debtor section -->
-                    <div id="additional-debtor-section" class="hidden">
-                        <div class="form-section">
-                            <div class="form-section-title" style="display:flex; justify-content:space-between; align-items:center;">
-                                Debtor 2 (Optional)
-                                <button class="btn btn-link btn-sm" style="color: var(--brand-danger);" onclick="removeAdditionalDebtor()"><i class="fa-solid fa-trash-can"></i> Remove</button>
-                            </div>
+                    <!-- Additional Debtors (dynamically injected) -->
+                    <div id="additional-debtors-container"></div>
 
-                            <div class="form-group">
-                                <label>Debtor Type</label>
-                                <div class="entity-toggle">
-                                    <button class="active" onclick="toggleDebtorType(this, 'org', 2)">Organization</button>
-                                    <button onclick="toggleDebtorType(this, 'individual', 2)">Individual</button>
-                                </div>
-                            </div>
-
-                            <div id="debtor2-org">
-                                <div class="form-group">
-                                    <label>Organization Name</label>
-                                    <input type="text" class="form-control" placeholder="Full legal name of the organization">
-                                </div>
-                            </div>
-
-                            <div id="debtor2-individual" class="hidden">
-                                <div class="form-row form-row-name">
-                                    <div class="form-group">
-                                        <label>Surname (Last Name)</label>
-                                        <input type="text" class="form-control" placeholder="Family name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" placeholder="First personal name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Additional Name(s)/Initial(s)</label>
-                                        <input type="text" class="form-control" placeholder="Middle name or initials">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Suffix</label>
-                                        <select class="form-control">
-                                            <option value="">None</option>
-                                            <option>Jr.</option><option>Sr.</option><option>II</option><option>III</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Street Address</label>
-                                <input type="text" class="form-control" placeholder="Mailing address">
-                            </div>
-                            <div class="form-row form-row-address">
-                                <div class="form-group">
-                                    <label>City</label>
-                                    <input type="text" class="form-control" placeholder="City">
-                                </div>
-                                <div class="form-group">
-                                    <label>State</label>
-                                    <select class="form-control"><option value="">Select</option><option>AZ</option></select>
-                                </div>
-                                <div class="form-group">
-                                    <label>ZIP</label>
-                                    <input type="text" class="form-control" placeholder="ZIP">
-                                </div>
-                                <div class="form-group">
-                                    <label>Postal Code</label>
-                                    <input type="text" class="form-control" placeholder="Extended">
-                                </div>
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    <select class="form-control"><option>USA</option></select>
-                                </div>
-                            </div>
+                    <div id="ap-notice-debtors" class="alert-info hidden" style="margin-top:var(--spacing-xl);">
+                        <i class="fa-solid fa-circle-info alert-icon"></i>
+                        <div>
+                            <strong>UCC-1AP Additional Party Form Required</strong>
+                            You have more than 2 debtors. A UCC-1AP Additional Party form will be generated and available for download at the confirmation step.
                         </div>
                     </div>
 
-                    <div id="add-debtor-btn-wrapper">
-                        <button class="add-entry-btn" onclick="addAdditionalDebtor()">
+                    <div class="mt-xl">
+                        <button class="add-entry-btn" onclick="addDebtor()">
                             <i class="fa-solid fa-plus"></i> Add Additional Debtor
                         </button>
-                        <span class="form-text mt-sm">For more than 2 debtors, a UCC-1AP Additional Party form will be attached automatically.</span>
+                        <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 debtors. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
                     </div>
 
                     <div class="btn-bar">
@@ -1521,7 +1447,7 @@
 
                 <div class="card">
                     <div class="form-section">
-                        <div class="form-section-title" data-config="step3.sectionTitle">Secured Party</div>
+                        <div class="form-section-title" data-config="step3.sectionTitle">Secured Party 1 (Required)</div>
 
                         <div class="form-group">
                             <label class="required">Party Type</label>
@@ -1589,6 +1515,24 @@
                                 <select class="form-control"><option>USA</option></select>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Additional Secured Parties (dynamically injected) -->
+                    <div id="additional-secured-container"></div>
+
+                    <div id="ap-notice-secured" class="alert-info hidden" style="margin-top:var(--spacing-xl);">
+                        <i class="fa-solid fa-circle-info alert-icon"></i>
+                        <div>
+                            <strong>UCC-1AP Additional Party Form Required</strong>
+                            You have more than 2 secured parties. A UCC-1AP Additional Party form will be generated and available for download at the confirmation step.
+                        </div>
+                    </div>
+
+                    <div class="mt-xl">
+                        <button class="add-entry-btn" onclick="addSecuredParty()">
+                            <i class="fa-solid fa-plus"></i> Add Additional Secured Party
+                        </button>
+                        <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 secured parties. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
                     </div>
 
                     <div class="btn-bar">
@@ -1922,8 +1866,19 @@
                     </div>
                 </div>
 
-                <div style="display:flex; gap:12px; justify-content:center; margin-top:24px; flex-wrap:wrap;">
+                <div id="ap-form-notice" class="hidden" style="margin:var(--spacing-xl) auto; max-width:540px;">
+                    <div class="alert-info">
+                        <i class="fa-solid fa-circle-info alert-icon"></i>
+                        <div>
+                            <strong>UCC-1AP Additional Party Form Included</strong>
+                            Your filing includes more than 2 debtors or secured parties. Download the UCC-1AP form below and retain it with your records — it is part of your filing package.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:12px; justify-content:center; margin-top:var(--spacing-xl); flex-wrap:wrap;">
                     <button class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> <span data-config="confirmation.downloadBtn">Download UCC-1 (PDF)</span></button>
+                    <button id="btn-download-ap" class="btn btn-primary hidden"><i class="fa-solid fa-file-pdf"></i> Download UCC-1AP (PDF)</button>
                     <button class="btn btn-secondary"><i class="fa-solid fa-print"></i> <span data-config="confirmation.printBtn">Print Confirmation</span></button>
                 </div>
 
@@ -1942,6 +1897,12 @@
         // State
         let currentStep = 1;
         const totalSteps = 6;
+
+        // Party counters
+        let debtorCount = 1;
+        let nextDebtorId = 2;
+        let securedPartyCount = 1;
+        let nextSecuredId = 2;
 
         // View switching
         function showView(viewId) {
@@ -2038,15 +1999,130 @@
             }
         }
 
-        // Additional debtor
-        function addAdditionalDebtor() {
-            document.getElementById('additional-debtor-section').classList.remove('hidden');
-            document.getElementById('add-debtor-btn-wrapper').classList.add('hidden');
+        // ── Debtor management ──────────────────────────────────────────
+        function debtorTemplate(n) {
+            return `<div class="form-section" id="debtor-${n}" style="border-top:1px solid var(--border-color-default); padding-top:var(--spacing-xl); margin-top:var(--spacing-md);">
+                <div class="form-section-title" style="display:flex; justify-content:space-between; align-items:center;">
+                    Debtor ${n} <span style="font-weight:400; font-size:var(--font-size-small); color:var(--font-color-detail); margin-left:var(--spacing-xs);">(Optional)</span>
+                    <button class="btn btn-link btn-sm" style="color:var(--brand-danger);" onclick="removeDebtor(${n})"><i class="fa-solid fa-trash-can"></i> Remove</button>
+                </div>
+                <div class="form-group">
+                    <label>Debtor Type</label>
+                    <div class="entity-toggle">
+                        <button class="active" onclick="toggleDebtorAdditional(this,'org',${n})">Organization</button>
+                        <button onclick="toggleDebtorAdditional(this,'individual',${n})">Individual</button>
+                    </div>
+                </div>
+                <div id="debtor${n}-org">
+                    <div class="form-group">
+                        <label>Organization Name</label>
+                        <input type="text" class="form-control" placeholder="Full legal name of the organization">
+                    </div>
+                </div>
+                <div id="debtor${n}-individual" class="hidden">
+                    <div class="form-row form-row-name">
+                        <div class="form-group"><label>Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                        <div class="form-group"><label>First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                        <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                        <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option></select></div>
+                    </div>
+                </div>
+                <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
+                <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
+                <div class="form-row form-row-address">
+                    <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
+                    <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                    <div class="form-group"><label>ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
+                    <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
+                    <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
+                </div>
+            </div>`;
         }
 
-        function removeAdditionalDebtor() {
-            document.getElementById('additional-debtor-section').classList.add('hidden');
-            document.getElementById('add-debtor-btn-wrapper').classList.remove('hidden');
+        function addDebtor() {
+            debtorCount++;
+            document.getElementById('additional-debtors-container')
+                .insertAdjacentHTML('beforeend', debtorTemplate(nextDebtorId++));
+            updateAPNotice();
+        }
+
+        function removeDebtor(n) {
+            document.getElementById('debtor-' + n).remove();
+            debtorCount--;
+            updateAPNotice();
+        }
+
+        function toggleDebtorAdditional(btn, type, n) {
+            btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('debtor' + n + '-org').classList.toggle('hidden', type !== 'org');
+            document.getElementById('debtor' + n + '-individual').classList.toggle('hidden', type !== 'individual');
+        }
+
+        // ── Secured party management ────────────────────────────────────
+        function securedPartyTemplate(n) {
+            return `<div class="form-section" id="secured-${n}" style="border-top:1px solid var(--border-color-default); padding-top:var(--spacing-xl); margin-top:var(--spacing-md);">
+                <div class="form-section-title" style="display:flex; justify-content:space-between; align-items:center;">
+                    Secured Party ${n} <span style="font-weight:400; font-size:var(--font-size-small); color:var(--font-color-detail); margin-left:var(--spacing-xs);">(Optional)</span>
+                    <button class="btn btn-link btn-sm" style="color:var(--brand-danger);" onclick="removeSecuredParty(${n})"><i class="fa-solid fa-trash-can"></i> Remove</button>
+                </div>
+                <div class="form-group">
+                    <label>Party Type</label>
+                    <div class="entity-toggle">
+                        <button class="active" onclick="toggleSecuredAdditional(this,'org',${n})">Organization</button>
+                        <button onclick="toggleSecuredAdditional(this,'individual',${n})">Individual</button>
+                    </div>
+                </div>
+                <div id="secured${n}-org">
+                    <div class="form-group">
+                        <label>Organization Name</label>
+                        <input type="text" class="form-control" placeholder="Full legal name of secured party organization">
+                    </div>
+                </div>
+                <div id="secured${n}-individual" class="hidden">
+                    <div class="form-row form-row-name">
+                        <div class="form-group"><label>Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                        <div class="form-group"><label>First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                        <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                        <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option></select></div>
+                    </div>
+                </div>
+                <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
+                <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
+                <div class="form-row form-row-address">
+                    <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
+                    <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                    <div class="form-group"><label>ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
+                    <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
+                    <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
+                </div>
+            </div>`;
+        }
+
+        function addSecuredParty() {
+            securedPartyCount++;
+            document.getElementById('additional-secured-container')
+                .insertAdjacentHTML('beforeend', securedPartyTemplate(nextSecuredId++));
+            updateAPNotice();
+        }
+
+        function removeSecuredParty(n) {
+            document.getElementById('secured-' + n).remove();
+            securedPartyCount--;
+            updateAPNotice();
+        }
+
+        function toggleSecuredAdditional(btn, type, n) {
+            btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('secured' + n + '-org').classList.toggle('hidden', type !== 'org');
+            document.getElementById('secured' + n + '-individual').classList.toggle('hidden', type !== 'individual');
+        }
+
+        // ── AP form notice (shared) ──────────────────────────────────────
+        function updateAPNotice() {
+            document.getElementById('ap-notice-debtors').classList.toggle('hidden', debtorCount <= 2);
+            document.getElementById('ap-notice-secured').classList.toggle('hidden', securedPartyCount <= 2);
         }
 
         // Payment method
@@ -2064,6 +2140,9 @@
 
         // Submit
         function submitFiling() {
+            const needsAP = debtorCount > 2 || securedPartyCount > 2;
+            document.getElementById('ap-form-notice').classList.toggle('hidden', !needsAP);
+            document.getElementById('btn-download-ap').classList.toggle('hidden', !needsAP);
             showView('view-confirmation');
         }
 
