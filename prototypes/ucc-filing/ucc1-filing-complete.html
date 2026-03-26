@@ -998,6 +998,96 @@
 
         .hidden { display: none !important; }
 
+        /* ============================================================
+           FILE UPLOADER
+           ============================================================ */
+        .file-upload-zone {
+            border: var(--border-width-md) dashed var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-xxl) var(--spacing-xl);
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            background: var(--bg-color);
+            position: relative;
+        }
+        .file-upload-zone:hover,
+        .file-upload-zone.drag-over {
+            border-color: var(--brand-primary);
+            background: #f0f4ff;
+        }
+        .file-upload-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+        .file-upload-icon {
+            font-size: 32px;
+            color: var(--brand-primary-200);
+            margin-bottom: var(--spacing-md);
+            pointer-events: none;
+        }
+        .file-upload-zone p {
+            color: var(--font-color-detail);
+            margin: 0;
+            pointer-events: none;
+        }
+        .file-upload-zone .upload-cta {
+            font-weight: 600;
+            color: var(--brand-primary);
+        }
+        .file-upload-zone .upload-hint {
+            font-size: var(--font-size-small);
+            margin-top: var(--spacing-xs);
+        }
+        .file-list {
+            margin-top: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--color-white);
+            border: var(--border-width-default) solid var(--border-color-default);
+            border-radius: var(--border-radius-default);
+            font-size: var(--font-size-small);
+        }
+        .file-item .file-icon {
+            color: var(--brand-primary);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .file-item .file-name {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        .file-item .file-size {
+            color: var(--font-color-detail);
+            flex-shrink: 0;
+        }
+        .file-item .file-remove {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--font-color-detail);
+            padding: var(--spacing-xxs) var(--spacing-xs);
+            flex-shrink: 0;
+            font-size: 14px;
+            line-height: 1;
+            border-radius: var(--border-radius-default);
+        }
+        .file-item .file-remove:hover { color: var(--brand-danger); }
+
         /* Responsive */
         @media (max-width: 768px) {
             .form-row-2, .form-row-3, .form-row-4, .form-row-name, .form-row-address {
@@ -1560,6 +1650,29 @@
                             <textarea class="form-control" rows="6" placeholder="This financing statement covers the following collateral:&#10;&#10;Example: All inventory, accounts receivable, equipment, and general intangibles now owned or hereafter acquired by the Debtor."></textarea>
                             <span class="form-text">If additional space is needed, a UCC-1Ad addendum will be attached automatically.</span>
                         </div>
+
+                        <div class="alert-warning">
+                            <i class="fa-solid fa-triangle-exclamation alert-icon"></i>
+                            <div>
+                                <strong>Do not upload documents containing personally identifiable information (PII).</strong>
+                                Do not attach driver's licenses, birth certificates, Social Security cards, passports, or any other government-issued identification. Uploaded documents become part of the public record and are viewable by anyone.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Supporting Documents <span style="font-weight:400; color:var(--font-color-detail);">(Optional)</span></label>
+                            <div class="file-upload-zone" id="collateral-upload-zone"
+                                 ondragover="handleDragOver(event)"
+                                 ondragleave="handleDragLeave(event)"
+                                 ondrop="handleDrop(event)">
+                                <input type="file" id="collateral-file-input" multiple accept=".pdf,.doc,.docx,.txt" onchange="handleFileSelect(event)">
+                                <div class="file-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                                <p><span class="upload-cta">Click to browse</span> or drag and drop files here</p>
+                                <p class="upload-hint">Accepted formats: PDF, DOC, DOCX, TXT &nbsp;·&nbsp; Max 10 MB per file</p>
+                            </div>
+                            <div class="file-list" id="collateral-file-list"></div>
+                            <span class="form-text mt-sm">Attach supporting documentation that describes or identifies the collateral. Do not include PII.</span>
+                        </div>
                     </div>
 
                     <div class="form-section">
@@ -2121,6 +2234,62 @@
             document.getElementById('ap-form-notice').classList.toggle('hidden', !needsAP);
             document.getElementById('btn-download-ap').classList.toggle('hidden', !needsAP);
             showView('view-confirmation');
+        }
+
+        // ── File upload ─────────────────────────────────────────────────
+        const uploadedFiles = [];
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+            addFiles(Array.from(e.dataTransfer.files));
+        }
+
+        function handleFileSelect(e) {
+            addFiles(Array.from(e.target.files));
+            e.target.value = '';
+        }
+
+        function addFiles(files) {
+            files.forEach(file => {
+                const idx = uploadedFiles.length;
+                uploadedFiles.push(file);
+                renderFileItem(file, idx);
+            });
+        }
+
+        function renderFileItem(file, idx) {
+            const ext = file.name.split('.').pop().toLowerCase();
+            const iconMap = { pdf: 'fa-file-pdf', doc: 'fa-file-word', docx: 'fa-file-word', txt: 'fa-file-lines' };
+            const icon = iconMap[ext] || 'fa-file';
+            const size = file.size < 1024 * 1024
+                ? (file.size / 1024).toFixed(1) + ' KB'
+                : (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+
+            const item = document.createElement('div');
+            item.className = 'file-item';
+            item.id = 'file-item-' + idx;
+            item.innerHTML = `
+                <i class="fa-solid ${icon} file-icon"></i>
+                <span class="file-name">${file.name}</span>
+                <span class="file-size">${size}</span>
+                <button class="file-remove" onclick="removeFile(${idx})" title="Remove file"><i class="fa-solid fa-xmark"></i></button>`;
+            document.getElementById('collateral-file-list').appendChild(item);
+        }
+
+        function removeFile(idx) {
+            uploadedFiles[idx] = null;
+            const item = document.getElementById('file-item-' + idx);
+            if (item) item.remove();
         }
 
         // Accordion
