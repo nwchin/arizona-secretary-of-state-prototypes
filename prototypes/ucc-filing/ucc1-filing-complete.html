@@ -1582,46 +1582,22 @@
 
                     <div class="form-section">
                         <div class="form-section-title" data-config="step4.sectionTransaction">Transaction Type (if applicable)</div>
-
+                        
                         <div class="form-group">
                             <label>Filing Type</label>
-                            <div style="display:flex; flex-direction:column; gap:8px;">
-                                <div class="checkbox-single">
-                                    <input type="radio" name="filing-type-6a" id="ft-none" checked>
-                                    <label for="ft-none">Standard UCC Filing (default)</label>
-                                </div>
-                                <div class="checkbox-single">
-                                    <input type="radio" name="filing-type-6a" id="ft-public">
-                                    <label for="ft-public">Public-Finance Transaction</label>
-                                </div>
-                                <div class="checkbox-single">
-                                    <input type="radio" name="filing-type-6a" id="ft-manufactured">
-                                    <label for="ft-manufactured">Manufactured-Home Transaction</label>
-                                </div>
-                                <div class="checkbox-single">
-                                    <input type="radio" name="filing-type-6a" id="ft-utility">
-                                    <label for="ft-utility">A Debtor is a Transmitting Utility</label>
-                                </div>
-                            </div>
-                        </div>
+                            <select class="form-control">
+                                <option value="">None</option>
+                                <option>Standard UCC Filing (default)</option><option>Public-Finance Transaction</option><option>Manufactured-Home Transaction</option><option>A Debtor is a Transmitting Utility</option>
+                            </select>
+                        </div> 
 
                         <div class="form-group">
                             <label>Non-Standard Filing Type</label>
-                            <div style="display:flex; flex-direction:column; gap:8px;">
-                                <div class="checkbox-single">
-                                    <input type="radio" name="filing-type-6b" id="ft-standard" checked>
-                                    <label for="ft-standard">Not applicable</label>
-                                </div>
-                                <div class="checkbox-single">
-                                    <input type="radio" name="filing-type-6b" id="ft-ag-lien">
-                                    <label for="ft-ag-lien">Agricultural Lien</label>
-                                </div>
-                                <div class="checkbox-single">
-                                    <input type="radio" name="filing-type-6b" id="ft-non-ucc">
-                                    <label for="ft-non-ucc">Non-UCC Filing (e.g., tax lien, judgment lien)</label>
-                                </div>
-                            </div>
-                        </div>
+                            <select class="form-control">
+                                <option value="">None</option>
+                                <option>Agricultural Lien</option><option>Non-UCC Filing (e.g., tax lien, judgment lien)</option>
+                            </select>
+                        </div> 
                     </div>
 
                     <div class="form-section">
