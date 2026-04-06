@@ -1339,6 +1339,82 @@
             pointer-events: none;
         }
 
+        /* Party list styles for Step 1 */
+        .party-section {
+            margin-bottom: var(--spacing-lg);
+        }
+        .party-section:last-of-type {
+            margin-bottom: 0;
+        }
+        .party-section-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: var(--font-size-small);
+            font-weight: 600;
+            color: var(--font-color-detail);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 1px solid var(--border-color-default);
+        }
+        .party-section-header i {
+            font-size: 13px;
+            color: var(--brand-primary);
+        }
+        .party-card {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+            margin-bottom: var(--spacing-sm);
+        }
+        .party-card:last-child {
+            margin-bottom: 0;
+        }
+        .party-card:hover {
+            border-color: var(--brand-primary-200);
+            background: #f8faff;
+        }
+        .party-card.selected {
+            border-color: var(--brand-primary);
+            background: #eef3ff;
+            box-shadow: 0 0 0 1px var(--brand-primary);
+        }
+        .party-card-select {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--border-color-default);
+            font-size: 20px;
+            transition: color 0.15s;
+        }
+        .party-card.selected .party-card-select {
+            color: var(--brand-primary);
+        }
+        .party-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .party-card-name {
+            font-weight: 600;
+            font-size: var(--font-size-default);
+            color: var(--font-color-default);
+        }
+        .party-card-address {
+            font-size: var(--font-size-small);
+            color: var(--font-color-detail);
+            margin-top: 2px;
+        }
+
         .ucc3-party-change-options {
             display: flex;
             gap: var(--spacing-md);
@@ -2403,30 +2479,74 @@
 
             <!-- =================== UCC3 STEP 1: WHO ARE YOU =================== -->
             <div class="wizard-panel" id="ucc3-step-1">
-                <h1 class="page-title">What is your relationship to this filing?</h1>
-                <p class="page-subtitle">Select your role in the original financing statement. The amendment actions available to you depend on your relationship to the filing.</p>
+                <h1 class="page-title">Who are you?</h1>
+                <p class="page-subtitle">Select yourself from the parties listed on the original financing statement. The amendment actions available to you depend on your role in the filing.</p>
 
-                <div class="card">
-                    <div class="relationship-cards">
-                        <div class="relationship-card" onclick="selectRelationship('debtor', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-user"></i></div>
-                            <h4>Debtor</h4>
-                            <p>You are the debtor named on the original financing statement.</p>
+                <div class="card" id="ucc3-party-list">
+                    <!-- Debtor(s) Section -->
+                    <div class="party-section">
+                        <div class="party-section-header">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Debtor</span>
                         </div>
-                        <div class="relationship-card" onclick="selectRelationship('sp1', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-building-columns"></i></div>
-                            <h4>Secured Party #1</h4>
-                            <p>You are the primary secured party of record on the filing.</p>
+                        <div class="party-card" onclick="selectParty('debtor', 0, this)">
+                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="party-card-info">
+                                <div class="party-card-name">Copper Basin Mining LLC</div>
+                                <div class="party-card-address">4200 N Central Ave, Suite 1500, Phoenix, AZ 85012</div>
+                            </div>
                         </div>
-                        <div class="relationship-card" onclick="selectRelationship('sp2', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-users"></i></div>
-                            <h4>Secured Party #2 and Beyond</h4>
-                            <p>You are an additional secured party (not the primary) on the filing.</p>
+                    </div>
+
+                    <!-- Secured Party #1 Section -->
+                    <div class="party-section">
+                        <div class="party-section-header">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span>Secured Party #1</span>
                         </div>
-                        <div class="relationship-card" onclick="selectRelationship('assignee', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-right-left"></i></div>
-                            <h4>Assignee Secured Party</h4>
-                            <p>You were assigned rights to this filing by the original secured party.</p>
+                        <div class="party-card" onclick="selectParty('sp1', 0, this)">
+                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="party-card-info">
+                                <div class="party-card-name">Western States Capital Bank</div>
+                                <div class="party-card-address">100 W Washington St, Suite 2200, Phoenix, AZ 85003</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secured Party #2+ Section -->
+                    <div class="party-section">
+                        <div class="party-section-header">
+                            <i class="fa-solid fa-users"></i>
+                            <span>Secured Party #2 and Beyond</span>
+                        </div>
+                        <div class="party-card" onclick="selectParty('sp2', 0, this)">
+                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="party-card-info">
+                                <div class="party-card-name">Margaret L. Thornton</div>
+                                <div class="party-card-address">8742 E Camelback Rd, Scottsdale, AZ 85251</div>
+                            </div>
+                        </div>
+                        <div class="party-card" onclick="selectParty('sp2', 1, this)">
+                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="party-card-info">
+                                <div class="party-card-name">Sonoran Equipment Leasing Inc</div>
+                                <div class="party-card-address">3301 S Price Rd, Suite 108, Chandler, AZ 85248</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assignee Secured Party Section -->
+                    <div class="party-section">
+                        <div class="party-section-header">
+                            <i class="fa-solid fa-right-left"></i>
+                            <span>Assignee Secured Party</span>
+                        </div>
+                        <div class="party-card" onclick="selectParty('assignee', 0, this)">
+                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="party-card-info">
+                                <div class="party-card-name">James R. Whitfield</div>
+                                <div class="party-card-address">1920 N 7th St, Phoenix, AZ 85006</div>
+                            </div>
                         </div>
                     </div>
 
@@ -3918,10 +4038,10 @@
             }
         }
 
-        // ── Step 1: Relationship selection ────────────────────────────
-        function selectRelationship(type, el) {
-            selectedRelationship = type;
-            document.querySelectorAll('.relationship-card').forEach(c => c.classList.remove('selected'));
+        // ── Step 1: Party selection ───────────────────────────────────
+        function selectParty(role, index, el) {
+            selectedRelationship = role;
+            document.querySelectorAll('.party-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
             document.getElementById('ucc3-continue-step1').disabled = false;
 
