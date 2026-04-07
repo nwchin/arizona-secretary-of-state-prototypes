@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCC Filing Review — Arizona Secretary of State</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ============================================================
+           DESIGN TOKENS — from SCSS variables.scss
+           ============================================================ */
+        :root {
+            /* Brand Colors */
+            --brand-primary: #002664;
+            --brand-primary-200: #6680a8;
+            --brand-primary-300: #4d6d99;
+            --brand-primary-400: #335a8a;
+            --brand-primary-700: #001a47;
+            --brand-secondary: #cf9c51;
+            --brand-secondary-200: #e8cfa8;
+            --brand-secondary-700: #a67a2e;
+            --brand-tertiary: #505053;
+            --brand-tertiary-200: #b0b0b2;
+
+            /* Status Colors */
+            --brand-success: #67b78a;
+            --brand-success-200: #b3dbc5;
+            --brand-success-700: #3d8a5e;
+            --brand-warning: #eec10d;
+            --brand-danger: #d4183d;
+            --brand-danger-500: #d4183d;
+            --brand-danger-700: #a3122e;
+            --brand-danger-100: #f8d7dd;
+
+            /* Neutrals */
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --gray-primary: #505053;
+            --brand-gray-200: #e7e7e9;
+
+            /* Type Colors */
+            --font-color-default: #0a0a0a;
+            --font-color-detail: #717182;
+            --font-color-header: #0a0a0a;
+            --link-color: #264ae5;
+
+            /* Element Colors */
+            --border-color-default: #d1d5dc;
+            --focus-color-default: #b59968;
+            --bg-color: #efefef;
+            --bg-color-secondary: #ffffff;
+            --box-shadow-default: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+            /* Fonts */
+            --font-family-base: "Inter", sans-serif;
+            --font-size-default: 14px;
+            --font-size-small: 0.875rem;
+            --font-size-large: 1.125rem;
+            --font-size-xl: 1.5rem;
+            --font-size-xxl: 2rem;
+            --font-size-h1: 2rem;
+            --font-size-h2: 1.5rem;
+            --font-size-h3: 1.25rem;
+            --font-size-h4: 1.125rem;
+            --line-height-base: 1.4;
+
+            /* Spacing */
+            --spacing-unit: 12px;
+            --spacing-xs: 3px;
+            --spacing-xxs: 2px;
+            --spacing-sm: 6px;
+            --spacing-md: 12px;
+            --spacing-lg: 18px;
+            --spacing-xl: 24px;
+            --spacing-xxl: 36px;
+
+            /* Borders */
+            --border-radius-default: 4px;
+            --border-radius-md: 6px;
+            --border-width-default: 1px;
+            --border-width-md: 2px;
+            --border-width-lg: 4px;
+
+            /* Buttons */
+            --btn-font-weight: 500;
+            --btn-font-size: 16px;
+            --btn-padding: 0.75rem 1rem;
+            --btn-border-width: 2px;
+
+            /* Inputs */
+            --form-input-padding-y: 0.75rem;
+            --form-input-padding-x: 1rem;
+            --form-input-border-radius: var(--border-radius-default);
+            --form-group-margin-bottom: 16px;
+            --form-label-gutter: 8px;
+
+            /* Layout */
+            --topbar-azlink: 40px;
+            --topbar-minimalheight: 92px;
+            --max-width-page: 80rem;
+        }
+
+        /* ============================================================
+           BASE RESET & TYPOGRAPHY
+           ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family-base);
+            font-size: var(--font-size-default);
+            line-height: var(--line-height-base);
+            color: var(--font-color-default);
+            background-color: var(--bg-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1 { font-size: var(--font-size-h1); font-weight: 700; margin: 0 0 var(--spacing-sm) 0; }
+        h2 { font-size: var(--font-size-h2); font-weight: 700; margin: 0 0 var(--spacing-sm) 0; }
+        h3 { font-size: var(--font-size-h3); font-weight: 500; margin: 0 0 var(--spacing-sm) 0; }
+        h4 { font-size: var(--font-size-h4); font-weight: 700; margin: 0 0 var(--spacing-sm) 0; }
+
+        a { color: var(--link-color); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .hidden { display: none !important; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+        /* ============================================================
+           AZ STATE BAR (sliver)
+           ============================================================ */
+        .az-sliver {
+            background-color: var(--color-white);
+            color: var(--font-color-default);
+            font-size: 13px;
+            height: var(--topbar-azlink);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--spacing-xl);
+            border-bottom: 1px solid var(--border-color-default);
+        }
+        .az-sliver a { color: var(--font-color-default); font-size: 13px; text-decoration: none; }
+        .az-sliver a:hover { text-decoration: underline; }
+        .az-sliver .az-logo { display: flex; align-items: center; gap: var(--spacing-sm); font-weight: 400; }
+        .az-sliver .az-logo svg { flex-shrink: 0; }
+        .az-sliver .sliver-right { margin-left: auto; display: flex; align-items: center; gap: var(--spacing-sm); font-size: 13px; }
+        .az-sliver .sliver-right a { color: var(--link-color); display: flex; align-items: center; gap: var(--spacing-xs); }
+
+        /* ============================================================
+           HEADER / TOPBAR
+           ============================================================ */
+        .site-header {
+            background-color: var(--brand-primary);
+            height: 72px;
+            display: flex;
+            align-items: center;
+            padding: 0 var(--spacing-xl);
+        }
+        .site-header .header-inner {
+            max-width: var(--max-width-page);
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+        .site-header .brand-logo { display: flex; align-items: center; gap: var(--spacing-md); }
+        .site-header .brand-logo .seal-img { height: 52px; width: auto; flex-shrink: 0; }
+        .site-header .brand-name { color: var(--color-white); font-size: 18px; font-weight: 600; white-space: nowrap; }
+        .site-header .brand-divider { color: var(--brand-secondary); font-size: 18px; font-weight: 300; margin: 0 2px; }
+        .site-header .brand-module { color: var(--brand-secondary); font-size: 18px; font-weight: 600; }
+        .site-header nav { margin-left: auto; display: flex; gap: 0; }
+        .site-header nav a {
+            color: var(--color-white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: var(--font-size-default);
+            font-weight: var(--btn-font-weight);
+            text-decoration: none;
+            transition: background 0.15s;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            white-space: nowrap;
+            border-radius: var(--border-radius-default);
+        }
+        .site-header nav a:hover { background-color: var(--brand-primary-700); text-decoration: none; }
+        .site-header nav a.active-nav { background-color: var(--brand-primary-700); }
+        .site-header nav a i { font-size: 15px; }
+        .site-header .user-avatar {
+            width: 36px; height: 36px;
+            background: var(--brand-secondary);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--brand-primary); font-weight: 700; font-size: 14px;
+            margin-left: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+           PAGE LAYOUT
+           ============================================================ */
+        .page-content {
+            max-width: var(--max-width-page);
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-xl);
+        }
+        .page-header .page-title { margin-bottom: var(--spacing-xxs); }
+        .page-header .page-subtitle {
+            color: var(--font-color-detail);
+            font-size: var(--font-size-default);
+            display: flex; align-items: center; gap: var(--spacing-sm);
+        }
+
+        /* ============================================================
+           STAT CARDS (clickable — replaces tab bar)
+           ============================================================ */
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        .stat-card {
+            background: var(--color-white);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            cursor: pointer;
+            transition: box-shadow 0.15s, border-color 0.15s;
+            user-select: none;
+        }
+        .stat-card:hover {
+            box-shadow: var(--box-shadow-default);
+            border-color: var(--brand-primary-200);
+        }
+        .stat-card.active {
+            border-color: var(--brand-primary);
+            border-width: 2px;
+            box-shadow: var(--box-shadow-default);
+        }
+        .stat-card .stat-label {
+            font-size: var(--font-size-small);
+            color: var(--font-color-detail);
+            margin-bottom: var(--spacing-xs);
+        }
+        .stat-card .stat-value {
+            font-size: var(--font-size-xxl);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        /* ============================================================
+           FILTER BAR
+           ============================================================ */
+        .filter-bar {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-end;
+            margin-bottom: var(--spacing-xl);
+        }
+        .filter-bar .search-input { flex: 1; }
+        .filter-bar .search-input .form-control {
+            padding-left: 40px;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23717182'%3e%3cpath d='M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: 12px center;
+            background-size: 16px;
+        }
+        .filter-bar .filter-group { min-width: 180px; }
+        .filter-bar .filter-group label {
+            display: block;
+            font-size: var(--font-size-small);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--font-color-default);
+        }
+
+        /* ============================================================
+           FORM ELEMENTS
+           ============================================================ */
+        .form-group { margin-bottom: var(--form-group-margin-bottom); }
+        .form-group label, .control-label {
+            display: block;
+            font-size: var(--font-size-default);
+            font-weight: 600;
+            margin-bottom: var(--form-label-gutter);
+            color: var(--font-color-default);
+        }
+        label.required::after { content: "*"; color: var(--brand-danger); padding-left: 0.25rem; }
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: var(--form-input-padding-y) var(--form-input-padding-x);
+            font-size: var(--font-size-default);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-base);
+            color: var(--font-color-default);
+            background-color: var(--color-white);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--form-input-border-radius);
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .form-control:hover { border-color: var(--brand-primary); }
+        .form-control:focus { outline: none; border-color: var(--brand-primary); box-shadow: 0 0 0 3px var(--focus-color-default); }
+        .form-control::placeholder { color: var(--font-color-detail); }
+        .form-control.error { border-color: var(--brand-danger-500); }
+        .form-error { font-size: var(--font-size-small); color: var(--brand-danger-700); margin-top: var(--spacing-xs); }
+        textarea.form-control { min-height: 120px; resize: vertical; }
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23505053' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right var(--spacing-md) center;
+            background-size: 16px 12px;
+            padding-right: 40px;
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--btn-padding);
+            font-size: var(--btn-font-size);
+            font-weight: var(--btn-font-weight);
+            font-family: var(--font-family-base);
+            border-radius: var(--border-radius-default);
+            border: var(--btn-border-width) solid transparent;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            line-height: 1.4;
+        }
+        .btn:focus { box-shadow: 0 0 0 4px var(--focus-color-default); outline: none; }
+        .btn-primary { color: var(--color-white); background-color: var(--brand-primary); border-color: var(--brand-primary); }
+        .btn-primary:hover { background-color: var(--brand-primary-700); border-color: var(--brand-primary-700); }
+        .btn-secondary { color: var(--brand-primary); background-color: var(--color-white); border-color: var(--brand-primary); }
+        .btn-secondary:hover { color: var(--color-white); background-color: var(--brand-primary); }
+        .btn-default { color: var(--font-color-default); background-color: var(--color-white); border-color: var(--font-color-default); }
+        .btn-default:hover { background-color: var(--brand-gray-200); }
+        .btn-success { color: var(--color-white); background-color: var(--brand-success-700); border-color: var(--brand-success-700); }
+        .btn-success:hover { background-color: #2e7a4f; border-color: #2e7a4f; }
+        .btn-danger { color: var(--color-white); background-color: var(--brand-danger); border-color: var(--brand-danger); }
+        .btn-danger:hover { background-color: var(--brand-danger-700); border-color: var(--brand-danger-700); }
+        .btn-sm { padding: 0.5rem 0.75rem; font-size: var(--font-size-default); }
+
+        /* ============================================================
+           DATA TABLE
+           ============================================================ */
+        .table-container {
+            background: var(--color-white);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table thead th {
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--font-color-detail);
+            padding: var(--spacing-md) var(--spacing-md);
+            border-bottom: 2px solid var(--border-color-default);
+            text-align: left;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            background: #fafafa;
+        }
+        .data-table thead th:hover { color: var(--brand-primary); }
+        .data-table thead th .sort-icon { font-size: 10px; margin-left: 4px; opacity: 0.5; }
+        .data-table tbody td {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border-color-default);
+            font-size: var(--font-size-default);
+            vertical-align: middle;
+        }
+        .data-table tbody tr:hover { background: #f8f9fa; }
+        .data-table tbody tr:last-child td { border-bottom: none; }
+        .data-table .filing-id-link { color: var(--link-color); font-weight: 600; cursor: pointer; }
+        .data-table .filing-id-link:hover { text-decoration: underline; }
+        .data-table .actions-cell { white-space: nowrap; display: flex; gap: var(--spacing-sm); }
+
+        /* ============================================================
+           STATUS BADGES
+           ============================================================ */
+        .status-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .status-badge.pending-review { background: #e0ecff; color: var(--brand-primary); }
+        .status-badge.in-review { background: var(--brand-primary); color: var(--color-white); }
+        .status-badge.approved { background: #e8f7ee; color: var(--brand-success-700); }
+        .status-badge.rejected { background: var(--brand-danger-100); color: var(--brand-danger-700); }
+
+        /* ============================================================
+           PAGINATION
+           ============================================================ */
+        .pagination-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 2px;
+            padding: var(--spacing-md);
+            font-size: var(--font-size-small);
+            color: var(--font-color-detail);
+            border-top: 1px solid var(--border-color-default);
+            background: var(--color-white);
+        }
+        .pagination-bar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--font-color-detail);
+            font-size: 13px;
+            padding: 2px 4px;
+            line-height: 1;
+        }
+        .pagination-bar button:hover { color: var(--brand-primary); }
+        .pagination-bar span { margin: 0 4px; }
+
+        /* ============================================================
+           EMPTY STATE
+           ============================================================ */
+        .empty-state {
+            text-align: center;
+            padding: 60px var(--spacing-xl);
+            color: var(--font-color-detail);
+        }
+        .empty-state .empty-icon { font-size: 48px; margin-bottom: var(--spacing-lg); opacity: 0.35; }
+        .empty-state p { font-size: var(--font-size-large); }
+
+        /* ============================================================
+           DETAIL VIEW — THREE COLUMN LAYOUT
+           ============================================================ */
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr 300px;
+            min-height: calc(100vh - 112px);
+        }
+
+        /* Left Sidebar */
+        .detail-sidebar {
+            background: var(--color-white);
+            border-right: 1px solid var(--border-color-default);
+            padding-top: var(--spacing-md);
+        }
+        .sidebar-back {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-weight: 600;
+            color: var(--brand-primary);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color-default);
+            margin-bottom: var(--spacing-md);
+        }
+        .sidebar-back:hover { background: #f0f4ff; }
+        .sidebar-title {
+            padding: var(--spacing-sm) var(--spacing-xl);
+            font-size: var(--font-size-small);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--font-color-detail);
+        }
+        .sidebar-nav { list-style: none; }
+        .sidebar-nav .nav-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-xl);
+            cursor: pointer;
+            color: var(--font-color-default);
+            border-left: 3px solid transparent;
+            font-size: var(--font-size-default);
+            transition: all 0.15s;
+        }
+        .sidebar-nav .nav-item:hover { background: #f8f9fa; }
+        .sidebar-nav .nav-item.active {
+            background: #e8f0fe;
+            border-left-color: var(--brand-primary);
+            color: var(--brand-primary);
+            font-weight: 600;
+        }
+        .sidebar-nav .nav-item i { width: 20px; text-align: center; font-size: 14px; }
+
+        /* Center Content */
+        .detail-content {
+            padding: var(--spacing-xl) var(--spacing-xxl);
+            overflow-y: auto;
+            background: var(--bg-color);
+        }
+        .detail-content .detail-page-title {
+            font-size: var(--font-size-h2);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        /* Detail Tabs */
+        .detail-tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--border-color-default);
+            margin-bottom: var(--spacing-xl);
+        }
+        .detail-tab {
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            color: var(--font-color-detail);
+        }
+        .detail-tab.active { color: var(--brand-primary); border-bottom-color: var(--brand-primary); }
+
+        /* Review Sections */
+        .review-section { margin-bottom: var(--spacing-xl); }
+        .review-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: var(--border-width-md) solid var(--brand-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        .review-section-header h3 {
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .review-section-header h3 i { font-size: 16px; color: var(--brand-primary); }
+        .review-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .review-row .review-label {
+            font-weight: 600;
+            color: var(--font-color-detail);
+            font-size: var(--font-size-small);
+        }
+        .review-row .review-value { color: var(--font-color-default); }
+
+        /* Highlighted Transaction Type Box */
+        .review-highlight {
+            border: 2px solid var(--brand-warning);
+            background: #fef9e7;
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--brand-warning);
+            color: #000;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+        .review-highlight h4 { margin-bottom: var(--spacing-md); }
+
+        /* Right Sidebar — Reviewer Actions */
+        .detail-actions {
+            background: var(--color-white);
+            border-left: 1px solid var(--border-color-default);
+            padding: var(--spacing-xl);
+            overflow-y: auto;
+        }
+        .reviewer-actions { margin-bottom: var(--spacing-xl); }
+        .reviewer-actions h3 { margin-bottom: var(--spacing-lg); }
+        .btn-approve {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+        .btn-reject {
+            width: 100%;
+            justify-content: center;
+        }
+        .actions-divider {
+            border: none;
+            border-top: 1px solid var(--border-color-default);
+            margin: var(--spacing-xl) 0;
+        }
+        .detail-actions h4 {
+            font-size: var(--font-size-default);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--border-color-default);
+        }
+        .detail-actions .text-muted {
+            color: var(--font-color-detail);
+            font-size: var(--font-size-small);
+        }
+
+        /* Fee rows in sidebar */
+        .fee-summary {
+            background: #f8f9fa;
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        .fee-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+        }
+        .fee-row.total {
+            border-top: var(--border-width-md) solid var(--font-color-default);
+            margin-top: var(--spacing-sm);
+            padding-top: var(--spacing-md);
+            font-weight: 700;
+            font-size: var(--font-size-large);
+        }
+
+        /* Payment status indicator */
+        .payment-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: var(--font-size-small);
+        }
+        .payment-status.paid { background: #e8f7ee; color: var(--brand-success-700); }
+        .payment-status.pending { background: #fef9e7; color: #b8860b; }
+        .payment-status.not-received { background: var(--brand-danger-100); color: var(--brand-danger-700); }
+
+        /* ============================================================
+           MODALS
+           ============================================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: var(--color-white);
+            border-radius: var(--border-radius-md);
+            max-width: 560px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-md);
+            border-bottom: 1px solid var(--border-color-default);
+        }
+        .modal-header h2 { margin-bottom: 0; font-size: var(--font-size-h3); }
+        .modal-header .close-btn {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--font-color-detail);
+            padding: var(--spacing-xs);
+        }
+        .modal-body { padding: var(--spacing-xl); }
+        .modal-footer {
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-top: 1px solid var(--border-color-default);
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: flex-end;
+        }
+
+        /* Alert boxes (for modals) */
+        .alert-info {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-default);
+            background: #e8f0fe;
+            border: 1px solid #b0c4e8;
+            margin-bottom: var(--spacing-xl);
+        }
+        .alert-info .alert-icon { color: var(--brand-primary); font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+        .alert-warning {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-default);
+            background: #fef9e7;
+            border: 1px solid #f0d86e;
+            margin-bottom: var(--spacing-xl);
+        }
+        .alert-warning .alert-icon { color: #b8860b; font-size: 20px; flex-shrink: 0; }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            top: 120px;
+            right: 24px;
+            z-index: 2000;
+            background: var(--color-white);
+            border: 1px solid var(--border-color-default);
+            border-left: 4px solid var(--brand-success-700);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md) var(--spacing-xl);
+            box-shadow: var(--box-shadow-default);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            font-weight: 500;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+        .toast.show { transform: translateX(0); }
+        .toast.toast-danger { border-left-color: var(--brand-danger); }
+        .toast i { font-size: 18px; }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1200px) {
+            .detail-layout { grid-template-columns: 220px 1fr 260px; }
+        }
+        @media (max-width: 992px) {
+            .detail-layout { grid-template-columns: 1fr; }
+            .detail-sidebar { display: none; }
+            .detail-actions {
+                border-left: none;
+                border-top: 1px solid var(--border-color-default);
+            }
+            .stat-cards { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .stat-cards { grid-template-columns: 1fr 1fr; }
+            .filter-bar { flex-wrap: wrap; }
+            .filter-bar .search-input { min-width: 100%; }
+            .review-row { grid-template-columns: 1fr; }
+            .site-header nav a span.nav-label { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         AZ STATE SLIVER BAR
+         ============================================================ -->
+    <div class="az-sliver">
+        <span class="az-logo">
+            <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_sliver)"><path d="M30.9274 16.3271L30.9219 16.323L28.7159 14.9052C28.6553 14.8665 28.5796 14.8583 28.5122 14.8831L24.857 16.24C24.7827 16.2677 24.7001 16.2594 24.6341 16.2166L22.8505 15.3695C22.589 15.2452 22.1707 15.0282 21.9216 14.8817C21.6518 14.7228 21.3862 14.557 21.1303 14.3774L18.4948 12.5258L16.4264 11.0722C16.2957 10.9906 16.1291 10.9948 16.0025 11.0818L11.1349 14.4741C11.0028 14.5598 10.7606 14.4575 10.3491 14.2199C9.66926 13.8302 8.78987 13.4806 8.60822 13.4267C8.31371 13.3383 7.91874 13.3521 7.04623 13.7791C6.66089 13.9684 4.79752 15.0255 2.83644 16.1488C2.51303 16.334 0.418453 17.5527 0.0551366 17.7642C0.0207316 17.7835 0.00146484 17.8194 0.00146484 17.8581V19.9584C0.00146484 19.9805 0.0193554 19.9985 0.0413746 19.9985H36.0015V17.5624C36.0015 17.532 35.9753 17.5085 35.945 17.5113C33.6014 17.7199 31.6802 16.732 30.9288 16.3257L30.9274 16.3271Z" fill="#369992"/><path d="M36 12.6593C36 12.184 35.989 12.1743 35.5252 12.1743C34.8385 12.1743 29.2566 12.1743 27.4029 12.1743C27.301 12.1743 27.1992 12.1812 27.1001 12.166C27.0437 12.1577 26.9666 12.1246 26.9474 12.0803C26.9322 12.0458 26.979 11.967 27.0189 11.927C27.2336 11.7128 27.4524 11.5014 27.6726 11.2927C30.2021 8.90361 32.7302 6.51449 35.2651 4.13091C35.4468 3.95957 35.5293 3.78408 35.5266 3.53121C35.5142 2.50731 35.5225 1.48202 35.5211 0.458117C35.5211 0.0214717 35.5197 0.0214717 35.0697 0.0214717C29.719 0.0214717 24.3684 0.0214717 19.0177 0.0214717C18.6159 0.0214717 18.5938 0.0408168 18.5925 0.438772C18.5897 1.67547 18.5911 2.91217 18.5925 4.14887C18.5925 4.61454 18.5938 4.61454 19.0466 4.61454C21.5513 4.61454 24.056 4.61453 26.5606 4.61592C26.6886 4.61592 26.9735 4.61592 27.1015 4.62973C27.107 4.65737 26.3253 5.33721 26.0033 5.63291C24.0009 7.47345 21.9972 9.31261 19.9921 11.1504C17.8369 6.78947 15.1052 1.25403 14.6318 0.284011C14.4776 -0.032418 14.2519 0.00350849 13.5886 0.00212671C11.6647 -0.00201866 10.6215 -0.00201866 9.01411 0.02009C8.41271 0.0283807 8.12233 -0.0268909 7.9737 0.285393C7.63515 0.998396 0.964716 14.486 0.429374 15.5749C0.300011 15.8374 0.132115 16.1787 0 16.4537C0 16.4537 0.0027524 16.4537 0.0041286 16.4537C0.144501 16.4578 0.280745 16.4205 0.40185 16.3473C1.37069 15.7628 6.03463 12.9481 6.52456 12.709C7.25395 12.3512 7.80443 12.1923 8.30674 12.1923C8.52831 12.1923 8.73887 12.2227 8.94942 12.2862C9.19714 12.3608 10.1219 12.7256 10.8857 13.1567C10.9064 13.1678 10.9298 13.1664 10.949 13.154L15.3254 10.1044C15.6873 9.85151 16.1346 9.76308 16.5818 9.86257C16.7539 9.90126 16.9162 9.97449 17.0662 10.0685L17.0814 10.0781L19.392 11.7017L20.7297 12.6413L21.8114 13.4013C22.2683 13.7233 22.7527 14.0052 23.2578 14.2442L24.817 14.9849L28.0827 13.773C28.2451 13.7122 28.4144 13.6818 28.5878 13.6818C28.8672 13.6818 29.1383 13.762 29.3736 13.9126L31.5631 15.3192C33.3646 16.4551 35.5624 16.462 35.9505 16.4537C35.978 16.4537 36.0014 16.4302 36.0014 16.4026C36.0014 16.0364 36.0014 13.7855 36.0014 12.6593H36ZM12.9762 10.0602C11.8436 10.0643 10.711 10.0643 9.57835 10.0602C9.30448 10.0602 9.26457 9.97035 9.38568 9.7161C9.91414 8.60514 10.4398 7.4928 10.9669 6.38046C11.0371 6.23261 11.1692 5.95763 11.2697 5.76004C11.3591 5.90374 12.5881 8.53605 13.1592 9.75893C13.2721 10.0007 13.2335 10.0588 12.9748 10.0602H12.9762Z" fill="#369992"/><path d="M30.9272 16.3271L30.9217 16.323L28.7156 14.9052C28.6551 14.8665 28.5794 14.8583 28.5119 14.8831L24.8568 16.24C24.7824 16.2677 24.6999 16.2594 24.6338 16.2166L22.8503 15.3695C22.5888 15.2452 22.1704 15.0282 21.9213 14.8817C21.6516 14.7228 21.386 14.557 21.13 14.3774L18.4946 12.5258L16.4262 11.0722C16.2954 10.9906 16.1289 10.9948 16.0023 11.0818L11.1347 14.4741C11.0026 14.5598 10.7603 14.4575 10.3489 14.2199C9.66902 13.8302 8.78963 13.4806 8.60797 13.4267C8.31347 13.3383 7.9185 13.3521 7.04599 13.7791C6.66065 13.9684 4.79728 15.0255 2.83619 16.1488C2.51278 16.334 0.418209 17.5541 0.0548925 17.7642C0.0204875 17.7835 0.0012207 17.8194 0.0012207 17.8581V19.9584C0.0012207 19.9805 0.0191113 19.9985 0.0411305 19.9985H36.0012V17.5624C36.0012 17.532 35.9751 17.5085 35.9448 17.5113C33.6011 17.7199 31.68 16.732 30.9286 16.3257L30.9272 16.3271Z" fill="#CC6C20"/></g><defs><clipPath id="clip0_sliver"><rect width="36" height="20" fill="white"/></clipPath></defs></svg>
+            <span>Official Website of the State of Arizona</span>
+        </span>
+        <div class="sliver-right">
+            <a href="#"><i class="fa-solid fa-arrow-left" style="font-size:11px;"></i> azsos.gov</a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SITE HEADER — Staff Navigation
+         ============================================================ -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-logo">
+                <img class="seal-img" alt="Adrian Fontes - Secretary of State Seal" src="adrian-fontes-logo.png">
+                <span class="brand-name">Arizona Secretary of State</span>
+                <span class="brand-divider">|</span>
+                <span class="brand-module">UCC</span>
+            </div>
+            <nav>
+                <a href="#" class="active-nav" onclick="showView('view-dashboard'); return false;"><i class="fa-solid fa-list-check"></i> <span class="nav-label">Queue</span></a>
+                <a href="#"><i class="fa-solid fa-users"></i> <span class="nav-label">My Team</span></a>
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i> <span class="nav-label">Search</span></a>
+                <a href="#"><i class="fa-solid fa-chart-bar"></i> <span class="nav-label">Reports</span></a>
+                <a href="#"><i class="fa-solid fa-right-from-bracket"></i> <span class="nav-label">Log out</span></a>
+            </nav>
+            <div class="user-avatar" title="Sarah Chen">SC</div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         VIEW: DASHBOARD
+         ============================================================ -->
+    <div id="view-dashboard" class="view">
+        <div class="page-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title" id="dashboard-title">My Queue</h1>
+                    <p class="page-subtitle"><i class="fa-solid fa-user"></i> Welcome, <strong>Sarah Chen</strong></p>
+                </div>
+            </div>
+
+            <!-- Stat Cards (clickable — act as filters) -->
+            <div class="stat-cards">
+                <div class="stat-card active" id="card-myqueue" onclick="switchTab('myqueue')" style="border-left: 4px solid var(--brand-primary);">
+                    <div class="stat-label">Assigned to me</div>
+                    <div class="stat-value" id="stat-assigned" style="color: var(--brand-primary);">0</div>
+                </div>
+                <div class="stat-card" id="card-wholeteam" onclick="switchTab('wholeteam')" style="border-left: 4px solid var(--brand-primary-200);">
+                    <div class="stat-label">Assigned (whole team)</div>
+                    <div class="stat-value" id="stat-wholeteam" style="color: var(--brand-primary-200);">0</div>
+                </div>
+                <div class="stat-card" id="card-unassigned" onclick="switchTab('unassigned')" style="border-left: 4px solid var(--brand-success-700);">
+                    <div class="stat-label">Unassigned</div>
+                    <div class="stat-value" id="stat-unassigned" style="color: var(--brand-success-700);">0</div>
+                </div>
+                <div class="stat-card" id="card-completedme" onclick="switchTab('completedme')">
+                    <div class="stat-label">Completed today by me</div>
+                    <div class="stat-value" id="stat-completedme">0</div>
+                </div>
+                <div class="stat-card" id="card-completedteam" onclick="switchTab('completedteam')">
+                    <div class="stat-label">Completed today (whole team)</div>
+                    <div class="stat-value" id="stat-completedteam">0</div>
+                </div>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="search-input">
+                    <input type="text" class="form-control" placeholder="Search by Filing ID, Filer Name or Email" id="search-input" oninput="renderTable()">
+                </div>
+                <div class="filter-group">
+                    <label>Non-Standard Type</label>
+                    <select class="form-control" id="filter-type" onchange="renderTable()">
+                        <option value="">All Types</option>
+                        <option>Agricultural Lien</option>
+                        <option>Public-Finance Transaction</option>
+                        <option>Manufactured-Home Transaction</option>
+                        <option>Transmitting Utility</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Status</label>
+                    <select class="form-control" id="filter-status" onchange="renderTable()">
+                        <option value="">All Statuses</option>
+                        <option>Pending Review</option>
+                        <option>In Review</option>
+                        <option>Approved</option>
+                        <option>Rejected</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="table-container">
+                <table class="data-table" id="queue-table">
+                    <thead>
+                        <tr>
+                            <th>Filing ID <i class="fa-solid fa-sort sort-icon"></i></th>
+                            <th>Filer Name <i class="fa-solid fa-sort sort-icon"></i></th>
+                            <th>Filer Email <i class="fa-solid fa-sort sort-icon"></i></th>
+                            <th>Filing Type <i class="fa-solid fa-sort sort-icon"></i></th>
+                            <th>Non-Standard Type <i class="fa-solid fa-sort sort-icon"></i></th>
+                            <th>Submitted <i class="fa-solid fa-sort sort-icon"></i></th>
+                            <th>Status <i class="fa-solid fa-sort sort-icon"></i></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="queue-tbody"></tbody>
+                </table>
+
+                <!-- Empty State -->
+                <div class="empty-state hidden" id="empty-state">
+                    <div class="empty-icon"><i class="fa-solid fa-sun"></i></div>
+                    <p>Nothing in your queue</p>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination-bar" id="pagination-bar">
+                    <button title="First"><i class="fa-solid fa-angles-left"></i></button>
+                    <button title="Previous"><i class="fa-solid fa-angle-left"></i></button>
+                    <span id="pagination-text">1 to 10 of 10</span>
+                    <button title="Next"><i class="fa-solid fa-angle-right"></i></button>
+                    <button title="Last"><i class="fa-solid fa-angles-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         VIEW: DETAIL / REVIEW
+         ============================================================ -->
+    <div id="view-detail" class="view hidden">
+        <div class="detail-layout">
+
+            <!-- LEFT SIDEBAR -->
+            <aside class="detail-sidebar">
+                <div class="sidebar-back" onclick="backToDashboard()">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Queue
+                </div>
+                <div class="sidebar-title">Filing Navigation</div>
+                <ul class="sidebar-nav" id="sidebar-nav">
+                    <li class="nav-item active" onclick="scrollToSection('filing-summary', this)"><i class="fa-solid fa-file-lines"></i> Filing Summary</li>
+                    <li class="nav-item" onclick="scrollToSection('filer-info', this)"><i class="fa-solid fa-user"></i> Filer Information</li>
+                    <li class="nav-item" onclick="scrollToSection('debtor-info', this)"><i class="fa-solid fa-building"></i> Debtor Information</li>
+                    <li class="nav-item" onclick="scrollToSection('secured-party', this)"><i class="fa-solid fa-shield-halved"></i> Secured Party</li>
+                    <li class="nav-item" onclick="scrollToSection('collateral-filing', this)"><i class="fa-solid fa-boxes-stacked"></i> Collateral & Filing Details</li>
+                    <li class="nav-item" onclick="scrollToSection('payment-info', this)"><i class="fa-solid fa-credit-card"></i> Payment Information</li>
+                </ul>
+            </aside>
+
+            <!-- CENTER CONTENT -->
+            <main class="detail-content" id="detail-content">
+                <h1 class="detail-page-title" id="detail-title">UCC-1 Filing Review</h1>
+
+                <!-- Tabs -->
+                <div class="detail-tabs">
+                    <div class="detail-tab active">Filing Details</div>
+                    <div class="detail-tab">Documents</div>
+                </div>
+
+                <!-- Filing Summary -->
+                <section id="section-filing-summary" class="review-section">
+                    <div class="review-section-header"><h3><i class="fa-solid fa-file-lines"></i> Filing Summary</h3></div>
+                    <div id="detail-filing-summary"></div>
+                </section>
+
+                <!-- Filer Information -->
+                <section id="section-filer-info" class="review-section">
+                    <div class="review-section-header"><h3><i class="fa-solid fa-user"></i> Filer Information</h3></div>
+                    <div id="detail-filer-info"></div>
+                </section>
+
+                <!-- Debtor Information -->
+                <section id="section-debtor-info" class="review-section">
+                    <div class="review-section-header"><h3><i class="fa-solid fa-building"></i> Debtor Information</h3></div>
+                    <div id="detail-debtor-info"></div>
+                </section>
+
+                <!-- Secured Party -->
+                <section id="section-secured-party" class="review-section">
+                    <div class="review-section-header"><h3><i class="fa-solid fa-shield-halved"></i> Secured Party Information</h3></div>
+                    <div id="detail-secured-party"></div>
+                </section>
+
+                <!-- Collateral & Filing Details -->
+                <section id="section-collateral-filing" class="review-section">
+                    <div class="review-section-header"><h3><i class="fa-solid fa-boxes-stacked"></i> Collateral & Filing Details</h3></div>
+                    <div id="detail-collateral-filing"></div>
+                </section>
+
+                <!-- Payment Information -->
+                <section id="section-payment-info" class="review-section">
+                    <div class="review-section-header"><h3><i class="fa-solid fa-credit-card"></i> Payment Information</h3></div>
+                    <div id="detail-payment-info"></div>
+                </section>
+            </main>
+
+            <!-- RIGHT SIDEBAR -->
+            <aside class="detail-actions" id="detail-actions-panel">
+                <div class="reviewer-actions" id="reviewer-actions-buttons">
+                    <h3>Reviewer Actions</h3>
+                    <button class="btn btn-success btn-approve" onclick="showModal('modal-approve')">
+                        <i class="fa-solid fa-check"></i> Approve Filing
+                    </button>
+                    <button class="btn btn-danger btn-reject" onclick="showModal('modal-reject')">
+                        <i class="fa-solid fa-xmark"></i> Reject Filing
+                    </button>
+                </div>
+
+                <hr class="actions-divider">
+
+                <h4>Review History</h4>
+                <p class="text-muted" id="review-history-text">No review history yet.</p>
+
+                <hr class="actions-divider">
+
+                <h4>Current Fees</h4>
+                <div id="sidebar-fees">
+                    <div class="fee-row"><span>Filing Fee</span><span id="sidebar-fee-amount">$9.00</span></div>
+                    <div class="fee-row total"><span>Total Due</span><span id="sidebar-fee-total">$9.00</span></div>
+                </div>
+
+                <hr class="actions-divider">
+
+                <h4>Payment Status</h4>
+                <div id="sidebar-payment-status"></div>
+
+                <hr class="actions-divider">
+
+                <h4>Previous Paid Fees</h4>
+                <p class="text-muted">No items found</p>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+         MODAL: APPROVE FILING
+         ============================================================ -->
+    <div class="modal-overlay" id="modal-approve">
+        <div class="modal" style="max-width: 520px;">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('modal-approve')">&times;</button>
+                <h2>Filing Approval — Confirmation</h2>
+            </div>
+            <div class="modal-body">
+                <h3 style="margin-bottom: var(--spacing-md);">Approve UCC-1 Filing</h3>
+                <div class="alert-info">
+                    <i class="fa-solid fa-circle-check alert-icon" style="color: var(--brand-success-700);"></i>
+                    <div>
+                        You are approving Filing <strong id="approve-filing-id"></strong>.
+                        The filer will be notified via email about the approval. This action will
+                        change the filing status to Approved.
+                    </div>
+                </div>
+                <div class="fee-summary">
+                    <h4 style="margin-bottom: var(--spacing-sm);">Fees</h4>
+                    <div class="fee-row">
+                        <span>Amount Due from Filer</span>
+                        <span id="approve-fee">$9.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('modal-approve')">Go Back to Review</button>
+                <button class="btn btn-success" onclick="approveFiling()">
+                    <i class="fa-solid fa-check"></i> Approve Filing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         MODAL: REJECT FILING
+         ============================================================ -->
+    <div class="modal-overlay" id="modal-reject">
+        <div class="modal" style="max-width: 560px;">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal('modal-reject')">&times;</button>
+                <h2>Submission Rejection</h2>
+            </div>
+            <div class="modal-body">
+                <h3 style="margin-bottom: var(--spacing-md);">Reject UCC-1 Filing</h3>
+                <div class="alert-warning">
+                    <i class="fa-solid fa-triangle-exclamation alert-icon"></i>
+                    <div>
+                        You are rejecting Filing <strong id="reject-filing-id"></strong>.
+                        The filer will be notified via email with the reason for rejection. This action
+                        will change the filing status to Rejected.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="required">Reason</label>
+                    <select class="form-control" id="reject-reason">
+                        <option value="">Select a reason...</option>
+                        <option>Invalid Filing Type</option>
+                        <option>Incomplete Information</option>
+                        <option>Invalid Collateral Description</option>
+                        <option>Duplicate Filing</option>
+                        <option>Non-Compliant Documentation</option>
+                        <option>Other</option>
+                    </select>
+                    <div class="form-error hidden" id="reject-reason-error">Please select a reason for rejection.</div>
+                </div>
+                <div class="form-group">
+                    <label class="required">Comment</label>
+                    <textarea class="form-control" id="reject-comment" placeholder="Provide detailed explanation for the rejection. This will be sent to the filer." rows="4"></textarea>
+                    <div class="form-error hidden" id="reject-comment-error">Please provide a comment.</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('modal-reject')">Cancel</button>
+                <button class="btn btn-danger" onclick="rejectFiling()">
+                    <i class="fa-solid fa-xmark"></i> Reject Filing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check" style="color: var(--brand-success-700);" id="toast-icon"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+    <script>
+        // ============================================================
+        // MOCK DATA
+        // ============================================================
+        const MOCK_FILINGS = [
+            {
+                id: 'UCC-2026-0001',
+                filerName: 'Brynn Baringer',
+                filerEmail: 'brynn.baringer@example.com',
+                filerPhone: '(602) 555-0142',
+                filerReference: 'REF-AGL-2026-001',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Agricultural Lien',
+                alternativeDesignation: '',
+                submittedDate: '03/15/2026',
+                status: 'Pending Review',
+                assignedTo: 'me',
+                ackAddress: { street: '123 W Main St', city: 'Phoenix', state: 'AZ', zip: '85003' },
+                debtor: {
+                    entityType: 'Organization',
+                    orgName: 'Desert Valley Farms LLC',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '456 E Camelback Rd', city: 'Scottsdale', state: 'AZ', zip: '85251', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Organization',
+                    orgName: 'Arizona Agricultural Credit Union',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '789 N Central Ave', city: 'Phoenix', state: 'AZ', zip: '85004', country: 'USA' }
+                },
+                collateralDescription: 'All crops, farm products, and agricultural equipment now owned or hereafter acquired, located on the property at 456 E Camelback Rd, Scottsdale, AZ 85251. Includes irrigation systems, tractors, and harvesting machinery.',
+                attachedDocuments: ['Lien_Agreement_2026.pdf', 'Property_Description.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'AGL-DV-2026',
+                feeAmount: '$9.00',
+                paymentMethod: 'Credit Card',
+                paymentStatus: 'Paid'
+            },
+            {
+                id: 'UCC-2026-0005',
+                filerName: 'Hollis Helm',
+                filerEmail: 'hollis.helm@example.com',
+                filerPhone: '(480) 555-0298',
+                filerReference: 'REF-PFT-2026-005',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Public-Finance Transaction',
+                alternativeDesignation: '',
+                submittedDate: '03/18/2026',
+                status: 'Pending Review',
+                assignedTo: 'me',
+                ackAddress: { street: '200 W Washington St', city: 'Phoenix', state: 'AZ', zip: '85003' },
+                debtor: {
+                    entityType: 'Organization',
+                    orgName: 'City of Tempe Municipal Authority',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '31 E 5th St', city: 'Tempe', state: 'AZ', zip: '85281', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Organization',
+                    orgName: 'Western Capital Finance Group',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '100 N 1st Ave', city: 'Phoenix', state: 'AZ', zip: '85003', country: 'USA' }
+                },
+                collateralDescription: 'Revenue bonds and pledged revenues from municipal water utility operations, Series 2026A, in aggregate principal amount not to exceed $15,000,000.',
+                attachedDocuments: ['Bond_Indenture.pdf', 'Revenue_Pledge_Agreement.pdf', 'Municipal_Resolution.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'PFT-TEMPE-2026',
+                feeAmount: '$9.00',
+                paymentMethod: 'Pre-Authorized Account',
+                paymentStatus: 'Paid'
+            },
+            {
+                id: 'UCC-2026-0009',
+                filerName: 'Hadley Hebert',
+                filerEmail: 'hadley.hebert@example.com',
+                filerPhone: '(520) 555-0177',
+                filerReference: 'REF-MHT-2026-009',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Manufactured-Home Transaction',
+                alternativeDesignation: '',
+                submittedDate: '03/20/2026',
+                status: 'Pending Review',
+                assignedTo: 'me',
+                ackAddress: { street: '1550 S Alvernon Way', city: 'Tucson', state: 'AZ', zip: '85711' },
+                debtor: {
+                    entityType: 'Individual',
+                    orgName: '',
+                    firstName: 'Hadley', lastName: 'Hebert', suffix: '',
+                    address: { street: '4420 E Speedway Blvd', city: 'Tucson', state: 'AZ', zip: '85712', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Organization',
+                    orgName: 'Southwest Manufactured Housing Finance',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '2200 E Williams Field Rd', city: 'Gilbert', state: 'AZ', zip: '85295', country: 'USA' }
+                },
+                collateralDescription: '2025 Clayton Homes manufactured home, Serial No. CLH2025-AZ-44892, located at Lot 17, Desert Skies Mobile Home Park, 4420 E Speedway Blvd, Tucson, AZ 85712.',
+                attachedDocuments: ['Manufactured_Home_Title.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'MHT-CLH-44892',
+                feeAmount: '$9.00',
+                paymentMethod: 'Credit Card',
+                paymentStatus: 'Paid'
+            },
+            {
+                id: 'UCC-2026-0012',
+                filerName: 'Leif Larson',
+                filerEmail: 'leif.larson@example.com',
+                filerPhone: '(623) 555-0334',
+                filerReference: 'REF-TU-2026-012',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Transmitting Utility',
+                alternativeDesignation: '',
+                submittedDate: '03/22/2026',
+                status: 'In Review',
+                assignedTo: 'me',
+                ackAddress: { street: '400 N 5th St', city: 'Phoenix', state: 'AZ', zip: '85004' },
+                debtor: {
+                    entityType: 'Organization',
+                    orgName: 'Arizona Power & Light Co.',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '400 N 5th St, Suite 200', city: 'Phoenix', state: 'AZ', zip: '85004', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Organization',
+                    orgName: 'National Grid Finance LLC',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '1 MetroTech Center', city: 'Brooklyn', state: 'NY', zip: '11201', country: 'USA' }
+                },
+                collateralDescription: 'All electric transmission and distribution equipment, substations, transformers, power lines, poles, and related fixtures located in Maricopa County, AZ, together with all accounts, revenues, and proceeds therefrom.',
+                attachedDocuments: ['Utility_Security_Agreement.pdf', 'Equipment_Schedule.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'TU-APL-2026',
+                feeAmount: '$9.00',
+                paymentMethod: 'Pre-Authorized Account',
+                paymentStatus: 'Paid'
+            },
+            {
+                id: 'UCC-2026-0015',
+                filerName: 'Willow Weathers',
+                filerEmail: 'willow.weathers@example.com',
+                filerPhone: '(928) 555-0456',
+                filerReference: 'REF-AGL-2026-015',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Agricultural Lien',
+                alternativeDesignation: '',
+                submittedDate: '03/24/2026',
+                status: 'In Review',
+                assignedTo: 'me',
+                ackAddress: { street: '10 S Beaver St', city: 'Flagstaff', state: 'AZ', zip: '86001' },
+                debtor: {
+                    entityType: 'Organization',
+                    orgName: 'Northern Arizona Cattle Ranch Inc.',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '5500 N Highway 89', city: 'Flagstaff', state: 'AZ', zip: '86004', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Individual',
+                    orgName: '',
+                    firstName: 'James', lastName: 'Weatherford', suffix: 'Jr.',
+                    address: { street: '220 W Aspen Ave', city: 'Flagstaff', state: 'AZ', zip: '86001', country: 'USA' }
+                },
+                collateralDescription: 'All livestock (cattle), feed, and ranch equipment including but not limited to: 450 head of Hereford cattle, all feed stores, and all ranch vehicles and machinery on the property.',
+                attachedDocuments: ['Ranch_Lien_Agreement.pdf', 'Livestock_Inventory.pdf', 'Equipment_List.xlsx'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'AGL-NAC-2026',
+                feeAmount: '$9.00',
+                paymentMethod: 'Credit Card',
+                paymentStatus: 'Pending'
+            },
+            {
+                id: 'UCC-2026-0018',
+                filerName: 'Gentry Cobb',
+                filerEmail: 'gentry.cobb@example.com',
+                filerPhone: '(602) 555-0521',
+                filerReference: 'REF-PFT-2026-018',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Public-Finance Transaction',
+                alternativeDesignation: '',
+                submittedDate: '03/10/2026',
+                status: 'Approved',
+                assignedTo: 'completed',
+                ackAddress: { street: '301 W Jefferson St', city: 'Phoenix', state: 'AZ', zip: '85003' },
+                debtor: {
+                    entityType: 'Organization',
+                    orgName: 'Maricopa County Flood Control District',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '301 W Jefferson St', city: 'Phoenix', state: 'AZ', zip: '85003', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Organization',
+                    orgName: 'Wells Fargo Municipal Finance',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '420 Montgomery St', city: 'San Francisco', state: 'CA', zip: '94104', country: 'USA' }
+                },
+                collateralDescription: 'Tax levy revenues pledged for flood control improvement bonds, Series 2026B.',
+                attachedDocuments: ['Bond_Resolution.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'PFT-MCFCD-2026',
+                feeAmount: '$9.00',
+                paymentMethod: 'Pre-Authorized Account',
+                paymentStatus: 'Paid'
+            },
+            {
+                id: 'UCC-2026-0021',
+                filerName: 'Larkin Landry',
+                filerEmail: 'larkin.landry@example.com',
+                filerPhone: '(480) 555-0698',
+                filerReference: 'REF-MHT-2026-021',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Manufactured-Home Transaction',
+                alternativeDesignation: '',
+                submittedDate: '03/12/2026',
+                status: 'Approved',
+                assignedTo: 'completed',
+                ackAddress: { street: '1660 S Alma School Rd', city: 'Mesa', state: 'AZ', zip: '85210' },
+                debtor: {
+                    entityType: 'Individual',
+                    orgName: '',
+                    firstName: 'Larkin', lastName: 'Landry', suffix: '',
+                    address: { street: '3800 E Main St, Lot 42', city: 'Mesa', state: 'AZ', zip: '85205', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Organization',
+                    orgName: 'Vanderbilt Mortgage & Finance',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '500 Alcoa Trail', city: 'Maryville', state: 'TN', zip: '37804', country: 'USA' }
+                },
+                collateralDescription: '2024 Champion Homes manufactured home, Serial No. CH2024-MZ-33201.',
+                attachedDocuments: ['Home_Title.pdf', 'Loan_Agreement.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'MHT-CH-33201',
+                feeAmount: '$9.00',
+                paymentMethod: 'Credit Card',
+                paymentStatus: 'Paid'
+            },
+            {
+                id: 'UCC-2026-0024',
+                filerName: 'Ellis Estrada',
+                filerEmail: 'ellis.estrada@example.com',
+                filerPhone: '(520) 555-0813',
+                filerReference: 'REF-TU-2026-024',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Transmitting Utility',
+                alternativeDesignation: '',
+                submittedDate: '03/08/2026',
+                status: 'Rejected',
+                assignedTo: 'completed',
+                rejectionReason: 'Incomplete Information',
+                rejectionComment: 'The collateral description does not adequately identify the specific utility assets being pledged. Please provide detailed equipment serial numbers and location data for the natural gas distribution infrastructure.',
+                ackAddress: { street: '220 W 6th St', city: 'Tucson', state: 'AZ', zip: '85701' },
+                debtor: {
+                    entityType: 'Organization',
+                    orgName: 'Tucson Gas Distribution Corp.',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '220 W 6th St', city: 'Tucson', state: 'AZ', zip: '85701', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Organization',
+                    orgName: 'Energy Capital Partners',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '51 John F Kennedy Pkwy', city: 'Short Hills', state: 'NJ', zip: '07078', country: 'USA' }
+                },
+                collateralDescription: 'Natural gas distribution infrastructure and equipment.',
+                attachedDocuments: ['Security_Agreement_Draft.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'TU-TGD-2026',
+                feeAmount: '$9.00',
+                paymentMethod: 'Credit Card',
+                paymentStatus: 'Paid'
+            },
+            {
+                id: 'UCC-2026-0027',
+                filerName: 'Bronte Black',
+                filerEmail: 'bronte.black@example.com',
+                filerPhone: '(928) 555-0974',
+                filerReference: 'REF-AGL-2026-027',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Agricultural Lien',
+                alternativeDesignation: '',
+                submittedDate: '03/28/2026',
+                status: 'Pending Review',
+                assignedTo: 'unassigned',
+                ackAddress: { street: '110 E Gurley St', city: 'Prescott', state: 'AZ', zip: '86301' },
+                debtor: {
+                    entityType: 'Organization',
+                    orgName: 'Prescott Valley Vineyards LLC',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '8900 E Highway 69', city: 'Prescott Valley', state: 'AZ', zip: '86314', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Individual',
+                    orgName: '',
+                    firstName: 'Margaret', lastName: 'Thornton', suffix: '',
+                    address: { street: '555 Montezuma St', city: 'Prescott', state: 'AZ', zip: '86301', country: 'USA' }
+                },
+                collateralDescription: 'All grape vines, harvested grapes, wine inventory, and winemaking equipment located at 8900 E Highway 69, Prescott Valley, AZ.',
+                attachedDocuments: ['Vineyard_Lien.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'AGL-PVV-2026',
+                feeAmount: '$9.00',
+                paymentMethod: 'Credit Card',
+                paymentStatus: 'Paid'
+            },
+            {
+                id: 'UCC-2026-0030',
+                filerName: 'Indigo Irwin',
+                filerEmail: 'indigo.irwin@example.com',
+                filerPhone: '(602) 555-1055',
+                filerReference: 'REF-TU-2026-030',
+                filingType: 'Non-Standard',
+                nonStandardType: 'Transmitting Utility',
+                alternativeDesignation: '',
+                submittedDate: '03/30/2026',
+                status: 'Pending Review',
+                assignedTo: 'unassigned',
+                ackAddress: { street: '2929 N Central Ave', city: 'Phoenix', state: 'AZ', zip: '85012' },
+                debtor: {
+                    entityType: 'Organization',
+                    orgName: 'SunBelt Fiber Optics Inc.',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '2929 N Central Ave, Suite 1500', city: 'Phoenix', state: 'AZ', zip: '85012', country: 'USA' }
+                },
+                securedParty: {
+                    entityType: 'Organization',
+                    orgName: 'Pacific Telecom Capital',
+                    firstName: '', lastName: '', suffix: '',
+                    address: { street: '555 Mission St', city: 'San Francisco', state: 'CA', zip: '94105', country: 'USA' }
+                },
+                collateralDescription: 'All fiber optic cable, conduit, splice closures, optical amplifiers, and related telecommunications equipment deployed within the State of Arizona, together with all easements and rights-of-way.',
+                attachedDocuments: ['Telecom_Security_Agreement.pdf', 'Network_Asset_Schedule.pdf', 'Easement_Summary.pdf'],
+                trust: false,
+                decedent: false,
+                filerReferenceData: 'TU-SBF-2026',
+                feeAmount: '$9.00',
+                paymentMethod: 'Pre-Authorized Account',
+                paymentStatus: 'Not Received'
+            }
+        ];
+
+        // ============================================================
+        // STATE
+        // ============================================================
+        let currentTab = 'myqueue';
+        let currentFilingId = null;
+        let filings = JSON.parse(JSON.stringify(MOCK_FILINGS));
+
+        // ============================================================
+        // VIEW SWITCHING
+        // ============================================================
+        function showView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+            document.getElementById(viewId).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function backToDashboard() {
+            showView('view-dashboard');
+            renderTable();
+            updateStats();
+        }
+
+        // ============================================================
+        // TAB SWITCHING (via clickable stat cards)
+        // ============================================================
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
+            document.getElementById('card-' + tab).classList.add('active');
+
+            // Update page title
+            const titles = {
+                myqueue: 'Assigned to me',
+                wholeteam: 'Assigned (whole team)',
+                unassigned: 'Unassigned',
+                completedme: 'Completed today by me',
+                completedteam: 'Completed today (whole team)'
+            };
+            document.getElementById('dashboard-title').textContent = titles[tab];
+
+            // Clear filters
+            document.getElementById('search-input').value = '';
+            document.getElementById('filter-type').value = '';
+            document.getElementById('filter-status').value = '';
+
+            renderTable();
+        }
+
+        // ============================================================
+        // STATS UPDATE
+        // ============================================================
+        function updateStats() {
+            const myQueue = filings.filter(f => f.assignedTo === 'me');
+            const unassigned = filings.filter(f => f.assignedTo === 'unassigned');
+            const completedByMe = filings.filter(f => f.assignedTo === 'completed');
+            // "Whole team" includes my assignments + other team members (simulated)
+            const wholeTeamAssigned = myQueue.length + 2; // +2 simulated teammates
+
+            document.getElementById('stat-assigned').textContent = myQueue.length;
+            document.getElementById('stat-wholeteam').textContent = wholeTeamAssigned;
+            document.getElementById('stat-unassigned').textContent = unassigned.length;
+            document.getElementById('stat-completedme').textContent = completedByMe.length;
+            document.getElementById('stat-completedteam').textContent = completedByMe.length + 1; // +1 simulated
+        }
+
+        // ============================================================
+        // TABLE RENDERING
+        // ============================================================
+        function getFilteredFilings() {
+            let filtered = filings;
+
+            // Filter by tab
+            if (currentTab === 'myqueue') {
+                filtered = filtered.filter(f => f.assignedTo === 'me');
+            } else if (currentTab === 'wholeteam') {
+                // Whole team = my assignments (in real app, would include all team members)
+                filtered = filtered.filter(f => f.assignedTo === 'me');
+            } else if (currentTab === 'unassigned') {
+                filtered = filtered.filter(f => f.assignedTo === 'unassigned');
+            } else if (currentTab === 'completedme') {
+                filtered = filtered.filter(f => f.assignedTo === 'completed');
+            } else if (currentTab === 'completedteam') {
+                filtered = filtered.filter(f => f.assignedTo === 'completed');
+            }
+
+            // Search filter
+            const search = document.getElementById('search-input').value.toLowerCase();
+            if (search) {
+                filtered = filtered.filter(f =>
+                    f.id.toLowerCase().includes(search) ||
+                    f.filerName.toLowerCase().includes(search) ||
+                    f.filerEmail.toLowerCase().includes(search)
+                );
+            }
+
+            // Type filter
+            const typeFilter = document.getElementById('filter-type').value;
+            if (typeFilter) {
+                filtered = filtered.filter(f => f.nonStandardType === typeFilter);
+            }
+
+            // Status filter
+            const statusFilter = document.getElementById('filter-status').value;
+            if (statusFilter) {
+                filtered = filtered.filter(f => f.status === statusFilter);
+            }
+
+            return filtered;
+        }
+
+        function statusBadge(status) {
+            const cls = {
+                'Pending Review': 'pending-review',
+                'In Review': 'in-review',
+                'Approved': 'approved',
+                'Rejected': 'rejected'
+            }[status] || 'pending-review';
+            return '<span class="status-badge ' + cls + '">' + status + '</span>';
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('queue-tbody');
+            const filtered = getFilteredFilings();
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                document.getElementById('empty-state').classList.remove('hidden');
+                document.getElementById('pagination-bar').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('pagination-bar').style.display = 'flex';
+            document.getElementById('pagination-text').textContent = '1 to ' + filtered.length + ' of ' + filtered.length;
+
+            let html = '';
+            filtered.forEach(f => {
+                let actions = '';
+                if (currentTab === 'unassigned') {
+                    actions = '<button class="btn btn-secondary btn-sm" onclick="assignToMe(\'' + f.id + '\')">Assign to Me</button> ';
+                    actions += '<button class="btn btn-primary btn-sm" onclick="openDetail(\'' + f.id + '\')">Review</button>';
+                } else if (currentTab === 'completedme' || currentTab === 'completedteam') {
+                    actions = '<button class="btn btn-primary btn-sm" onclick="openDetail(\'' + f.id + '\')">View</button>';
+                } else {
+                    actions = '<button class="btn btn-primary btn-sm" onclick="openDetail(\'' + f.id + '\')">Review</button>';
+                }
+
+                html += '<tr>' +
+                    '<td><span class="filing-id-link" onclick="openDetail(\'' + f.id + '\')">' + f.id + '</span></td>' +
+                    '<td>' + f.filerName + '</td>' +
+                    '<td>' + f.filerEmail + '</td>' +
+                    '<td>' + f.filingType + '</td>' +
+                    '<td>' + f.nonStandardType + '</td>' +
+                    '<td>' + f.submittedDate + '</td>' +
+                    '<td>' + statusBadge(f.status) + '</td>' +
+                    '<td><div class="actions-cell">' + actions + '</div></td>' +
+                    '</tr>';
+            });
+            tbody.innerHTML = html;
+        }
+
+        // ============================================================
+        // ASSIGN TO ME
+        // ============================================================
+        function assignToMe(filingId) {
+            const filing = filings.find(f => f.id === filingId);
+            if (filing) {
+                filing.assignedTo = 'me';
+                renderTable();
+                updateStats();
+                showToast('Filing ' + filingId + ' assigned to you.', 'success');
+            }
+        }
+
+        // ============================================================
+        // OPEN DETAIL VIEW
+        // ============================================================
+        function openDetail(filingId) {
+            currentFilingId = filingId;
+            const filing = filings.find(f => f.id === filingId);
+            if (!filing) return;
+
+            // If pending review and in my queue, change to In Review
+            if (filing.status === 'Pending Review' && filing.assignedTo === 'me') {
+                filing.status = 'In Review';
+            }
+
+            populateDetail(filing);
+            showView('view-detail');
+            updateStats();
+        }
+
+        // ============================================================
+        // POPULATE DETAIL VIEW
+        // ============================================================
+        function reviewRow(label, value) {
+            return '<div class="review-row"><div class="review-label">' + label + '</div><div class="review-value">' + (value || '—') + '</div></div>';
+        }
+
+        function formatAddress(addr) {
+            return addr.street + ', ' + addr.city + ', ' + addr.state + ' ' + addr.zip + (addr.country ? ', ' + addr.country : '');
+        }
+
+        function populateDetail(f) {
+            // Title
+            document.getElementById('detail-title').textContent = 'UCC-1 Filing Review — ' + f.id;
+
+            // Show/hide approve/reject buttons based on status
+            const actionsButtons = document.getElementById('reviewer-actions-buttons');
+            if (f.status === 'Approved' || f.status === 'Rejected') {
+                actionsButtons.classList.add('hidden');
+            } else {
+                actionsButtons.classList.remove('hidden');
+            }
+
+            // Filing Summary
+            let summaryHtml = reviewRow('Filing ID', f.id);
+            summaryHtml += reviewRow('Filing Type', 'UCC-1 Initial Financing Statement');
+            summaryHtml += reviewRow('Submitted Date', f.submittedDate);
+            summaryHtml += reviewRow('Status', statusBadge(f.status));
+            summaryHtml += reviewRow('Filer Reference', f.filerReference);
+            document.getElementById('detail-filing-summary').innerHTML = summaryHtml;
+
+            // Filer Information
+            let filerHtml = reviewRow('Contact Name', f.filerName);
+            filerHtml += reviewRow('Phone', f.filerPhone);
+            filerHtml += reviewRow('Email', f.filerEmail);
+            filerHtml += reviewRow('Acknowledgment Address', formatAddress(f.ackAddress));
+            document.getElementById('detail-filer-info').innerHTML = filerHtml;
+
+            // Debtor Information
+            let debtorHtml = reviewRow('Entity Type', f.debtor.entityType);
+            if (f.debtor.entityType === 'Organization') {
+                debtorHtml += reviewRow('Organization Name', f.debtor.orgName);
+            } else {
+                debtorHtml += reviewRow('First Name', f.debtor.firstName);
+                debtorHtml += reviewRow('Last Name', f.debtor.lastName);
+                if (f.debtor.suffix) debtorHtml += reviewRow('Suffix', f.debtor.suffix);
+            }
+            debtorHtml += reviewRow('Mailing Address', formatAddress(f.debtor.address));
+            document.getElementById('detail-debtor-info').innerHTML = debtorHtml;
+
+            // Secured Party
+            let spHtml = reviewRow('Entity Type', f.securedParty.entityType);
+            if (f.securedParty.entityType === 'Organization') {
+                spHtml += reviewRow('Organization Name', f.securedParty.orgName);
+            } else {
+                spHtml += reviewRow('First Name', f.securedParty.firstName);
+                spHtml += reviewRow('Last Name', f.securedParty.lastName);
+                if (f.securedParty.suffix) spHtml += reviewRow('Suffix', f.securedParty.suffix);
+            }
+            spHtml += reviewRow('Mailing Address', formatAddress(f.securedParty.address));
+            document.getElementById('detail-secured-party').innerHTML = spHtml;
+
+            // Collateral & Filing Details
+            let collHtml = reviewRow('Collateral Description', f.collateralDescription);
+            let docsHtml = f.attachedDocuments.map(d =>
+                '<span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;"><i class="fa-solid fa-file-pdf" style="color:var(--brand-danger);"></i> ' + d + '</span>'
+            ).join('');
+            collHtml += reviewRow('Attached Documents', docsHtml);
+            collHtml += reviewRow('Trust', f.trust ? 'Yes' : 'No');
+            collHtml += reviewRow('Decedent', f.decedent ? 'Yes' : 'No');
+            collHtml += reviewRow('Filer Reference Data', f.filerReferenceData);
+
+            // Highlighted Transaction Type
+            collHtml += '<div class="review-highlight">';
+            collHtml += '<div class="highlight-badge"><i class="fa-solid fa-triangle-exclamation"></i> Requires Manual Review</div>';
+            collHtml += '<h4>Transaction Type</h4>';
+            collHtml += reviewRow('Filing Type', f.filingType);
+            collHtml += reviewRow('Non-Standard Filing Type', '<strong>' + f.nonStandardType + '</strong>');
+            if (f.alternativeDesignation) {
+                collHtml += reviewRow('Alternative Designation', f.alternativeDesignation);
+            }
+            collHtml += '</div>';
+
+            document.getElementById('detail-collateral-filing').innerHTML = collHtml;
+
+            // Payment Information
+            let payHtml = reviewRow('Filing Fee', f.feeAmount);
+            payHtml += reviewRow('Payment Method', '<i class="fa-solid ' + (f.paymentMethod === 'Credit Card' ? 'fa-credit-card' : 'fa-building-columns') + '" style="margin-right:6px;"></i>' + f.paymentMethod);
+            const payStatusCls = f.paymentStatus === 'Paid' ? 'paid' : f.paymentStatus === 'Pending' ? 'pending' : 'not-received';
+            const payStatusIcon = f.paymentStatus === 'Paid' ? 'fa-circle-check' : f.paymentStatus === 'Pending' ? 'fa-clock' : 'fa-circle-xmark';
+            payHtml += reviewRow('Payment Status', '<span class="payment-status ' + payStatusCls + '"><i class="fa-solid ' + payStatusIcon + '"></i> ' + f.paymentStatus + '</span>');
+            document.getElementById('detail-payment-info').innerHTML = payHtml;
+
+            // Sidebar fee info
+            document.getElementById('sidebar-fee-amount').textContent = f.feeAmount;
+            document.getElementById('sidebar-fee-total').textContent = f.feeAmount;
+
+            // Sidebar payment status
+            document.getElementById('sidebar-payment-status').innerHTML =
+                '<div style="margin-top:var(--spacing-sm);">' +
+                '<div style="margin-bottom:8px;"><span style="color:var(--font-color-detail);font-size:var(--font-size-small);">Method:</span> <strong>' + f.paymentMethod + '</strong></div>' +
+                '<div><span style="color:var(--font-color-detail);font-size:var(--font-size-small);">Status:</span> <span class="payment-status ' + payStatusCls + '"><i class="fa-solid ' + payStatusIcon + '"></i> ' + f.paymentStatus + '</span></div>' +
+                '</div>';
+
+            // Modal filing IDs
+            document.getElementById('approve-filing-id').textContent = f.id;
+            document.getElementById('approve-fee').textContent = f.feeAmount;
+            document.getElementById('reject-filing-id').textContent = f.id;
+
+            // Review history
+            if (f.status === 'Approved') {
+                document.getElementById('review-history-text').innerHTML =
+                    '<div style="border-left:3px solid var(--brand-success-700);padding-left:12px;margin-top:8px;">' +
+                    '<div style="font-weight:600;color:var(--brand-success-700);">Approved</div>' +
+                    '<div style="font-size:12px;color:var(--font-color-detail);">by Sarah Chen</div></div>';
+            } else if (f.status === 'Rejected') {
+                document.getElementById('review-history-text').innerHTML =
+                    '<div style="border-left:3px solid var(--brand-danger);padding-left:12px;margin-top:8px;">' +
+                    '<div style="font-weight:600;color:var(--brand-danger);">Rejected</div>' +
+                    '<div style="font-size:12px;color:var(--font-color-detail);">by Sarah Chen</div>' +
+                    '<div style="font-size:12px;margin-top:4px;"><strong>Reason:</strong> ' + (f.rejectionReason || '') + '</div>' +
+                    '<div style="font-size:12px;margin-top:2px;"><strong>Comment:</strong> ' + (f.rejectionComment || '') + '</div></div>';
+            } else {
+                document.getElementById('review-history-text').textContent = 'No review history yet.';
+            }
+
+            // Reset sidebar nav active state
+            document.querySelectorAll('.sidebar-nav .nav-item').forEach((item, i) => {
+                item.classList.toggle('active', i === 0);
+            });
+        }
+
+        // ============================================================
+        // SIDEBAR NAVIGATION
+        // ============================================================
+        function scrollToSection(sectionId, el) {
+            const section = document.getElementById('section-' + sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            if (el) {
+                document.querySelectorAll('.sidebar-nav .nav-item').forEach(item => item.classList.remove('active'));
+                el.classList.add('active');
+            }
+        }
+
+        // ============================================================
+        // MODALS
+        // ============================================================
+        function showModal(id) { document.getElementById(id).classList.add('show'); }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('show');
+            // Clear reject form
+            if (id === 'modal-reject') {
+                document.getElementById('reject-reason').value = '';
+                document.getElementById('reject-comment').value = '';
+                document.getElementById('reject-reason').classList.remove('error');
+                document.getElementById('reject-comment').classList.remove('error');
+                document.getElementById('reject-reason-error').classList.add('hidden');
+                document.getElementById('reject-comment-error').classList.add('hidden');
+            }
+        }
+
+        // Close modal on overlay click
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('show');
+            }
+        });
+
+        // ============================================================
+        // APPROVE FILING
+        // ============================================================
+        function approveFiling() {
+            const filing = filings.find(f => f.id === currentFilingId);
+            if (filing) {
+                filing.status = 'Approved';
+                filing.assignedTo = 'completed';
+            }
+            closeModal('modal-approve');
+            showView('view-dashboard');
+            renderTable();
+            updateStats();
+            showToast('Filing ' + currentFilingId + ' has been approved.', 'success');
+        }
+
+        // ============================================================
+        // REJECT FILING
+        // ============================================================
+        function rejectFiling() {
+            const reason = document.getElementById('reject-reason').value;
+            const comment = document.getElementById('reject-comment').value.trim();
+            let valid = true;
+
+            if (!reason) {
+                document.getElementById('reject-reason').classList.add('error');
+                document.getElementById('reject-reason-error').classList.remove('hidden');
+                valid = false;
+            } else {
+                document.getElementById('reject-reason').classList.remove('error');
+                document.getElementById('reject-reason-error').classList.add('hidden');
+            }
+
+            if (!comment) {
+                document.getElementById('reject-comment').classList.add('error');
+                document.getElementById('reject-comment-error').classList.remove('hidden');
+                valid = false;
+            } else {
+                document.getElementById('reject-comment').classList.remove('error');
+                document.getElementById('reject-comment-error').classList.add('hidden');
+            }
+
+            if (!valid) return;
+
+            const filing = filings.find(f => f.id === currentFilingId);
+            if (filing) {
+                filing.status = 'Rejected';
+                filing.assignedTo = 'completed';
+                filing.rejectionReason = reason;
+                filing.rejectionComment = comment;
+            }
+            closeModal('modal-reject');
+            showView('view-dashboard');
+            renderTable();
+            updateStats();
+            showToast('Filing ' + currentFilingId + ' has been rejected.', 'danger');
+        }
+
+        // ============================================================
+        // TOAST NOTIFICATIONS
+        // ============================================================
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toast-icon');
+            document.getElementById('toast-message').textContent = message;
+
+            if (type === 'danger') {
+                toast.classList.add('toast-danger');
+                icon.className = 'fa-solid fa-circle-xmark';
+                icon.style.color = 'var(--brand-danger)';
+            } else {
+                toast.classList.remove('toast-danger');
+                icon.className = 'fa-solid fa-circle-check';
+                icon.style.color = 'var(--brand-success-700)';
+            }
+
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        // ============================================================
+        // INITIALIZE
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTable();
+            updateStats();
+        });
+    </script>
+</body>
+</html>
