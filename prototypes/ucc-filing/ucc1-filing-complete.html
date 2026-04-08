@@ -1339,112 +1339,6 @@
             pointer-events: none;
         }
 
-        /* Party list styles for Step 1 */
-        .party-section {
-            margin-bottom: var(--spacing-lg);
-        }
-        .party-section:last-of-type {
-            margin-bottom: 0;
-        }
-        .party-section-header {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            font-size: var(--font-size-small);
-            font-weight: 600;
-            color: var(--font-color-detail);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-bottom: var(--spacing-sm);
-            padding-bottom: var(--spacing-xs);
-            border-bottom: 1px solid var(--border-color-default);
-        }
-        .party-section-header i {
-            font-size: 13px;
-            color: var(--brand-primary);
-        }
-        .party-card {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-            padding: var(--spacing-md) var(--spacing-lg);
-            border: 2px solid var(--border-color-default);
-            border-radius: var(--border-radius-md);
-            cursor: pointer;
-            transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
-            margin-bottom: var(--spacing-sm);
-        }
-        .party-card:last-child {
-            margin-bottom: 0;
-        }
-        .party-card:hover {
-            border-color: var(--brand-primary-200);
-            background: #f8faff;
-        }
-        .party-card.selected {
-            border-color: var(--brand-primary);
-            background: #eef3ff;
-            box-shadow: 0 0 0 1px var(--brand-primary);
-        }
-        .party-card-select {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--border-color-default);
-            font-size: 20px;
-            transition: color 0.15s;
-        }
-        .party-card.selected .party-card-select {
-            color: var(--brand-primary);
-        }
-        .party-card-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .party-card-name {
-            font-weight: 600;
-            font-size: var(--font-size-default);
-            color: var(--font-color-default);
-        }
-        .party-card-address {
-            font-size: var(--font-size-small);
-            color: var(--font-color-detail);
-            margin-top: 2px;
-        }
-
-        /* Read-only authorizing party display (Step 3) */
-        .auth-party-readonly {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color-default);
-            border-radius: var(--border-radius-md);
-            padding: var(--spacing-lg);
-        }
-        .auth-party-role {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            font-size: var(--font-size-small);
-            font-weight: 600;
-            color: var(--brand-primary);
-            margin-bottom: var(--spacing-xs);
-        }
-        .auth-party-role i {
-            font-size: 14px;
-        }
-        .auth-party-name {
-            font-weight: 600;
-            font-size: var(--font-size-default);
-            color: var(--font-color-default);
-        }
-        .auth-party-address {
-            font-size: var(--font-size-small);
-            color: var(--font-color-detail);
-            margin-top: 2px;
-        }
-
         .ucc3-party-change-options {
             display: flex;
             gap: var(--spacing-md);
@@ -1948,6 +1842,10 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label class="required">ZIP</label>
+                                <input type="text" class="form-control" placeholder="ZIP">
+                            </div>
+                            <div class="form-group">
                                 <label>Postal Code</label>
                                 <input type="text" class="form-control" placeholder="Extended">
                             </div>
@@ -2068,6 +1966,10 @@
                             <div class="form-group">
                                 <label class="required">State</label>
                                 <select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">ZIP</label>
+                                <input type="text" class="form-control" placeholder="ZIP">
                             </div>
                             <div class="form-group">
                                 <label>Postal Code</label>
@@ -2501,74 +2403,30 @@
 
             <!-- =================== UCC3 STEP 1: WHO ARE YOU =================== -->
             <div class="wizard-panel" id="ucc3-step-1">
-                <h1 class="page-title">Who are you?</h1>
-                <p class="page-subtitle">Select yourself from the parties listed on the original financing statement. The amendment actions available to you depend on your role in the filing.</p>
+                <h1 class="page-title">What is your relationship to this filing?</h1>
+                <p class="page-subtitle">Select your role in the original financing statement. The amendment actions available to you depend on your relationship to the filing.</p>
 
-                <div class="card" id="ucc3-party-list">
-                    <!-- Debtor(s) Section -->
-                    <div class="party-section">
-                        <div class="party-section-header">
-                            <i class="fa-solid fa-user"></i>
-                            <span>Debtor</span>
+                <div class="card">
+                    <div class="relationship-cards">
+                        <div class="relationship-card" onclick="selectRelationship('debtor', this)">
+                            <div class="card-icon-sm"><i class="fa-solid fa-user"></i></div>
+                            <h4>Debtor</h4>
+                            <p>You are the debtor named on the original financing statement.</p>
                         </div>
-                        <div class="party-card" onclick="selectParty('debtor', 0, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">Copper Basin Mining LLC</div>
-                                <div class="party-card-address">4200 N Central Ave, Suite 1500, Phoenix, AZ 85012</div>
-                            </div>
+                        <div class="relationship-card" onclick="selectRelationship('sp1', this)">
+                            <div class="card-icon-sm"><i class="fa-solid fa-building-columns"></i></div>
+                            <h4>Secured Party #1</h4>
+                            <p>You are the primary secured party of record on the filing.</p>
                         </div>
-                    </div>
-
-                    <!-- Secured Party #1 Section -->
-                    <div class="party-section">
-                        <div class="party-section-header">
-                            <i class="fa-solid fa-building-columns"></i>
-                            <span>Secured Party #1</span>
+                        <div class="relationship-card" onclick="selectRelationship('sp2', this)">
+                            <div class="card-icon-sm"><i class="fa-solid fa-users"></i></div>
+                            <h4>Secured Party #2 and Beyond</h4>
+                            <p>You are an additional secured party (not the primary) on the filing.</p>
                         </div>
-                        <div class="party-card" onclick="selectParty('sp1', 0, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">Western States Capital Bank</div>
-                                <div class="party-card-address">100 W Washington St, Suite 2200, Phoenix, AZ 85003</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Secured Party #2+ Section -->
-                    <div class="party-section">
-                        <div class="party-section-header">
-                            <i class="fa-solid fa-users"></i>
-                            <span>Secured Party #2 and Beyond</span>
-                        </div>
-                        <div class="party-card" onclick="selectParty('sp2', 0, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">Margaret L. Thornton</div>
-                                <div class="party-card-address">8742 E Camelback Rd, Scottsdale, AZ 85251</div>
-                            </div>
-                        </div>
-                        <div class="party-card" onclick="selectParty('sp2', 1, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">Sonoran Equipment Leasing Inc</div>
-                                <div class="party-card-address">3301 S Price Rd, Suite 108, Chandler, AZ 85248</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Assignee Secured Party Section -->
-                    <div class="party-section">
-                        <div class="party-section-header">
-                            <i class="fa-solid fa-right-left"></i>
-                            <span>Assignee Secured Party</span>
-                        </div>
-                        <div class="party-card" onclick="selectParty('assignee', 0, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">James R. Whitfield</div>
-                                <div class="party-card-address">1920 N 7th St, Phoenix, AZ 85006</div>
-                            </div>
+                        <div class="relationship-card" onclick="selectRelationship('assignee', this)">
+                            <div class="card-icon-sm"><i class="fa-solid fa-right-left"></i></div>
+                            <h4>Assignee Secured Party</h4>
+                            <p>You were assigned rights to this filing by the original secured party.</p>
                         </div>
                     </div>
 
@@ -2643,11 +2501,28 @@
 
                         <div class="form-section">
                             <div class="form-section-title">Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this termination, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-termination">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the party of record authorizing this termination.</p>
+
+                            <div class="form-group">
+                                <label>Party Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'term-auth')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'term-auth')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="term-auth-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the authorizing party">
+                                </div>
+                            </div>
+                            <div id="term-auth-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -2693,6 +2568,7 @@
                             <div class="form-row form-row-address">
                                 <div class="form-group"><label class="required">City</label><input type="text" class="form-control" placeholder="City"></div>
                                 <div class="form-group"><label class="required">State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                                <div class="form-group"><label class="required">ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
                                 <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
                                 <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
                             </div>
@@ -2700,11 +2576,28 @@
 
                         <div class="form-section">
                             <div class="form-section-title">Assignor / Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this assignment, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-assignment">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the secured party of record assigning their rights.</p>
+
+                            <div class="form-group">
+                                <label>Assignor Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'assignor')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'assignor')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="assignor-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the assignor">
+                                </div>
+                            </div>
+                            <div id="assignor-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -2737,11 +2630,28 @@
 
                         <div class="form-section">
                             <div class="form-section-title">Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this continuation, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-continuation">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the secured party of record authorizing this continuation.</p>
+
+                            <div class="form-group">
+                                <label>Party Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'cont-auth')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'cont-auth')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="cont-auth-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the authorizing secured party">
+                                </div>
+                            </div>
+                            <div id="cont-auth-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -2838,6 +2748,7 @@
                             <div class="form-row form-row-address">
                                 <div class="form-group"><label class="required">City</label><input type="text" class="form-control" placeholder="City"></div>
                                 <div class="form-group"><label class="required">State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                                <div class="form-group"><label class="required">ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
                                 <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
                                 <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
                             </div>
@@ -2846,11 +2757,28 @@
                         <!-- Authorizing Party (Item 9) -->
                         <div class="form-section">
                             <div class="form-section-title">Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this change, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-party-change">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the secured party of record authorizing this change.</p>
+
+                            <div class="form-group">
+                                <label>Party Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'pc-auth')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'pc-auth')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="pc-auth-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the authorizing party">
+                                </div>
+                            </div>
+                            <div id="pc-auth-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -2888,11 +2816,28 @@
                         <!-- Authorizing Party (Item 9) -->
                         <div class="form-section">
                             <div class="form-section-title">Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this change, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-collateral-change">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the secured party of record authorizing this change.</p>
+
+                            <div class="form-group">
+                                <label>Party Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'cc-auth')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'cc-auth')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="cc-auth-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the authorizing party">
+                                </div>
+                            </div>
+                            <div id="cc-auth-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -3520,6 +3465,7 @@
                 <div class="form-row form-row-address">
                     <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
                     <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                    <div class="form-group"><label>ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
                     <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
                     <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
                 </div>
@@ -3581,6 +3527,7 @@
                 <div class="form-row form-row-address">
                     <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
                     <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                    <div class="form-group"><label>ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
                     <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
                     <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
                 </div>
@@ -3825,20 +3772,10 @@
         let ucc3CurrentStep = 1;
         const ucc3TotalSteps = 5;
         let selectedRelationship = null;
-        let selectedPartyData = null;
         let selectedAmendmentType = null;
         let selectedPartyChangeSubtype = null;
         let selectedCollateralChangeSubtype = null;
         let partyChangeAffects = 'debtor';
-
-        // Parties from the original UCC1 filing (keyed by role + index)
-        const mockUCC1Parties = {
-            'debtor-0':   { name: 'Copper Basin Mining LLC', address: '4200 N Central Ave, Suite 1500, Phoenix, AZ 85012', role: 'debtor' },
-            'sp1-0':      { name: 'Western States Capital Bank', address: '100 W Washington St, Suite 2200, Phoenix, AZ 85003', role: 'sp1' },
-            'sp2-0':      { name: 'Margaret L. Thornton', address: '8742 E Camelback Rd, Scottsdale, AZ 85251', role: 'sp2' },
-            'sp2-1':      { name: 'Sonoran Equipment Leasing Inc', address: '3301 S Price Rd, Suite 108, Chandler, AZ 85248', role: 'sp2' },
-            'assignee-0': { name: 'James R. Whitfield', address: '1920 N 7th St, Phoenix, AZ 85006', role: 'assignee' }
-        };
 
         const mockFilingData = {
             fileNumber: '20210045678901',
@@ -3981,11 +3918,10 @@
             }
         }
 
-        // ── Step 1: Party selection ───────────────────────────────────
-        function selectParty(role, index, el) {
-            selectedRelationship = role;
-            selectedPartyData = mockUCC1Parties[role + '-' + index] || null;
-            document.querySelectorAll('.party-card').forEach(c => c.classList.remove('selected'));
+        // ── Step 1: Relationship selection ────────────────────────────
+        function selectRelationship(type, el) {
+            selectedRelationship = type;
+            document.querySelectorAll('.relationship-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
             document.getElementById('ucc3-continue-step1').disabled = false;
 
@@ -3996,28 +3932,6 @@
 
             // Update available amendment types for step 2
             updateAmendmentTypeAvailability();
-
-            // Populate all read-only authorizing party blocks
-            populateAuthPartyReadonly();
-        }
-
-        function populateAuthPartyReadonly() {
-            if (!selectedPartyData) return;
-            const roleLabel = roleLabelMap[selectedRelationship] || selectedRelationship;
-            const ids = [
-                'auth-party-termination',
-                'auth-party-assignment',
-                'auth-party-continuation',
-                'auth-party-party-change',
-                'auth-party-collateral-change'
-            ];
-            ids.forEach(id => {
-                const block = document.getElementById(id);
-                if (!block) return;
-                block.querySelector('.auth-party-role-label').textContent = roleLabel;
-                block.querySelector('.auth-party-name').textContent = selectedPartyData.name;
-                block.querySelector('.auth-party-address').textContent = selectedPartyData.address;
-            });
         }
 
         function updateAmendmentTypeAvailability() {
