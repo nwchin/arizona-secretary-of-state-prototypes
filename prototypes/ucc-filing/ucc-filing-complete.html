@@ -1129,55 +1129,49 @@
         }
 
         /* ============================================================
-           USPS ADDRESS VERIFICATION
+           USPS ADDRESS VERIFICATION — Inline Link Pattern
            ============================================================ */
-        .usps-verify-panel {
-            border: var(--border-width-md) solid var(--border-color-default);
-            border-radius: var(--border-radius-md);
-            padding: var(--spacing-xl);
-            margin-bottom: var(--spacing-xl);
-            background: var(--bg-color);
-            transition: border-color 0.2s, background 0.2s;
-        }
-        .usps-verify-panel.verified {
-            border-color: var(--brand-success-700);
-            background: #e8f7ee;
-        }
-        .usps-verify-header {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-md);
-        }
-        .usps-verify-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--brand-primary);
-            border-radius: var(--border-radius-default);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-white);
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        .usps-verify-panel.verified .usps-verify-icon {
-            background: var(--brand-success-700);
-        }
-        .usps-verify-header-text h4 { margin-bottom: var(--spacing-xxs); }
-        .usps-verify-header-text p {
-            margin: 0;
-            color: var(--font-color-detail);
-            font-size: var(--font-size-small);
-        }
-        .usps-verified-badge {
+        .usps-inline-link {
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
+            font-size: var(--font-size-small);
+            margin-top: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+        }
+        .usps-inline-link .usps-iv-icon {
+            font-size: 13px;
+            color: var(--brand-primary);
+        }
+        .usps-inline-link .usps-iv-text {
+            color: var(--font-color-detail);
+        }
+        .usps-inline-link .usps-iv-action {
+            background: none;
+            border: none;
+            color: var(--brand-primary);
+            font-size: var(--font-size-small);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            text-decoration: none;
+        }
+        .usps-inline-link .usps-iv-action:hover {
+            text-decoration: underline;
+        }
+        /* Verified state */
+        .usps-inline-link.verified .usps-iv-icon { color: var(--brand-success-700); }
+        .usps-inline-link.verified .usps-iv-text {
             color: var(--brand-success-700);
             font-weight: 600;
-            margin-bottom: var(--spacing-sm);
         }
+        .usps-inline-link.verified .usps-iv-action {
+            color: var(--font-color-detail);
+            font-weight: 400;
+        }
+        /* Stale / changed state */
+        .usps-inline-link.stale .usps-iv-icon { color: #b8860b; }
+        .usps-inline-link.stale .usps-iv-text { color: #b8860b; }
         .usps-address-compare {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1811,54 +1805,39 @@
                             <input type="text" class="form-control" placeholder="Name of person or organization">
                         </div>
 
-                        <div class="form-group">
-                            <label>Street Address</label>
-                            <input type="text" class="form-control" placeholder="Street address">
-                        </div>
-
-                
-                        <div class="form-row form-row-4">
+                        <div class="address-group" data-addr-id="addr-step1-ack" data-step="1">
                             <div class="form-group">
-                                <label>City</label>
-                                <input type="text" class="form-control" placeholder="City">
+                                <label>Street Address</label>
+                                <input type="text" class="form-control" placeholder="Street address">
                             </div>
-                            <div class="form-group">
-                                <label>State</label>
-                                <select class="form-control">
-                                    <option value="">Select</option>
-                                    <option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option>
-                                </select>
+                            <div class="form-row form-row-4">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" placeholder="City">
+                                </div>
+                                <div class="form-group">
+                                    <label>State</label>
+                                    <select class="form-control">
+                                        <option value="">Select</option>
+                                        <option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Postal Code</label>
+                                    <input type="text" class="form-control" placeholder="ZIP">
+                                </div>
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select class="form-control">
+                                        <option>USA</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Postal Code</label>
-                                <input type="text" class="form-control" placeholder="ZIP">
+                            <div class="usps-inline-link" id="usps-iv-addr-step1-ack" role="status" aria-live="polite">
+                                <i class="fa-solid fa-location-dot usps-iv-icon"></i>
+                                <span class="usps-iv-text">Address not verified</span>
+                                <button class="usps-iv-action" onclick="verifyAddress('addr-step1-ack')">Verify with USPS</button>
                             </div>
-                            <div class="form-group">
-                                <label>Country</label>
-                                <select class="form-control">
-                                    <option>USA</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- USPS Address Verification — Step 1 -->
-                    <div class="usps-verify-panel" id="usps-panel-1">
-                        <div class="usps-verify-header">
-                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-                            <div class="usps-verify-header-text">
-                                <h4>Verify Address with USPS</h4>
-                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. This helps ensure accurate delivery of your filing acknowledgment.</p>
-                            </div>
-                        </div>
-                        <div id="usps-idle-1">
-                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(1)">
-                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
-                            </button>
-                        </div>
-                        <div id="usps-verified-1" class="hidden">
-                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
-                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(1)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
                         </div>
                     </div>
 
@@ -1931,31 +1910,38 @@
                         </div>
 
                         <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
-                        <div class="form-group">
-                            <label class="required">Street Address</label>
-                            <input type="text" class="form-control" placeholder="Mailing address">
-                        </div>
-                        <div class="form-row form-row-address">
+                        <div class="address-group" data-addr-id="addr-debtor-1" data-step="2">
                             <div class="form-group">
-                                <label class="required">City</label>
-                                <input type="text" class="form-control" placeholder="City">
+                                <label class="required">Street Address</label>
+                                <input type="text" class="form-control" placeholder="Mailing address">
                             </div>
-                            <div class="form-group">
-                                <label class="required">State</label>
-                                <select class="form-control">
-                                    <option value="">Select</option>
-                                    <option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option>
-                                </select>
+                            <div class="form-row form-row-address">
+                                <div class="form-group">
+                                    <label class="required">City</label>
+                                    <input type="text" class="form-control" placeholder="City">
+                                </div>
+                                <div class="form-group">
+                                    <label class="required">State</label>
+                                    <select class="form-control">
+                                        <option value="">Select</option>
+                                        <option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Postal Code</label>
+                                    <input type="text" class="form-control" placeholder="Extended">
+                                </div>
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select class="form-control">
+                                        <option>USA</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Postal Code</label>
-                                <input type="text" class="form-control" placeholder="Extended">
-                            </div>
-                            <div class="form-group">
-                                <label>Country</label>
-                                <select class="form-control">
-                                    <option>USA</option>
-                                </select>
+                            <div class="usps-inline-link" id="usps-iv-addr-debtor-1" role="status" aria-live="polite">
+                                <i class="fa-solid fa-location-dot usps-iv-icon"></i>
+                                <span class="usps-iv-text">Address not verified</span>
+                                <button class="usps-iv-action" onclick="verifyAddress('addr-debtor-1')">Verify with USPS</button>
                             </div>
                         </div>
                     </div>
@@ -1976,26 +1962,6 @@
                             <i class="fa-solid fa-plus"></i> Add Additional Debtor
                         </button>
                         <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 debtors. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
-                    </div>
-
-                    <!-- USPS Address Verification — Step 2 -->
-                    <div class="usps-verify-panel mt-xl" id="usps-panel-2">
-                        <div class="usps-verify-header">
-                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-                            <div class="usps-verify-header-text">
-                                <h4>Verify Address with USPS</h4>
-                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. If you add or remove a debtor, you will need to re-verify.</p>
-                            </div>
-                        </div>
-                        <div id="usps-idle-2">
-                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(2)">
-                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
-                            </button>
-                        </div>
-                        <div id="usps-verified-2" class="hidden">
-                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
-                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(2)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
-                        </div>
                     </div>
 
                     <div class="btn-bar">
@@ -2056,26 +2022,33 @@
                         </div>
 
                         <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
-                        <div class="form-group">
-                            <label class="required">Street Address</label>
-                            <input type="text" class="form-control" placeholder="Mailing address">
-                        </div>
-                        <div class="form-row form-row-address">
+                        <div class="address-group" data-addr-id="addr-secured-1" data-step="3">
                             <div class="form-group">
-                                <label class="required">City</label>
-                                <input type="text" class="form-control" placeholder="City">
+                                <label class="required">Street Address</label>
+                                <input type="text" class="form-control" placeholder="Mailing address">
                             </div>
-                            <div class="form-group">
-                                <label class="required">State</label>
-                                <select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option></select>
+                            <div class="form-row form-row-address">
+                                <div class="form-group">
+                                    <label class="required">City</label>
+                                    <input type="text" class="form-control" placeholder="City">
+                                </div>
+                                <div class="form-group">
+                                    <label class="required">State</label>
+                                    <select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Postal Code</label>
+                                    <input type="text" class="form-control" placeholder="Extended">
+                                </div>
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select class="form-control"><option>USA</option></select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Postal Code</label>
-                                <input type="text" class="form-control" placeholder="Extended">
-                            </div>
-                            <div class="form-group">
-                                <label>Country</label>
-                                <select class="form-control"><option>USA</option></select>
+                            <div class="usps-inline-link" id="usps-iv-addr-secured-1" role="status" aria-live="polite">
+                                <i class="fa-solid fa-location-dot usps-iv-icon"></i>
+                                <span class="usps-iv-text">Address not verified</span>
+                                <button class="usps-iv-action" onclick="verifyAddress('addr-secured-1')">Verify with USPS</button>
                             </div>
                         </div>
                     </div>
@@ -2096,26 +2069,6 @@
                             <i class="fa-solid fa-plus"></i> Add Additional Secured Party
                         </button>
                         <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 secured parties. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
-                    </div>
-
-                    <!-- USPS Address Verification — Step 3 -->
-                    <div class="usps-verify-panel mt-xl" id="usps-panel-3">
-                        <div class="usps-verify-header">
-                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-                            <div class="usps-verify-header-text">
-                                <h4>Verify Address with USPS</h4>
-                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. If you add or remove a secured party, you will need to re-verify.</p>
-                            </div>
-                        </div>
-                        <div id="usps-idle-3">
-                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(3)">
-                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
-                            </button>
-                        </div>
-                        <div id="usps-verified-3" class="hidden">
-                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
-                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(3)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
-                        </div>
                     </div>
 
                     <div class="btn-bar">
@@ -2160,7 +2113,7 @@
                                 <input type="file" id="collateral-file-input" multiple accept=".pdf,.doc,.docx,.txt" onchange="handleFileSelect(event)">
                                 <div class="file-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
                                 <p><span class="upload-cta">Click to browse</span> or drag and drop files here</p>
-                                <p class="upload-hint">Accepted formats: PDF, DOC, DOCX, TXT &nbsp;·&nbsp; Max 10 MB per file</p>
+                                <p class="upload-hint">Accepted formats: PDF &nbsp;·&nbsp; Max 10 MB per file</p>
                             </div>
                             <div class="file-list" id="collateral-file-list"></div>
                             <span class="form-text mt-sm">Attach supporting documentation that describes or identifies the collateral. Do not include PII.</span>
@@ -3516,29 +3469,39 @@
                     </div>
                 </div>
                 <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
-                <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
-                <div class="form-row form-row-address">
-                    <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
-                    <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
-                    <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
-                    <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
+                <div class="address-group" data-addr-id="addr-debtor-${n}" data-step="2">
+                    <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
+                    <div class="form-row form-row-address">
+                        <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
+                        <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                        <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
+                        <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
+                    </div>
+                    <div class="usps-inline-link" id="usps-iv-addr-debtor-${n}" role="status" aria-live="polite">
+                        <i class="fa-solid fa-location-dot usps-iv-icon"></i>
+                        <span class="usps-iv-text">Address not verified</span>
+                        <button class="usps-iv-action" onclick="verifyAddress('addr-debtor-${n}')">Verify with USPS</button>
+                    </div>
                 </div>
             </div>`;
         }
 
         function addDebtor() {
             debtorCount++;
+            const id = nextDebtorId++;
             document.getElementById('additional-debtors-container')
-                .insertAdjacentHTML('beforeend', debtorTemplate(nextDebtorId++));
+                .insertAdjacentHTML('beforeend', debtorTemplate(id));
             updateAPNotice();
-            resetVerify(2);
+            addressVerified['addr-debtor-' + id] = false;
+            updateContinueButton(2);
         }
 
         function removeDebtor(n) {
             document.getElementById('debtor-' + n).remove();
             debtorCount--;
             updateAPNotice();
-            resetVerify(2);
+            delete addressVerified['addr-debtor-' + n];
+            updateContinueButton(2);
         }
 
         function toggleDebtorAdditional(btn, type, n) {
@@ -3577,29 +3540,39 @@
                     </div>
                 </div>
                 <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
-                <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
-                <div class="form-row form-row-address">
-                    <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
-                    <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
-                    <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
-                    <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
+                <div class="address-group" data-addr-id="addr-secured-${n}" data-step="3">
+                    <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
+                    <div class="form-row form-row-address">
+                        <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
+                        <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                        <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
+                        <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
+                    </div>
+                    <div class="usps-inline-link" id="usps-iv-addr-secured-${n}" role="status" aria-live="polite">
+                        <i class="fa-solid fa-location-dot usps-iv-icon"></i>
+                        <span class="usps-iv-text">Address not verified</span>
+                        <button class="usps-iv-action" onclick="verifyAddress('addr-secured-${n}')">Verify with USPS</button>
+                    </div>
                 </div>
             </div>`;
         }
 
         function addSecuredParty() {
             securedPartyCount++;
+            const id = nextSecuredId++;
             document.getElementById('additional-secured-container')
-                .insertAdjacentHTML('beforeend', securedPartyTemplate(nextSecuredId++));
+                .insertAdjacentHTML('beforeend', securedPartyTemplate(id));
             updateAPNotice();
-            resetVerify(3);
+            addressVerified['addr-secured-' + id] = false;
+            updateContinueButton(3);
         }
 
         function removeSecuredParty(n) {
             document.getElementById('secured-' + n).remove();
             securedPartyCount--;
             updateAPNotice();
-            resetVerify(3);
+            delete addressVerified['addr-secured-' + n];
+            updateContinueButton(3);
         }
 
         function toggleSecuredAdditional(btn, type, n) {
@@ -3739,29 +3712,47 @@
             document.getElementById('balance-footer-result').classList.add('hidden');
         }
 
-        // ── USPS Address Verification ────────────────────────────────
+        // ── USPS Address Verification (inline, per-address) ─────────
         const addressVerified = {};
-        let activeVerifyStep = null;
+        let activeVerifyAddrId = null;
 
-        // Mock USPS standardized addresses (per step)
+        // Mock USPS standardized addresses keyed by prefix
         const mockUSPSData = {
-            1: {
-                entered: { line1: '123 Main Street', line2: 'Phoenix, AZ 85004', line3: 'USA' },
-                usps:    { line1: '123 MAIN ST', line2: 'PHOENIX, AZ 85004-1234', line3: 'USA' }
-            },
-            2: {
-                entered: { line1: '456 W Commerce Drive', line2: 'Tucson, AZ 85701', line3: 'USA' },
-                usps:    { line1: '456 W COMMERCE DR', line2: 'TUCSON, AZ 85701-2208', line3: 'USA' }
-            },
-            3: {
-                entered: { line1: '789 North Central Avenue', line2: 'Phoenix, AZ 85004', line3: 'USA' },
-                usps:    { line1: '789 N CENTRAL AVE STE 200', line2: 'PHOENIX, AZ 85004-1090', line3: 'USA' }
-            }
+            step1:    { entered: { line1: '123 Main Street', line2: 'Phoenix, AZ 85004', line3: 'USA' },
+                        usps:    { line1: '123 MAIN ST', line2: 'PHOENIX, AZ 85004-1234', line3: 'USA' } },
+            debtor:   { entered: { line1: '456 W Commerce Drive', line2: 'Tucson, AZ 85701', line3: 'USA' },
+                        usps:    { line1: '456 W COMMERCE DR', line2: 'TUCSON, AZ 85701-2208', line3: 'USA' } },
+            secured:  { entered: { line1: '789 North Central Avenue', line2: 'Phoenix, AZ 85004', line3: 'USA' },
+                        usps:    { line1: '789 N CENTRAL AVE STE 200', line2: 'PHOENIX, AZ 85004-1090', line3: 'USA' } }
         };
 
-        function verifyAddress(step) {
-            activeVerifyStep = step;
-            const d = mockUSPSData[step] || mockUSPSData[1];
+        function getMockUSPS(addrId) {
+            if (addrId.includes('step1')) return mockUSPSData.step1;
+            if (addrId.includes('debtor')) return mockUSPSData.debtor;
+            if (addrId.includes('secured')) return mockUSPSData.secured;
+            return mockUSPSData.step1;
+        }
+
+        function getStepForAddr(addrId) {
+            const group = document.querySelector(`[data-addr-id="${addrId}"]`);
+            return group ? parseInt(group.dataset.step) : null;
+        }
+
+        function getAddrIdsForStep(step) {
+            return Array.from(document.querySelectorAll(`.address-group[data-step="${step}"]`))
+                .map(el => el.dataset.addrId);
+        }
+
+        function updateContinueButton(step) {
+            const ids = getAddrIdsForStep(step);
+            const allVerified = ids.length > 0 && ids.every(id => addressVerified[id] === true);
+            const btn = document.getElementById('continue-btn-step' + step);
+            if (btn) btn.disabled = !allVerified;
+        }
+
+        function verifyAddress(addrId) {
+            activeVerifyAddrId = addrId;
+            const d = getMockUSPS(addrId);
             document.getElementById('usps-address-compare').innerHTML = `
                 <div class="usps-address-block">
                     <div class="usps-address-type">As Entered</div>
@@ -3776,39 +3767,69 @@
         }
 
         function acceptUSPSAddress() {
-            markAddressVerified(activeVerifyStep);
+            markAddressVerified(activeVerifyAddrId);
             closeUSPSModal();
         }
 
         function keepOriginalAddress() {
-            markAddressVerified(activeVerifyStep);
+            markAddressVerified(activeVerifyAddrId);
             closeUSPSModal();
         }
 
-        function markAddressVerified(step) {
-            addressVerified[step] = true;
-            const panel = document.getElementById('usps-panel-' + step);
-            if (panel) panel.classList.add('verified');
-            document.getElementById('usps-idle-' + step).classList.add('hidden');
-            document.getElementById('usps-verified-' + step).classList.remove('hidden');
-            const btn = document.getElementById('continue-btn-step' + step);
-            if (btn) btn.disabled = false;
+        function markAddressVerified(addrId) {
+            addressVerified[addrId] = true;
+            const bar = document.getElementById('usps-iv-' + addrId);
+            if (bar) {
+                bar.className = 'usps-inline-link verified';
+                bar.innerHTML = `
+                    <i class="fa-solid fa-circle-check usps-iv-icon"></i>
+                    <span class="usps-iv-text">Address verified by USPS</span>
+                    <button class="usps-iv-action" onclick="resetVerify('${addrId}')">(Re-verify)</button>`;
+            }
+            updateContinueButton(getStepForAddr(addrId));
         }
 
-        function resetVerify(step) {
-            addressVerified[step] = false;
-            const panel = document.getElementById('usps-panel-' + step);
-            if (panel) panel.classList.remove('verified');
-            document.getElementById('usps-idle-' + step).classList.remove('hidden');
-            document.getElementById('usps-verified-' + step).classList.add('hidden');
-            const btn = document.getElementById('continue-btn-step' + step);
-            if (btn) btn.disabled = true;
+        function resetVerify(addrId) {
+            addressVerified[addrId] = false;
+            const bar = document.getElementById('usps-iv-' + addrId);
+            if (bar) {
+                bar.className = 'usps-inline-link';
+                bar.innerHTML = `
+                    <i class="fa-solid fa-location-dot usps-iv-icon"></i>
+                    <span class="usps-iv-text">Address not verified</span>
+                    <button class="usps-iv-action" onclick="verifyAddress('${addrId}')">Verify with USPS</button>`;
+            }
+            updateContinueButton(getStepForAddr(addrId));
+        }
+
+        function markAddressStale(addrId) {
+            if (!addressVerified[addrId]) return;
+            addressVerified[addrId] = false;
+            const bar = document.getElementById('usps-iv-' + addrId);
+            if (bar) {
+                bar.className = 'usps-inline-link stale';
+                bar.innerHTML = `
+                    <i class="fa-solid fa-triangle-exclamation usps-iv-icon"></i>
+                    <span class="usps-iv-text">Address changed &mdash; re-verification required</span>
+                    <button class="usps-iv-action" onclick="verifyAddress('${addrId}')">Verify with USPS</button>`;
+            }
+            updateContinueButton(getStepForAddr(addrId));
         }
 
         function closeUSPSModal() {
             document.getElementById('usps-modal').classList.remove('show');
-            activeVerifyStep = null;
+            activeVerifyAddrId = null;
         }
+
+        // Auto-detect address field changes via event delegation
+        document.addEventListener('input', function(e) {
+            const group = e.target.closest('.address-group');
+            if (group) markAddressStale(group.dataset.addrId);
+        });
+        document.addEventListener('change', function(e) {
+            const group = e.target.closest('.address-group');
+            if (group) markAddressStale(group.dataset.addrId);
+        });
 
         // Accordion
         function toggleAccordion(header) {
