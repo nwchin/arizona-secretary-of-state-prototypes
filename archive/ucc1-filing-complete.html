@@ -1129,49 +1129,55 @@
         }
 
         /* ============================================================
-           USPS ADDRESS VERIFICATION — Inline Link Pattern
+           USPS ADDRESS VERIFICATION
            ============================================================ */
-        .usps-inline-link {
+        .usps-verify-panel {
+            border: var(--border-width-md) solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            background: var(--bg-color);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .usps-verify-panel.verified {
+            border-color: var(--brand-success-700);
+            background: #e8f7ee;
+        }
+        .usps-verify-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .usps-verify-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--brand-primary);
+            border-radius: var(--border-radius-default);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .usps-verify-panel.verified .usps-verify-icon {
+            background: var(--brand-success-700);
+        }
+        .usps-verify-header-text h4 { margin-bottom: var(--spacing-xxs); }
+        .usps-verify-header-text p {
+            margin: 0;
+            color: var(--font-color-detail);
+            font-size: var(--font-size-small);
+        }
+        .usps-verified-badge {
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
-            font-size: var(--font-size-small);
-            margin-top: var(--spacing-sm);
-            margin-bottom: var(--spacing-xs);
-        }
-        .usps-inline-link .usps-iv-icon {
-            font-size: 13px;
-            color: var(--brand-primary);
-        }
-        .usps-inline-link .usps-iv-text {
-            color: var(--font-color-detail);
-        }
-        .usps-inline-link .usps-iv-action {
-            background: none;
-            border: none;
-            color: var(--brand-primary);
-            font-size: var(--font-size-small);
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0;
-            text-decoration: none;
-        }
-        .usps-inline-link .usps-iv-action:hover {
-            text-decoration: underline;
-        }
-        /* Verified state */
-        .usps-inline-link.verified .usps-iv-icon { color: var(--brand-success-700); }
-        .usps-inline-link.verified .usps-iv-text {
             color: var(--brand-success-700);
             font-weight: 600;
+            margin-bottom: var(--spacing-sm);
         }
-        .usps-inline-link.verified .usps-iv-action {
-            color: var(--font-color-detail);
-            font-weight: 400;
-        }
-        /* Stale / changed state */
-        .usps-inline-link.stale .usps-iv-icon { color: #b8860b; }
-        .usps-inline-link.stale .usps-iv-text { color: #b8860b; }
         .usps-address-compare {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1331,112 +1337,6 @@
             opacity: 0.45;
             cursor: not-allowed;
             pointer-events: none;
-        }
-
-        /* Party list styles for Step 1 */
-        .party-section {
-            margin-bottom: var(--spacing-lg);
-        }
-        .party-section:last-of-type {
-            margin-bottom: 0;
-        }
-        .party-section-header {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            font-size: var(--font-size-small);
-            font-weight: 600;
-            color: var(--font-color-detail);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-bottom: var(--spacing-sm);
-            padding-bottom: var(--spacing-xs);
-            border-bottom: 1px solid var(--border-color-default);
-        }
-        .party-section-header i {
-            font-size: 13px;
-            color: var(--brand-primary);
-        }
-        .party-card {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-            padding: var(--spacing-md) var(--spacing-lg);
-            border: 2px solid var(--border-color-default);
-            border-radius: var(--border-radius-md);
-            cursor: pointer;
-            transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
-            margin-bottom: var(--spacing-sm);
-        }
-        .party-card:last-child {
-            margin-bottom: 0;
-        }
-        .party-card:hover {
-            border-color: var(--brand-primary-200);
-            background: #f8faff;
-        }
-        .party-card.selected {
-            border-color: var(--brand-primary);
-            background: #eef3ff;
-            box-shadow: 0 0 0 1px var(--brand-primary);
-        }
-        .party-card-select {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--border-color-default);
-            font-size: 20px;
-            transition: color 0.15s;
-        }
-        .party-card.selected .party-card-select {
-            color: var(--brand-primary);
-        }
-        .party-card-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .party-card-name {
-            font-weight: 600;
-            font-size: var(--font-size-default);
-            color: var(--font-color-default);
-        }
-        .party-card-address {
-            font-size: var(--font-size-small);
-            color: var(--font-color-detail);
-            margin-top: 2px;
-        }
-
-        /* Read-only authorizing party display (Step 3) */
-        .auth-party-readonly {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color-default);
-            border-radius: var(--border-radius-md);
-            padding: var(--spacing-lg);
-        }
-        .auth-party-role {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            font-size: var(--font-size-small);
-            font-weight: 600;
-            color: var(--brand-primary);
-            margin-bottom: var(--spacing-xs);
-        }
-        .auth-party-role i {
-            font-size: 14px;
-        }
-        .auth-party-name {
-            font-weight: 600;
-            font-size: var(--font-size-default);
-            color: var(--font-color-default);
-        }
-        .auth-party-address {
-            font-size: var(--font-size-small);
-            color: var(--font-color-detail);
-            margin-top: 2px;
         }
 
         .ucc3-party-change-options {
@@ -1805,39 +1705,54 @@
                             <input type="text" class="form-control" placeholder="Name of person or organization">
                         </div>
 
-                        <div class="address-group" data-addr-id="addr-step1-ack" data-step="1">
+                        <div class="form-group">
+                            <label>Street Address</label>
+                            <input type="text" class="form-control" placeholder="Street address">
+                        </div>
+
+                
+                        <div class="form-row form-row-4">
                             <div class="form-group">
-                                <label>Street Address</label>
-                                <input type="text" class="form-control" placeholder="Street address">
+                                <label>City</label>
+                                <input type="text" class="form-control" placeholder="City">
                             </div>
-                            <div class="form-row form-row-4">
-                                <div class="form-group">
-                                    <label>City</label>
-                                    <input type="text" class="form-control" placeholder="City">
-                                </div>
-                                <div class="form-group">
-                                    <label>State</label>
-                                    <select class="form-control">
-                                        <option value="">Select</option>
-                                        <option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Postal Code</label>
-                                    <input type="text" class="form-control" placeholder="ZIP">
-                                </div>
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    <select class="form-control">
-                                        <option>USA</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label>State</label>
+                                <select class="form-control">
+                                    <option value="">Select</option>
+                                    <option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option>
+                                </select>
                             </div>
-                            <div class="usps-inline-link" id="usps-iv-addr-step1-ack" role="status" aria-live="polite">
-                                <i class="fa-solid fa-location-dot usps-iv-icon"></i>
-                                <span class="usps-iv-text">Address not verified</span>
-                                <button class="usps-iv-action" onclick="verifyAddress('addr-step1-ack')">Verify with USPS</button>
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <input type="text" class="form-control" placeholder="ZIP">
                             </div>
+                            <div class="form-group">
+                                <label>Country</label>
+                                <select class="form-control">
+                                    <option>USA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- USPS Address Verification — Step 1 -->
+                    <div class="usps-verify-panel" id="usps-panel-1">
+                        <div class="usps-verify-header">
+                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div class="usps-verify-header-text">
+                                <h4>Verify Address with USPS</h4>
+                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. This helps ensure accurate delivery of your filing acknowledgment.</p>
+                            </div>
+                        </div>
+                        <div id="usps-idle-1">
+                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(1)">
+                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
+                            </button>
+                        </div>
+                        <div id="usps-verified-1" class="hidden">
+                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
+                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(1)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
                         </div>
                     </div>
 
@@ -1910,38 +1825,35 @@
                         </div>
 
                         <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
-                        <div class="address-group" data-addr-id="addr-debtor-1" data-step="2">
+                        <div class="form-group">
+                            <label class="required">Street Address</label>
+                            <input type="text" class="form-control" placeholder="Mailing address">
+                        </div>
+                        <div class="form-row form-row-address">
                             <div class="form-group">
-                                <label class="required">Street Address</label>
-                                <input type="text" class="form-control" placeholder="Mailing address">
+                                <label class="required">City</label>
+                                <input type="text" class="form-control" placeholder="City">
                             </div>
-                            <div class="form-row form-row-address">
-                                <div class="form-group">
-                                    <label class="required">City</label>
-                                    <input type="text" class="form-control" placeholder="City">
-                                </div>
-                                <div class="form-group">
-                                    <label class="required">State</label>
-                                    <select class="form-control">
-                                        <option value="">Select</option>
-                                        <option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Postal Code</label>
-                                    <input type="text" class="form-control" placeholder="Extended">
-                                </div>
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    <select class="form-control">
-                                        <option>USA</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label class="required">State</label>
+                                <select class="form-control">
+                                    <option value="">Select</option>
+                                    <option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option>
+                                </select>
                             </div>
-                            <div class="usps-inline-link" id="usps-iv-addr-debtor-1" role="status" aria-live="polite">
-                                <i class="fa-solid fa-location-dot usps-iv-icon"></i>
-                                <span class="usps-iv-text">Address not verified</span>
-                                <button class="usps-iv-action" onclick="verifyAddress('addr-debtor-1')">Verify with USPS</button>
+                            <div class="form-group">
+                                <label class="required">ZIP</label>
+                                <input type="text" class="form-control" placeholder="ZIP">
+                            </div>
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <input type="text" class="form-control" placeholder="Extended">
+                            </div>
+                            <div class="form-group">
+                                <label>Country</label>
+                                <select class="form-control">
+                                    <option>USA</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -1962,6 +1874,26 @@
                             <i class="fa-solid fa-plus"></i> Add Additional Debtor
                         </button>
                         <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 debtors. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
+                    </div>
+
+                    <!-- USPS Address Verification — Step 2 -->
+                    <div class="usps-verify-panel mt-xl" id="usps-panel-2">
+                        <div class="usps-verify-header">
+                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div class="usps-verify-header-text">
+                                <h4>Verify Address with USPS</h4>
+                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. If you add or remove a debtor, you will need to re-verify.</p>
+                            </div>
+                        </div>
+                        <div id="usps-idle-2">
+                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(2)">
+                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
+                            </button>
+                        </div>
+                        <div id="usps-verified-2" class="hidden">
+                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
+                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(2)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
+                        </div>
                     </div>
 
                     <div class="btn-bar">
@@ -2022,33 +1954,30 @@
                         </div>
 
                         <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
-                        <div class="address-group" data-addr-id="addr-secured-1" data-step="3">
+                        <div class="form-group">
+                            <label class="required">Street Address</label>
+                            <input type="text" class="form-control" placeholder="Mailing address">
+                        </div>
+                        <div class="form-row form-row-address">
                             <div class="form-group">
-                                <label class="required">Street Address</label>
-                                <input type="text" class="form-control" placeholder="Mailing address">
+                                <label class="required">City</label>
+                                <input type="text" class="form-control" placeholder="City">
                             </div>
-                            <div class="form-row form-row-address">
-                                <div class="form-group">
-                                    <label class="required">City</label>
-                                    <input type="text" class="form-control" placeholder="City">
-                                </div>
-                                <div class="form-group">
-                                    <label class="required">State</label>
-                                    <select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option></select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Postal Code</label>
-                                    <input type="text" class="form-control" placeholder="Extended">
-                                </div>
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    <select class="form-control"><option>USA</option></select>
-                                </div>
+                            <div class="form-group">
+                                <label class="required">State</label>
+                                <select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option></select>
                             </div>
-                            <div class="usps-inline-link" id="usps-iv-addr-secured-1" role="status" aria-live="polite">
-                                <i class="fa-solid fa-location-dot usps-iv-icon"></i>
-                                <span class="usps-iv-text">Address not verified</span>
-                                <button class="usps-iv-action" onclick="verifyAddress('addr-secured-1')">Verify with USPS</button>
+                            <div class="form-group">
+                                <label class="required">ZIP</label>
+                                <input type="text" class="form-control" placeholder="ZIP">
+                            </div>
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <input type="text" class="form-control" placeholder="Extended">
+                            </div>
+                            <div class="form-group">
+                                <label>Country</label>
+                                <select class="form-control"><option>USA</option></select>
                             </div>
                         </div>
                     </div>
@@ -2069,6 +1998,26 @@
                             <i class="fa-solid fa-plus"></i> Add Additional Secured Party
                         </button>
                         <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 secured parties. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
+                    </div>
+
+                    <!-- USPS Address Verification — Step 3 -->
+                    <div class="usps-verify-panel mt-xl" id="usps-panel-3">
+                        <div class="usps-verify-header">
+                            <div class="usps-verify-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div class="usps-verify-header-text">
+                                <h4>Verify Address with USPS</h4>
+                                <p>U.S. addresses must be verified with the U.S. Postal Service before you can continue. If you add or remove a secured party, you will need to re-verify.</p>
+                            </div>
+                        </div>
+                        <div id="usps-idle-3">
+                            <button class="btn btn-secondary btn-sm" onclick="verifyAddress(3)">
+                                <i class="fa-solid fa-location-dot"></i> Verify Address with USPS
+                            </button>
+                        </div>
+                        <div id="usps-verified-3" class="hidden">
+                            <div class="usps-verified-badge"><i class="fa-solid fa-circle-check"></i> Address verified by USPS</div>
+                            <button class="btn btn-link btn-sm" style="padding-left:0; font-size:var(--font-size-small);" onclick="resetVerify(3)"><i class="fa-solid fa-rotate-left"></i> Re-verify address</button>
+                        </div>
                     </div>
 
                     <div class="btn-bar">
@@ -2113,7 +2062,7 @@
                                 <input type="file" id="collateral-file-input" multiple accept=".pdf,.doc,.docx,.txt" onchange="handleFileSelect(event)">
                                 <div class="file-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
                                 <p><span class="upload-cta">Click to browse</span> or drag and drop files here</p>
-                                <p class="upload-hint">Accepted formats: PDF &nbsp;·&nbsp; Max 10 MB per file</p>
+                                <p class="upload-hint">Accepted formats: PDF, DOC, DOCX, TXT &nbsp;·&nbsp; Max 10 MB per file</p>
                             </div>
                             <div class="file-list" id="collateral-file-list"></div>
                             <span class="form-text mt-sm">Attach supporting documentation that describes or identifies the collateral. Do not include PII.</span>
@@ -2143,17 +2092,17 @@
                         
                         <div class="form-group">
                             <label>Filing Type</label>
-                            <select class="form-control" id="filing-type-select" onchange="checkManualReview()">
+                            <select class="form-control">
                                 <option value=""></option>
-                                <option value="standard">Standard UCC Filing (default)</option><option value="public-finance">Public-Finance Transaction</option><option value="manufactured-home">Manufactured-Home Transaction</option><option value="transmitting-utility">A Debtor is a Transmitting Utility</option>
+                                <option>Standard UCC Filing (default)</option><option>Public-Finance Transaction</option><option>Manufactured-Home Transaction</option><option>A Debtor is a Transmitting Utility</option>
                             </select>
-                        </div>
+                        </div> 
 
                         <div class="form-group">
                             <label>Non-Standard Filing Type</label>
-                            <select class="form-control" id="non-standard-filing-select" onchange="checkManualReview()">
+                            <select class="form-control">
                                 <option value=""></option>
-                                <option value="agricultural-lien">Agricultural Lien</option><option value="non-ucc">Non-UCC Filing (e.g., tax lien, judgment lien)</option>
+                                <option>Agricultural Lien</option><option>Non-UCC Filing (e.g., tax lien, judgment lien)</option>
                             </select>
                         </div> 
                     </div>
@@ -2183,19 +2132,10 @@
                         </div>
                     </div>
 
-                    <!-- Manual review notice (hidden by default) -->
-                    <div class="alert-warning" id="manual-review-notice" style="display:none; margin-bottom:var(--spacing-lg);">
-                        <i class="fa-solid fa-triangle-exclamation alert-icon"></i>
-                        <div>
-                            <strong>This filing requires manual review.</strong>
-                            Because of the filing type you selected, your submission cannot be processed automatically. A staff member will review your filing and you will be notified by email once a determination has been made. Payment will be collected after approval.
-                        </div>
-                    </div>
-
                     <div class="btn-bar">
                         <button class="btn btn-default" onclick="prevStep()"><i class="fa-solid fa-arrow-left"></i> Back</button>
                         <div class="btn-bar-right">
-                            <button class="btn btn-primary" id="btn-step4-continue" onclick="handleStep4Continue()"><span id="btn-step4-label">Continue</span> <i class="fa-solid fa-arrow-right" id="btn-step4-icon"></i></button>
+                            <button class="btn btn-primary" onclick="nextStep()">Continue <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -2463,74 +2403,30 @@
 
             <!-- =================== UCC3 STEP 1: WHO ARE YOU =================== -->
             <div class="wizard-panel" id="ucc3-step-1">
-                <h1 class="page-title">Who are you?</h1>
-                <p class="page-subtitle">Select yourself from the parties listed on the original financing statement. The amendment actions available to you depend on your role in the filing.</p>
+                <h1 class="page-title">What is your relationship to this filing?</h1>
+                <p class="page-subtitle">Select your role in the original financing statement. The amendment actions available to you depend on your relationship to the filing.</p>
 
-                <div class="card" id="ucc3-party-list">
-                    <!-- Debtor(s) Section -->
-                    <div class="party-section">
-                        <div class="party-section-header">
-                            <i class="fa-solid fa-user"></i>
-                            <span>Debtor</span>
+                <div class="card">
+                    <div class="relationship-cards">
+                        <div class="relationship-card" onclick="selectRelationship('debtor', this)">
+                            <div class="card-icon-sm"><i class="fa-solid fa-user"></i></div>
+                            <h4>Debtor</h4>
+                            <p>You are the debtor named on the original financing statement.</p>
                         </div>
-                        <div class="party-card" onclick="selectParty('debtor', 0, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">Copper Basin Mining LLC</div>
-                                <div class="party-card-address">4200 N Central Ave, Suite 1500, Phoenix, AZ 85012</div>
-                            </div>
+                        <div class="relationship-card" onclick="selectRelationship('sp1', this)">
+                            <div class="card-icon-sm"><i class="fa-solid fa-building-columns"></i></div>
+                            <h4>Secured Party #1</h4>
+                            <p>You are the primary secured party of record on the filing.</p>
                         </div>
-                    </div>
-
-                    <!-- Secured Party #1 Section -->
-                    <div class="party-section">
-                        <div class="party-section-header">
-                            <i class="fa-solid fa-building-columns"></i>
-                            <span>Secured Party #1</span>
+                        <div class="relationship-card" onclick="selectRelationship('sp2', this)">
+                            <div class="card-icon-sm"><i class="fa-solid fa-users"></i></div>
+                            <h4>Secured Party #2 and Beyond</h4>
+                            <p>You are an additional secured party (not the primary) on the filing.</p>
                         </div>
-                        <div class="party-card" onclick="selectParty('sp1', 0, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">Western States Capital Bank</div>
-                                <div class="party-card-address">100 W Washington St, Suite 2200, Phoenix, AZ 85003</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Secured Party #2+ Section -->
-                    <div class="party-section">
-                        <div class="party-section-header">
-                            <i class="fa-solid fa-users"></i>
-                            <span>Secured Party #2 and Beyond</span>
-                        </div>
-                        <div class="party-card" onclick="selectParty('sp2', 0, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">Margaret L. Thornton</div>
-                                <div class="party-card-address">8742 E Camelback Rd, Scottsdale, AZ 85251</div>
-                            </div>
-                        </div>
-                        <div class="party-card" onclick="selectParty('sp2', 1, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">Sonoran Equipment Leasing Inc</div>
-                                <div class="party-card-address">3301 S Price Rd, Suite 108, Chandler, AZ 85248</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Assignee Secured Party Section -->
-                    <div class="party-section">
-                        <div class="party-section-header">
-                            <i class="fa-solid fa-right-left"></i>
-                            <span>Assignee Secured Party</span>
-                        </div>
-                        <div class="party-card" onclick="selectParty('assignee', 0, this)">
-                            <div class="party-card-select"><i class="fa-solid fa-circle-check"></i></div>
-                            <div class="party-card-info">
-                                <div class="party-card-name">James R. Whitfield</div>
-                                <div class="party-card-address">1920 N 7th St, Phoenix, AZ 85006</div>
-                            </div>
+                        <div class="relationship-card" onclick="selectRelationship('assignee', this)">
+                            <div class="card-icon-sm"><i class="fa-solid fa-right-left"></i></div>
+                            <h4>Assignee Secured Party</h4>
+                            <p>You were assigned rights to this filing by the original secured party.</p>
                         </div>
                     </div>
 
@@ -2605,11 +2501,28 @@
 
                         <div class="form-section">
                             <div class="form-section-title">Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this termination, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-termination">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the party of record authorizing this termination.</p>
+
+                            <div class="form-group">
+                                <label>Party Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'term-auth')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'term-auth')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="term-auth-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the authorizing party">
+                                </div>
+                            </div>
+                            <div id="term-auth-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -2655,6 +2568,7 @@
                             <div class="form-row form-row-address">
                                 <div class="form-group"><label class="required">City</label><input type="text" class="form-control" placeholder="City"></div>
                                 <div class="form-group"><label class="required">State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                                <div class="form-group"><label class="required">ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
                                 <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
                                 <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
                             </div>
@@ -2662,11 +2576,28 @@
 
                         <div class="form-section">
                             <div class="form-section-title">Assignor / Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this assignment, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-assignment">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the secured party of record assigning their rights.</p>
+
+                            <div class="form-group">
+                                <label>Assignor Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'assignor')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'assignor')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="assignor-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the assignor">
+                                </div>
+                            </div>
+                            <div id="assignor-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -2699,11 +2630,28 @@
 
                         <div class="form-section">
                             <div class="form-section-title">Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this continuation, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-continuation">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the secured party of record authorizing this continuation.</p>
+
+                            <div class="form-group">
+                                <label>Party Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'cont-auth')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'cont-auth')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="cont-auth-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the authorizing secured party">
+                                </div>
+                            </div>
+                            <div id="cont-auth-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -2800,6 +2748,7 @@
                             <div class="form-row form-row-address">
                                 <div class="form-group"><label class="required">City</label><input type="text" class="form-control" placeholder="City"></div>
                                 <div class="form-group"><label class="required">State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                                <div class="form-group"><label class="required">ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
                                 <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
                                 <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
                             </div>
@@ -2808,11 +2757,28 @@
                         <!-- Authorizing Party (Item 9) -->
                         <div class="form-section">
                             <div class="form-section-title">Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this change, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-party-change">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the secured party of record authorizing this change.</p>
+
+                            <div class="form-group">
+                                <label>Party Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'pc-auth')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'pc-auth')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="pc-auth-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the authorizing party">
+                                </div>
+                            </div>
+                            <div id="pc-auth-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -2850,11 +2816,28 @@
                         <!-- Authorizing Party (Item 9) -->
                         <div class="form-section">
                             <div class="form-section-title">Authorizing Party (Item 9)</div>
-                            <p class="form-section-subtitle">The party authorizing this change, as selected in Step 1.</p>
-                            <div class="auth-party-readonly" id="auth-party-collateral-change">
-                                <div class="auth-party-role"><i class="fa-solid fa-circle-check"></i> <span class="auth-party-role-label"></span></div>
-                                <div class="auth-party-name"></div>
-                                <div class="auth-party-address"></div>
+                            <p class="form-section-subtitle">Enter the name of the secured party of record authorizing this change.</p>
+
+                            <div class="form-group">
+                                <label>Party Type</label>
+                                <div class="entity-toggle">
+                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'cc-auth')">Organization</button>
+                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'cc-auth')">Individual</button>
+                                </div>
+                            </div>
+                            <div id="cc-auth-org">
+                                <div class="form-group">
+                                    <label class="required">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Full legal name of the authorizing party">
+                                </div>
+                            </div>
+                            <div id="cc-auth-individual" class="hidden">
+                                <div class="form-row form-row-name">
+                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
+                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
+                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
+                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
+                                </div>
                             </div>
                         </div>
 
@@ -3105,74 +3088,6 @@
         </div>
     </div>
 
-    <!-- ======================= MANUAL REVIEW CONFIRMATION VIEW ======================= -->
-    <div id="view-manual-review" class="view hidden">
-        <div class="page-content">
-            <div class="card confirmation-card card-shadow">
-                <div class="success-icon" style="background: var(--brand-warning-100, #fef3cd);">
-                    <i class="fa-solid fa-clock" style="color: var(--brand-warning-700, #856404);"></i>
-                </div>
-                <h1>Filing Submitted for Review</h1>
-                <p style="color:var(--font-color-detail); max-width:500px; margin:0 auto 24px;">Your UCC-1 Financing Statement has been submitted and is pending manual review by staff. You will be notified by email once a determination has been made.</p>
-
-                <div class="confirmation-details">
-                    <div class="detail-row">
-                        <span class="detail-label">Confirmation Number</span>
-                        <span class="detail-value" style="font-family:monospace;" id="review-confirmation-number">MR-20260410-003847</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Filing Type</span>
-                        <span class="detail-value">UCC-1 Financing Statement</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Debtor</span>
-                        <span class="detail-value">Acme Industries LLC</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Secured Party</span>
-                        <span class="detail-value">First National Bank of Arizona</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Date Submitted</span>
-                        <span class="detail-value" id="review-submit-date">April 10, 2026</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Status</span>
-                        <span class="detail-value" style="color: var(--brand-warning-700, #856404);"><i class="fa-solid fa-clock" style="margin-right:4px;"></i> Under Review</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Review Reason</span>
-                        <span class="detail-value" id="review-reason">Non-standard filing type</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Payment</span>
-                        <span class="detail-value">Payment will be collected after approval</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Est. Review Time</span>
-                        <span class="detail-value">5–10 business days</span>
-                    </div>
-                </div>
-
-                <div class="alert-info" style="margin:var(--spacing-xl) auto; max-width:540px;">
-                    <i class="fa-solid fa-circle-info alert-icon"></i>
-                    <div>
-                        <strong>What happens next?</strong>
-                        A staff member will review your filing for completeness and accuracy. If approved, you will receive a payment link by email. Your UCC-1 document will be generated after payment is received.
-                    </div>
-                </div>
-
-                <div style="display:flex; gap:12px; justify-content:center; margin-top:var(--spacing-xl); flex-wrap:wrap;">
-                    <button class="btn btn-secondary"><i class="fa-solid fa-print"></i> Print Confirmation</button>
-                </div>
-
-                <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--border-color-default);">
-                    <button class="btn btn-link" onclick="showOverview()"><i class="fa-solid fa-arrow-left"></i> Return to UCC Filing Overview</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- ======================= PREPAY REGISTRATION VIEW ======================= -->
     <div id="view-prepay-register" class="view hidden">
         <div class="page-content">
@@ -3404,7 +3319,6 @@
         // State
         let currentStep = 1;
         const totalSteps = 6;
-        let requiresManualReview = false;
 
         // Party counters
         let debtorCount = 1;
@@ -3536,39 +3450,30 @@
                     </div>
                 </div>
                 <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
-                <div class="address-group" data-addr-id="addr-debtor-${n}" data-step="2">
-                    <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
-                    <div class="form-row form-row-address">
-                        <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
-                        <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
-                        <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
-                        <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
-                    </div>
-                    <div class="usps-inline-link" id="usps-iv-addr-debtor-${n}" role="status" aria-live="polite">
-                        <i class="fa-solid fa-location-dot usps-iv-icon"></i>
-                        <span class="usps-iv-text">Address not verified</span>
-                        <button class="usps-iv-action" onclick="verifyAddress('addr-debtor-${n}')">Verify with USPS</button>
-                    </div>
+                <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
+                <div class="form-row form-row-address">
+                    <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
+                    <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                    <div class="form-group"><label>ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
+                    <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
+                    <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
                 </div>
             </div>`;
         }
 
         function addDebtor() {
             debtorCount++;
-            const id = nextDebtorId++;
             document.getElementById('additional-debtors-container')
-                .insertAdjacentHTML('beforeend', debtorTemplate(id));
+                .insertAdjacentHTML('beforeend', debtorTemplate(nextDebtorId++));
             updateAPNotice();
-            addressVerified['addr-debtor-' + id] = false;
-            updateContinueButton(2);
+            resetVerify(2);
         }
 
         function removeDebtor(n) {
             document.getElementById('debtor-' + n).remove();
             debtorCount--;
             updateAPNotice();
-            delete addressVerified['addr-debtor-' + n];
-            updateContinueButton(2);
+            resetVerify(2);
         }
 
         function toggleDebtorAdditional(btn, type, n) {
@@ -3607,39 +3512,30 @@
                     </div>
                 </div>
                 <div class="form-section-title mt-lg" style="font-size:var(--font-size-default);">Mailing Address</div>
-                <div class="address-group" data-addr-id="addr-secured-${n}" data-step="3">
-                    <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
-                    <div class="form-row form-row-address">
-                        <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
-                        <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
-                        <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
-                        <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
-                    </div>
-                    <div class="usps-inline-link" id="usps-iv-addr-secured-${n}" role="status" aria-live="polite">
-                        <i class="fa-solid fa-location-dot usps-iv-icon"></i>
-                        <span class="usps-iv-text">Address not verified</span>
-                        <button class="usps-iv-action" onclick="verifyAddress('addr-secured-${n}')">Verify with USPS</button>
-                    </div>
+                <div class="form-group"><label>Street Address</label><input type="text" class="form-control" placeholder="Mailing address"></div>
+                <div class="form-row form-row-address">
+                    <div class="form-group"><label>City</label><input type="text" class="form-control" placeholder="City"></div>
+                    <div class="form-group"><label>State</label><select class="form-control"><option value="">Select</option><option>AZ</option><option>CA</option><option>CO</option><option>NV</option><option>NM</option><option>TX</option><option>UT</option></select></div>
+                    <div class="form-group"><label>ZIP</label><input type="text" class="form-control" placeholder="ZIP"></div>
+                    <div class="form-group"><label>Postal Code</label><input type="text" class="form-control" placeholder="Extended"></div>
+                    <div class="form-group"><label>Country</label><select class="form-control"><option>USA</option></select></div>
                 </div>
             </div>`;
         }
 
         function addSecuredParty() {
             securedPartyCount++;
-            const id = nextSecuredId++;
             document.getElementById('additional-secured-container')
-                .insertAdjacentHTML('beforeend', securedPartyTemplate(id));
+                .insertAdjacentHTML('beforeend', securedPartyTemplate(nextSecuredId++));
             updateAPNotice();
-            addressVerified['addr-secured-' + id] = false;
-            updateContinueButton(3);
+            resetVerify(3);
         }
 
         function removeSecuredParty(n) {
             document.getElementById('secured-' + n).remove();
             securedPartyCount--;
             updateAPNotice();
-            delete addressVerified['addr-secured-' + n];
-            updateContinueButton(3);
+            resetVerify(3);
         }
 
         function toggleSecuredAdditional(btn, type, n) {
@@ -3681,65 +3577,6 @@
         // Submit
         function submitFiling() {
             showView('view-confirmation');
-        }
-
-        // Manual review logic
-        function checkManualReview() {
-            const filingType = document.getElementById('filing-type-select').value;
-            const nonStandard = document.getElementById('non-standard-filing-select').value;
-
-            // Triggers manual review if Filing Type is non-empty and not "standard", OR if Non-Standard Filing Type has any selection
-            const filingTrigger = filingType !== '' && filingType !== 'standard';
-            const nonStandardTrigger = nonStandard !== '';
-
-            requiresManualReview = filingTrigger || nonStandardTrigger;
-
-            const btn = document.getElementById('btn-step4-continue');
-            const label = document.getElementById('btn-step4-label');
-            const icon = document.getElementById('btn-step4-icon');
-            const notice = document.getElementById('manual-review-notice');
-
-            if (requiresManualReview) {
-                label.textContent = 'Submit for Review';
-                icon.className = 'fa-solid fa-paper-plane';
-                notice.style.display = '';
-            } else {
-                label.textContent = 'Continue';
-                icon.className = 'fa-solid fa-arrow-right';
-                notice.style.display = 'none';
-            }
-        }
-
-        function handleStep4Continue() {
-            if (requiresManualReview) {
-                // Build review reason text
-                const filingType = document.getElementById('filing-type-select');
-                const nonStandard = document.getElementById('non-standard-filing-select');
-                let reasons = [];
-                if (filingType.value && filingType.value !== 'standard') {
-                    reasons.push(filingType.options[filingType.selectedIndex].text);
-                }
-                if (nonStandard.value) {
-                    reasons.push(nonStandard.options[nonStandard.selectedIndex].text);
-                }
-                document.getElementById('review-reason').textContent = reasons.join(', ');
-
-                // Generate confirmation number
-                const now = new Date();
-                const dateStr = now.getFullYear().toString() +
-                    String(now.getMonth() + 1).padStart(2, '0') +
-                    String(now.getDate()).padStart(2, '0');
-                const rand = String(Math.floor(Math.random() * 999999)).padStart(6, '0');
-                document.getElementById('review-confirmation-number').textContent = 'MR-' + dateStr + '-' + rand;
-
-                // Set submit date
-                document.getElementById('review-submit-date').textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-                // Skip review & payment, go straight to manual review confirmation
-                showView('view-manual-review');
-            } else {
-                nextStep();
-            }
         }
 
         // ── File upload ─────────────────────────────────────────────────
@@ -3835,47 +3672,29 @@
             document.getElementById('balance-footer-result').classList.add('hidden');
         }
 
-        // ── USPS Address Verification (inline, per-address) ─────────
+        // ── USPS Address Verification ────────────────────────────────
         const addressVerified = {};
-        let activeVerifyAddrId = null;
+        let activeVerifyStep = null;
 
-        // Mock USPS standardized addresses keyed by prefix
+        // Mock USPS standardized addresses (per step)
         const mockUSPSData = {
-            step1:    { entered: { line1: '123 Main Street', line2: 'Phoenix, AZ 85004', line3: 'USA' },
-                        usps:    { line1: '123 MAIN ST', line2: 'PHOENIX, AZ 85004-1234', line3: 'USA' } },
-            debtor:   { entered: { line1: '456 W Commerce Drive', line2: 'Tucson, AZ 85701', line3: 'USA' },
-                        usps:    { line1: '456 W COMMERCE DR', line2: 'TUCSON, AZ 85701-2208', line3: 'USA' } },
-            secured:  { entered: { line1: '789 North Central Avenue', line2: 'Phoenix, AZ 85004', line3: 'USA' },
-                        usps:    { line1: '789 N CENTRAL AVE STE 200', line2: 'PHOENIX, AZ 85004-1090', line3: 'USA' } }
+            1: {
+                entered: { line1: '123 Main Street', line2: 'Phoenix, AZ 85004', line3: 'USA' },
+                usps:    { line1: '123 MAIN ST', line2: 'PHOENIX, AZ 85004-1234', line3: 'USA' }
+            },
+            2: {
+                entered: { line1: '456 W Commerce Drive', line2: 'Tucson, AZ 85701', line3: 'USA' },
+                usps:    { line1: '456 W COMMERCE DR', line2: 'TUCSON, AZ 85701-2208', line3: 'USA' }
+            },
+            3: {
+                entered: { line1: '789 North Central Avenue', line2: 'Phoenix, AZ 85004', line3: 'USA' },
+                usps:    { line1: '789 N CENTRAL AVE STE 200', line2: 'PHOENIX, AZ 85004-1090', line3: 'USA' }
+            }
         };
 
-        function getMockUSPS(addrId) {
-            if (addrId.includes('step1')) return mockUSPSData.step1;
-            if (addrId.includes('debtor')) return mockUSPSData.debtor;
-            if (addrId.includes('secured')) return mockUSPSData.secured;
-            return mockUSPSData.step1;
-        }
-
-        function getStepForAddr(addrId) {
-            const group = document.querySelector(`[data-addr-id="${addrId}"]`);
-            return group ? parseInt(group.dataset.step) : null;
-        }
-
-        function getAddrIdsForStep(step) {
-            return Array.from(document.querySelectorAll(`.address-group[data-step="${step}"]`))
-                .map(el => el.dataset.addrId);
-        }
-
-        function updateContinueButton(step) {
-            const ids = getAddrIdsForStep(step);
-            const allVerified = ids.length > 0 && ids.every(id => addressVerified[id] === true);
-            const btn = document.getElementById('continue-btn-step' + step);
-            if (btn) btn.disabled = !allVerified;
-        }
-
-        function verifyAddress(addrId) {
-            activeVerifyAddrId = addrId;
-            const d = getMockUSPS(addrId);
+        function verifyAddress(step) {
+            activeVerifyStep = step;
+            const d = mockUSPSData[step] || mockUSPSData[1];
             document.getElementById('usps-address-compare').innerHTML = `
                 <div class="usps-address-block">
                     <div class="usps-address-type">As Entered</div>
@@ -3890,69 +3709,39 @@
         }
 
         function acceptUSPSAddress() {
-            markAddressVerified(activeVerifyAddrId);
+            markAddressVerified(activeVerifyStep);
             closeUSPSModal();
         }
 
         function keepOriginalAddress() {
-            markAddressVerified(activeVerifyAddrId);
+            markAddressVerified(activeVerifyStep);
             closeUSPSModal();
         }
 
-        function markAddressVerified(addrId) {
-            addressVerified[addrId] = true;
-            const bar = document.getElementById('usps-iv-' + addrId);
-            if (bar) {
-                bar.className = 'usps-inline-link verified';
-                bar.innerHTML = `
-                    <i class="fa-solid fa-circle-check usps-iv-icon"></i>
-                    <span class="usps-iv-text">Address verified by USPS</span>
-                    <button class="usps-iv-action" onclick="resetVerify('${addrId}')">(Re-verify)</button>`;
-            }
-            updateContinueButton(getStepForAddr(addrId));
+        function markAddressVerified(step) {
+            addressVerified[step] = true;
+            const panel = document.getElementById('usps-panel-' + step);
+            if (panel) panel.classList.add('verified');
+            document.getElementById('usps-idle-' + step).classList.add('hidden');
+            document.getElementById('usps-verified-' + step).classList.remove('hidden');
+            const btn = document.getElementById('continue-btn-step' + step);
+            if (btn) btn.disabled = false;
         }
 
-        function resetVerify(addrId) {
-            addressVerified[addrId] = false;
-            const bar = document.getElementById('usps-iv-' + addrId);
-            if (bar) {
-                bar.className = 'usps-inline-link';
-                bar.innerHTML = `
-                    <i class="fa-solid fa-location-dot usps-iv-icon"></i>
-                    <span class="usps-iv-text">Address not verified</span>
-                    <button class="usps-iv-action" onclick="verifyAddress('${addrId}')">Verify with USPS</button>`;
-            }
-            updateContinueButton(getStepForAddr(addrId));
-        }
-
-        function markAddressStale(addrId) {
-            if (!addressVerified[addrId]) return;
-            addressVerified[addrId] = false;
-            const bar = document.getElementById('usps-iv-' + addrId);
-            if (bar) {
-                bar.className = 'usps-inline-link stale';
-                bar.innerHTML = `
-                    <i class="fa-solid fa-triangle-exclamation usps-iv-icon"></i>
-                    <span class="usps-iv-text">Address changed &mdash; re-verification required</span>
-                    <button class="usps-iv-action" onclick="verifyAddress('${addrId}')">Verify with USPS</button>`;
-            }
-            updateContinueButton(getStepForAddr(addrId));
+        function resetVerify(step) {
+            addressVerified[step] = false;
+            const panel = document.getElementById('usps-panel-' + step);
+            if (panel) panel.classList.remove('verified');
+            document.getElementById('usps-idle-' + step).classList.remove('hidden');
+            document.getElementById('usps-verified-' + step).classList.add('hidden');
+            const btn = document.getElementById('continue-btn-step' + step);
+            if (btn) btn.disabled = true;
         }
 
         function closeUSPSModal() {
             document.getElementById('usps-modal').classList.remove('show');
-            activeVerifyAddrId = null;
+            activeVerifyStep = null;
         }
-
-        // Auto-detect address field changes via event delegation
-        document.addEventListener('input', function(e) {
-            const group = e.target.closest('.address-group');
-            if (group) markAddressStale(group.dataset.addrId);
-        });
-        document.addEventListener('change', function(e) {
-            const group = e.target.closest('.address-group');
-            if (group) markAddressStale(group.dataset.addrId);
-        });
 
         // Accordion
         function toggleAccordion(header) {
@@ -3969,20 +3758,10 @@
         let ucc3CurrentStep = 1;
         const ucc3TotalSteps = 5;
         let selectedRelationship = null;
-        let selectedPartyData = null;
         let selectedAmendmentType = null;
         let selectedPartyChangeSubtype = null;
         let selectedCollateralChangeSubtype = null;
         let partyChangeAffects = 'debtor';
-
-        // Parties from the original UCC1 filing (keyed by role + index)
-        const mockUCC1Parties = {
-            'debtor-0':   { name: 'Copper Basin Mining LLC', address: '4200 N Central Ave, Suite 1500, Phoenix, AZ 85012', role: 'debtor' },
-            'sp1-0':      { name: 'Western States Capital Bank', address: '100 W Washington St, Suite 2200, Phoenix, AZ 85003', role: 'sp1' },
-            'sp2-0':      { name: 'Margaret L. Thornton', address: '8742 E Camelback Rd, Scottsdale, AZ 85251', role: 'sp2' },
-            'sp2-1':      { name: 'Sonoran Equipment Leasing Inc', address: '3301 S Price Rd, Suite 108, Chandler, AZ 85248', role: 'sp2' },
-            'assignee-0': { name: 'James R. Whitfield', address: '1920 N 7th St, Phoenix, AZ 85006', role: 'assignee' }
-        };
 
         const mockFilingData = {
             fileNumber: '20210045678901',
@@ -4125,11 +3904,10 @@
             }
         }
 
-        // ── Step 1: Party selection ───────────────────────────────────
-        function selectParty(role, index, el) {
-            selectedRelationship = role;
-            selectedPartyData = mockUCC1Parties[role + '-' + index] || null;
-            document.querySelectorAll('.party-card').forEach(c => c.classList.remove('selected'));
+        // ── Step 1: Relationship selection ────────────────────────────
+        function selectRelationship(type, el) {
+            selectedRelationship = type;
+            document.querySelectorAll('.relationship-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
             document.getElementById('ucc3-continue-step1').disabled = false;
 
@@ -4140,28 +3918,6 @@
 
             // Update available amendment types for step 2
             updateAmendmentTypeAvailability();
-
-            // Populate all read-only authorizing party blocks
-            populateAuthPartyReadonly();
-        }
-
-        function populateAuthPartyReadonly() {
-            if (!selectedPartyData) return;
-            const roleLabel = roleLabelMap[selectedRelationship] || selectedRelationship;
-            const ids = [
-                'auth-party-termination',
-                'auth-party-assignment',
-                'auth-party-continuation',
-                'auth-party-party-change',
-                'auth-party-collateral-change'
-            ];
-            ids.forEach(id => {
-                const block = document.getElementById(id);
-                if (!block) return;
-                block.querySelector('.auth-party-role-label').textContent = roleLabel;
-                block.querySelector('.auth-party-name').textContent = selectedPartyData.name;
-                block.querySelector('.auth-party-address').textContent = selectedPartyData.address;
-            });
         }
 
         function updateAmendmentTypeAvailability() {
