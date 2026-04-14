@@ -1439,6 +1439,88 @@
             margin-top: 2px;
         }
 
+        /* Original collateral read-only display */
+        .original-collateral-block {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+        }
+        .original-collateral-label {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: var(--font-size-small);
+            font-weight: 600;
+            color: var(--font-color-detail);
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .original-collateral-label i {
+            font-size: 13px;
+        }
+        .original-collateral-text {
+            background: var(--color-white);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-default);
+            padding: var(--spacing-md);
+            font-size: var(--font-size-default);
+            color: var(--font-color-default);
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .original-attachment-list {
+            margin-top: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+        .original-attachment-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--color-white);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-default);
+            font-size: var(--font-size-small);
+        }
+        .original-attachment-item .file-icon {
+            color: var(--brand-danger);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .original-attachment-item .file-name {
+            flex: 1;
+            font-weight: 500;
+            color: var(--link-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .original-attachment-item .file-name:hover {
+            text-decoration: underline;
+        }
+        .original-attachment-item .file-size {
+            color: var(--font-color-detail);
+            flex-shrink: 0;
+        }
+        .original-attachment-item .file-download {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--brand-primary);
+            padding: var(--spacing-xxs) var(--spacing-xs);
+            flex-shrink: 0;
+            font-size: 14px;
+            line-height: 1;
+            border-radius: var(--border-radius-default);
+        }
+        .original-attachment-item .file-download:hover {
+            color: var(--brand-primary-700);
+        }
+
         .ucc3-party-change-options {
             display: flex;
             gap: var(--spacing-md);
@@ -2827,9 +2909,44 @@
 
                     <!-- COLLATERAL CHANGE FORM -->
                     <div id="ucc3-form-collateral-change" class="ucc3-form-section hidden">
+                        <!-- Original Collateral from UCC-1 -->
+                        <div class="form-section">
+                            <div class="form-section-title">Original Collateral on File</div>
+                            <p class="form-section-subtitle">The following collateral description and documents were filed on the original UCC-1 financing statement.</p>
+
+                            <div class="original-collateral-block">
+                                <div class="original-collateral-label"><i class="fa-solid fa-file-lines"></i> Collateral Description — UCC-1 Filing #2024-1234567</div>
+                                <div class="original-collateral-text">All inventory, accounts receivable, equipment, and general intangibles now owned or hereafter acquired by the Debtor, including but not limited to: all machinery, furniture, fixtures, and tools; all contract rights and instruments; all chattel paper, deposit accounts, and investment property; and all proceeds and products of the foregoing, wherever located.</div>
+
+                                <div class="original-attachment-list">
+                                    <div class="original-collateral-label" style="margin-top: var(--spacing-md); margin-bottom: var(--spacing-xs);">
+                                        <i class="fa-solid fa-paperclip"></i> Attached Documents
+                                    </div>
+                                    <div class="original-attachment-item">
+                                        <i class="fa-solid fa-file-pdf file-icon"></i>
+                                        <a class="file-name" href="#" onclick="event.preventDefault()">Security-Agreement-2024.pdf</a>
+                                        <span class="file-size">245 KB</span>
+                                        <button class="file-download" title="Download"><i class="fa-solid fa-download"></i></button>
+                                    </div>
+                                    <div class="original-attachment-item">
+                                        <i class="fa-solid fa-file-pdf file-icon"></i>
+                                        <a class="file-name" href="#" onclick="event.preventDefault()">Equipment-Schedule-A.pdf</a>
+                                        <span class="file-size">128 KB</span>
+                                        <button class="file-download" title="Download"><i class="fa-solid fa-download"></i></button>
+                                    </div>
+                                    <div class="original-attachment-item">
+                                        <i class="fa-solid fa-file-pdf file-icon"></i>
+                                        <a class="file-name" href="#" onclick="event.preventDefault()">Collateral-Addendum-UCC1Ad.pdf</a>
+                                        <span class="file-size">89 KB</span>
+                                        <button class="file-download" title="Download"><i class="fa-solid fa-download"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-section">
                             <div class="form-section-title">Collateral Change Type (Item 8)</div>
-                            <p class="form-section-subtitle">Select the type of collateral change and describe the affected collateral.</p>
+                            <p class="form-section-subtitle">Based on the original collateral shown above, select your change type and provide the updated description.</p>
 
                             <div class="form-group">
                                 <label class="required">Action:</label>
