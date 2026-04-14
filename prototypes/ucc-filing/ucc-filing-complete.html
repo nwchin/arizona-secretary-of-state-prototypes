@@ -1530,6 +1530,100 @@
             flex: 0 0 auto;
         }
 
+        /* Party selection list for Change/Delete actions */
+        .party-select-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+        .party-select-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .party-select-item:hover:not(.disabled) {
+            border-color: var(--brand-primary-200);
+            background: var(--bg-color);
+        }
+        .party-select-item.selected {
+            border-color: var(--brand-primary);
+            background: rgba(0, 51, 102, 0.04);
+        }
+        .party-select-item .party-select-radio {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color-default);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .party-select-item.selected .party-select-radio {
+            border-color: var(--brand-primary);
+            background: var(--brand-primary);
+        }
+        .party-select-item.selected .party-select-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+        .party-select-item .party-select-info {
+            flex: 1;
+        }
+        .party-select-item .party-select-name {
+            font-weight: 600;
+            color: var(--font-color-default);
+            font-size: var(--font-size-default);
+        }
+        .party-select-item .party-select-address {
+            color: var(--font-color-detail);
+            font-size: var(--font-size-small);
+            margin-top: 2px;
+        }
+        .party-select-item .party-select-role {
+            font-size: var(--font-size-xsmall);
+            color: var(--font-color-detail);
+            background: var(--bg-color);
+            padding: 2px 8px;
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+        .party-select-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--bg-color);
+        }
+        .party-select-item.disabled .party-select-name::after {
+            content: ' (You)';
+            font-weight: 400;
+            color: var(--font-color-detail);
+            font-size: var(--font-size-small);
+        }
+        .party-select-self-note {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: #FFF8E1;
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-small);
+            color: #795548;
+        }
+        .party-select-self-note i {
+            color: #F9A825;
+        }
+
         .ucc3-subtype-cards {
             display: flex;
             gap: var(--spacing-sm);
@@ -2822,33 +2916,18 @@
                             </div>
                         </div>
 
-                        <!-- Current Record Info (Item 6) — shown for Change and Delete -->
-                        <div id="party-change-current" class="form-section hidden">
-                            <div class="form-section-title">Current Record Information (Item 6)</div>
-                            <p class="form-section-subtitle">Enter the current name as it appears on the filing record.</p>
-
-                            <div class="form-group">
-                                <label>Current Name Type</label>
-                                <div class="entity-toggle">
-                                    <button class="active" onclick="toggleUCC3PartyType(this, 'org', 'current-record')">Organization</button>
-                                    <button onclick="toggleUCC3PartyType(this, 'individual', 'current-record')">Individual</button>
-                                </div>
-                            </div>
-                            <div id="current-record-org">
-                                <div class="form-group">
-                                    <label class="required">Organization Name</label>
-                                    <input type="text" class="form-control" placeholder="Current name as recorded">
-                                </div>
-                            </div>
-                            <div id="current-record-individual" class="hidden">
-                                <div class="form-row form-row-name">
-                                    <div class="form-group"><label class="required">Surname (Last Name)</label><input type="text" class="form-control" placeholder="Family name"></div>
-                                    <div class="form-group"><label class="required">First Name</label><input type="text" class="form-control" placeholder="First personal name"></div>
-                                    <div class="form-group"><label>Additional Name(s)/Initial(s)</label><input type="text" class="form-control" placeholder="Middle name or initials"></div>
-                                    <div class="form-group"><label>Suffix</label><select class="form-control"><option value="">None</option><option>Jr.</option><option>Sr.</option><option>II</option><option>III</option><option>IV</option></select></div>
-                                </div>
+                        <!-- Party selection list — shown for Change and Delete -->
+                        <div id="party-select-section" class="form-section hidden">
+                            <div class="form-section-title" id="party-select-title">Select Party to Edit</div>
+                            <p class="form-section-subtitle" id="party-select-subtitle">Choose the party whose information you want to change.</p>
+                            <div id="party-select-list" class="party-select-list"></div>
+                            <div id="party-select-self-note" class="party-select-self-note hidden">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>You cannot remove yourself from this filing.</span>
                             </div>
                         </div>
+
+                        <!-- Current Record Info (Item 6) removed — party selection list replaces it -->
 
                         <!-- Changed/Added Info (Item 7) — shown for Change and Add -->
                         <div id="party-change-new" class="form-section hidden">
@@ -4360,29 +4439,117 @@
             btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             partyChangeAffects = type;
+
+            // Rebuild party list if it's currently visible
+            const partySelectSection = document.getElementById('party-select-section');
+            if (!partySelectSection.classList.contains('hidden') && selectedPartyChangeSubtype) {
+                selectedPartyToChange = null;
+                document.getElementById('party-change-new').classList.add('hidden');
+                buildPartySelectList(selectedPartyChangeSubtype === 'delete');
+            }
         }
+
+        let selectedPartyToChange = null; // key into mockUCC1Parties
 
         function selectPartyChangeSubtype(subtype, el) {
             selectedPartyChangeSubtype = subtype;
+            selectedPartyToChange = null;
             document.querySelectorAll('#ucc3-form-party-change .ucc3-subtype-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
 
-            const currentSection = document.getElementById('party-change-current');
+            const partySelectSection = document.getElementById('party-select-section');
             const newSection = document.getElementById('party-change-new');
 
-            // Change: show both current and new
-            // Add: show only new
-            // Delete: show only current
+            // Reset sections
+            newSection.classList.add('hidden');
+
             if (subtype === 'change') {
-                currentSection.classList.remove('hidden');
-                newSection.classList.remove('hidden');
+                // Show party list, let user pick who to change
+                document.getElementById('party-select-title').textContent = 'Select Party to Edit';
+                document.getElementById('party-select-subtitle').textContent = 'Choose the party whose name or address you want to change.';
+                partySelectSection.classList.remove('hidden');
+                buildPartySelectList(false);
                 document.getElementById('party-change-new-title').textContent = 'Changed Information (Item 7)';
             } else if (subtype === 'add') {
-                currentSection.classList.add('hidden');
+                // No list needed — just show the new party form
+                partySelectSection.classList.add('hidden');
                 newSection.classList.remove('hidden');
                 document.getElementById('party-change-new-title').textContent = 'New Party Information (Item 7)';
             } else if (subtype === 'delete') {
-                currentSection.classList.remove('hidden');
+                // Show party list, prevent deleting self
+                document.getElementById('party-select-title').textContent = 'Select Party to Delete';
+                document.getElementById('party-select-subtitle').textContent = 'Choose the party you want to remove from this filing.';
+                partySelectSection.classList.remove('hidden');
+                buildPartySelectList(true);
+            }
+        }
+
+        function buildPartySelectList(isDelete) {
+            const list = document.getElementById('party-select-list');
+            const selfNote = document.getElementById('party-select-self-note');
+            list.innerHTML = '';
+            selfNote.classList.add('hidden');
+
+            // Determine which party type to show based on "affects" toggle
+            const affectsDebtor = partyChangeAffects === 'debtor';
+            const roleLabelForList = {
+                'debtor': 'Debtor',
+                'sp1': 'Secured Party #1',
+                'sp2': 'Secured Party #2+',
+                'assignee': 'Assignee'
+            };
+
+            // Filter parties by the selected "affects" type
+            let hasSelfDisabled = false;
+            Object.keys(mockUCC1Parties).forEach(key => {
+                const party = mockUCC1Parties[key];
+                const isDebtorParty = party.role === 'debtor';
+                const isSecuredParty = ['sp1', 'sp2', 'assignee'].includes(party.role);
+
+                if (affectsDebtor && !isDebtorParty) return;
+                if (!affectsDebtor && !isSecuredParty) return;
+
+                // Check if this party is the logged-in user
+                const isSelf = selectedPartyData && party.name === selectedPartyData.name && party.address === selectedPartyData.address;
+                const isDisabled = isDelete && isSelf;
+                if (isDisabled) hasSelfDisabled = true;
+
+                const item = document.createElement('div');
+                item.className = 'party-select-item' + (isDisabled ? ' disabled' : '');
+                item.setAttribute('data-party-key', key);
+                if (!isDisabled) {
+                    item.onclick = function() { selectPartyFromList(key, this); };
+                }
+
+                item.innerHTML =
+                    '<div class="party-select-radio"></div>' +
+                    '<div class="party-select-info">' +
+                        '<div class="party-select-name">' + party.name + '</div>' +
+                        '<div class="party-select-address">' + party.address + '</div>' +
+                    '</div>' +
+                    '<div class="party-select-role">' + (roleLabelForList[party.role] || party.role) + '</div>';
+
+                list.appendChild(item);
+            });
+
+            // Show warning if user can't delete themselves
+            if (isDelete && hasSelfDisabled) {
+                selfNote.classList.remove('hidden');
+            }
+        }
+
+        function selectPartyFromList(key, el) {
+            selectedPartyToChange = key;
+            document.querySelectorAll('.party-select-item').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+
+            const newSection = document.getElementById('party-change-new');
+
+            if (selectedPartyChangeSubtype === 'change') {
+                // Show the new/changed info form
+                newSection.classList.remove('hidden');
+            } else if (selectedPartyChangeSubtype === 'delete') {
+                // No additional form needed — selection is sufficient
                 newSection.classList.add('hidden');
             }
         }
