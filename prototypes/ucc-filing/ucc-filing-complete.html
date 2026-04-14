@@ -2962,6 +2962,22 @@
                                 <textarea class="form-control" rows="6" id="collateral-change-textarea" placeholder="Describe the collateral to be added, deleted, or restated."></textarea>
                                 <span class="form-text">Do not include social security numbers or other personally identifiable information.</span>
                             </div>
+
+                            <!-- Supporting Documents — visible only for Add Collateral -->
+                            <div class="form-group hidden" id="collateral-change-upload-group">
+                                <label>Supporting Documents <span style="font-weight:400; color:var(--font-color-detail);">(Optional)</span></label>
+                                <div class="file-upload-zone" id="collateral-change-upload-zone"
+                                     ondragover="handleDragOver(event)"
+                                     ondragleave="handleDragLeave(event)"
+                                     ondrop="handleDrop(event)">
+                                    <input type="file" id="collateral-change-file-input" multiple accept=".pdf,.doc,.docx,.txt" onchange="handleFileSelect(event)">
+                                    <div class="file-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                                    <p><span class="upload-cta">Click to browse</span> or drag and drop files here</p>
+                                    <p class="upload-hint">Accepted formats: PDF &nbsp;·&nbsp; Max 10 MB per file</p>
+                                </div>
+                                <div class="file-list" id="collateral-change-file-list"></div>
+                                <span class="form-text mt-sm">Attach supporting documentation for the new collateral being added. Do not include PII.</span>
+                            </div>
                         </div>
 
                         <!-- Authorizing Party (Item 9) -->
@@ -4384,6 +4400,14 @@
                 restate: 'Enter the complete restated collateral description.'
             };
             textarea.placeholder = placeholders[subtype] || '';
+
+            // Show file upload only for Add Collateral
+            const uploadGroup = document.getElementById('collateral-change-upload-group');
+            if (subtype === 'add') {
+                uploadGroup.classList.remove('hidden');
+            } else {
+                uploadGroup.classList.add('hidden');
+            }
         }
 
         // ── Step 4: Populate review ───────────────────────────────────
