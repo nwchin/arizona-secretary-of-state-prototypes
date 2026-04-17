@@ -423,7 +423,7 @@
             font-size: var(--font-size-small);
             color: var(--font-color-detail);
             border-top: 1px solid var(--border-color-default);
-            background: var(--color-white);
+            background: none;
         }
         .pagination-bar button {
             background: none;
@@ -820,7 +820,7 @@
                     <div class="stat-value" id="stat-assigned" style="color: var(--brand-primary);">0</div>
                 </div>
                 <div class="stat-card" id="card-wholeteam" onclick="switchTab('wholeteam')" style="border-left: 4px solid var(--brand-primary-200);">
-                    <div class="stat-label">Assigned (whole team)</div>
+                    <div class="stat-label">Assigned (Team)</div>
                     <div class="stat-value" id="stat-wholeteam" style="color: var(--brand-primary-200);">0</div>
                 </div>
                 <div class="stat-card" id="card-unassigned" onclick="switchTab('unassigned')" style="border-left: 4px solid var(--brand-success-700);">
@@ -832,7 +832,7 @@
                     <div class="stat-value" id="stat-completedme">0</div>
                 </div>
                 <div class="stat-card" id="card-completedteam" onclick="switchTab('completedteam')">
-                    <div class="stat-label">Completed today (whole team)</div>
+                    <div class="stat-label">Completed today (Team)</div>
                     <div class="stat-value" id="stat-completedteam">0</div>
                 </div>
             </div>
