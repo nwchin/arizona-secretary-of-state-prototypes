@@ -209,6 +209,10 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: var(--spacing-xl);
+            background: linear-gradient(90deg, #f3ebdd 0%, #faf6ec 28%, #ffffff 55%, #eef1f5 100%);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-xl) var(--spacing-xxl);
         }
         .page-header .page-title { margin-bottom: var(--spacing-xxs); }
         .page-header .page-subtitle {
@@ -366,11 +370,9 @@
             border-collapse: collapse;
         }
         .data-table thead th {
-            text-transform: uppercase;
-            font-size: 11px;
+            font-size: var(--font-size-default);
             font-weight: 700;
-            letter-spacing: 0.5px;
-            color: var(--font-color-detail);
+            color: var(--font-color-header);
             padding: var(--spacing-md) var(--spacing-md);
             border-bottom: 2px solid var(--border-color-default);
             text-align: left;
@@ -380,7 +382,7 @@
             background: #fafafa;
         }
         .data-table thead th:hover { color: var(--brand-primary); }
-        .data-table thead th .sort-icon { font-size: 10px; margin-left: 4px; opacity: 0.5; }
+        .data-table thead th .sort-icon { font-size: 11px; margin-left: 4px; opacity: 0.6; color: var(--font-color-detail); }
         .data-table tbody td {
             padding: var(--spacing-md);
             border-bottom: 1px solid var(--border-color-default);
@@ -1117,7 +1119,7 @@
                 filerEmail: 'brynn.baringer@example.com',
                 filerPhone: '(602) 555-0142',
                 filerReference: 'REF-AGL-2026-001',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-1',
                 nonStandardType: 'Agricultural Lien',
                 alternativeDesignation: '',
                 submittedDate: '03/15/2026',
@@ -1151,7 +1153,7 @@
                 filerEmail: 'hollis.helm@example.com',
                 filerPhone: '(480) 555-0298',
                 filerReference: 'REF-PFT-2026-005',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-1',
                 nonStandardType: 'Public-Finance Transaction',
                 alternativeDesignation: '',
                 submittedDate: '03/18/2026',
@@ -1185,7 +1187,7 @@
                 filerEmail: 'hadley.hebert@example.com',
                 filerPhone: '(520) 555-0177',
                 filerReference: 'REF-MHT-2026-009',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-3',
                 nonStandardType: 'Manufactured-Home Transaction',
                 alternativeDesignation: '',
                 submittedDate: '03/20/2026',
@@ -1219,7 +1221,7 @@
                 filerEmail: 'leif.larson@example.com',
                 filerPhone: '(623) 555-0334',
                 filerReference: 'REF-TU-2026-012',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-1',
                 nonStandardType: 'Transmitting Utility',
                 alternativeDesignation: '',
                 submittedDate: '03/22/2026',
@@ -1253,7 +1255,7 @@
                 filerEmail: 'willow.weathers@example.com',
                 filerPhone: '(928) 555-0456',
                 filerReference: 'REF-AGL-2026-015',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-5',
                 nonStandardType: 'Agricultural Lien',
                 alternativeDesignation: '',
                 submittedDate: '03/24/2026',
@@ -1287,7 +1289,7 @@
                 filerEmail: 'gentry.cobb@example.com',
                 filerPhone: '(602) 555-0521',
                 filerReference: 'REF-PFT-2026-018',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-3',
                 nonStandardType: 'Public-Finance Transaction',
                 alternativeDesignation: '',
                 submittedDate: '03/10/2026',
@@ -1321,7 +1323,7 @@
                 filerEmail: 'larkin.landry@example.com',
                 filerPhone: '(480) 555-0698',
                 filerReference: 'REF-MHT-2026-021',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-1',
                 nonStandardType: 'Manufactured-Home Transaction',
                 alternativeDesignation: '',
                 submittedDate: '03/12/2026',
@@ -1355,7 +1357,7 @@
                 filerEmail: 'ellis.estrada@example.com',
                 filerPhone: '(520) 555-0813',
                 filerReference: 'REF-TU-2026-024',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-11',
                 nonStandardType: 'Transmitting Utility',
                 alternativeDesignation: '',
                 submittedDate: '03/08/2026',
@@ -1391,7 +1393,7 @@
                 filerEmail: 'bronte.black@example.com',
                 filerPhone: '(928) 555-0974',
                 filerReference: 'REF-AGL-2026-027',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-3',
                 nonStandardType: 'Agricultural Lien',
                 alternativeDesignation: '',
                 submittedDate: '03/28/2026',
@@ -1425,7 +1427,7 @@
                 filerEmail: 'indigo.irwin@example.com',
                 filerPhone: '(602) 555-1055',
                 filerReference: 'REF-TU-2026-030',
-                filingType: 'Non-Standard',
+                filingType: 'UCC-1',
                 nonStandardType: 'Transmitting Utility',
                 alternativeDesignation: '',
                 submittedDate: '03/30/2026',
