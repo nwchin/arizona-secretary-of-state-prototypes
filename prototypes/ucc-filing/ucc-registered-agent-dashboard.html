@@ -454,41 +454,48 @@
         .detail-layout {
             display: grid;
             grid-template-columns: 260px 1fr 300px;
+            gap: var(--spacing-xl);
+            padding: var(--spacing-xl);
+            align-items: start;
             min-height: calc(100vh - 112px);
         }
 
         /* Left Sidebar */
         .detail-sidebar {
             background: var(--color-white);
-            border-right: 1px solid var(--border-color-default);
-            padding-top: var(--spacing-md);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md) 0;
+            overflow: hidden;
         }
         .sidebar-back {
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
-            padding: var(--spacing-md) var(--spacing-xl);
+            padding: var(--spacing-sm) var(--spacing-lg);
             font-weight: 600;
             color: var(--brand-primary);
             cursor: pointer;
-            border-bottom: 1px solid var(--border-color-default);
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
         }
         .sidebar-back:hover { background: #f0f4ff; }
         .sidebar-title {
-            padding: var(--spacing-sm) var(--spacing-xl);
+            padding: var(--spacing-sm) var(--spacing-lg);
             font-size: var(--font-size-small);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--font-color-detail);
+            border-top: 1px solid var(--border-color-default);
+            padding-top: var(--spacing-md);
+            margin-top: var(--spacing-xs);
         }
         .sidebar-nav { list-style: none; }
         .sidebar-nav .nav-item {
             display: flex;
             align-items: center;
             gap: var(--spacing-md);
-            padding: var(--spacing-md) var(--spacing-xl);
+            padding: var(--spacing-md) var(--spacing-lg);
             cursor: pointer;
             color: var(--font-color-default);
             border-left: 3px solid transparent;
@@ -506,9 +513,11 @@
 
         /* Center Content */
         .detail-content {
+            background: var(--color-white);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
             padding: var(--spacing-xl) var(--spacing-xxl);
             overflow-y: auto;
-            background: var(--bg-color);
         }
         .detail-content .detail-page-title {
             font-size: var(--font-size-h2);
@@ -588,7 +597,8 @@
         /* Right Sidebar — Reviewer Actions */
         .detail-actions {
             background: var(--color-white);
-            border-left: 1px solid var(--border-color-default);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
             padding: var(--spacing-xl);
             overflow-y: auto;
         }
@@ -640,20 +650,6 @@
             font-weight: 700;
             font-size: var(--font-size-large);
         }
-
-        /* Payment status indicator */
-        .payment-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: var(--font-size-small);
-        }
-        .payment-status.paid { background: #e8f7ee; color: var(--brand-success-700); }
-        .payment-status.pending { background: #fef9e7; color: #b8860b; }
-        .payment-status.not-received { background: var(--brand-danger-100); color: var(--brand-danger-700); }
 
         /* ============================================================
            MODALS
@@ -756,10 +752,6 @@
         @media (max-width: 992px) {
             .detail-layout { grid-template-columns: 1fr; }
             .detail-sidebar { display: none; }
-            .detail-actions {
-                border-left: none;
-                border-top: 1px solid var(--border-color-default);
-            }
             .stat-cards { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 768px) {
@@ -926,7 +918,6 @@
                     <li class="nav-item" onclick="scrollToSection('debtor-info', this)"><i class="fa-solid fa-building"></i> Debtor Information</li>
                     <li class="nav-item" onclick="scrollToSection('secured-party', this)"><i class="fa-solid fa-shield-halved"></i> Secured Party</li>
                     <li class="nav-item" onclick="scrollToSection('collateral-filing', this)"><i class="fa-solid fa-boxes-stacked"></i> Collateral & Filing Details</li>
-                    <li class="nav-item" onclick="scrollToSection('payment-info', this)"><i class="fa-solid fa-credit-card"></i> Payment Information</li>
                 </ul>
             </aside>
 
@@ -969,12 +960,6 @@
                     <div class="review-section-header"><h3><i class="fa-solid fa-boxes-stacked"></i> Collateral & Filing Details</h3></div>
                     <div id="detail-collateral-filing"></div>
                 </section>
-
-                <!-- Payment Information -->
-                <section id="section-payment-info" class="review-section">
-                    <div class="review-section-header"><h3><i class="fa-solid fa-credit-card"></i> Payment Information</h3></div>
-                    <div id="detail-payment-info"></div>
-                </section>
             </main>
 
             <!-- RIGHT SIDEBAR -->
@@ -996,21 +981,14 @@
 
                 <hr class="actions-divider">
 
-                <h4>Current Fees</h4>
+                <h4>Fees Upon Approval</h4>
                 <div id="sidebar-fees">
                     <div class="fee-row"><span>Filing Fee</span><span id="sidebar-fee-amount">$9.00</span></div>
-                    <div class="fee-row total"><span>Total Due</span><span id="sidebar-fee-total">$9.00</span></div>
+                    <div class="fee-row total"><span>Total</span><span id="sidebar-fee-total">$9.00</span></div>
                 </div>
-
-                <hr class="actions-divider">
-
-                <h4>Payment Status</h4>
-                <div id="sidebar-payment-status"></div>
-
-                <hr class="actions-divider">
-
-                <h4>Previous Paid Fees</h4>
-                <p class="text-muted">No items found</p>
+                <p class="text-muted" style="margin-top: var(--spacing-sm); font-size: var(--font-size-small);">
+                    <i class="fa-solid fa-circle-info"></i> Payment will be requested from the filer upon approval.
+                </p>
             </aside>
 
         </div>
@@ -1031,14 +1009,14 @@
                     <i class="fa-solid fa-circle-check alert-icon" style="color: var(--brand-success-700);"></i>
                     <div>
                         You are approving Filing <strong id="approve-filing-id"></strong>.
-                        The filer will be notified via email about the approval. This action will
-                        change the filing status to Approved.
+                        The filer will be notified via email and sent a payment request for the
+                        fees below. The filing status will change to Approved.
                     </div>
                 </div>
                 <div class="fee-summary">
-                    <h4 style="margin-bottom: var(--spacing-sm);">Fees</h4>
+                    <h4 style="margin-bottom: var(--spacing-sm);">Fees to be Requested</h4>
                     <div class="fee-row">
-                        <span>Amount Due from Filer</span>
+                        <span>Amount to Request from Filer</span>
                         <span id="approve-fee">$9.00</span>
                     </div>
                 </div>
@@ -1143,9 +1121,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'AGL-DV-2026',
-                feeAmount: '$9.00',
-                paymentMethod: 'Credit Card',
-                paymentStatus: 'Paid'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0005',
@@ -1177,9 +1153,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'PFT-TEMPE-2026',
-                feeAmount: '$9.00',
-                paymentMethod: 'Pre-Authorized Account',
-                paymentStatus: 'Paid'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0009',
@@ -1211,9 +1185,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'MHT-CLH-44892',
-                feeAmount: '$9.00',
-                paymentMethod: 'Credit Card',
-                paymentStatus: 'Paid'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0012',
@@ -1245,9 +1217,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'TU-APL-2026',
-                feeAmount: '$9.00',
-                paymentMethod: 'Pre-Authorized Account',
-                paymentStatus: 'Paid'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0015',
@@ -1279,9 +1249,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'AGL-NAC-2026',
-                feeAmount: '$9.00',
-                paymentMethod: 'Credit Card',
-                paymentStatus: 'Pending'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0018',
@@ -1313,9 +1281,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'PFT-MCFCD-2026',
-                feeAmount: '$9.00',
-                paymentMethod: 'Pre-Authorized Account',
-                paymentStatus: 'Paid'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0021',
@@ -1347,9 +1313,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'MHT-CH-33201',
-                feeAmount: '$9.00',
-                paymentMethod: 'Credit Card',
-                paymentStatus: 'Paid'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0024',
@@ -1383,9 +1347,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'TU-TGD-2026',
-                feeAmount: '$9.00',
-                paymentMethod: 'Credit Card',
-                paymentStatus: 'Paid'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0027',
@@ -1417,9 +1379,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'AGL-PVV-2026',
-                feeAmount: '$9.00',
-                paymentMethod: 'Credit Card',
-                paymentStatus: 'Paid'
+                feeAmount: '$9.00'
             },
             {
                 id: 'UCC-2026-0030',
@@ -1451,9 +1411,7 @@
                 trust: false,
                 decedent: false,
                 filerReferenceData: 'TU-SBF-2026',
-                feeAmount: '$9.00',
-                paymentMethod: 'Pre-Authorized Account',
-                paymentStatus: 'Not Received'
+                feeAmount: '$9.00'
             }
         ];
 
@@ -1734,24 +1692,9 @@
 
             document.getElementById('detail-collateral-filing').innerHTML = collHtml;
 
-            // Payment Information
-            let payHtml = reviewRow('Filing Fee', f.feeAmount);
-            payHtml += reviewRow('Payment Method', '<i class="fa-solid ' + (f.paymentMethod === 'Credit Card' ? 'fa-credit-card' : 'fa-building-columns') + '" style="margin-right:6px;"></i>' + f.paymentMethod);
-            const payStatusCls = f.paymentStatus === 'Paid' ? 'paid' : f.paymentStatus === 'Pending' ? 'pending' : 'not-received';
-            const payStatusIcon = f.paymentStatus === 'Paid' ? 'fa-circle-check' : f.paymentStatus === 'Pending' ? 'fa-clock' : 'fa-circle-xmark';
-            payHtml += reviewRow('Payment Status', '<span class="payment-status ' + payStatusCls + '"><i class="fa-solid ' + payStatusIcon + '"></i> ' + f.paymentStatus + '</span>');
-            document.getElementById('detail-payment-info').innerHTML = payHtml;
-
             // Sidebar fee info
             document.getElementById('sidebar-fee-amount').textContent = f.feeAmount;
             document.getElementById('sidebar-fee-total').textContent = f.feeAmount;
-
-            // Sidebar payment status
-            document.getElementById('sidebar-payment-status').innerHTML =
-                '<div style="margin-top:var(--spacing-sm);">' +
-                '<div style="margin-bottom:8px;"><span style="color:var(--font-color-detail);font-size:var(--font-size-small);">Method:</span> <strong>' + f.paymentMethod + '</strong></div>' +
-                '<div><span style="color:var(--font-color-detail);font-size:var(--font-size-small);">Status:</span> <span class="payment-status ' + payStatusCls + '"><i class="fa-solid ' + payStatusIcon + '"></i> ' + f.paymentStatus + '</span></div>' +
-                '</div>';
 
             // Modal filing IDs
             document.getElementById('approve-filing-id').textContent = f.id;
