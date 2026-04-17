@@ -244,9 +244,8 @@
             border-color: var(--brand-primary-200);
         }
         .stat-card.active {
-            border-color: var(--brand-primary);
-            border-width: 2px;
-            box-shadow: var(--box-shadow-default);
+            border-color: var(--brand-primary-200);
+            box-shadow: var(--box-shadow-default), inset 0 -3px 0 var(--brand-primary);
         }
         .stat-card .stat-label {
             font-size: var(--font-size-small);
@@ -560,19 +559,28 @@
             gap: var(--spacing-sm);
         }
         .review-section-header h3 i { font-size: 16px; color: var(--brand-primary); }
-        .review-row {
+        .review-grid {
             display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: var(--spacing-xs);
-            padding: var(--spacing-sm) 0;
-            border-bottom: 1px solid #f0f0f0;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--spacing-md) var(--spacing-lg);
         }
+        .review-row {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xxs);
+            min-width: 0;
+        }
+        .review-row.full-width { grid-column: 1 / -1; }
         .review-row .review-label {
-            font-weight: 600;
-            color: var(--font-color-detail);
-            font-size: var(--font-size-small);
+            font-weight: 700;
+            color: var(--font-color-default);
+            font-size: var(--font-size-default);
         }
-        .review-row .review-value { color: var(--font-color-default); }
+        .review-row .review-value {
+            color: var(--font-color-default);
+            font-size: var(--font-size-default);
+            word-break: break-word;
+        }
 
         /* Highlighted Transaction Type Box */
         .review-highlight {
@@ -755,12 +763,13 @@
             .detail-layout { grid-template-columns: 1fr; }
             .detail-sidebar { display: none; }
             .stat-cards { grid-template-columns: repeat(3, 1fr); }
+            .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 768px) {
             .stat-cards { grid-template-columns: 1fr 1fr; }
             .filter-bar { flex-wrap: wrap; }
             .filter-bar .search-input { min-width: 100%; }
-            .review-row { grid-template-columns: 1fr; }
+            .review-grid { grid-template-columns: 1fr; }
             .site-header nav a span.nav-label { display: none; }
         }
     </style>
@@ -810,22 +819,22 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title" id="dashboard-title">My Queue</h1>
-                    <p class="page-subtitle"><i class="fa-solid fa-user"></i> Welcome, <strong>Sarah Chen</strong></p>
+                    <h1 class="page-title">Welcome, Sarah Chen</h1>
+                    <p class="page-subtitle"><i class="fa-solid fa-user"></i> Registered Agent</p>
                 </div>
             </div>
 
             <!-- Stat Cards (clickable — act as filters) -->
             <div class="stat-cards">
-                <div class="stat-card active" id="card-myqueue" onclick="switchTab('myqueue')" style="border-left: 4px solid var(--brand-primary);">
+                <div class="stat-card active" id="card-myqueue" onclick="switchTab('myqueue')">
                     <div class="stat-label">Assigned to me</div>
                     <div class="stat-value" id="stat-assigned" style="color: var(--brand-primary);">0</div>
                 </div>
-                <div class="stat-card" id="card-wholeteam" onclick="switchTab('wholeteam')" style="border-left: 4px solid var(--brand-primary-200);">
+                <div class="stat-card" id="card-wholeteam" onclick="switchTab('wholeteam')">
                     <div class="stat-label">Assigned (Team)</div>
                     <div class="stat-value" id="stat-wholeteam" style="color: var(--brand-primary-200);">0</div>
                 </div>
-                <div class="stat-card" id="card-unassigned" onclick="switchTab('unassigned')" style="border-left: 4px solid var(--brand-success-700);">
+                <div class="stat-card" id="card-unassigned" onclick="switchTab('unassigned')">
                     <div class="stat-label">Unassigned</div>
                     <div class="stat-value" id="stat-unassigned" style="color: var(--brand-success-700);">0</div>
                 </div>
@@ -936,31 +945,31 @@
                 <!-- Filing Summary -->
                 <section id="section-filing-summary" class="review-section">
                     <div class="review-section-header"><h3><i class="fa-solid fa-file-lines"></i> Filing Summary</h3></div>
-                    <div id="detail-filing-summary"></div>
+                    <div class="review-grid" id="detail-filing-summary"></div>
                 </section>
 
                 <!-- Filer Information -->
                 <section id="section-filer-info" class="review-section">
                     <div class="review-section-header"><h3><i class="fa-solid fa-user"></i> Filer Information</h3></div>
-                    <div id="detail-filer-info"></div>
+                    <div class="review-grid" id="detail-filer-info"></div>
                 </section>
 
                 <!-- Debtor Information -->
                 <section id="section-debtor-info" class="review-section">
                     <div class="review-section-header"><h3><i class="fa-solid fa-building"></i> Debtor Information</h3></div>
-                    <div id="detail-debtor-info"></div>
+                    <div class="review-grid" id="detail-debtor-info"></div>
                 </section>
 
                 <!-- Secured Party -->
                 <section id="section-secured-party" class="review-section">
                     <div class="review-section-header"><h3><i class="fa-solid fa-shield-halved"></i> Secured Party Information</h3></div>
-                    <div id="detail-secured-party"></div>
+                    <div class="review-grid" id="detail-secured-party"></div>
                 </section>
 
                 <!-- Collateral & Filing Details -->
                 <section id="section-collateral-filing" class="review-section">
                     <div class="review-section-header"><h3><i class="fa-solid fa-boxes-stacked"></i> Collateral & Filing Details</h3></div>
-                    <div id="detail-collateral-filing"></div>
+                    <div class="review-grid" id="detail-collateral-filing"></div>
                 </section>
             </main>
 
@@ -1447,16 +1456,6 @@
             document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
             document.getElementById('card-' + tab).classList.add('active');
 
-            // Update page title
-            const titles = {
-                myqueue: 'Assigned to me',
-                wholeteam: 'Assigned (whole team)',
-                unassigned: 'Unassigned',
-                completedme: 'Completed today by me',
-                completedteam: 'Completed today (whole team)'
-            };
-            document.getElementById('dashboard-title').textContent = titles[tab];
-
             // Clear filters
             document.getElementById('search-input').value = '';
             document.getElementById('filter-type').value = '';
@@ -1612,8 +1611,9 @@
         // ============================================================
         // POPULATE DETAIL VIEW
         // ============================================================
-        function reviewRow(label, value) {
-            return '<div class="review-row"><div class="review-label">' + label + '</div><div class="review-value">' + (value || '—') + '</div></div>';
+        function reviewRow(label, value, fullWidth) {
+            const cls = 'review-row' + (fullWidth ? ' full-width' : '');
+            return '<div class="' + cls + '"><div class="review-label">' + label + '</div><div class="review-value">' + (value || '—') + '</div></div>';
         }
 
         function formatAddress(addr) {
@@ -1644,7 +1644,7 @@
             let filerHtml = reviewRow('Contact Name', f.filerName);
             filerHtml += reviewRow('Phone', f.filerPhone);
             filerHtml += reviewRow('Email', f.filerEmail);
-            filerHtml += reviewRow('Acknowledgment Address', formatAddress(f.ackAddress));
+            filerHtml += reviewRow('Acknowledgment Address', formatAddress(f.ackAddress), true);
             document.getElementById('detail-filer-info').innerHTML = filerHtml;
 
             // Debtor Information
@@ -1656,7 +1656,7 @@
                 debtorHtml += reviewRow('Last Name', f.debtor.lastName);
                 if (f.debtor.suffix) debtorHtml += reviewRow('Suffix', f.debtor.suffix);
             }
-            debtorHtml += reviewRow('Mailing Address', formatAddress(f.debtor.address));
+            debtorHtml += reviewRow('Mailing Address', formatAddress(f.debtor.address), true);
             document.getElementById('detail-debtor-info').innerHTML = debtorHtml;
 
             // Secured Party
@@ -1668,15 +1668,15 @@
                 spHtml += reviewRow('Last Name', f.securedParty.lastName);
                 if (f.securedParty.suffix) spHtml += reviewRow('Suffix', f.securedParty.suffix);
             }
-            spHtml += reviewRow('Mailing Address', formatAddress(f.securedParty.address));
+            spHtml += reviewRow('Mailing Address', formatAddress(f.securedParty.address), true);
             document.getElementById('detail-secured-party').innerHTML = spHtml;
 
             // Collateral & Filing Details
-            let collHtml = reviewRow('Collateral Description', f.collateralDescription);
+            let collHtml = reviewRow('Collateral Description', f.collateralDescription, true);
             let docsHtml = f.attachedDocuments.map(d =>
                 '<span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;"><i class="fa-solid fa-file-pdf" style="color:var(--brand-danger);"></i> ' + d + '</span>'
             ).join('');
-            collHtml += reviewRow('Attached Documents', docsHtml);
+            collHtml += reviewRow('Attached Documents', docsHtml, true);
             collHtml += reviewRow('Trust', f.trust ? 'Yes' : 'No');
             collHtml += reviewRow('Decedent', f.decedent ? 'Yes' : 'No');
             collHtml += reviewRow('Filer Reference Data', f.filerReferenceData);
