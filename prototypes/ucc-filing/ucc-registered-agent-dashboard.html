@@ -513,15 +513,11 @@
 
         /* Center Content */
         .detail-content {
-            background: var(--color-white);
-            border: 1px solid var(--border-color-default);
-            border-radius: var(--border-radius-md);
-            padding: var(--spacing-xl) var(--spacing-xxl);
             overflow-y: auto;
         }
         .detail-content .detail-page-title {
             font-size: var(--font-size-h2);
-            margin-bottom: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
         }
 
         /* Detail Tabs */
@@ -542,7 +538,13 @@
         .detail-tab.active { color: var(--brand-primary); border-bottom-color: var(--brand-primary); }
 
         /* Review Sections */
-        .review-section { margin-bottom: var(--spacing-xl); }
+        .review-section {
+            background: var(--color-white);
+            border: 1px solid var(--border-color-default);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-xl) var(--spacing-xxl);
+            margin-bottom: var(--spacing-xl);
+        }
         .review-section-header {
             display: flex;
             align-items: center;
