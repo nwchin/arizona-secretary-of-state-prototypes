@@ -1327,10 +1327,78 @@
             color: var(--font-color-detail);
             line-height: 1.4;
         }
-        .amendment-type-card.disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
-            pointer-events: none;
+        /* UCC-3 Step 2: amendment groups */
+        .amendment-group {
+            margin-top: var(--spacing-xl);
+        }
+        .amendment-group:first-child {
+            margin-top: 0;
+        }
+        .amendment-group-header {
+            margin-bottom: var(--spacing-sm);
+        }
+        .amendment-group-title {
+            margin: 0;
+            font-size: var(--font-size-default);
+            font-weight: 600;
+            color: var(--font-color-default);
+        }
+        .amendment-group-subtitle {
+            margin: 4px 0 0;
+            font-size: var(--font-size-small);
+            color: var(--font-color-detail);
+            line-height: 1.4;
+        }
+
+        /* Checkbox indicator for multi-select cards */
+        .amendment-type-card-check {
+            position: relative;
+            padding-right: calc(var(--spacing-xl) + 20px);
+        }
+        .amendment-type-card-check .card-check {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color-default);
+            border-radius: 4px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+            font-size: 11px;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+        .amendment-type-card-check.selected .card-check {
+            background: var(--brand-primary);
+            border-color: var(--brand-primary);
+            color: #fff;
+        }
+
+        /* Visible divider between stacked amendment form sections in Step 3 */
+        .ucc3-form-section:not(.hidden) ~ .ucc3-form-section:not(.hidden) {
+            border-top: 1px solid var(--border-color-default);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-xl);
+        }
+
+        /* Step 4 review sub-headers when multiple amendments are selected */
+        .review-subheader {
+            font-size: var(--font-size-small);
+            font-weight: 600;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px dashed var(--border-color-default);
+        }
+        .review-subheader-first {
+            margin-top: var(--spacing-md);
+            padding-top: 0;
+            border-top: none;
         }
 
         /* Party list styles for Step 1 */
@@ -2725,31 +2793,49 @@
                 <p class="page-subtitle">Select the action you wish to perform on this financing statement. Available options are based on your role.</p>
 
                 <div class="card">
-                    <div class="amendment-type-cards" id="amendment-type-cards">
-                        <div class="amendment-type-card" id="atype-termination" onclick="selectAmendmentType('termination', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-ban"></i></div>
-                            <h4>Termination</h4>
-                            <p>Terminate the effectiveness of the financing statement with respect to your security interest.</p>
+                    <div class="amendment-group amendment-group-exclusive" id="amendment-group-exclusive">
+                        <div class="amendment-group-header">
+                            <h3 class="amendment-group-title">Primary Action</h3>
+                            <p class="amendment-group-subtitle">Choose one. These actions replace or transfer the filing and cannot be combined with other amendments.</p>
                         </div>
-                        <div class="amendment-type-card" id="atype-assignment" onclick="selectAmendmentType('assignment', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-right-left"></i></div>
-                            <h4>Assignment</h4>
-                            <p>Assign some or all of your rights under the financing statement to another party.</p>
+                        <div class="amendment-type-cards">
+                            <div class="amendment-type-card amendment-type-card-radio" id="atype-termination" onclick="selectAmendmentType('termination', this)">
+                                <div class="card-icon-sm"><i class="fa-solid fa-ban"></i></div>
+                                <h4>Termination</h4>
+                                <p>Terminate the effectiveness of the financing statement with respect to your security interest.</p>
+                            </div>
+                            <div class="amendment-type-card amendment-type-card-radio" id="atype-assignment" onclick="selectAmendmentType('assignment', this)">
+                                <div class="card-icon-sm"><i class="fa-solid fa-right-left"></i></div>
+                                <h4>Assignment</h4>
+                                <p>Assign some or all of your rights under the financing statement to another party.</p>
+                            </div>
                         </div>
-                        <div class="amendment-type-card" id="atype-continuation" onclick="selectAmendmentType('continuation', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-clock-rotate-left"></i></div>
-                            <h4>Continuation</h4>
-                            <p>Continue the effectiveness of the financing statement for an additional period.</p>
+                    </div>
+
+                    <div class="amendment-group amendment-group-multi" id="amendment-group-multi">
+                        <div class="amendment-group-header">
+                            <h3 class="amendment-group-title">Modifications</h3>
+                            <p class="amendment-group-subtitle">Choose one or more. These amendments can be combined in a single filing.</p>
                         </div>
-                        <div class="amendment-type-card" id="atype-party-change" onclick="selectAmendmentType('party-change', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-user-pen"></i></div>
-                            <h4>Party Information Change</h4>
-                            <p>Add, change, or delete a debtor or secured party name and/or address.</p>
-                        </div>
-                        <div class="amendment-type-card" id="atype-collateral-change" onclick="selectAmendmentType('collateral-change', this)">
-                            <div class="card-icon-sm"><i class="fa-solid fa-boxes-stacked"></i></div>
-                            <h4>Collateral Change</h4>
-                            <p>Add, delete, or restate the collateral description on the financing statement.</p>
+                        <div class="amendment-type-cards">
+                            <div class="amendment-type-card amendment-type-card-check" id="atype-continuation" onclick="selectAmendmentType('continuation', this)">
+                                <div class="card-check"><i class="fa-solid fa-check"></i></div>
+                                <div class="card-icon-sm"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                                <h4>Continuation</h4>
+                                <p>Continue the effectiveness of the financing statement for an additional period.</p>
+                            </div>
+                            <div class="amendment-type-card amendment-type-card-check" id="atype-party-change" onclick="selectAmendmentType('party-change', this)">
+                                <div class="card-check"><i class="fa-solid fa-check"></i></div>
+                                <div class="card-icon-sm"><i class="fa-solid fa-user-pen"></i></div>
+                                <h4>Party Information Change</h4>
+                                <p>Add, change, or delete a debtor or secured party name and/or address.</p>
+                            </div>
+                            <div class="amendment-type-card amendment-type-card-check" id="atype-collateral-change" onclick="selectAmendmentType('collateral-change', this)">
+                                <div class="card-check"><i class="fa-solid fa-check"></i></div>
+                                <div class="card-icon-sm"><i class="fa-solid fa-boxes-stacked"></i></div>
+                                <h4>Collateral Change</h4>
+                                <p>Add, delete, or restate the collateral description on the financing statement.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -3109,7 +3195,7 @@
                             <a class="edit-link" onclick="ucc3GoToStep(1)"><i class="fa-solid fa-pen"></i> Edit</a>
                         </div>
                         <div class="review-row"><span class="review-label">Your Role</span><span class="review-value" id="review-role">—</span></div>
-                        <div class="review-row"><span class="review-label">Amendment Type</span><span class="review-value" id="review-amendment-type">—</span></div>
+                        <div class="review-row"><span class="review-label" id="review-amendment-type-label">Amendment Type</span><span class="review-value" id="review-amendment-type">—</span></div>
                         <div id="review-amendment-details"></div>
                     </div>
 
@@ -3130,10 +3216,7 @@
                 <div class="card">
                     <div class="fee-summary">
                         <h4 style="margin-bottom:12px;">Fee Summary</h4>
-                        <div class="fee-row">
-                            <span id="ucc3-fee-description">UCC-3 Amendment</span>
-                            <span id="ucc3-fee-amount">$9.00</span>
-                        </div>
+                        <div id="ucc3-fee-line-items"></div>
                         <div class="fee-row total">
                             <span>Total Due</span>
                             <span id="ucc3-fee-total">$9.00</span>
@@ -4182,10 +4265,20 @@
         const ucc3TotalSteps = 5;
         let selectedRelationship = null;
         let selectedPartyData = null;
-        let selectedAmendmentType = null;
+        let selectedAmendmentTypes = [];
         let selectedPartyChangeSubtype = null;
         let selectedCollateralChangeSubtype = null;
         let partyChangeAffects = 'debtor';
+
+        const exclusiveAmendments = ['termination', 'assignment'];
+        const multiAmendments = ['continuation', 'party-change', 'collateral-change'];
+        const amendmentFeeMap = {
+            'termination': 2,
+            'assignment': 9,
+            'continuation': 9,
+            'party-change': 9,
+            'collateral-change': 9
+        };
 
         // Parties from the original UCC1 filing (keyed by role + index)
         const mockUCC1Parties = {
@@ -4230,7 +4323,7 @@
             // Reset state
             ucc3CurrentStep = 1;
             selectedRelationship = null;
-            selectedAmendmentType = null;
+            selectedAmendmentTypes = [];
             selectedPartyChangeSubtype = null;
             selectedCollateralChangeSubtype = null;
             partyChangeAffects = 'debtor';
@@ -4264,7 +4357,7 @@
             // Reset wizard state
             ucc3CurrentStep = 1;
             selectedRelationship = null;
-            selectedAmendmentType = null;
+            selectedAmendmentTypes = [];
 
             // Reset selections
             document.querySelectorAll('.relationship-card').forEach(c => c.classList.remove('selected'));
@@ -4298,9 +4391,9 @@
                 if (panel) panel.classList.toggle('hidden', i !== ucc3CurrentStep);
             }
 
-            // If entering step 3, show the correct form
-            if (ucc3CurrentStep === 3 && selectedAmendmentType) {
-                showAmendmentForm(selectedAmendmentType);
+            // If entering step 3, show the correct form(s)
+            if (ucc3CurrentStep === 3 && selectedAmendmentTypes.length > 0) {
+                showAmendmentForms();
             }
 
             // If entering step 4, populate review
@@ -4345,8 +4438,8 @@
             el.classList.add('selected');
             document.getElementById('ucc3-continue-step1').disabled = false;
 
-            // Reset amendment type if role changes
-            selectedAmendmentType = null;
+            // Reset amendment selections if role changes
+            selectedAmendmentTypes = [];
             document.querySelectorAll('.amendment-type-card').forEach(c => c.classList.remove('selected'));
             document.getElementById('ucc3-continue-step2').disabled = true;
 
@@ -4378,37 +4471,101 @@
 
         function updateAmendmentTypeAvailability() {
             const allowed = amendmentTypesByRole[selectedRelationship] || [];
-            const types = ['termination', 'assignment', 'continuation', 'party-change', 'collateral-change'];
+            const allTypes = exclusiveAmendments.concat(multiAmendments);
 
-            types.forEach(type => {
+            allTypes.forEach(type => {
                 const card = document.getElementById('atype-' + type);
                 if (card) {
-                    card.classList.toggle('disabled', !allowed.includes(type));
+                    card.classList.toggle('hidden', !allowed.includes(type));
                     card.classList.remove('selected');
                 }
             });
+
+            // Hide an entire group if the role has zero eligible amendments in it
+            const exclusiveGroup = document.getElementById('amendment-group-exclusive');
+            const multiGroup = document.getElementById('amendment-group-multi');
+            const hasExclusive = exclusiveAmendments.some(t => allowed.includes(t));
+            const hasMulti = multiAmendments.some(t => allowed.includes(t));
+            if (exclusiveGroup) exclusiveGroup.classList.toggle('hidden', !hasExclusive);
+            if (multiGroup) multiGroup.classList.toggle('hidden', !hasMulti);
+
+            applyGroupVisibility();
+        }
+
+        // Hide the opposite group entirely once a selection exists in the other group
+        function applyGroupVisibility() {
+            const allowed = amendmentTypesByRole[selectedRelationship] || [];
+            const hasExclusive = exclusiveAmendments.some(t => allowed.includes(t));
+            const hasMulti = multiAmendments.some(t => allowed.includes(t));
+            const exclusiveGroup = document.getElementById('amendment-group-exclusive');
+            const multiGroup = document.getElementById('amendment-group-multi');
+            if (!exclusiveGroup || !multiGroup) return;
+
+            const activeGroup = getActiveGroup();
+            if (activeGroup === 'exclusive') {
+                multiGroup.classList.add('hidden');
+                exclusiveGroup.classList.toggle('hidden', !hasExclusive);
+            } else if (activeGroup === 'multi') {
+                exclusiveGroup.classList.add('hidden');
+                multiGroup.classList.toggle('hidden', !hasMulti);
+            } else {
+                // No selection — show whichever groups the role is eligible for
+                exclusiveGroup.classList.toggle('hidden', !hasExclusive);
+                multiGroup.classList.toggle('hidden', !hasMulti);
+            }
+        }
+
+        function getActiveGroup() {
+            if (selectedAmendmentTypes.length === 0) return null;
+            if (selectedAmendmentTypes.some(t => exclusiveAmendments.includes(t))) return 'exclusive';
+            return 'multi';
         }
 
         // ── Step 2: Amendment type selection ──────────────────────────
         function selectAmendmentType(type, el) {
-            if (el.classList.contains('disabled')) return;
-            selectedAmendmentType = type;
+            if (el.classList.contains('hidden')) return;
+
+            const isExclusive = exclusiveAmendments.includes(type);
+
+            if (isExclusive) {
+                // Toggle within exclusive group: clicking the already-selected card clears it
+                if (selectedAmendmentTypes.length === 1 && selectedAmendmentTypes[0] === type) {
+                    selectedAmendmentTypes = [];
+                } else {
+                    selectedAmendmentTypes = [type];
+                }
+            } else {
+                // Multi-select group: clear any exclusive selection, then toggle this type
+                selectedAmendmentTypes = selectedAmendmentTypes.filter(t => !exclusiveAmendments.includes(t));
+                const idx = selectedAmendmentTypes.indexOf(type);
+                if (idx >= 0) {
+                    selectedAmendmentTypes.splice(idx, 1);
+                } else {
+                    selectedAmendmentTypes.push(type);
+                }
+            }
+
+            // Refresh .selected on all cards
             document.querySelectorAll('.amendment-type-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
-            document.getElementById('ucc3-continue-step2').disabled = false;
+            selectedAmendmentTypes.forEach(t => {
+                const card = document.getElementById('atype-' + t);
+                if (card) card.classList.add('selected');
+            });
+
+            applyGroupVisibility();
+            document.getElementById('ucc3-continue-step2').disabled = selectedAmendmentTypes.length === 0;
         }
 
-        // ── Step 3: Show the correct form ─────────────────────────────
-        function showAmendmentForm(type) {
-            // Hide all form sections
+        // ── Step 3: Show the correct form(s) ──────────────────────────
+        function showAmendmentForms() {
+            // Hide all form sections, then reveal each selected
             document.querySelectorAll('.ucc3-form-section').forEach(s => s.classList.add('hidden'));
 
-            // Show the selected one
-            const formId = 'ucc3-form-' + type;
-            const form = document.getElementById(formId);
-            if (form) form.classList.remove('hidden');
+            selectedAmendmentTypes.forEach(type => {
+                const form = document.getElementById('ucc3-form-' + type);
+                if (form) form.classList.remove('hidden');
+            });
 
-            // Update step 3 title
             const titleEl = document.getElementById('ucc3-step3-title');
             const subtitleEl = document.getElementById('ucc3-step3-subtitle');
 
@@ -4420,9 +4577,13 @@
                 'collateral-change': ['Collateral Change', 'Specify how the collateral description should be modified.']
             };
 
-            if (titles[type]) {
-                titleEl.textContent = titles[type][0];
-                subtitleEl.textContent = titles[type][1];
+            if (selectedAmendmentTypes.length === 1 && titles[selectedAmendmentTypes[0]]) {
+                const t = titles[selectedAmendmentTypes[0]];
+                titleEl.textContent = t[0];
+                subtitleEl.textContent = t[1];
+            } else {
+                titleEl.textContent = 'Amendment Details';
+                subtitleEl.textContent = 'Complete the required information for each selected amendment.';
             }
         }
 
@@ -4583,40 +4744,65 @@
             document.getElementById('review-filing-date').textContent = mockFilingData.filingDate;
             document.getElementById('review-status').textContent = mockFilingData.status;
             document.getElementById('review-role').textContent = roleLabelMap[selectedRelationship] || '—';
-            document.getElementById('review-amendment-type').textContent = amendmentLabelMap[selectedAmendmentType] || '—';
 
-            // Build additional detail rows based on amendment type
+            const typeLabels = selectedAmendmentTypes.map(t => amendmentLabelMap[t]).filter(Boolean);
+            document.getElementById('review-amendment-type-label').textContent =
+                selectedAmendmentTypes.length > 1 ? 'Amendment Types' : 'Amendment Type';
+            document.getElementById('review-amendment-type').textContent = typeLabels.join(', ') || '—';
+
             const detailsContainer = document.getElementById('review-amendment-details');
-            let html = '';
+            const detailBuilders = {
+                'termination': () =>
+                    '<div class="review-row"><span class="review-label">Effect</span><span class="review-value">Terminates the effectiveness of the financing statement with respect to the authorizing party\'s security interest.</span></div>',
+                'continuation': () =>
+                    '<div class="review-row"><span class="review-label">Effect</span><span class="review-value">Continues the effectiveness of the financing statement for an additional period as provided by applicable law.</span></div>',
+                'assignment': () =>
+                    '<div class="review-row"><span class="review-label">Assignment Type</span><span class="review-value">Full or Partial Assignment of rights</span></div>',
+                'party-change': () => {
+                    const subtypeLabel = { change: 'Change Name/Address', add: 'Add Party', delete: 'Delete Party' };
+                    const affectsLabel = partyChangeAffects === 'debtor' ? 'Debtor' : 'Secured Party';
+                    return '<div class="review-row"><span class="review-label">Change Action</span><span class="review-value">' + (subtypeLabel[selectedPartyChangeSubtype] || '—') + '</span></div>' +
+                        '<div class="review-row"><span class="review-label">Affects</span><span class="review-value">' + affectsLabel + '</span></div>';
+                },
+                'collateral-change': () => {
+                    const subtypeLabel = { add: 'Add Collateral', delete: 'Delete Collateral', restate: 'Restate Covered Collateral' };
+                    return '<div class="review-row"><span class="review-label">Change Action</span><span class="review-value">' + (subtypeLabel[selectedCollateralChangeSubtype] || '—') + '</span></div>';
+                }
+            };
 
-            if (selectedAmendmentType === 'termination') {
-                html = '<div class="review-row"><span class="review-label">Effect</span><span class="review-value">Terminates the effectiveness of the financing statement with respect to the authorizing party\'s security interest.</span></div>';
-            } else if (selectedAmendmentType === 'continuation') {
-                html = '<div class="review-row"><span class="review-label">Effect</span><span class="review-value">Continues the effectiveness of the financing statement for an additional period as provided by applicable law.</span></div>';
-            } else if (selectedAmendmentType === 'assignment') {
-                html = '<div class="review-row"><span class="review-label">Assignment Type</span><span class="review-value">Full or Partial Assignment of rights</span></div>';
-            } else if (selectedAmendmentType === 'party-change') {
-                const subtypeLabel = { change: 'Change Name/Address', add: 'Add Party', delete: 'Delete Party' };
-                const affectsLabel = partyChangeAffects === 'debtor' ? 'Debtor' : 'Secured Party';
-                html = '<div class="review-row"><span class="review-label">Change Action</span><span class="review-value">' + (subtypeLabel[selectedPartyChangeSubtype] || '—') + '</span></div>';
-                html += '<div class="review-row"><span class="review-label">Affects</span><span class="review-value">' + affectsLabel + '</span></div>';
-            } else if (selectedAmendmentType === 'collateral-change') {
-                const subtypeLabel = { add: 'Add Collateral', delete: 'Delete Collateral', restate: 'Restate Covered Collateral' };
-                html = '<div class="review-row"><span class="review-label">Change Action</span><span class="review-value">' + (subtypeLabel[selectedCollateralChangeSubtype] || '—') + '</span></div>';
-            }
+            let html = '';
+            selectedAmendmentTypes.forEach((type, idx) => {
+                const builder = detailBuilders[type];
+                if (!builder) return;
+                if (selectedAmendmentTypes.length > 1) {
+                    html += '<div class="review-subheader' + (idx === 0 ? ' review-subheader-first' : '') + '">' + (amendmentLabelMap[type] || type) + '</div>';
+                }
+                html += builder();
+            });
 
             detailsContainer.innerHTML = html;
         }
 
         // ── Step 5: Fee calculation ───────────────────────────────────
-        function updateUCC3Fee() {
-            const isTermination = selectedAmendmentType === 'termination';
-            const fee = isTermination ? '$2.00' : '$9.00';
-            const desc = 'UCC-3 Amendment — ' + (amendmentLabelMap[selectedAmendmentType] || 'Amendment');
+        function computeUCC3FeeTotal() {
+            return selectedAmendmentTypes.reduce((sum, t) => sum + (amendmentFeeMap[t] || 0), 0);
+        }
 
-            document.getElementById('ucc3-fee-description').textContent = desc;
-            document.getElementById('ucc3-fee-amount').textContent = fee;
-            document.getElementById('ucc3-fee-total').textContent = fee;
+        function formatUCC3Fee(amount) {
+            return '$' + amount.toFixed(2);
+        }
+
+        function updateUCC3Fee() {
+            const container = document.getElementById('ucc3-fee-line-items');
+            const lineItems = selectedAmendmentTypes.map(t => {
+                const label = amendmentLabelMap[t] || 'Amendment';
+                const amt = amendmentFeeMap[t] || 0;
+                return '<div class="fee-row"><span>UCC-3 Amendment — ' + label + '</span><span>' + formatUCC3Fee(amt) + '</span></div>';
+            }).join('');
+            container.innerHTML = lineItems;
+
+            const total = computeUCC3FeeTotal();
+            document.getElementById('ucc3-fee-total').textContent = formatUCC3Fee(total);
         }
 
         // ── UCC-3 Payment method toggle ──────────────────────────────
@@ -4645,11 +4831,11 @@
 
         // ── Submit UCC-3 ─────────────────────────────────────────────
         function submitUCC3Filing() {
-            const isTermination = selectedAmendmentType === 'termination';
-            const fee = isTermination ? '$2.00' : '$9.00';
-            const typeLabel = amendmentLabelMap[selectedAmendmentType] || 'Amendment';
+            const typeLabels = selectedAmendmentTypes.map(t => amendmentLabelMap[t]).filter(Boolean);
+            const joinedLabels = typeLabels.length ? typeLabels.join(', ') : 'Amendment';
+            const fee = formatUCC3Fee(computeUCC3FeeTotal());
 
-            document.getElementById('ucc3-confirm-filing-type').textContent = 'UCC-3 Amendment — ' + typeLabel;
+            document.getElementById('ucc3-confirm-filing-type').textContent = 'UCC-3 Amendment — ' + joinedLabels;
             document.getElementById('ucc3-confirm-file-number').textContent = mockFilingData.fileNumber;
             document.getElementById('ucc3-confirm-amount').textContent = fee;
 
