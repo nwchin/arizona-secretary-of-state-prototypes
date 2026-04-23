@@ -954,28 +954,15 @@
         }
 
         /* ============================================================
-           ADD DEBTOR BUTTON
+           ADD ENTRY ROW (button + helper text)
            ============================================================ */
-        .add-entry-btn {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            padding: var(--spacing-md) var(--spacing-lg);
-            border: var(--border-width-md) dashed var(--border-color-default);
-            border-radius: var(--border-radius-default);
-            background: transparent;
-            color: var(--brand-primary);
-            font-size: var(--font-size-default);
-            font-weight: 600;
-            font-family: var(--font-family-base);
-            cursor: pointer;
-            width: 100%;
-            justify-content: center;
-            transition: all 0.15s;
+        .add-entry-row {
+            text-align: right;
         }
-        .add-entry-btn:hover {
-            border-color: var(--brand-primary);
-            background: #f0f4ff;
+        .add-entry-row .form-text {
+            display: block;
+            margin-top: var(--spacing-sm);
+            text-align: left;
         }
 
         /* ============================================================
@@ -2201,11 +2188,11 @@
                         </div>
                     </div>
 
-                    <div class="mt-xl">
-                        <button class="add-entry-btn" onclick="addDebtor()">
+                    <div class="add-entry-row mt-xl">
+                        <button class="btn btn-default" onclick="addDebtor()">
                             <i class="fa-solid fa-plus"></i> Add Additional Debtor
                         </button>
-                        <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 debtors. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
+                        <span class="form-text">The UCC-1 form accommodates up to 2 debtors. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
                     </div>
 
                     <div class="btn-bar">
@@ -2308,11 +2295,11 @@
                         </div>
                     </div>
 
-                    <div class="mt-xl">
-                        <button class="add-entry-btn" onclick="addSecuredParty()">
+                    <div class="add-entry-row mt-xl">
+                        <button class="btn btn-default" onclick="addSecuredParty()">
                             <i class="fa-solid fa-plus"></i> Add Additional Secured Party
                         </button>
-                        <span class="form-text mt-sm">The UCC-1 form accommodates up to 2 secured parties. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
+                        <span class="form-text">The UCC-1 form accommodates up to 2 secured parties. For more than 2, a UCC-1AP Additional Party form will be attached automatically.</span>
                     </div>
 
                     <div class="btn-bar">
